@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls \"/Users/davegamba/Documents/DAVE CLAUDE/\" 2>/dev/null)",
+      "Bash(npm --version)",
+      "WebFetch(domain:mikethurston.komi.io)",
+      "mcp__Claude_in_Chrome__list_connected_browsers",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir=no --import-alias=\"@/*\" --no-turbopack)"
+    ]
+  }
+}
