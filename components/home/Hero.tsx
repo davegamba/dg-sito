@@ -50,27 +50,27 @@ export default function Hero() {
         <div
           aria-hidden
           className="absolute inset-0"
-          style={{ background: "rgba(0,0,0,0.52)" }}
+          style={{ background: "rgba(0,0,0,0.42)" }}
         />
-        {/* Vignetta bottom */}
+        {/* Vignetta bottom — più leggera, trasparenza arriva prima */}
         <div
           aria-hidden
-          className="absolute inset-x-0 bottom-0 h-2/3"
+          className="absolute inset-x-0 bottom-0 h-1/2"
           style={{
             background:
-              "linear-gradient(to top, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)",
+              "linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.3) 50%, transparent 80%)",
           }}
         />
         {/* Vignetta top */}
         <div
           aria-hidden
           className="absolute inset-x-0 top-0 h-32"
-          style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%)" }}
+          style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 100%)" }}
         />
       </div>
 
       {/* CONTENUTO */}
-      <div className="relative w-full max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-6 pt-32 pb-20">
+      <div className="relative w-full max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-6 pt-48 sm:pt-32 pb-10 sm:pb-20">
 
         {/* Badge */}
         <div className="inline-flex items-center gap-2">
@@ -81,7 +81,7 @@ export default function Hero() {
         </div>
 
         {/* Nome */}
-        <h1 className="font-serif text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-white leading-none tracking-tight">
+        <h1 className="font-serif text-7xl sm:text-7xl md:text-8xl lg:text-9xl text-white leading-none tracking-tight">
           Dave Gamba
         </h1>
 
