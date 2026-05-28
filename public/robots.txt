@@ -1,0 +1,12 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /studio
+Disallow: /hub
+Disallow: /api
+
+# Host
+Host: https://davegamba.com
+
+# Sitemaps
+Sitemap: https://davegamba.com/sitemap.xml

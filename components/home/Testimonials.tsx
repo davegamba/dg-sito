@@ -1,0 +1,137 @@
+"use client";
+
+import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const testimonials = [
+  {
+    name: "Marco B.",
+    age: 42,
+    job: "Avvocato, Milano",
+    text: "In 3 mesi ho perso 11 kg e trovato un metodo che riesco a mantenere. Con il mio calendario da avvocato pensavo fosse impossibile. 21 minuti si trovano.",
+    result: "−11 kg in 3 mesi",
+  },
+  {
+    name: "Luca F.",
+    age: 38,
+    job: "Manager, Roma",
+    text: "Ho provato palestra, personal trainer di persona, app. Niente funzionava a lungo. Con Dave ho capito che il problema non era la motivazione — era il metodo.",
+    result: "−8 kg, continuità mantenuta",
+  },
+  {
+    name: "Stefano M.",
+    age: 46,
+    job: "Imprenditore, Torino",
+    text: "Ero scettico sul 'personal training online'. Sbagliavo. La qualità degli allenamenti e il supporto sono superiori a qualsiasi palestra che ho frequentato.",
+    result: "+6 kg di massa muscolare",
+  },
+  {
+    name: "Andrea C.",
+    age: 51,
+    job: "Medico, Napoli",
+    text: "Come medico apprezzo che ogni scelta sia supportata da ricerca scientifica. Dave non vende miracoli — spiega il meccanismo. E funziona.",
+    result: "Tornato in forma a 51 anni",
+  },
+  {
+    name: "Roberto V.",
+    age: 44,
+    job: "Architetto, Bologna",
+    text: "3 volte a settimana, 21 minuti. All'inizio pensavo fosse troppo poco. Dopo 6 settimane mi sono dovuto ricredere. I risultati parlano.",
+    result: "−6 kg, addominali visibili",
+  },
+  {
+    name: "Giorgio T.",
+    age: 39,
+    job: "Consulente, Firenze",
+    text: "Il valore vero non sono solo gli allenamenti. È il cambio di mentalità. Dave ti insegna a vedere il fitness come un investimento, non un sacrificio.",
+    result: "−9 kg, continua da 1 anno",
+  },
+];
+
+export default function Testimonials() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    scrollRef.current.scrollBy({ left: dir === "right" ? 320 : -320, behavior: "smooth" });
+  };
+
+  return (
+    <section className="py-20 sm:py-28 bg-black overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
+        {/* Header row */}
+        <div className="flex items-end justify-between mb-8 gap-4">
+          <div>
+            <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
+              Risultati reali
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl text-white">
+              Cosa dicono i clienti
+            </h2>
+          </div>
+
+          {/* Arrows */}
+          <div className="flex gap-2 shrink-0">
+            <button
+              onClick={() => scroll("left")}
+              className="w-10 h-10 rounded-full border border-[#222] flex items-center justify-center text-[#666] hover:text-white hover:border-[#00CBDB] transition-all duration-200"
+              aria-label="Precedente"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className="w-10 h-10 rounded-full border border-[#222] flex items-center justify-center text-[#666] hover:text-white hover:border-[#00CBDB] transition-all duration-200"
+              aria-label="Successivo"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll track */}
+      <div
+        ref={scrollRef}
+        className="flex gap-4 overflow-x-auto pb-4 items-stretch"
+        style={{
+          paddingLeft: "max(1rem, calc((100vw - 72rem) / 2 + 1.5rem))",
+          paddingRight: "max(1rem, calc((100vw - 72rem) / 2 + 1.5rem))",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
+      >
+        {testimonials.map((t) => (
+          <div
+            key={t.name}
+            className="flex-none w-[290px] sm:w-[320px] flex flex-col gap-4 p-6 bg-[#0d0d0d] border border-[#1a1a1a] rounded-[20px] hover:border-[#333] transition-all duration-300"
+          >
+            {/* Result badge */}
+            <span className="inline-flex items-center w-fit px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wide uppercase bg-[#00cbdb0f] border border-[#00cbdb22] text-[#00CBDB]">
+              {t.result}
+            </span>
+
+            {/* Quote */}
+            <p className="text-[#ccc] text-sm leading-relaxed flex-1">
+              &ldquo;{t.text}&rdquo;
+            </p>
+
+            {/* Author */}
+            <div className="flex items-center gap-3 pt-3 border-t border-[#1a1a1a]">
+              <div className="w-9 h-9 rounded-full bg-[#00cbdb18] flex items-center justify-center text-[#00CBDB] text-sm font-bold shrink-0">
+                {t.name[0]}
+              </div>
+              <div>
+                <div className="text-white text-xs font-semibold">
+                  {t.name}, {t.age} anni
+                </div>
+                <div className="text-[#444] text-xs">{t.job}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}

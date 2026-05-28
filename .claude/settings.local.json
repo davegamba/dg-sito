@@ -5,7 +5,17 @@
       "Bash(npm --version)",
       "WebFetch(domain:mikethurston.komi.io)",
       "mcp__Claude_in_Chrome__list_connected_browsers",
-      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir=no --import-alias=\"@/*\" --no-turbopack)"
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir=no --import-alias=\"@/*\" --no-turbopack)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(node -e \"const lr = require\\('lucide-react'\\); console.log\\(Object.keys\\(lr\\).filter\\(k => /gram|tube|social|twitter|linked|face|tik/i.test\\(k\\)\\)\\)\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(mkdir -p \"/Users/davegamba/Documents/DAVE CLAUDE/dg-sito/sanity/schemaTypes\" \"/Users/davegamba/Documents/DAVE CLAUDE/dg-sito/sanity/lib\" \"/Users/davegamba/Documents/DAVE CLAUDE/dg-sito/app/studio/[[...tool]]\" \"/Users/davegamba/Documents/DAVE CLAUDE/dg-sito/app/blog/[slug]\" && echo \"dirs created\")",
+      "Bash(npm uninstall *)",
+      "Bash(git remote *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
