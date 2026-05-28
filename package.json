@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "studio": "sanity dev",
-    "build": "next build --webpack && next-sitemap",
+    "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "eslint"
   },
