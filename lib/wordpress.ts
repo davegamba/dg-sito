@@ -1,4 +1,4 @@
-const WP_API = "https://public-api.wordpress.com/wp/v2/sites/davegamba.wordpress.com";
+const WP_API = "https://public-api.wordpress.com/wp/v2/sites/davegambapt.wordpress.com";
 
 export type WPPost = {
   id: number;
