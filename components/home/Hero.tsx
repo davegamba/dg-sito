@@ -1,132 +1,140 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/Button";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+"use client";
 
-const bullets = [
-  "21 minuti, 3 volte a settimana",
-  "Metodo basato su evidenze PubMed",
-  "3.000+ clienti trasformati dal 2009",
-];
+import { useState } from "react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+
+const SUPABASE_URL = "https://nkojjrvndjyivsjvrqds.supabase.co";
+const SUPABASE_KEY = "sb_publishable_4WlxUEDHRnR0BGxCViP4NA_QVYLUwtg";
+const QUIZ_URL = "https://hub.davegamba.com/optin-quiz.html";
 
 export default function Hero() {
-  return (
-    <section className="relative min-h-dvh flex items-end md:items-center overflow-hidden bg-black">
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
-      {/* ── FOTO FULL-BLEED ──────────────────────────────── */}
-      {/* Desktop: riempie metà destra. Mobile: riempie tutto lo sfondo */}
-      <div className="absolute inset-0 md:left-[42%] pointer-events-none">
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const val = email.trim().toLowerCase();
+    if (!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) return;
+    setLoading(true);
+    try {
+      await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+        method: "POST",
+        headers: {
+          apikey: SUPABASE_KEY,
+          Authorization: `Bearer ${SUPABASE_KEY}`,
+          "Content-Type": "application/json",
+          Prefer: "resolution=ignore-duplicates",
+        },
+        body: JSON.stringify({ name: "", email: val, source: "home-hero" }),
+      });
+    } catch {}
+    window.location.href = `${QUIZ_URL}?email=${encodeURIComponent(val)}`;
+  };
+
+  return (
+    <section className="relative min-h-dvh flex items-center justify-center overflow-hidden bg-black">
+
+      {/* FOTO FULL-BLEED */}
+      <div className="absolute inset-0 pointer-events-none">
         <Image
-          src="/images/dave.jpg"
+          src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/heroBg.jpeg"
           alt="Dave Gamba — Personal Trainer"
           fill
-          className="object-cover object-top"
+          className="object-cover object-center"
           priority
-          sizes="(max-width: 768px) 100vw, 60vw"
+          sizes="100vw"
+          unoptimized
         />
-        {/* Gradiente sinistra → nero (desktop) */}
+        {/* Overlay scuro diffuso */}
         <div
           aria-hidden
-          className="absolute inset-0 hidden md:block"
+          className="absolute inset-0"
+          style={{ background: "rgba(0,0,0,0.52)" }}
+        />
+        {/* Vignetta bottom */}
+        <div
+          aria-hidden
+          className="absolute inset-x-0 bottom-0 h-2/3"
           style={{
             background:
-              "linear-gradient(to right, #000000 0%, #000000 15%, #00000099 45%, transparent 100%)",
+              "linear-gradient(to top, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)",
           }}
         />
-        {/* Gradiente top → nero sottile (mobile + desktop) */}
+        {/* Vignetta top */}
         <div
           aria-hidden
           className="absolute inset-x-0 top-0 h-32"
-          style={{ background: "linear-gradient(to bottom, #000000 0%, transparent 100%)" }}
-        />
-        {/* Gradiente bottom → nero (mobile: copre bene il testo) */}
-        <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 md:hidden"
-          style={{
-            height: "75%",
-            background: "linear-gradient(to top, #000000 50%, transparent 100%)",
-          }}
-        />
-        {/* Gradiente bottom desktop — sfuma foto in basso */}
-        <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 hidden md:block h-48"
-          style={{ background: "linear-gradient(to top, #000000 0%, transparent 100%)" }}
+          style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%)" }}
         />
       </div>
 
-      {/* ── CONTENUTO ────────────────────────────────────── */}
-      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 pt-32 pb-16 md:py-32">
-        <div className="max-w-xl flex flex-col gap-6">
+      {/* CONTENUTO */}
+      <div className="relative w-full max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-6 pt-32 pb-20">
 
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 w-fit">
-            <span className="h-2 w-2 rounded-full bg-[#00CBDB] animate-pulse" />
-            <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase">
-              Personal Trainer Online dal 2009
-            </span>
-          </div>
-
-          {/* Headline */}
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] text-white">
-            Torna in forma{" "}
-            <em className="not-italic text-[#00CBDB]">senza</em>{" "}
-            perdere ore in palestra
-          </h1>
-
-          {/* Subheadline */}
-          <p className="text-[#aaaaaa] text-lg leading-relaxed">
-            Il Metodo BIM — Breve, Intenso, Mirato — per professionisti
-            35–50 anni che vogliono risultati reali con il tempo che hanno.
-          </p>
-
-          {/* Bullets */}
-          <ul className="flex flex-col gap-3">
-            {bullets.map((b) => (
-              <li key={b} className="flex items-center gap-3 text-white text-sm">
-                <CheckCircle2 size={16} className="text-[#00CBDB] shrink-0" />
-                {b}
-              </li>
-            ))}
-          </ul>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-3 pt-2">
-            <Button variant="primary" size="lg" className="group">
-              <Link href="/optin/sfida" className="flex items-center gap-2">
-                Inizia gratis ora
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-200" />
-              </Link>
-            </Button>
-            <Button variant="secondary" size="lg">
-              <Link href="/metodo">Scopri il metodo</Link>
-            </Button>
-          </div>
-
-          {/* Social proof micro */}
-          <p className="text-[#555555] text-xs">
-            Già con{" "}
-            <span className="text-[#888888] font-semibold">15.000+ professionisti</span>
-          </p>
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#00CBDB] animate-pulse" />
+          <span className="text-[#00CBDB] text-[11px] font-semibold tracking-[0.2em] uppercase">
+            Personal Trainer Online dal 2009
+          </span>
         </div>
 
-        {/* Badge float — visibili solo desktop */}
-        <div className="hidden md:flex absolute right-8 bottom-16 gap-4">
-          <div className="bg-black/70 backdrop-blur border border-white/10 rounded-2xl px-5 py-3 flex items-center gap-3">
-            <span className="font-serif text-3xl text-[#00CBDB] leading-none">15+</span>
-            <div>
-              <div className="text-white text-xs font-semibold">anni</div>
-              <div className="text-[#666] text-xs">online</div>
+        {/* Nome */}
+        <h1 className="font-serif text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-white leading-none tracking-tight">
+          Dave Gamba
+        </h1>
+
+        {/* Subtitle */}
+        <p className="text-[#cccccc] text-lg sm:text-xl md:text-2xl leading-snug max-w-xl font-light">
+          Il Metodo Breve, Intenso, Mirato<br className="hidden sm:block" />
+          per un fisico atletico, asciutto e scolpito
+        </p>
+
+        {/* Optin form */}
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-md flex flex-col sm:flex-row gap-3 mt-2"
+        >
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="La tua email..."
+            required
+            className="flex-1 bg-white/10 backdrop-blur border border-white/20 rounded-xl px-5 py-3.5 text-white placeholder-white/40 text-base outline-none focus:border-[#00CBDB]/60 transition-colors"
+          />
+          <button
+            type="submit"
+            disabled={loading}
+            className="flex items-center justify-center gap-2 bg-[#00CBDB] hover:bg-[#00b8c6] disabled:bg-[#006f78] text-black font-bold text-sm tracking-wide rounded-xl px-6 py-3.5 transition-colors whitespace-nowrap"
+          >
+            {loading ? "..." : (
+              <>
+                Scarica gratis
+                <ArrowRight size={16} />
+              </>
+            )}
+          </button>
+        </form>
+
+        {/* Micro label */}
+        <p className="text-white/35 text-xs tracking-wide">
+          Ricevi il Quiz Metabolico gratuito — nessuno spam
+        </p>
+
+        {/* Social proof */}
+        <div className="flex items-center gap-6 mt-4">
+          {[
+            { num: "15+", label: "anni online" },
+            { num: "3K+", label: "clienti" },
+            { num: "2M+", label: "lettori" },
+          ].map(({ num, label }) => (
+            <div key={label} className="text-center">
+              <div className="font-serif text-2xl text-[#00CBDB] leading-none">{num}</div>
+              <div className="text-white/40 text-[10px] uppercase tracking-widest mt-0.5">{label}</div>
             </div>
-          </div>
-          <div className="bg-black/70 backdrop-blur border border-white/10 rounded-2xl px-5 py-3 flex items-center gap-3">
-            <span className="font-serif text-3xl text-[#F0C040] leading-none">3K+</span>
-            <div>
-              <div className="text-white text-xs font-semibold">clienti</div>
-              <div className="text-[#666] text-xs">trasformati</div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
