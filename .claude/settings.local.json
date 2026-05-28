@@ -15,7 +15,27 @@
       "Bash(npm uninstall *)",
       "Bash(git remote *)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(gh --version)",
+      "Bash(brew --version)",
+      "Bash(brew install *)",
+      "Bash(npx vercel *)",
+      "Bash(git commit -m 'fix: rimuove --webpack da build command per compatibilità Vercel *)",
+      "Bash(curl -I \"https://dg-sito-f0efps9x9-daveg2311s-projects.vercel.app\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://dg-sito-f0efps9x9-daveg2311s-projects.vercel.app\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://dg-sito-daveg2311s-projects.vercel.app\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://dg-sito.vercel.app\")",
+      "Bash(curl -v \"https://dg-sito.vercel.app\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://dg-sito-f0efps9x9-daveg2311s-projects.vercel.app/blog\")",
+      "Bash(curl -s \"https://dg-sito-f0efps9x9-daveg2311s-projects.vercel.app\")",
+      "Bash(git commit *)",
+      "Bash(curl -s \"https://dg-sito-4m9sm3buc-daveg2311s-projects.vercel.app\")",
+      "Bash(pandoc \"/Users/davegamba/Downloads/sfida_estiva_funnel.docx\" -t markdown)",
+      "Bash(python3 -c ' *)",
+      "Bash(npx sanity *)",
+      "Bash(node scripts/import-sanity.mjs /tmp/import-test.ndjson)",
+      "Bash(curl -s \"https://public-api.wordpress.com/wp/v2/sites/davegamba.wordpress.com/posts\")"
     ]
   }
 }
