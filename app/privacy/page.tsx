@@ -204,7 +204,7 @@ export default function PrivacyPage() {
             Ai sensi dell&apos;art. 13 Reg. UE n. 679/2016
           </p>
           <h1 className="font-serif text-4xl md:text-5xl text-[#F0F0F0] mb-3">Privacy Policy</h1>
-          <p className="text-[#444444] text-sm mb-16">Ultimo aggiornamento: maggio 2025</p>
+          <p className="text-[#444444] text-sm mb-16">Ultimo aggiornamento: maggio 2026</p>
 
           {/* Warning sanitaria */}
           <div className="mb-8 p-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/5">

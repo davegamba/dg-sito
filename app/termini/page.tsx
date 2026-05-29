@@ -114,7 +114,7 @@ export default function TerminiPage() {
             Documento legale
           </p>
           <h1 className="font-serif text-4xl md:text-5xl text-[#F0F0F0] mb-3">Termini e Condizioni</h1>
-          <p className="text-[#444444] text-sm mb-16">Ultimo aggiornamento: maggio 2025</p>
+          <p className="text-[#444444] text-sm mb-16">Ultimo aggiornamento: maggio 2026</p>
 
           {/* Sections */}
           <div className="space-y-6">
