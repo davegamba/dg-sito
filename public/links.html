@@ -122,6 +122,7 @@
   .link-title { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: #fff; line-height: 1.2; }
   .link-btn.primary .link-title { color: #fff; }
   .link-sub { font-size: 0.7rem; font-weight: 300; color: rgba(255,255,255,0.75); margin-top: 1px; }
+  .link-arrow { position: absolute; right: 16px; font-size: 0.85rem; color: rgba(255,255,255,0.4); }
 
   /* PRESS */
   .press-bar { text-align: center; }
@@ -132,6 +133,9 @@
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   .hero-content { animation: fadeUp 0.7s ease 0.15s both; }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+  .link-btn.primary { animation: pulse 2.2s ease-in-out infinite; }
+  .link-btn.primary:hover { animation: none; transform: scale(1.03); }
 </style>
 </head>
 <body>
@@ -159,9 +163,10 @@
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#F0C040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 0 7 4.5v.5A2.5 2.5 0 0 0 4.5 7.5c0 .83.4 1.56 1.01 2.02A3 3 0 0 0 5 12a3 3 0 0 0 1.5 2.6V16a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-1.4A3 3 0 0 0 19 12a3 3 0 0 0-.51-1.68 2.5 2.5 0 0 0 .51-1.52A2.5 2.5 0 0 0 17 6.5v-.5a2.5 2.5 0 0 0-2.5-2.5H9.5z"/><path d="M9 12h1.5M13.5 12H15M12 9v6"/></svg>
           </div>
           <div class="link-text">
-            <div class="link-title">Scopri il tuo tipo metabolico</div>
+            <div class="link-title">Scopri il tuo tipo METABOLICO</div>
             <div class="link-sub">Fai il quiz — è gratis</div>
           </div>
+          <span class="link-arrow">›</span>
         </a>
         <a href="https://sfidaestiva.davegamba.com" class="link-btn">
           <div class="link-icon">
@@ -172,6 +177,7 @@
             <div class="link-title">Sfida Estiva 21 Giorni</div>
             <div class="link-sub">Inizio a metterti in forma per l'estate?</div>
           </div>
+          <span class="link-arrow">›</span>
         </a>
         <a href="https://davegamba.com/coaching" class="link-btn">
           <div class="link-icon">
@@ -182,6 +188,7 @@
             <div class="link-title">Premium Coaching Uno a Uno</div>
             <div class="link-sub">Percorso personalizzato con Dave</div>
           </div>
+          <span class="link-arrow">›</span>
         </a>
         <a href="https://www.youtube.com/@DaveGambaFitness" class="link-btn">
           <div class="link-icon">
@@ -191,6 +198,7 @@
             <div class="link-title">Canale YouTube</div>
             <div class="link-sub">Unisciti al mio canale</div>
           </div>
+          <span class="link-arrow">›</span>
         </a>
         
       </div>
