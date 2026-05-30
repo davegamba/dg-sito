@@ -1,4 +1,4 @@
-import { getPosts, getFeaturedImage, getCategoryName, stripHtml } from "@/lib/wordpress";
+import { getAllPosts } from "@/lib/posts";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header";
@@ -10,10 +10,8 @@ export const metadata: Metadata = {
   description: "Articoli scientifici su allenamento, nutrizione e longevità. Dati reali, niente fuffa.",
 };
 
-export const revalidate = 60;
-
-export default async function BlogPage() {
-  const posts = await getPosts();
+export default function BlogPage() {
+  const posts = getAllPosts();
 
   return (
     <>
@@ -43,59 +41,52 @@ export default async function BlogPage() {
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {posts.map((post) => {
-                  const image = getFeaturedImage(post);
-                  const category = getCategoryName(post);
-                  const excerpt = stripHtml(post.excerpt.rendered);
-                  const title = stripHtml(post.title.rendered);
+                {posts.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="group flex flex-col bg-[#0d0d0d] border border-[#1a1a1a] rounded-[20px] overflow-hidden hover:border-[#333] transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <div className="relative w-full aspect-[16/9] bg-[#111] overflow-hidden">
+                      {post.image ? (
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#111] to-[#0a0a0a] flex items-center justify-center">
+                          <span className="font-serif text-4xl text-[#222]">DG</span>
+                        </div>
+                      )}
+                    </div>
 
-                  return (
-                    <Link
-                      key={post.id}
-                      href={`/blog/${post.slug}`}
-                      className="group flex flex-col bg-[#0d0d0d] border border-[#1a1a1a] rounded-[20px] overflow-hidden hover:border-[#333] transition-all duration-300 hover:-translate-y-1"
-                    >
-                      <div className="relative w-full aspect-[16/9] bg-[#111] overflow-hidden">
-                        {image ? (
-                          <Image
-                            src={image.url}
-                            alt={image.alt || title}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-500"
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          />
-                        ) : (
-                          <div className="absolute inset-0 bg-gradient-to-br from-[#111] to-[#0a0a0a] flex items-center justify-center">
-                            <span className="font-serif text-4xl text-[#222]">DG</span>
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="flex flex-col gap-3 p-5 flex-1">
-                        {category && (
-                          <span className="text-[10px] font-semibold tracking-wider uppercase text-[#00CBDB] bg-[#00cbdb0f] border border-[#00cbdb22] px-2 py-0.5 rounded-full w-fit">
-                            {category}
-                          </span>
-                        )}
-                        <h2 className="font-serif text-lg text-white leading-snug group-hover:text-[#00CBDB] transition-colors duration-200 flex-1">
-                          {title}
-                        </h2>
-                        {excerpt && (
-                          <p className="text-[#555] text-sm leading-relaxed line-clamp-2">
-                            {excerpt}
-                          </p>
-                        )}
-                        <time className="text-[#333] text-xs">
-                          {new Date(post.date).toLocaleDateString("it-IT", {
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric",
-                          })}
-                        </time>
-                      </div>
-                    </Link>
-                  );
-                })}
+                    <div className="flex flex-col gap-3 p-5 flex-1">
+                      {post.category && (
+                        <span className="text-[10px] font-semibold tracking-wider uppercase text-[#00CBDB] bg-[#00cbdb0f] border border-[#00cbdb22] px-2 py-0.5 rounded-full w-fit">
+                          {post.category}
+                        </span>
+                      )}
+                      <h2 className="font-serif text-lg text-white leading-snug group-hover:text-[#00CBDB] transition-colors duration-200 flex-1">
+                        {post.title}
+                      </h2>
+                      {post.excerpt && (
+                        <p className="text-[#555] text-sm leading-relaxed line-clamp-2">
+                          {post.excerpt}
+                        </p>
+                      )}
+                      <time className="text-[#333] text-xs">
+                        {new Date(post.date).toLocaleDateString("it-IT", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })}
+                      </time>
+                    </div>
+                  </Link>
+                ))}
               </div>
             )}
           </div>

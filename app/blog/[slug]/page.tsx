@@ -1,4 +1,5 @@
-import { getPostBySlug, getAllSlugs, getFeaturedImage, getCategoryName, stripHtml } from "@/lib/wordpress";
+import { getPostBySlug, getAllSlugs } from "@/lib/posts";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -6,11 +7,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
-export const revalidate = 60;
-
 export async function generateStaticParams() {
-  const slugs = await getAllSlugs();
-  return slugs.map((slug) => ({ slug }));
+  return getAllSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -19,23 +17,19 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = getPostBySlug(slug);
   if (!post) return {};
 
-  const title = stripHtml(post.title.rendered);
-  const description = stripHtml(post.excerpt.rendered).slice(0, 155);
-  const image = getFeaturedImage(post);
-
   return {
-    title: `${title} — Dave Gamba`,
-    description,
+    title: `${post.title} — Dave Gamba`,
+    description: post.excerpt.slice(0, 155),
     openGraph: {
-      title,
-      description,
+      title: post.title,
+      description: post.excerpt.slice(0, 155),
       type: "article",
       publishedTime: post.date,
       authors: ["Dave Gamba"],
-      images: image ? [{ url: image.url, width: 1200, height: 630 }] : [],
+      images: post.image ? [{ url: post.image, width: 1200, height: 630 }] : [],
     },
   };
 }
@@ -46,19 +40,14 @@ export default async function PostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = getPostBySlug(slug);
   if (!post) notFound();
-
-  const image = getFeaturedImage(post);
-  const category = getCategoryName(post);
-  const title = stripHtml(post.title.rendered);
-  const excerpt = stripHtml(post.excerpt.rendered);
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: title,
-    description: excerpt.slice(0, 155),
+    headline: post.title,
+    description: post.excerpt.slice(0, 155),
     author: {
       "@type": "Person",
       name: "Dave Gamba",
@@ -70,7 +59,7 @@ export default async function PostPage({
       logo: { "@type": "ImageObject", url: "https://davegamba.com/logo.png" },
     },
     datePublished: post.date,
-    image: image?.url,
+    image: post.image,
     mainEntityOfPage: `https://davegamba.com/blog/${slug}`,
   };
 
@@ -85,11 +74,11 @@ export default async function PostPage({
 
       <main className="flex-1 pt-16 bg-black">
         <article>
-          {image && (
+          {post.image && (
             <div className="relative w-full h-[40vh] sm:h-[55vh] bg-[#111]">
               <Image
-                src={image.url}
-                alt={image.alt || title}
+                src={post.image}
+                alt={post.title}
                 fill
                 className="object-cover"
                 priority
@@ -102,16 +91,16 @@ export default async function PostPage({
           )}
 
           <div className="max-w-2xl mx-auto px-4 sm:px-6">
-            <div className={image ? "-mt-20 relative z-10" : "pt-16"}>
+            <div className={post.image ? "-mt-20 relative z-10" : "pt-16"}>
 
-              {category && (
+              {post.category && (
                 <span className="inline-block mb-4 text-[10px] font-semibold tracking-widest uppercase text-[#00CBDB] bg-[#00cbdb0f] border border-[#00cbdb22] px-3 py-1 rounded-full">
-                  {category}
+                  {post.category}
                 </span>
               )}
 
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white leading-[1.1] mb-6">
-                {title}
+                {post.title}
               </h1>
 
               <div className="flex items-center gap-4 mb-8 pb-8 border-b border-[#1a1a1a]">
@@ -130,20 +119,19 @@ export default async function PostPage({
                 </div>
               </div>
 
-              {excerpt && (
+              {post.excerpt && (
                 <div className="bg-[#0d0d0d] border border-[#1a1a1a] rounded-[16px] p-5 mb-10">
                   <div className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-2">
                     TL;DR
                   </div>
-                  <p className="text-[#aaa] text-sm leading-relaxed">{excerpt}</p>
+                  <p className="text-[#aaa] text-sm leading-relaxed">{post.excerpt}</p>
                 </div>
               )}
             </div>
 
-            <div
-              className="wp-content pb-16"
-              dangerouslySetInnerHTML={{ __html: post.content.rendered }}
-            />
+            <div className="mdx-content pb-16">
+              <MDXRemote source={post.content} />
+            </div>
 
             <div className="border-t border-[#1a1a1a] pt-8 pb-16">
               <p className="text-[#00CBDB] font-semibold">Sali di livello, Dave</p>

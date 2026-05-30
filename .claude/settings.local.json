@@ -35,7 +35,31 @@
       "Bash(python3 -c ' *)",
       "Bash(npx sanity *)",
       "Bash(node scripts/import-sanity.mjs /tmp/import-test.ndjson)",
-      "Bash(curl -s \"https://public-api.wordpress.com/wp/v2/sites/davegamba.wordpress.com/posts\")"
+      "Bash(curl -s \"https://public-api.wordpress.com/wp/v2/sites/davegamba.wordpress.com/posts\")",
+      "Bash(curl -s \"https://public-api.wordpress.com/wp/v2/sites/davegambapt.wordpress.com/posts?_embed&per_page=5\")",
+      "Bash(python3 -c \"import sys,json; posts=json.load\\(sys.stdin\\); [print\\(p['title']['rendered'], '|', p['slug']\\) for p in posts]\")",
+      "mcp__Apify__apify--rag-web-browser",
+      "Bash(python3 -m http.server 3001)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/hub.html)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/optin-quiz.html)",
+      "Bash(mkdir -p ~/Desktop/dgfitclub)",
+      "Bash(cp \"/Users/davegamba/Documents/DAVE CLAUDE/dg-sito/hub.html\" \"/Users/davegamba/Documents/DAVE CLAUDE/dg-sito/optin-quiz.html\" \"/Users/davegamba/Documents/DAVE CLAUDE/dg-sito/optin-calcolatore.html\" \"/Users/davegamba/Documents/DAVE CLAUDE/dg-sito/quiz-metabolico.html\" \"/Users/davegamba/Documents/DAVE CLAUDE/dg-sito/calcolatore-fabbisogno.html\" ~/Desktop/dgfitclub/)",
+      "Read(//Users/davegamba/Desktop/**)",
+      "Bash(mv ~/Desktop/dgfitclub \"/Users/davegamba/Documents/DAVE CLAUDE/dgfitclub\" && ls \"/Users/davegamba/Documents/DAVE CLAUDE/dgfitclub\")",
+      "WebFetch(domain:sfidaestiva.davegamba.com)",
+      "WebFetch(domain:hub.davegamba.com)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(echo \"Server PID: $!\")",
+      "Bash(curl -s \"http://localhost:3001/hub.html?unlocked=sfida\")",
+      "WebFetch(domain:estate.davegamba.com)",
+      "Bash(python3)",
+      "Bash(xargs kill -9)",
+      "WebSearch",
+      "Bash(sed -i '' '338s/<div class=\"lock-overlay\"><span class=\"lock-icon\">🚧<\\\\/span><\\\\/div>/<div class=\"lock-overlay\"><\\\\/div>/' \"/Users/davegamba/Documents/DAVE CLAUDE/dgfitclub/club.html\")",
+      "Bash(sed -i '' '355s/<div class=\"lock-overlay\"><span class=\"lock-icon\">🚧<\\\\/span><\\\\/div>/<div class=\"lock-overlay\"><\\\\/div>/' \"/Users/davegamba/Documents/DAVE CLAUDE/dgfitclub/club.html\")",
+      "Bash(sed -i '' 's|<a href=\"club.html\" class=\"back-link\">← Torna al DG Fit Club</a>|<a href=\"club.html\" style=\"display:inline-flex;align-items:center;gap:5px;background:rgba\\(0,203,219,0.1\\);border:1px solid rgba\\(0,203,219,0.3\\);border-radius:99px;padding:5px 14px;color:#00CBDB;font-size:11px;font-weight:600;text-decoration:none;letter-spacing:0.05em;\">← Lounge del Club</a>|g' '/Users/davegamba/Documents/DAVE CLAUDE/dgfitclub/quiz-metabolico.html' '/Users/davegamba/Documents/DAVE CLAUDE/dgfitclub/calcolatore-fabbisogno.html')",
+      "Bash(sed -i '' 's|<a class=\"back\" href=\"club.html\">← Torna al DG Fit Club</a>|<a href=\"club.html\" style=\"display:inline-flex;align-items:center;gap:5px;background:rgba\\(0,203,219,0.1\\);border:1px solid rgba\\(0,203,219,0.3\\);border-radius:99px;padding:5px 14px;color:#00CBDB;font-size:11px;font-weight:600;text-decoration:none;letter-spacing:0.05em;\">← Lounge del Club</a>|g' '/Users/davegamba/Documents/DAVE CLAUDE/dgfitclub/privacy.html' '/Users/davegamba/Documents/DAVE CLAUDE/dgfitclub/termini.html')"
     ]
   }
 }
