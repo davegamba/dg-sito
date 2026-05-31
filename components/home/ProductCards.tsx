@@ -8,7 +8,7 @@ const products = [
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_29-05-2026-20-47-56.jpg",
     imagePosition: "center",
     badge: "✓ GRATUITO",
-    badgeStyle: { background: "#00CBDB", color: "#000", borderColor: "#00CBDB" },
+    badgeStyle: { background: "transparent", color: "rgba(255,255,255,0.9)", borderColor: "rgba(255,255,255,0.5)" },
     title: "App Conta Calorie",
     desc: "Scopri il tuo fabbisogno personale e traccia quello che mangi ogni giorno. È gratis.",
     price: null,
@@ -20,7 +20,7 @@ const products = [
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg",
     imagePosition: "center",
     badge: "✓ GRATUITO",
-    badgeStyle: { background: "#00CBDB", color: "#000", borderColor: "#00CBDB" },
+    badgeStyle: { background: "transparent", color: "rgba(255,255,255,0.9)", borderColor: "rgba(255,255,255,0.5)" },
     title: "Quiz Metabolico",
     desc: "Scopri il tuo Tipo Metabolico in 2 minuti.",
     price: null,
@@ -32,7 +32,7 @@ const products = [
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_25-03-2026-09-35-25.jpg",
     imagePosition: "center 65%",
     badge: "PIÙ VENDUTO",
-    badgeStyle: { background: "transparent", color: "#F0C040", borderColor: "#F0C040" },
+    badgeStyle: { background: "transparent", color: "rgba(255,255,255,0.9)", borderColor: "rgba(255,255,255,0.5)" },
     title: "Sfida Estiva 21 Giorni",
     desc: "21 giorni insieme per metterci in forma per l'Estate.",
     price: "€33",
@@ -92,7 +92,7 @@ export default function ProductCards() {
         <div className="flex items-end justify-between mb-8 gap-4">
           <div>
             <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
-              Inizia da dove sei
+              Entra nel DG Fit Club
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-white">
               Scegli il tuo percorso
@@ -154,14 +154,14 @@ export default function ProductCards() {
               {/* Testo + CTA in basso */}
               <div className="flex flex-col gap-3">
                 <div>
-                  <h3 className="font-serif text-xl text-white leading-snug mb-1">{p.title}</h3>
+                  <h3 className="font-serif text-2xl text-white leading-snug mb-1">{p.title}</h3>
                   <p className="text-white/70 text-xs leading-relaxed">{p.desc}</p>
                 </div>
                 <div className="flex items-center justify-between gap-2">
                   {p.price && <span className="font-serif text-2xl text-[#F0C040]">{p.price}</span>}
                   <a
                     href={p.href || undefined}
-                    className="ml-auto text-xs font-bold px-4 py-2 rounded-full transition-all duration-200"
+                    className="ml-auto text-sm font-bold px-5 py-2.5 rounded-full transition-all duration-200"
                     style={p.ctaStyle}
                     onClick={(e) => !p.href && e.preventDefault()}
                   >
