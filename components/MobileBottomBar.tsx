@@ -15,9 +15,17 @@ const items = [
     label: "Protocolli",
     href: "https://club.davegamba.com/club.html",
     icon: (
-      <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
-        <path d="M7 2h10v2H7zM5 4h14v8a7 7 0 0 1-14 0V4zm7 14a9 9 0 0 0 6-2.3V21H6v-5.3A9 9 0 0 0 12 18zm-3 3h6v1a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1v-1z"/>
-        <path d="M3 7H5v4a7.1 7.1 0 0 1-.07-1H3V7zm16 0h2v3h-1.93A7.1 7.1 0 0 1 19 11V7z"/>
+      <svg viewBox="0 0 100 100" fill="white" width="28" height="28">
+        {/* Manico sinistro */}
+        <path d="M18 22 Q4 22 4 38 Q4 52 18 54 Q14 48 14 38 Q14 28 18 22Z"/>
+        {/* Manico destro */}
+        <path d="M82 22 Q96 22 96 38 Q96 52 82 54 Q86 48 86 38 Q86 28 82 22Z"/>
+        {/* Coppa principale */}
+        <path d="M18 10 L82 10 L82 22 Q82 58 50 62 Q18 58 18 22Z"/>
+        {/* Stelo */}
+        <rect x="44" y="62" width="12" height="16" rx="2"/>
+        {/* Base */}
+        <rect x="30" y="78" width="40" height="10" rx="4"/>
       </svg>
     ),
   },
@@ -46,7 +54,7 @@ export default function MobileBottomBar() {
     <nav
       className="sm:hidden fixed bottom-3 left-3 right-3 z-40 rounded-2xl overflow-hidden"
       style={{
-        background: "radial-gradient(ellipse at 50% 50%, #00e5f5 0%, #00CBDB 45%, #009aaa 100%)",
+        background: "radial-gradient(ellipse at 50% 50%, #80F0FA 0%, #00CBDB 60%, #00CBDB 100%)",
         boxShadow: "0 4px 24px rgba(0,203,219,0.35)",
       }}
     >
