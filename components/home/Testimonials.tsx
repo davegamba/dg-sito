@@ -3,6 +3,51 @@
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+const photos = [
+  { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/img_07.jpeg", alt: "Trasformazione" },
+  { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/alessandra-pilo-testimonianze-davegamba.jpg", alt: "Alessandra Pilo" },
+  { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/img_08.jpeg", alt: "Trasformazione" },
+  { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/emiliano-testimonianze-dave-gamba.jpeg", alt: "Emiliano" },
+  { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/img_09.jpeg", alt: "Trasformazione" },
+  { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/gloria-testimonianze-dave-gamba.jpeg", alt: "Gloria" },
+  { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/gus-recensioni-davegamba.jpg", alt: "Gus" },
+  { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/marco-iacovalessandra-pilo-testimonianze-davegamba.jpeg", alt: "Marco" },
+  { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/marta-marranzano.png", alt: "Marta" },
+  { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/valerya-testimonianze-dave-gamba.jpeg", alt: "Valerya" },
+  { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/veronica-gonz-testimonianze-dave-gamba.jpeg", alt: "Veronica" },
+];
+
+function PhotoMarquee() {
+  const doubled = [...photos, ...photos];
+  return (
+    <div className="overflow-hidden w-full mb-12">
+      <div
+        className="flex gap-4"
+        style={{
+          width: "max-content",
+          animation: "marqueeScroll 40s linear infinite",
+        }}
+      >
+        {doubled.map((p, i) => (
+          <img
+            key={i}
+            src={p.src}
+            alt={p.alt}
+            loading="lazy"
+            className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] object-cover object-center rounded-[16px] flex-shrink-0"
+          />
+        ))}
+      </div>
+      <style>{`
+        @keyframes marqueeScroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 const testimonials = [
   {
     name: "Marco B.",
@@ -90,6 +135,9 @@ export default function Testimonials() {
           </div>
         </div>
       </div>
+
+      {/* Strip foto testimonianze */}
+      <PhotoMarquee />
 
       {/* Scroll track */}
       <div
