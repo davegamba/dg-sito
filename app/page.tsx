@@ -2,12 +2,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/home/Hero";
 import PressStrip from "@/components/home/PressStrip";
-import Stats from "@/components/home/Stats";
-import ProductCards from "@/components/home/ProductCards";
-import MetodoBIM from "@/components/home/MetodoBIM";
 import ChiSono from "@/components/home/ChiSono";
-import YoutubeScroll from "@/components/home/YoutubeScroll";
+import Stats from "@/components/home/Stats";
+import MetodoBIM from "@/components/home/MetodoBIM";
+import ProductCards from "@/components/home/ProductCards";
 import Testimonials from "@/components/home/Testimonials";
+import YoutubeScroll from "@/components/home/YoutubeScroll";
 import OptinStrip from "@/components/home/OptinStrip";
 import FinalCTA from "@/components/home/FinalCTA";
 
@@ -18,12 +18,12 @@ export default function HomePage() {
       <main className="flex-1">
         <Hero />
         <PressStrip />
-        <Stats />
-        <ProductCards />
-        <MetodoBIM />
         <ChiSono />
-        <YoutubeScroll />
+        <Stats />
+        <MetodoBIM />
+        <ProductCards />
         <Testimonials />
+        <YoutubeScroll />
         <OptinStrip />
         <FinalCTA />
       </main>
