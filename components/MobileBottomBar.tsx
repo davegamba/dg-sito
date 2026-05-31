@@ -15,17 +15,8 @@ const items = [
     label: "Protocolli",
     href: "https://club.davegamba.com/club.html",
     icon: (
-      <svg viewBox="0 0 100 100" fill="white" width="28" height="28">
-        {/* Manico sinistro */}
-        <path d="M18 22 Q4 22 4 38 Q4 52 18 54 Q14 48 14 38 Q14 28 18 22Z"/>
-        {/* Manico destro */}
-        <path d="M82 22 Q96 22 96 38 Q96 52 82 54 Q86 48 86 38 Q86 28 82 22Z"/>
-        {/* Coppa principale */}
-        <path d="M18 10 L82 10 L82 22 Q82 58 50 62 Q18 58 18 22Z"/>
-        {/* Stelo */}
-        <rect x="44" y="62" width="12" height="16" rx="2"/>
-        {/* Base */}
-        <rect x="30" y="78" width="40" height="10" rx="4"/>
+      <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
+        <path d="M13 2L4.5 13.5H11L10 22L19.5 10.5H13L13 2Z"/>
       </svg>
     ),
   },
