@@ -1,62 +1,62 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-const FOTO = "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/heroBg.jpeg";
-
 export default function ChiSono() {
   return (
     <section className="py-16 sm:py-24 bg-black">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-row gap-4 sm:gap-8 items-start">
+      <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 24px" }}>
 
-          {/* ── FOTO ── */}
-          <div className="flex-none w-[160px] sm:w-[300px] md:w-[360px]">
-            <div className="w-full aspect-[3/4] rounded-[16px] sm:rounded-[24px] overflow-hidden">
-              <img
-                src={FOTO}
-                alt="Dave Gamba — Personal Trainer"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
+        {/* Foto + Testo — 50/50, centrati verticalmente */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "24px", flexWrap: "nowrap" }}>
+
+          {/* Foto */}
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <img
+              src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/img_06.jpeg"
+              alt="Dave Gamba"
+              style={{
+                width: "100%",
+                height: "300px",
+                objectFit: "cover",
+                objectPosition: "35% 20%",
+                borderRadius: "20px",
+                boxShadow: "0 20px 56px rgba(0,0,0,0.45)",
+              }}
+            />
           </div>
 
-          {/* ── TESTO ── */}
-          <div className="flex flex-col gap-4 sm:gap-6 flex-1 min-w-0">
-            <div>
-              <span className="text-[#00CBDB] text-[10px] sm:text-xs font-semibold tracking-widest uppercase mb-2 sm:mb-3 block">
-                Chi sono
-              </span>
-              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-white leading-tight">
-                15 anni a fare una sola cosa,{" "}
-                <em className="not-italic text-[#00CBDB]">bene.</em>
-              </h2>
-            </div>
-
-            <p className="text-[#888] text-sm sm:text-base leading-relaxed">
-              Sono Dave Gamba, personal trainer online dal 2009 — quando il concetto di "fitness online" non esisteva ancora.
-              Ho iniziato da zero, senza followers, senza budget, con solo un metodo che funzionava.
+          {/* Testo */}
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <span style={{ display: "block", marginBottom: "10px", fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "#00CBDB" }}>
+              About me
+            </span>
+            <h2 style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", color: "#fff", marginBottom: "20px", lineHeight: 1.2, fontFamily: "var(--font-dm-serif)" }}>
+              15 anni di trasformazioni fisiche.<br />
+              3.000+ clienti.<br />
+              <em style={{ color: "#00CBDB", fontStyle: "normal" }}>Un solo metodo.</em>
+            </h2>
+            <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.8)", lineHeight: 1.7, marginBottom: 0 }}>
+              Da oltre 20 anni atleta fitness ed ex agonista sportivo.<br />
+              Personal Trainer internazionale certificato ISSA. Intervistato da Corriere della Sera, La Repubblica, Vanity Fair e molti altri come uno dei primi Personal Trainer online in Italia — creando il proprio metodo{" "}
+              <strong style={{ color: "#fff" }}>Breve-Intenso-Mirato.</strong>
             </p>
-
-            <p className="text-[#888] text-sm sm:text-base leading-relaxed hidden sm:block">
-              Negli anni ho seguito più di 3.000 clienti: manager, medici, avvocati, imprenditori.
-              Ho capito che il problema non è mai la motivazione — è sempre il metodo.
-            </p>
-
-            <p className="text-[#888] text-sm sm:text-base leading-relaxed hidden sm:block">
-              Il Metodo BIM è nato da questa osservazione: chi ottiene risultati duraturi
-              non si allena di più. Si allena <em>meglio</em>. 21 minuti, tre volte a settimana.
-            </p>
-
-            <Link
-              href="/metodo"
-              className="inline-flex items-center gap-2 text-[#00CBDB] text-xs sm:text-sm font-medium hover:gap-3 transition-all duration-200 w-fit"
-            >
-              Scopri il metodo
-              <ChevronRight size={14} />
-            </Link>
           </div>
-
         </div>
+
+        {/* Card BIM */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "12px", marginTop: "28px" }}>
+          {[
+            { title: "BREVE", body: "Allenamenti condensati nel minor tempo." },
+            { title: "INTENSO", body: "Nel fitness, l'intensità batte la quantità." },
+            { title: "MIRATO", body: "Ogni esercizio ha uno scopo preciso. Niente fatica a vuoto." },
+          ].map((c) => (
+            <div key={c.title} style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "12px", padding: "14px 16px" }}>
+              <div style={{ fontFamily: "var(--font-dm-serif)", fontSize: "1rem", color: "#00CBDB", letterSpacing: "0.04em", marginBottom: "6px" }}>{c.title}</div>
+              <div style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.75)" }}>{c.body}</div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
