@@ -57,6 +57,42 @@ export default function BlogSection() {
           </Link>
         </div>
 
+        {/* Intro metodo */}
+        <div className="mb-10 flex flex-col gap-6">
+          <p className="text-white text-lg sm:text-xl leading-snug max-w-xl">
+            La maggior parte delle persone si allena troppo, male, e si chiede perché non vede risultati.
+            Il Metodo BIM funziona al contrario:{" "}
+            <strong className="text-[#00CBDB]">meno ore, più intensità, zero esercizi inutili.</strong>
+          </p>
+
+          {/* 3 pill BIM */}
+          <div className="flex flex-col sm:flex-row gap-3">
+            {[
+              { letter: "B", word: "Breve", desc: "21 minuti. Il corpo risponde meglio a stimoli brevi e intensi." },
+              { letter: "I", word: "Intenso", desc: "La qualità del lavoro batte sempre la quantità delle ore." },
+              { letter: "M", word: "Mirato", desc: "Ogni esercizio ha uno scopo preciso. Niente fatica a vuoto." },
+            ].map((p) => (
+              <div
+                key={p.letter}
+                className="flex items-start gap-3 flex-1 p-4 rounded-[14px] border border-[#1a1a1a] bg-[#0d0d0d]"
+              >
+                <div className="w-8 h-8 rounded-lg bg-[#00CBDB] flex items-center justify-center text-black font-serif font-bold text-sm shrink-0">
+                  {p.letter}
+                </div>
+                <div>
+                  <div className="text-white text-xs font-bold tracking-widest uppercase mb-1">{p.word}</div>
+                  <div className="text-[#666] text-xs leading-relaxed">{p.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Frase ponte */}
+          <p className="text-[#666] text-sm leading-relaxed border-t border-[#1a1a1a] pt-6">
+            Ho scritto oltre 200 articoli per smontare i luoghi comuni e spiegare cosa dice davvero la scienza sull'allenamento, la nutrizione e il testosterone. Inizia da qui:
+          </p>
+        </div>
+
         {/* Lista articoli */}
         <div className="flex flex-col">
           {articles.map((a, i) => (
