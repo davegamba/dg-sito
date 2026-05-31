@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, DM_Sans } from "next/font/google";
 import ExitPopup from "@/components/ExitPopup";
+import MobileBottomBar from "@/components/MobileBottomBar";
 import "./globals.css";
 
 const dmSerif = DM_Serif_Display({
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body className="min-h-dvh flex flex-col antialiased">
         {children}
         <ExitPopup />
+        <MobileBottomBar />
         <script
           src="//cdn.cookiescript.net/siteapi/923639d0a67cfff88e54366d1992683c/cookiescript.min.js"
           type="text/javascript"
