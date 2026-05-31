@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/home/Hero";
+import PressStrip from "@/components/home/PressStrip";
 import Stats from "@/components/home/Stats";
 import ProductCards from "@/components/home/ProductCards";
 import MetodoBIM from "@/components/home/MetodoBIM";
@@ -16,6 +17,7 @@ export default function HomePage() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <PressStrip />
         <Stats />
         <ProductCards />
         <MetodoBIM />
