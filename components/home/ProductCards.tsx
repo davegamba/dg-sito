@@ -1,62 +1,80 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
-import { ArrowRight, Zap, Trophy, Users, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const products = [
   {
-    icon: Zap,
-    badge: "Inizia da qui",
-    badgeColor: "text-[#00CBDB] bg-[#00cbdb11] border-[#00cbdb22]",
-    title: "Sfida 28 Giorni",
-    description:
-      "Il primo passo. 4 settimane di allenamenti BIM strutturati, guida nutrizionale base e accesso alla community.",
-    price: "€28",
-    priceNote: "pagamento unico",
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_29-05-2026-20-47-56.jpg",
+    imagePosition: "center",
+    badge: "✓ GRATUITO",
+    badgeStyle: { background: "#00CBDB", color: "#000", borderColor: "#00CBDB" },
+    title: "App Conta Calorie",
+    desc: "Scopri il tuo fabbisogno personale e traccia quello che mangi ogni giorno. È gratis.",
+    price: null,
+    cta: "Apri app →",
+    ctaStyle: { background: "#F0C040", color: "#000" },
+    href: "https://club.davegamba.com/calorie/",
+  },
+  {
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg",
+    imagePosition: "center",
+    badge: "✓ GRATUITO",
+    badgeStyle: { background: "#00CBDB", color: "#000", borderColor: "#00CBDB" },
+    title: "Quiz Metabolico",
+    desc: "Scopri il tuo Tipo Metabolico in 2 minuti.",
+    price: null,
+    cta: "Fai il quiz →",
+    ctaStyle: { background: "#F0C040", color: "#000" },
     href: "https://club.davegamba.com/optin-quiz.html",
-    featured: false,
-    ctaLabel: "Inizia la sfida",
   },
   {
-    icon: Trophy,
-    badge: "Più venduto",
-    badgeColor: "text-[#F0C040] bg-[#f0c04011] border-[#f0c04022]",
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_25-03-2026-09-35-25.jpg",
+    imagePosition: "center 65%",
+    badge: "PIÙ VENDUTO",
+    badgeStyle: { background: "transparent", color: "#F0C040", borderColor: "#F0C040" },
     title: "Sfida Estiva 21 Giorni",
-    description:
-      "21 giorni intensi per arrivare all'estate. Protocollo specifico corpo uomo + alimentazione pratica.",
-    price: "€37",
-    priceNote: "prezzo lancio — poi €47",
+    desc: "21 giorni insieme per metterci in forma per l'Estate.",
+    price: "€33",
+    cta: "Sblocca →",
+    ctaStyle: { background: "#F0C040", color: "#000" },
     href: "https://sfidaestiva.davegamba.com",
-    featured: true,
-    ctaLabel: "Entra nella sfida",
   },
   {
-    icon: Users,
-    badge: "Membership",
-    badgeColor: "text-[#00CBDB] bg-[#00cbdb11] border-[#00cbdb22]",
-    title: "DG Athletic Club",
-    description:
-      "Allenamenti aggiornati ogni mese, libreria BIM completa, coaching di gruppo e accesso diretto a Dave.",
-    price: "€17",
-    priceNote: "al mese, disdici quando vuoi",
-    href: "https://club.davegamba.com/club.html",
-    featured: false,
-    ctaLabel: "Unisciti al club",
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/foto-sfida-estiva.jpg",
+    imagePosition: "center",
+    badge: "IN ARRIVO",
+    badgeStyle: { background: "transparent", color: "rgba(255,255,255,0.6)", borderColor: "rgba(255,255,255,0.3)" },
+    title: "Corso Addominali",
+    desc: "Addominali scolpiti e definiti con il metodo scientifico.",
+    price: null,
+    cta: "In costruzione",
+    ctaStyle: { background: "transparent", color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.2)", cursor: "default" },
+    href: null,
   },
   {
-    icon: MessageCircle,
-    badge: "Personalizzato",
-    badgeColor: "text-[#888888] bg-[#88888811] border-[#88888822]",
-    title: "Consulenza 1:1",
-    description:
-      "60 minuti con Dave. Analisi completa, piano personalizzato e risposta a tutte le tue domande.",
-    price: "€197",
-    priceNote: "sessione singola",
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/img_06.jpeg",
+    imagePosition: "30% bottom",
+    badge: "IN ARRIVO",
+    badgeStyle: { background: "transparent", color: "rgba(255,255,255,0.6)", borderColor: "rgba(255,255,255,0.3)" },
+    title: "Corso Glutei Alti e Sodi",
+    desc: "Il percorso specifico per glutei sodi, tondi e alti. Per casa e palestra.",
+    price: null,
+    cta: "In costruzione",
+    ctaStyle: { background: "transparent", color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.2)", cursor: "default" },
+    href: null,
+  },
+  {
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
+    imagePosition: "center top",
+    badge: "PERSONALIZZATO",
+    badgeStyle: { background: "transparent", color: "rgba(255,255,255,0.6)", borderColor: "rgba(255,255,255,0.3)" },
+    title: "Premium Coaching 1-1",
+    desc: "Il servizio personalizzato guidato direttamente da Dave.",
+    price: null,
+    cta: "Scopri di più →",
+    ctaStyle: { background: "#F0C040", color: "#000" },
     href: "https://club.davegamba.com/coaching.html",
-    featured: false,
-    ctaLabel: "Prenota ora",
   },
 ];
 
@@ -71,8 +89,6 @@ export default function ProductCards() {
   return (
     <section className="py-20 sm:py-28 bg-black overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-
-        {/* Header row */}
         <div className="flex items-end justify-between mb-8 gap-4">
           <div>
             <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
@@ -82,28 +98,18 @@ export default function ProductCards() {
               Scegli il tuo percorso
             </h2>
           </div>
-
-          {/* Arrows */}
           <div className="flex gap-2 shrink-0">
-            <button
-              onClick={() => scroll("left")}
-              className="w-10 h-10 rounded-full border border-[#222] flex items-center justify-center text-[#666] hover:text-white hover:border-[#00CBDB] transition-all duration-200"
-              aria-label="Precedente"
-            >
+            <button onClick={() => scroll("left")} className="w-10 h-10 rounded-full border border-[#222] flex items-center justify-center text-[#666] hover:text-white hover:border-[#00CBDB] transition-all duration-200" aria-label="Precedente">
               <ChevronLeft size={18} />
             </button>
-            <button
-              onClick={() => scroll("right")}
-              className="w-10 h-10 rounded-full border border-[#222] flex items-center justify-center text-[#666] hover:text-white hover:border-[#00CBDB] transition-all duration-200"
-              aria-label="Successivo"
-            >
+            <button onClick={() => scroll("right")} className="w-10 h-10 rounded-full border border-[#222] flex items-center justify-center text-[#666] hover:text-white hover:border-[#00CBDB] transition-all duration-200" aria-label="Successivo">
               <ChevronRight size={18} />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Scroll track — sborda dai bordi come YouTube */}
+      {/* Scroll track */}
       <div
         ref={scrollRef}
         className="flex gap-4 overflow-x-auto pb-4"
@@ -114,83 +120,58 @@ export default function ProductCards() {
           msOverflowStyle: "none",
         }}
       >
-        {products.map((p) => {
-          const Icon = p.icon;
-          return (
-            <Link
-              key={p.title}
-              href={p.href}
-              className={cn(
-                "group flex-none w-[280px] sm:w-[300px] flex flex-col gap-4 p-6 rounded-[20px] border transition-all duration-300 hover:-translate-y-1",
-                p.featured
-                  ? "bg-[#0d0d0d] border-[#00CBDB] shadow-[0_0_40px_#00cbdb12]"
-                  : "bg-[#0d0d0d] border-[#1a1a1a] hover:border-[#333]"
-              )}
-            >
+        {products.map((p) => (
+          <div
+            key={p.title}
+            className="group flex-none w-[260px] sm:w-[280px] rounded-[20px] overflow-hidden relative cursor-pointer"
+            style={{ height: "340px" }}
+            onClick={() => p.href && window.open(p.href, "_self")}
+          >
+            {/* Foto di sfondo */}
+            <div
+              className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
+              style={{
+                backgroundImage: `url('${p.image}')`,
+                backgroundSize: "cover",
+                backgroundPosition: p.imagePosition,
+              }}
+            />
+            {/* Overlay scuro */}
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.15) 100%)" }} />
+
+            {/* Contenuto */}
+            <div className="absolute inset-0 flex flex-col justify-between p-5">
               {/* Badge */}
-              <span
-                className={cn(
-                  "inline-flex items-center w-fit px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wide uppercase border",
-                  p.badgeColor
-                )}
-              >
-                {p.badge}
-              </span>
-
-              {/* Icon */}
-              <div
-                className={cn(
-                  "w-10 h-10 rounded-xl flex items-center justify-center",
-                  p.featured ? "bg-[#00cbdb18]" : "bg-[#ffffff06]"
-                )}
-              >
-                <Icon
-                  size={20}
-                  className={p.featured ? "text-[#00CBDB]" : "text-[#666]"}
-                />
-              </div>
-
-              {/* Title + description */}
-              <div className="flex flex-col gap-2 flex-1">
-                <h3 className="font-serif text-lg text-white leading-snug">
-                  {p.title}
-                </h3>
-                <p className="text-[#666] text-sm leading-relaxed flex-1">
-                  {p.description}
-                </p>
-              </div>
-
-              {/* Price */}
               <div>
                 <span
-                  className={cn(
-                    "font-serif text-2xl leading-none block mb-0.5",
-                    p.featured ? "text-[#00CBDB]" : "text-white"
-                  )}
+                  className="inline-block text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full border"
+                  style={p.badgeStyle}
                 >
-                  {p.price}
+                  {p.badge}
                 </span>
-                <span className="text-[#444] text-xs">{p.priceNote}</span>
               </div>
 
-              {/* CTA */}
-              <div
-                className={cn(
-                  "flex items-center gap-1.5 text-sm font-medium transition-all duration-200",
-                  p.featured
-                    ? "text-[#00CBDB]"
-                    : "text-[#555] group-hover:text-[#00CBDB]"
-                )}
-              >
-                {p.ctaLabel}
-                <ArrowRight
-                  size={14}
-                  className="group-hover:translate-x-1 transition-transform duration-200"
-                />
+              {/* Testo + CTA in basso */}
+              <div className="flex flex-col gap-3">
+                <div>
+                  <h3 className="font-serif text-xl text-white leading-snug mb-1">{p.title}</h3>
+                  <p className="text-white/70 text-xs leading-relaxed">{p.desc}</p>
+                </div>
+                <div className="flex items-center justify-between gap-2">
+                  {p.price && <span className="font-serif text-2xl text-[#F0C040]">{p.price}</span>}
+                  <a
+                    href={p.href || undefined}
+                    className="ml-auto text-xs font-bold px-4 py-2 rounded-full transition-all duration-200"
+                    style={p.ctaStyle}
+                    onClick={(e) => !p.href && e.preventDefault()}
+                  >
+                    {p.cta}
+                  </a>
+                </div>
               </div>
-            </Link>
-          );
-        })}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
