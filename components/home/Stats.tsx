@@ -1,8 +1,8 @@
 const stats = [
-  { value: "21", unit: "min", label: "per allenamento" },
-  { value: "3", unit: "×/sett", label: "frequenza ottimale" },
   { value: "3.000+", unit: "", label: "clienti trasformati" },
   { value: "15+", unit: "anni", label: "esperienza online" },
+  { value: "56K", unit: "", label: "follower Instagram" },
+  { value: "26K", unit: "", label: "iscritti YouTube" },
 ];
 
 export default function Stats() {

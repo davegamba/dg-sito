@@ -18,10 +18,10 @@ export default function HomePage() {
       <main className="flex-1">
         <Hero />
         <PressStrip />
-        <ChiSono />
         <Stats />
-        <MetodoBIM />
+        <ChiSono />
         <ProductCards />
+        <MetodoBIM />
         <Testimonials />
         <YoutubeScroll />
         <OptinStrip />
