@@ -143,7 +143,7 @@ export default function ExitPopup() {
             Prima di andare —
           </h2>
           <p className="text-white/60 text-sm leading-relaxed">
-            <strong>Scopri il tuo Tipo Metabolico in 2 minuti.</strong><br />
+            <strong>Scopri il tuo Tipo Metabolico in <span style={{ color: "#F0C040" }}>2 minuti</span>.</strong><br />
             Un quiz gratuito per capire perché non riesci a dimagrire — e cosa fare davvero.
           </p>
         </div>
