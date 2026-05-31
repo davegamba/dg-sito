@@ -113,12 +113,14 @@ export default function ExitPopup() {
       style={{ background: "rgba(0,0,0,0.75)" }}
       onClick={(e) => { if (e.target === e.currentTarget) dismiss(); }}
     >
+      {/* Wrapper bordo gradiente ciano→giallo */}
       <div
-        className="relative w-full max-w-md rounded-2xl p-8 flex flex-col gap-5"
-        style={{
-          background: "radial-gradient(ellipse at 50% 40%, rgba(30,40,50,1) 0%, #080C0F 70%)",
-          border: "1px solid rgba(240,192,64,0.5)",
-        }}
+        className="relative w-full max-w-md rounded-2xl p-px"
+        style={{ background: "linear-gradient(135deg, #00CBDB 0%, #F0C040 100%)" }}
+      >
+      <div
+        className="relative w-full rounded-2xl p-8 flex flex-col gap-5"
+        style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(30,40,50,1) 0%, #080C0F 70%)" }}
       >
         {/* Chiudi */}
         <button
@@ -184,6 +186,7 @@ export default function ExitPopup() {
         >
           No grazie, non mi interessa sapere perché non miglioro
         </button>
+      </div>
       </div>
     </div>
   );
