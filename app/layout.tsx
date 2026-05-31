@@ -47,6 +47,11 @@ export default function RootLayout({
       <body className="min-h-dvh flex flex-col antialiased">
         {children}
         <ExitPopup />
+        <script
+          src="//cdn.cookiescript.net/siteapi/923639d0a67cfff88e54366d1992683c/cookiescript.min.js"
+          type="text/javascript"
+          async
+        />
       </body>
     </html>
   );
