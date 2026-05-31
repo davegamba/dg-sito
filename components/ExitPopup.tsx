@@ -115,7 +115,10 @@ export default function ExitPopup() {
     >
       <div
         className="relative w-full max-w-md rounded-2xl p-8 flex flex-col gap-5"
-        style={{ background: "#080C0F", border: "1px solid rgba(0,203,219,0.25)" }}
+        style={{
+          background: "radial-gradient(ellipse at 50% 40%, rgba(30,40,50,1) 0%, #080C0F 70%)",
+          border: "1px solid rgba(240,192,64,0.5)",
+        }}
       >
         {/* Chiudi */}
         <button
@@ -128,8 +131,8 @@ export default function ExitPopup() {
 
         {/* Badge */}
         <div className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#00CBDB] animate-pulse" />
-          <span className="text-[#00CBDB] text-[10px] font-semibold tracking-[0.2em] uppercase">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#F0C040] animate-pulse" />
+          <span className="text-[#F0C040] text-[10px] font-semibold tracking-[0.2em] uppercase">
             Gratis per te
           </span>
         </div>
@@ -140,7 +143,7 @@ export default function ExitPopup() {
             Prima di andare —
           </h2>
           <p className="text-white/60 text-sm leading-relaxed">
-            Scopri il tuo tipo metabolico in 2 minuti.<br />
+            Scopri il tuo Tipo Metabolico in 2 minuti.<br />
             Un quiz gratuito per capire perché non riesci a dimagrire — e cosa fare davvero.
           </p>
         </div>
@@ -159,11 +162,11 @@ export default function ExitPopup() {
             <button
               type="submit"
               disabled={loading}
-              className="flex items-center justify-center gap-2 bg-[#00CBDB] hover:bg-[#00b8c6] disabled:bg-[#006f78] text-black font-bold text-sm tracking-wide rounded-xl px-6 py-3.5 transition-colors"
+              className="flex items-center justify-center gap-2 bg-[#00CBDB] hover:bg-[#00b8c6] disabled:bg-[#006f78] text-[#F0C040] font-bold text-sm tracking-wide rounded-xl px-6 py-3.5 transition-colors"
             >
               {loading ? "..." : (
                 <>
-                  Fai il quiz gratis
+                  🧬 Fai il quiz gratis
                   <ArrowRight size={16} />
                 </>
               )}
