@@ -30,7 +30,7 @@ const items = [
     ),
   },
   {
-    label: "Coaching",
+    label: "Coaching 1-1",
     href: "https://club.davegamba.com/coaching.html",
     icon: (
       <svg viewBox="0 0 24 24" fill="white" width="36" height="36">

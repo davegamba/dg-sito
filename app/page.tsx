@@ -4,7 +4,7 @@ import Hero from "@/components/home/Hero";
 import PressStrip from "@/components/home/PressStrip";
 import ChiSono from "@/components/home/ChiSono";
 import Stats from "@/components/home/Stats";
-import MetodoBIM from "@/components/home/MetodoBIM";
+import BlogSection from "@/components/home/BlogSection";
 import ProductCards from "@/components/home/ProductCards";
 import Testimonials from "@/components/home/Testimonials";
 import YoutubeScroll from "@/components/home/YoutubeScroll";
@@ -21,7 +21,7 @@ export default function HomePage() {
         <Stats />
         <ChiSono />
         <ProductCards />
-        <MetodoBIM />
+        <BlogSection />
         <Testimonials />
         <YoutubeScroll />
         <OptinStrip />
