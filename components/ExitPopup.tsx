@@ -162,7 +162,8 @@ export default function ExitPopup() {
             <button
               type="submit"
               disabled={loading}
-              className="flex items-center justify-center gap-2 bg-[#00CBDB] hover:bg-[#00b8c6] disabled:bg-[#006f78] text-white font-bold text-sm tracking-wide rounded-xl px-6 py-3.5 transition-colors"
+              className="flex items-center justify-center gap-2 text-white font-bold text-sm tracking-wide rounded-xl px-6 py-3.5 transition-opacity disabled:opacity-50"
+            style={{ background: "radial-gradient(ellipse at 50% 50%, #00e5f5 0%, #00CBDB 40%, #009aaa 100%)" }}
             >
               {loading ? "..." : (
                 <>
@@ -181,7 +182,7 @@ export default function ExitPopup() {
           onClick={() => dismiss()}
           className="text-white/25 hover:text-white/50 text-xs text-center transition-colors"
         >
-          No grazie, non mi interessa migliorarmi
+          No grazie, non mi interessa sapere perché non miglioro
         </button>
       </div>
     </div>
