@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, DM_Sans } from "next/font/google";
+import ExitPopup from "@/components/ExitPopup";
 import "./globals.css";
 
 const dmSerif = DM_Serif_Display({
@@ -45,6 +46,7 @@ export default function RootLayout({
     >
       <body className="min-h-dvh flex flex-col antialiased">
         {children}
+        <ExitPopup />
       </body>
     </html>
   );
