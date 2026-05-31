@@ -5,7 +5,7 @@ import { X, ArrowRight } from "lucide-react";
 
 const SUPABASE_URL = "https://nkojjrvndjyivsjvrqds.supabase.co";
 const SUPABASE_KEY = "sb_publishable_4WlxUEDHRnR0BGxCViP4NA_QVYLUwtg";
-const QUIZ_URL = "https://club.davegamba.com/optin-quiz.html";
+const QUIZ_URL = "https://club.davegamba.com/club.html";
 const STORAGE_KEY = "dg_exit_popup_seen";
 const COOLDOWN_DAYS = 7;
 
