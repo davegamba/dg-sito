@@ -7,10 +7,10 @@ export default function ChiSono() {
   return (
     <section className="py-16 sm:py-24 bg-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-row gap-6 sm:gap-12 items-start">
+        <div className="flex flex-row gap-4 sm:gap-8 items-start">
 
           {/* ── FOTO ── */}
-          <div className="flex-none w-[120px] sm:w-[260px] md:w-[320px]">
+          <div className="flex-none w-[160px] sm:w-[300px] md:w-[360px]">
             <div className="w-full aspect-[3/4] rounded-[16px] sm:rounded-[24px] overflow-hidden">
               <img
                 src={FOTO}
@@ -46,20 +46,6 @@ export default function ChiSono() {
               Il Metodo BIM è nato da questa osservazione: chi ottiene risultati duraturi
               non si allena di più. Si allena <em>meglio</em>. 21 minuti, tre volte a settimana.
             </p>
-
-            {/* Numeri */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-3 sm:pt-4 border-t border-[#111]">
-              {[
-                { n: "2009", label: "inizio" },
-                { n: "3K+", label: "clienti" },
-                { n: "2M+", label: "lettori" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <div className="font-serif text-lg sm:text-2xl text-[#00CBDB] mb-0.5">{s.n}</div>
-                  <div className="text-[#555] text-[9px] sm:text-xs uppercase tracking-wider">{s.label}</div>
-                </div>
-              ))}
-            </div>
 
             <Link
               href="/metodo"
