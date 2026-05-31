@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 
 const SUPABASE_URL = "https://nkojjrvndjyivsjvrqds.supabase.co";
 const SUPABASE_KEY = "sb_publishable_4WlxUEDHRnR0BGxCViP4NA_QVYLUwtg";
-const QUIZ_URL = "https://hub.davegamba.com/optin-quiz.html";
+const QUIZ_URL = "https://club.davegamba.com/optin-quiz.html";
 
 export default function Hero() {
   const [email, setEmail] = useState("");

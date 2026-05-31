@@ -3,10 +3,9 @@
 import { useRef } from "react";
 import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 
-// Video placeholder — sostituire con ID reali YouTube di Dave
 const videos = [
   {
-    id: "dQw4w9WgXcQ", // placeholder
+    id: "dQw4w9WgXcQ",
     title: "Come perdere grasso senza cardio (la verità scientifica)",
     views: "128K visualizzazioni",
     duration: "12:34",

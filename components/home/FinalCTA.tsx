@@ -33,13 +33,13 @@ export default function FinalCTA() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button variant="primary" size="lg" className="group">
-            <Link href="/optin/sfida" className="flex items-center gap-2">
+            <Link href="https://club.davegamba.com/optin-quiz.html" className="flex items-center gap-2">
               Inizia gratis ora
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
           </Button>
           <Button variant="secondary" size="lg">
-            <Link href="/prodotti/consulenza">Parla con Dave</Link>
+            <Link href="https://club.davegamba.com/coaching.html">Parla con Dave</Link>
           </Button>
         </div>
 

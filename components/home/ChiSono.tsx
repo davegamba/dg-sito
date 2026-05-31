@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { ChevronRight } from "lucide-react";
 
 export default function ChiSono() {
   return (
