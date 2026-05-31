@@ -5,7 +5,7 @@ const items = [
     label: "Quiz",
     href: "https://club.davegamba.com/optin-quiz.html",
     icon: (
-      <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
+      <svg viewBox="0 0 24 24" fill="white" width="36" height="36">
         <path d="M12 2a7 7 0 0 1 7 7c0 2.5-1.3 4.7-3.3 6l-.7.5V17H9v-1.5l-.7-.5A7 7 0 0 1 12 2zm-2 17h4v1a2 2 0 0 1-4 0v-1z"/>
         <circle cx="12" cy="9" r="2.5"/>
       </svg>
@@ -15,7 +15,7 @@ const items = [
     label: "Protocolli",
     href: "https://club.davegamba.com/club.html",
     icon: (
-      <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
+      <svg viewBox="0 0 24 24" fill="white" width="36" height="36">
         <path d="M13 2L4.5 13.5H11L10 22L19.5 10.5H13L13 2Z"/>
       </svg>
     ),
@@ -24,7 +24,7 @@ const items = [
     label: "Blog",
     href: "/blog",
     icon: (
-      <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
+      <svg viewBox="0 0 24 24" fill="white" width="36" height="36">
         <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm2 4v2h12V8H6zm0 4v2h8v-2H6z"/>
       </svg>
     ),
@@ -33,7 +33,7 @@ const items = [
     label: "Coaching",
     href: "https://club.davegamba.com/coaching.html",
     icon: (
-      <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
+      <svg viewBox="0 0 24 24" fill="white" width="36" height="36">
         <path d="M12 2l2.9 6.3 6.8.6-5 4.7 1.5 6.7L12 17l-6.2 3.3 1.5-6.7-5-4.7 6.8-.6z"/>
       </svg>
     ),

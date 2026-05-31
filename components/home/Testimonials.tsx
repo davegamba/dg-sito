@@ -1,8 +1,5 @@
 "use client";
 
-import { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
 const photos = [
   { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/img_07.jpeg", alt: "Trasformazione" },
   { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/alessandra-pilo-testimonianze-davegamba.jpg", alt: "Alessandra Pilo" },
@@ -93,92 +90,64 @@ const testimonials = [
   },
 ];
 
-export default function Testimonials() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
+  return (
+    <div className="flex-none w-[290px] sm:w-[320px] flex flex-col gap-4 p-6 bg-[#0d0d0d] border border-[#1a1a1a] rounded-[20px]">
+      <span className="inline-flex items-center w-fit px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wide uppercase bg-[#00cbdb0f] border border-[#00cbdb22] text-[#00CBDB]">
+        {t.result}
+      </span>
+      <p className="text-[#ccc] text-sm leading-relaxed flex-1">
+        &ldquo;{t.text}&rdquo;
+      </p>
+      <div className="flex items-center gap-3 pt-3 border-t border-[#1a1a1a]">
+        <div className="w-9 h-9 rounded-full bg-[#00cbdb18] flex items-center justify-center text-[#00CBDB] text-sm font-bold shrink-0">
+          {t.name[0]}
+        </div>
+        <div>
+          <div className="text-white text-xs font-semibold">{t.name}, {t.age} anni</div>
+          <div className="text-[#444] text-xs">{t.job}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-  const scroll = (dir: "left" | "right") => {
-    if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({ left: dir === "right" ? 320 : -320, behavior: "smooth" });
-  };
+export default function Testimonials() {
+  const doubled = [...testimonials, ...testimonials];
 
   return (
     <section className="py-20 sm:py-28 bg-black overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-
-        {/* Header row */}
-        <div className="flex items-end justify-between mb-8 gap-4">
-          <div>
-            <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
-              Risultati reali
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-white">
-              Cosa dicono i clienti
-            </h2>
-          </div>
-
-          {/* Arrows */}
-          <div className="flex gap-2 shrink-0">
-            <button
-              onClick={() => scroll("left")}
-              className="w-10 h-10 rounded-full border border-[#222] flex items-center justify-center text-[#666] hover:text-white hover:border-[#00CBDB] transition-all duration-200"
-              aria-label="Precedente"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className="w-10 h-10 rounded-full border border-[#222] flex items-center justify-center text-[#666] hover:text-white hover:border-[#00CBDB] transition-all duration-200"
-              aria-label="Successivo"
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
-        </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8">
+        <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
+          Risultati reali
+        </span>
+        <h2 className="font-serif text-3xl sm:text-4xl text-white">
+          Cosa dicono i clienti
+        </h2>
       </div>
 
-      {/* Strip foto testimonianze */}
+      {/* Strip foto — scorre verso sinistra */}
       <PhotoMarquee />
 
-      {/* Scroll track */}
-      <div
-        ref={scrollRef}
-        className="flex gap-4 overflow-x-auto pb-4 items-stretch"
-        style={{
-          paddingLeft: "max(1rem, calc((100vw - 72rem) / 2 + 1.5rem))",
-          paddingRight: "max(1rem, calc((100vw - 72rem) / 2 + 1.5rem))",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}
-      >
-        {testimonials.map((t) => (
-          <div
-            key={t.name}
-            className="flex-none w-[290px] sm:w-[320px] flex flex-col gap-4 p-6 bg-[#0d0d0d] border border-[#1a1a1a] rounded-[20px] hover:border-[#333] transition-all duration-300"
-          >
-            {/* Result badge */}
-            <span className="inline-flex items-center w-fit px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wide uppercase bg-[#00cbdb0f] border border-[#00cbdb22] text-[#00CBDB]">
-              {t.result}
-            </span>
-
-            {/* Quote */}
-            <p className="text-[#ccc] text-sm leading-relaxed flex-1">
-              &ldquo;{t.text}&rdquo;
-            </p>
-
-            {/* Author */}
-            <div className="flex items-center gap-3 pt-3 border-t border-[#1a1a1a]">
-              <div className="w-9 h-9 rounded-full bg-[#00cbdb18] flex items-center justify-center text-[#00CBDB] text-sm font-bold shrink-0">
-                {t.name[0]}
-              </div>
-              <div>
-                <div className="text-white text-xs font-semibold">
-                  {t.name}, {t.age} anni
-                </div>
-                <div className="text-[#444] text-xs">{t.job}</div>
-              </div>
-            </div>
-          </div>
-        ))}
+      {/* Card testo — scorre verso destra (direzione inversa) */}
+      <div className="overflow-hidden w-full mt-6">
+        <div
+          className="flex gap-4 items-stretch"
+          style={{
+            width: "max-content",
+            animation: "marqueeScrollReverse 50s linear infinite",
+          }}
+        >
+          {doubled.map((t, i) => (
+            <TestimonialCard key={i} t={t} />
+          ))}
+        </div>
+        <style>{`
+          @keyframes marqueeScrollReverse {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
+          }
+        `}</style>
       </div>
     </section>
   );

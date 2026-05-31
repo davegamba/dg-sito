@@ -53,18 +53,6 @@ const products = [
     href: null,
   },
   {
-    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/img_06.jpeg",
-    imagePosition: "30% bottom",
-    badge: "IN ARRIVO",
-    badgeStyle: { background: "transparent", color: "rgba(255,255,255,0.6)", borderColor: "rgba(255,255,255,0.3)" },
-    title: "Corso Glutei Alti e Sodi",
-    desc: "Il percorso specifico per glutei sodi, tondi e alti. Per casa e palestra.",
-    price: null,
-    cta: "In costruzione",
-    ctaStyle: { background: "transparent", color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.2)", cursor: "default" },
-    href: null,
-  },
-  {
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
     imagePosition: "center top",
     badge: "PERSONALIZZATO",
