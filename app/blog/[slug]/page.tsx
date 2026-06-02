@@ -1,5 +1,6 @@
 import { getPostBySlug, getAllSlugs } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -132,10 +133,10 @@ export default async function PostPage({
           </div>
 
           {/* Corpo articolo — sfondo chiaro */}
-          <div className="bg-[#faf6ef] rounded-t-[28px] mt-2">
+          <div className="bg-[#fdf9f2] rounded-t-[28px] mt-2">
             <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 pb-4">
               <div className="mdx-content">
-                <MDXRemote source={post.content} />
+                <MDXRemote source={post.content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
               </div>
             </div>
 
