@@ -197,40 +197,38 @@ body {
 
 /* ─── BOX SUCCO DELLA GUIDA ─────────────────────────────────────────── */
 
-.succo-box {
+.mdx-content .succo-box {
   background: #00CBDB;
   border-radius: 18px;
-  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  padding: 1.5rem 1.5rem 1.25rem 1.5rem;
   margin: 0 0 2.5rem;
 }
 
-/* H2 dentro il succo-box */
-.succo-box h2 {
+.mdx-content .succo-box h2 {
   border-top: none !important;
   padding-top: 0 !important;
   margin-top: 0 !important;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 1rem;
-  color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
+  color: rgba(255,255,255,0.75) !important;
+  -webkit-text-fill-color: rgba(255,255,255,0.75) !important;
   background: none !important;
 }
 
-/* Bullet dentro il succo-box */
-.succo-box ul li {
-  color: #fff;
+.mdx-content .succo-box ul li {
+  color: #fff !important;
   margin-bottom: 0.75rem;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-.succo-box ul li::before {
-  color: rgba(255,255,255,0.7);
+.mdx-content .succo-box ul li::before {
+  color: rgba(255,255,255,0.6) !important;
 }
 
-.succo-box strong {
-  color: #fff;
+.mdx-content .succo-box strong {
+  color: #fff !important;
   font-weight: 700;
 }
 
