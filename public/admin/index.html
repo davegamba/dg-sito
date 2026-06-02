@@ -39,6 +39,7 @@ CMS.init({
           { label: "Categoria", name: "category", widget: "select", options: ["Allenamento", "Nutrizione", "Dimagrimento", "Testosterone", "Longevità", "Mindset", "Metodo BIM"], required: false },
           { label: "Excerpt (TL;DR)", name: "excerpt", widget: "text", hint: "Breve descrizione per SEO — max 155 caratteri" },
           { label: "Immagine copertina", name: "image", widget: "image", required: false },
+          { label: "Pubblicato", name: "published", widget: "boolean", default: false, hint: "OFF = bozza invisibile sul sito. ON = visibile." },
           { label: "Contenuto", name: "body", widget: "markdown" },
         ],
       },
