@@ -23,16 +23,22 @@ export async function GET(req: NextRequest) {
     return new NextResponse("GitHub OAuth failed", { status: 400 });
   }
 
-  // Invia il token al CMS tramite postMessage
+  // Invia il token al CMS tramite postMessage (formato esatto richiesto da Decap)
+  const content = { token, provider: "github" };
   const html = `<!DOCTYPE html>
 <html>
 <body>
 <script>
-  window.opener.postMessage(
-    'authorization:github:success:${JSON.stringify({ token, provider: "github" })}',
-    '*'
-  );
-  window.close();
+  (function() {
+    function receiveMessage(e) {
+      window.opener.postMessage(
+        'authorization:github:success:' + JSON.stringify(${JSON.stringify(content)}),
+        e.origin
+      );
+    }
+    window.addEventListener('message', receiveMessage, false);
+    window.opener.postMessage('authorizing:github', '*');
+  })();
 </script>
 </body>
 </html>`;
