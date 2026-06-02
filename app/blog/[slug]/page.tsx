@@ -1,6 +1,24 @@
 import { getPostBySlug, getAllSlugs } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+
+// H2 con prima parte ciano e seconda parte nera
+function CustomH2({ children }: { children: React.ReactNode }) {
+  if (typeof children !== "string") return <h2>{children}</h2>;
+  const match = children.match(/^(.+?)\s*(—|:)\s*(.+)$/);
+  if (match) {
+    const sep = match[2] === "—" ? " — " : ": ";
+    return (
+      <h2>
+        <span style={{ color: "#00CBDB" }}>{match[1]}</span>
+        <span style={{ color: "#1a1a1a" }}>{sep}{match[3]}</span>
+      </h2>
+    );
+  }
+  return <h2>{children}</h2>;
+}
+
+const mdxComponents = { h2: CustomH2 };
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -133,7 +151,7 @@ export default async function PostPage({
           <div className="bg-[#fdf9f2] rounded-t-[28px] mt-2">
             <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 pb-4">
               <div className="mdx-content">
-                <MDXRemote source={post.content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
+                <MDXRemote source={post.content} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
               </div>
             </div>
 
