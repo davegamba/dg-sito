@@ -13,9 +13,11 @@ export type Post = {
   image: string | null;
   published: boolean;
   content: string;
+  readingTime: number;
+  toc: { id: string; text: string }[];
 };
 
-export type PostMeta = Omit<Post, "content">;
+export type PostMeta = Omit<Post, "content" | "toc">;
 
 function getFiles(): string[] {
   if (!fs.existsSync(POSTS_DIR)) return [];
@@ -23,15 +25,32 @@ function getFiles(): string[] {
 }
 
 function isPublished(data: Record<string, unknown>): boolean {
-  // Se published è esplicitamente false → bozza
   if (data.published === false) return false;
-  // Se ha una data futura → non ancora visibile
   if (data.date) {
     const postDate = new Date(String(data.date));
     if (postDate > new Date()) return false;
   }
-  // Default: visibile
   return true;
+}
+
+/** Calcola minuti di lettura (200 parole/min) */
+export function calcReadingTime(content: string): number {
+  const words = content.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
+}
+
+/** Estrae H2 dal contenuto MDX per il sommario */
+export function extractToc(content: string): { id: string; text: string }[] {
+  const matches = content.matchAll(/^## (.+)$/gm);
+  return Array.from(matches).map((m) => {
+    const text = m[1].replace(/\*\*/g, "").replace(/[_`]/g, "").trim();
+    const id = text
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-àèéìòùáíóú]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
+    return { id, text };
+  });
 }
 
 export function getAllPosts(): PostMeta[] {
@@ -39,7 +58,7 @@ export function getAllPosts(): PostMeta[] {
     .map((file) => {
       const slug = file.replace(/\.mdx$/, "");
       const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf-8");
-      const { data } = matter(raw);
+      const { data, content } = matter(raw);
       return {
         slug,
         title: data.title ?? "",
@@ -48,6 +67,7 @@ export function getAllPosts(): PostMeta[] {
         excerpt: data.excerpt ?? "",
         image: data.image ?? null,
         published: isPublished(data),
+        readingTime: calcReadingTime(content),
       };
     })
     .filter((p) => p.published)
@@ -55,7 +75,6 @@ export function getAllPosts(): PostMeta[] {
 }
 
 export function getAllSlugs(): string[] {
-  // Genera le pagine solo per gli articoli pubblicati
   return getFiles()
     .filter((file) => {
       const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf-8");
@@ -79,5 +98,14 @@ export function getPostBySlug(slug: string): Post | null {
     image: data.image ?? null,
     published: isPublished(data),
     content,
+    readingTime: calcReadingTime(content),
+    toc: extractToc(content),
   };
+}
+
+/** Articoli correlati: stessa categoria, escluso quello corrente */
+export function getRelatedPosts(slug: string, category: string, limit = 3): PostMeta[] {
+  return getAllPosts()
+    .filter((p) => p.slug !== slug && p.category === category)
+    .slice(0, limit);
 }
