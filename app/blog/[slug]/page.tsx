@@ -129,13 +129,21 @@ export default async function PostPage({
               )}
             </div>
 
-            <div className="mdx-content pb-16">
-              <MDXRemote source={post.content} />
+          </div>
+
+          {/* Corpo articolo — sfondo chiaro */}
+          <div className="bg-[#f7f7f5] rounded-t-[28px] mt-2">
+            <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 pb-4">
+              <div className="mdx-content">
+                <MDXRemote source={post.content} />
+              </div>
             </div>
 
-            <div className="border-t border-[#1a1a1a] pt-8 pb-16">
-              <p className="text-[#00CBDB] font-semibold">Sali di livello, Dave</p>
-              <p className="text-[#444] text-sm mt-1">Personal Trainer Online dal 2009</p>
+            <div className="max-w-2xl mx-auto px-4 sm:px-6 pb-16">
+              <div className="border-t border-[#e0e0e0] pt-8">
+                <p className="text-[#00CBDB] font-semibold">Sali di livello, Dave</p>
+                <p className="text-[#888] text-sm mt-1">Personal Trainer Online dal 2009</p>
+              </div>
             </div>
           </div>
         </article>
