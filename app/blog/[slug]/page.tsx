@@ -120,14 +120,7 @@ export default async function PostPage({
                 </div>
               </div>
 
-              {post.excerpt && (
-                <div className="bg-[#0d0d0d] border border-[#1a1a1a] rounded-[16px] p-5 mb-10">
-                  <div className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-2">
-                    TL;DR
-                  </div>
-                  <p className="text-[#aaa] text-sm leading-relaxed">{post.excerpt}</p>
-                </div>
-              )}
+              {/* excerpt usato solo per SEO meta tag — non mostrato nell'articolo */}
             </div>
 
           </div>
