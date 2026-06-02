@@ -10,8 +10,16 @@ import ReadingProgress from "@/components/ReadingProgress";
 import type { Metadata } from "next";
 
 // H2 bicolore: prima parte ciano, seconda parte nera
+// Eccezione: "Riferimenti Scientifici" → italic piccolo grigio
 function CustomH2({ children }: { children: React.ReactNode }) {
   if (typeof children !== "string") return <h2>{children}</h2>;
+  if (children.trim().toLowerCase().includes("riferimenti")) {
+    return (
+      <h2 style={{ fontStyle: "italic", fontSize: "1rem", color: "#888", fontFamily: "inherit", borderTop: "1px solid #e8e0d4", paddingTop: "1rem", marginTop: "2.5rem" }}>
+        {children}
+      </h2>
+    );
+  }
   const match = children.match(/^(.+?)\s*(—|:)\s*(.+)$/);
   if (match) {
     const sep = match[2] === "—" ? " — " : ": ";
@@ -107,12 +115,12 @@ export default async function PostPage({
             <div className={post.image ? "-mt-20 relative z-10" : "pt-16"}>
 
               {/* Breadcrumb */}
-              <nav className="flex items-center gap-1.5 text-[11px] text-[#555] mb-4">
+              <nav className="flex items-center gap-1.5 text-[11px] text-[#666] mb-4">
                 <Link href="/" className="hover:text-[#00CBDB] transition-colors">Home</Link>
-                <span>›</span>
+                <span className="text-[#444]">›</span>
                 <Link href="/blog" className="hover:text-[#00CBDB] transition-colors">Blog</Link>
-                <span>›</span>
-                <span className="text-[#888] truncate max-w-[180px]">{post.title}</span>
+                <span className="text-[#444]">›</span>
+                <span className="text-[#777] truncate max-w-[180px]">{post.title}</span>
               </nav>
 
               {/* Categoria */}
@@ -194,8 +202,8 @@ export default async function PostPage({
 
             {/* Condivisione social */}
             <div className="max-w-2xl mx-auto px-4 sm:px-6 pb-12">
-              <p className="text-[11px] font-semibold tracking-widest uppercase text-[#aaa] mb-3">Condividi</p>
-              <div className="flex gap-3">
+              <p className="text-[11px] font-semibold tracking-widest uppercase text-[#aaa] mb-3">Condividi l&apos;articolo</p>
+              <div className="flex flex-wrap gap-3">
                 <a
                   href={`https://wa.me/?text=${titleEncoded}%20${encodeURIComponent(pageUrl)}`}
                   target="_blank" rel="noopener noreferrer"
@@ -205,12 +213,12 @@ export default async function PostPage({
                   WhatsApp
                 </a>
                 <a
-                  href={`https://twitter.com/intent/tweet?text=${titleEncoded}&url=${encodeURIComponent(pageUrl)}`}
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`}
                   target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-black text-white text-sm font-semibold px-4 py-2.5 rounded-[10px] hover:opacity-80 transition-opacity border border-[#333]"
+                  className="flex items-center gap-2 bg-[#1877F2] text-white text-sm font-semibold px-4 py-2.5 rounded-[10px] hover:opacity-90 transition-opacity"
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                  X
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  Facebook
                 </a>
                 <a
                   href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`}
