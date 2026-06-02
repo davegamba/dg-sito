@@ -138,11 +138,11 @@ body {
   color: #00CBDB;
 }
 
-/* H3 — ciano attenuato */
+/* H3 — scuro */
 .mdx-content h3 {
   font-family: var(--font-serif, serif);
   font-size: 1.25rem;
-  color: #0099a8;
+  color: #1a1a1a;
   margin-top: 2rem;
   margin-bottom: 0.9rem;
   line-height: 1.3;
