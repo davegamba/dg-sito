@@ -100,6 +100,18 @@ export function getPostBySlug(slug: string): Post | null {
   };
 }
 
+/** Divide il contenuto in succo (prima parte) e corpo (resto).
+ *  Il succo è il blocco <div className="succo-box">...</div> iniziale. */
+export function splitContent(content: string): { succo: string; body: string } {
+  const succoEnd = content.indexOf("</div>");
+  if (succoEnd === -1 || !content.trimStart().startsWith("<div")) {
+    return { succo: "", body: content };
+  }
+  const succo = content.slice(0, succoEnd + 6).trim();
+  const body = content.slice(succoEnd + 6).trim();
+  return { succo, body };
+}
+
 /** Articoli correlati: stessa categoria, escluso quello corrente */
 export function getRelatedPosts(slug: string, category: string, limit = 3): PostMeta[] {
   return getAllPosts()

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { getPostBySlug, getAllSlugs, getRelatedPosts } from "@/lib/posts";
+import { getPostBySlug, getAllSlugs, getRelatedPosts, splitContent } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import Image from "next/image";
@@ -72,6 +72,7 @@ export default async function PostPage({
   if (!post) notFound();
 
   const related = getRelatedPosts(slug, post.category);
+  const { succo, body } = splitContent(post.content);
   const pageUrl = `https://davegamba.com/blog/${slug}`;
   const titleEncoded = encodeURIComponent(post.title);
 
@@ -164,17 +165,21 @@ export default async function PostPage({
           <div className="bg-[#fdf9f2] rounded-t-[28px] mt-2">
             <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 pb-4">
 
-              {/* Indice navigabile */}
-              {post.toc.length > 3 && (
+              {/* 1. SUCCO DELLA GUIDA */}
+              {succo && (
+                <div className="mdx-content">
+                  <MDXRemote source={succo} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
+                </div>
+              )}
+
+              {/* 2. INDICE — dopo il succo, prima del corpo */}
+              {post.toc.length > 5 && (
                 <div className="bg-white border border-[#e8e0d4] rounded-[16px] p-5 mb-8">
                   <p className="text-[11px] font-semibold tracking-widest uppercase text-[#00CBDB] mb-3">In questo articolo</p>
                   <ol className="space-y-1.5">
                     {post.toc.map((item) => (
                       <li key={item.id}>
-                        <a
-                          href={`#${item.id}`}
-                          className="text-sm text-[#444] hover:text-[#00CBDB] transition-colors leading-snug block"
-                        >
+                        <a href={`#${item.id}`} className="text-sm text-[#444] hover:text-[#00CBDB] transition-colors leading-snug block">
                           {item.text}
                         </a>
                       </li>
@@ -183,13 +188,9 @@ export default async function PostPage({
                 </div>
               )}
 
-              {/* Contenuto MDX */}
+              {/* 3. CORPO ARTICOLO */}
               <div className="mdx-content">
-                <MDXRemote
-                  source={post.content}
-                  components={mdxComponents}
-                  options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
-                />
+                <MDXRemote source={body || post.content} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
               </div>
             </div>
 
@@ -262,7 +263,7 @@ export default async function PostPage({
                 </div>
               </div>
             )}
-          </div>
+          </div>{/* fine bg-sabbia */}
         </article>
 
         {/* CTA */}
