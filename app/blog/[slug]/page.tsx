@@ -132,7 +132,7 @@ export default async function PostPage({
           </div>
 
           {/* Corpo articolo — sfondo chiaro */}
-          <div className="bg-[#f7f7f5] rounded-t-[28px] mt-2">
+          <div className="bg-[#faf6ef] rounded-t-[28px] mt-2">
             <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 pb-4">
               <div className="mdx-content">
                 <MDXRemote source={post.content} />

@@ -126,7 +126,7 @@ body {
 .mdx-content p          { color: #222; font-size: 1rem; line-height: 1.9; margin-bottom: 1.4rem; }
 .mdx-content > p:first-child { font-size: 1.05rem; }
 
-/* H2 — gradiente ciano → quasi-nero */
+/* H2 — ciano pieno */
 .mdx-content h2 {
   font-family: var(--font-serif, serif);
   font-size: 1.65rem;
@@ -134,11 +134,8 @@ body {
   margin-top: 3rem;
   margin-bottom: 1.25rem;
   padding-top: 1rem;
-  border-top: 1px solid #e8e8e8;
-  background: linear-gradient(90deg, #00CBDB 0%, #111111 55%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  border-top: 1px solid #e8e0d4;
+  color: #00CBDB;
 }
 
 /* H3 — ciano attenuato */
@@ -184,7 +181,7 @@ body {
 .mdx-content figcaption { text-align: center; color: #888; font-size: 0.875rem; margin-top: 0.5rem; }
 
 /* Separatore */
-.mdx-content hr         { border: none; border-top: 1px solid #e0e0e0; margin: 2.5rem 0; }
+.mdx-content hr         { border: none; border-top: 1px solid #e8e0d4; margin: 2.5rem 0; }
 
 /* Tabelle */
 .mdx-content table      { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; border-radius: 12px; overflow: hidden; border: 1px solid #e8e8e8; }
