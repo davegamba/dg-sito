@@ -120,7 +120,11 @@ export default async function PostPage({
                 </div>
               </div>
 
-              {/* excerpt usato solo per SEO meta tag — non mostrato nell'articolo */}
+              {post.excerpt && (
+                <p className="text-[#999] text-base leading-relaxed mb-2 italic">
+                  {post.excerpt}
+                </p>
+              )}
             </div>
 
           </div>
