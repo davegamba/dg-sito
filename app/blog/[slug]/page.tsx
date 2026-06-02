@@ -81,7 +81,18 @@ export default async function PostPage({
     "@type": "Article",
     headline: post.title,
     description: post.excerpt.slice(0, 155),
-    author: { "@type": "Person", name: "Dave Gamba", url: "https://davegamba.com" },
+    author: {
+      "@type": "Person",
+      name: "Dave Gamba",
+      url: "https://davegamba.com",
+      sameAs: [
+        "https://www.instagram.com/davegamba_fit/",
+        "https://www.youtube.com/@DaveGamba",
+        "https://davegamba.com",
+      ],
+      jobTitle: "Personal Trainer Online",
+      description: "Personal trainer online dal 2009, fondatore del Metodo BIM — Breve, Intenso, Mirato. Oltre 3.000 clienti seguiti.",
+    },
     publisher: {
       "@type": "Organization",
       name: "DaveGamba.com",
@@ -144,6 +155,7 @@ export default async function PostPage({
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-white text-sm font-semibold">Dave Gamba</div>
+                  <div className="text-[#00CBDB] text-[10px] mb-0.5">Personal trainer online dal 2009 · Metodo BIM</div>
                   <div className="flex items-center gap-2 text-[#555] text-xs mt-0.5">
                     <time>{new Date(post.date).toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" })}</time>
                     <span>·</span>
