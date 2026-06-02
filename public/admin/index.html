@@ -46,48 +46,47 @@ CMS.init({
   },
 });
 
-// Preview template con contatore parole
+// Preview template con contatore parole — Decap CMS v3 (function component)
 var h = CMS.h;
-var BlogPreview = CMS.createClass({
-  countWords: function(text) {
-    if (!text) return 0;
-    // Rimuove tag MDX, HTML e frontmatter, conta le parole rimanenti
-    return text
-      .replace(/<[^>]+>/g, ' ')
-      .replace(/```[\s\S]*?```/g, ' ')
-      .replace(/\[.*?\]\(.*?\)/g, ' ')
-      .replace(/[#*_`~>|]/g, ' ')
-      .trim()
-      .split(/\s+/)
-      .filter(function(w) { return w.length > 0; })
-      .length;
-  },
 
-  getColor: function(count) {
-    if (count < 1500) return '#e74c3c';   // rosso — troppo corto
-    if (count < 2500) return '#f39c12';   // arancio — cluster ok, pillar corto
-    if (count < 3500) return '#00CBDB';   // ciano — pillar ok
-    return '#27ae60';                     // verde — ottimo
-  },
+function countWords(text) {
+  if (!text) return 0;
+  return text
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/\[.*?\]\(.*?\)/g, ' ')
+    .replace(/[#*_`~>|]/g, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(function(w) { return w.length > 0; })
+    .length;
+}
 
-  getLabel: function(count) {
-    if (count < 1500) return 'Troppo corto';
-    if (count < 2500) return 'Cluster ✓';
-    if (count < 3500) return 'Pillar ✓';
-    return 'Pillar lungo ✓';
-  },
+function getColor(count) {
+  if (count < 1500) return '#e74c3c';
+  if (count < 2500) return '#f39c12';
+  if (count < 3500) return '#00CBDB';
+  return '#27ae60';
+}
 
-  render: function() {
-    var entry = this.props.entry;
+function getLabel(count) {
+  if (count < 1500) return 'Troppo corto';
+  if (count < 2500) return 'Cluster ✓';
+  if (count < 3500) return 'Pillar ✓';
+  return 'Pillar lungo ✓';
+}
+
+function BlogPreview(props) {
+    var entry = props.entry;
     var body = entry.getIn(['data', 'body']) || '';
     var title = entry.getIn(['data', 'title']) || '';
     var excerpt = entry.getIn(['data', 'excerpt']) || '';
     var category = entry.getIn(['data', 'category']) || '';
     var published = entry.getIn(['data', 'published']);
-    var wordCount = this.countWords(body);
+    var wordCount = countWords(body);
     var readingTime = Math.max(1, Math.round(wordCount / 200));
-    var color = this.getColor(wordCount);
-    var label = this.getLabel(wordCount);
+    var color = getColor(wordCount);
+    var label = getLabel(wordCount);
 
     return h('div', { style: { fontFamily: 'system-ui, sans-serif', padding: '24px', background: '#fdf9f2', minHeight: '100vh' } },
 
@@ -134,7 +133,7 @@ var BlogPreview = CMS.createClass({
 
       // Corpo
       h('div', { style: { color: '#222', lineHeight: '1.8', fontSize: '16px' } },
-        this.props.widgetFor('body')
+        props.widgetFor('body')
       )
     );
   }
