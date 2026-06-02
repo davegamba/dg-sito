@@ -39,9 +39,12 @@ export function calcReadingTime(content: string): number {
   return Math.max(1, Math.round(words / 200));
 }
 
-/** Estrae H2 dal contenuto MDX per il sommario */
+/** Estrae H2 dal contenuto MDX per il sommario.
+ *  Esclude gli H2 dentro <div className="succo-box"> (non vanno nel TOC). */
 export function extractToc(content: string): { id: string; text: string }[] {
-  const matches = content.matchAll(/^## (.+)$/gm);
+  // Rimuove i blocchi succo-box prima di cercare gli H2
+  const stripped = content.replace(/<div[^>]*className="succo-box"[^>]*>[\s\S]*?<\/div>/g, "");
+  const matches = stripped.matchAll(/^## (.+)$/gm);
   return Array.from(matches).map((m) => {
     const text = m[1].replace(/\*\*/g, "").replace(/[_`]/g, "").trim();
     const id = text
@@ -75,13 +78,7 @@ export function getAllPosts(): PostMeta[] {
 }
 
 export function getAllSlugs(): string[] {
-  return getFiles()
-    .filter((file) => {
-      const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf-8");
-      const { data } = matter(raw);
-      return isPublished(data);
-    })
-    .map((f) => f.replace(/\.mdx$/, ""));
+  return getAllPosts().map((p) => p.slug);
 }
 
 export function getPostBySlug(slug: string): Post | null {

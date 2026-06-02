@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { getPostBySlug, getAllSlugs, getRelatedPosts } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
@@ -11,7 +12,7 @@ import type { Metadata } from "next";
 
 // H2 bicolore: prima parte ciano, seconda parte nera
 // Eccezione: "Riferimenti Scientifici" → italic piccolo grigio
-function CustomH2({ children }: { children: React.ReactNode }) {
+function CustomH2({ children }: { children: ReactNode }) {
   if (typeof children !== "string") return <h2>{children}</h2>;
   if (children.trim().toLowerCase().includes("riferimenti")) {
     return (
