@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const products = [
   {
@@ -100,7 +101,7 @@ export default function ProductCards() {
       {/* Scroll track */}
       <div
         ref={scrollRef}
-        className="flex gap-4 overflow-x-auto pb-4"
+        className="flex gap-4 overflow-x-auto pb-4 gsap-stagger"
         style={{
           paddingLeft: "max(1rem, calc((100vw - 72rem) / 2 + 1.5rem))",
           paddingRight: "max(1rem, calc((100vw - 72rem) / 2 + 1.5rem))",
@@ -109,11 +110,13 @@ export default function ProductCards() {
         }}
       >
         {products.map((p) => (
-          <div
+          <motion.div
             key={p.title}
-            className="group flex-none w-[260px] sm:w-[280px] rounded-[20px] overflow-hidden relative cursor-pointer"
+            className="gsap-card group flex-none w-[260px] sm:w-[280px] rounded-[20px] overflow-hidden relative cursor-pointer"
             style={{ height: "340px" }}
             onClick={() => p.href && window.open(p.href, "_self")}
+            whileHover={{ scale: 1.03, transition: { duration: 0.25 } }}
+            whileTap={{ scale: 0.98 }}
           >
             {/* Foto di sfondo */}
             <div
@@ -158,7 +161,7 @@ export default function ProductCards() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const SUPABASE_URL = "https://nkojjrvndjyivsjvrqds.supabase.co";
 const SUPABASE_KEY = "sb_publishable_4WlxUEDHRnR0BGxCViP4NA_QVYLUwtg";
@@ -104,10 +105,12 @@ export default function Hero() {
             required
             className="flex-1 bg-white/10 backdrop-blur border border-white/20 rounded-xl px-5 py-3.5 text-white placeholder-white/40 text-base outline-none focus:border-[#00CBDB]/60 transition-colors"
           />
-          <button
+          <motion.button
             type="submit"
             disabled={loading}
             className="flex items-center justify-center gap-2 bg-[#00CBDB] hover:bg-[#00b8c6] disabled:bg-[#006f78] text-black font-bold text-sm tracking-wide rounded-xl px-6 py-3.5 transition-colors whitespace-nowrap"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
           >
             {loading ? "..." : (
               <>
@@ -115,7 +118,7 @@ export default function Hero() {
                 <ArrowRight size={16} />
               </>
             )}
-          </button>
+          </motion.button>
         </form>
 
         {/* Micro label */}

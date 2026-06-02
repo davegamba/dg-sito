@@ -36,7 +36,7 @@ const categoryColors: Record<string, string> = {
 
 export default function BlogSection() {
   return (
-    <section className="py-20 sm:py-28 bg-black">
+    <section className="py-20 sm:py-28 bg-black gsap-fade">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
 
         {/* Header */}

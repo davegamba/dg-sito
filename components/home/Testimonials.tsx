@@ -116,7 +116,7 @@ export default function Testimonials() {
   const doubled = [...testimonials, ...testimonials];
 
   return (
-    <section className="py-20 sm:py-28 bg-black overflow-hidden">
+    <section className="py-20 sm:py-28 bg-black overflow-hidden gsap-fade">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8">
         <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
           Risultati reali
