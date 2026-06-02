@@ -196,6 +196,34 @@ body {
 .mdx-content pre code   { background: none; border: none; color: #00CBDB; }
 
 /* ─── BOX SUCCO DELLA GUIDA ─────────────────────────────────────────── */
+
+.succo-box {
+  background: #e8fafb;
+  border: 2px solid #00CBDB;
+  border-radius: 18px;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  margin: 0 0 2.5rem;
+}
+
+/* H2 dentro il succo-box: no bordo superiore, colore ciano invariato */
+.succo-box h2 {
+  border-top: none !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* Bullet dentro il succo-box */
+.succo-box ul li {
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+
 /* Stile per le tabelle usate come box "Il Succo della Guida" nei doc originali */
 .mdx-content h2 + table,
 .mdx-content h2 + p + table {
