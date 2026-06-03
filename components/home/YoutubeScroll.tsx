@@ -89,10 +89,7 @@ export default function YoutubeScroll() {
               </div>
             </div>
 
-            {/* Info */}
-            <h3 className="text-white text-sm font-medium leading-snug mb-1 group-hover:text-[#00CBDB] transition-colors duration-200 line-clamp-2">
-              {v.title}
-            </h3>
+
           </a>
         ))}
       </div>
