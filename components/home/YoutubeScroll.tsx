@@ -4,26 +4,11 @@ import { useRef } from "react";
 import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 
 const videos = [
-  {
-    id: "4UmrZCw5x2Y",
-    title: "Esercizi Addominali Completi",
-  },
-  {
-    id: "VLaos7K2jMQ",
-    title: "TABATA LV1 — Cardio HIIT",
-  },
-  {
-    id: "qvNBx4z70ts",
-    title: "TABATA LV2 — HIIT",
-  },
-  {
-    id: "Mqkyg8iy35A",
-    title: "Gambe, Addominali e Glutei",
-  },
-  {
-    id: "dF4X0LFvjGs",
-    title: "4 MIN TABATA ABS",
-  },
+  { id: "hGA0z6hRihk" },
+  { id: "Dv8NRpmSXE0" },
+  { id: "WCLaVNUxjfU" },
+  { id: "VLaos7K2jMQ" },
+  { id: "oAxIWT0hK5U" },
 ];
 
 export default function YoutubeScroll() {
