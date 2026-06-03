@@ -78,7 +78,7 @@ export default function YoutubeScroll() {
             <div className="relative w-full aspect-video rounded-[14px] overflow-hidden bg-[#111] mb-3">
               <img
                 src={`https://img.youtube.com/vi/${v.id}/maxresdefault.jpg`}
-                alt={v.title}
+                alt="Video"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               {/* Overlay play */}
