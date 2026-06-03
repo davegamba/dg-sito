@@ -5,40 +5,24 @@ import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 
 const videos = [
   {
-    id: "dQw4w9WgXcQ",
-    title: "Come perdere grasso senza cardio (la verità scientifica)",
-    views: "128K visualizzazioni",
-    duration: "12:34",
+    id: "4UmrZCw5x2Y",
+    title: "Esercizi Addominali Completi",
   },
   {
-    id: "dQw4w9WgXcQ",
-    title: "Il Metodo BIM spiegato in 10 minuti",
-    views: "89K visualizzazioni",
-    duration: "10:02",
+    id: "VLaos7K2jMQ",
+    title: "TABATA LV1 — Cardio HIIT",
   },
   {
-    id: "dQw4w9WgXcQ",
-    title: "Proteine: quante ne servono davvero?",
-    views: "214K visualizzazioni",
-    duration: "15:21",
+    id: "qvNBx4z70ts",
+    title: "TABATA LV2 — HIIT",
   },
   {
-    id: "dQw4w9WgXcQ",
-    title: "Addominali: smetti di fare sit-up",
-    views: "340K visualizzazioni",
-    duration: "8:47",
+    id: "Mqkyg8iy35A",
+    title: "Gambe, Addominali e Glutei",
   },
   {
-    id: "dQw4w9WgXcQ",
-    title: "Testosterone dopo i 40: cosa funziona",
-    views: "176K visualizzazioni",
-    duration: "18:05",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "L'allenamento perfetto per chi lavora tutto il giorno",
-    views: "95K visualizzazioni",
-    duration: "11:18",
+    id: "dF4X0LFvjGs",
+    title: "4 MIN TABATA ABS",
   },
 ];
 
@@ -118,17 +102,12 @@ export default function YoutubeScroll() {
                   <Play size={22} fill="white" className="text-white ml-1" />
                 </div>
               </div>
-              {/* Duration badge */}
-              <span className="absolute bottom-2 right-2 bg-black/80 text-white text-xs font-medium px-2 py-0.5 rounded">
-                {v.duration}
-              </span>
             </div>
 
             {/* Info */}
             <h3 className="text-white text-sm font-medium leading-snug mb-1 group-hover:text-[#00CBDB] transition-colors duration-200 line-clamp-2">
               {v.title}
             </h3>
-            <p className="text-[#555] text-xs">{v.views}</p>
           </a>
         ))}
       </div>
@@ -136,7 +115,7 @@ export default function YoutubeScroll() {
       {/* CTA canale */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-8">
         <a
-          href="https://youtube.com/@davegamba"
+          href="https://www.youtube.com/@DaveGambaFitness"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-[#00CBDB] text-sm font-medium hover:gap-3 transition-all duration-200"
