@@ -92,7 +92,7 @@
   .social-row { display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; }
   .social-icon { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.2s; }
   .social-icon:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.6); color: #fff; }
-  .social-icon svg { width: 15px; height: 15px; fill: currentColor; }
+  .social-icon svg { width: 20px; height: 20px; fill: currentColor; }
 
   /* LINKS — dentro la hero */
   .links { display: flex; flex-direction: column; gap: 9px; margin-bottom: 16px; }
@@ -145,7 +145,7 @@
     <img class="bg" src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg" alt="Dave Gamba">
     <div class="hero-content">
       <div class="hero-name">Dave<span>Gamba</span></div>
-      <div class="hero-tagline">Sistema Breve. Intenso. Mirato. per un fisico asciutto e scolpito.</div>
+      <div class="hero-tagline">Sistema Breve. Intenso. Mirato.<br>Per un fisico atletico, asciutto e scolpito.</div>
       <div class="social-row">
         <a href="https://www.instagram.com/dave.gamba" class="social-icon" aria-label="Instagram">
           <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -205,6 +205,31 @@
           <span class="link-arrow">›</span>
         </a>
         
+        <!-- CARD STYLE — prova nuovo formato -->
+        <a href="https://club.davegamba.com/club.html" style="
+          display: flex; align-items: center;
+          background: rgba(15,15,20,0.85);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 16px; overflow: hidden;
+          text-decoration: none; color: #fff;
+          margin-top: 10px;
+          backdrop-filter: blur(12px);
+          transition: transform 0.2s, border-color 0.2s;
+        " onmouseenter="this.style.borderColor='rgba(0,203,219,0.5)'" onmouseleave="this.style.borderColor='rgba(255,255,255,0.1)'">
+          <!-- Foto sinistra -->
+          <div style="flex-shrink:0; width:90px; height:90px; overflow:hidden;">
+            <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_29-05-2026-20-47-56.jpg"
+              alt="DG Fit Club"
+              style="width:100%; height:100%; object-fit:cover; object-position:center top;">
+          </div>
+          <!-- Testo centro -->
+          <div style="flex:1; padding: 0 16px; text-align:center;">
+            <div style="font-family:'DM Serif Display',serif; font-size:1.05rem; font-weight:400; color:#fff; margin-bottom:4px;">DG Fit Club</div>
+            <div style="font-size:0.75rem; color:rgba(255,255,255,0.55); letter-spacing:0.02em;">Quiz · Protocolli · Coaching · e altro</div>
+          </div>
+          <!-- Freccia destra -->
+          <div style="padding-right:16px; color:rgba(0,203,219,0.7); font-size:1.2rem;">›</div>
+        </a>
       </div>
       <div class="press-bar">
         <div class="press-label">Visto su</div>
