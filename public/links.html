@@ -16,10 +16,7 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --cyan: #00CBDB;
-    --gold: #F0C040;
     --black: #080C0F;
-    --surface: rgba(0,203,219,0.40);
-    --surface2: #1A1A1A;
     --text: #F0F0F0;
     --muted: #888;
   }
@@ -27,7 +24,7 @@
   body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(0,203,219,0.10) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; z-index: 0; }
   .page { max-width: 480px; margin: 0 auto; position: relative; z-index: 1; padding-bottom: 60px; }
 
-  /* HERO — foto + tutto il contenuto sovrapposto */
+  /* HERO */
   .hero {
     position: relative;
     width: 100%;
@@ -43,7 +40,6 @@
     display: block;
     transform: translateY(-3%);
   }
-  /* Gradiente: metà superiore libera, metà inferiore scura per leggibilità */
   .hero::after {
     content: '';
     position: absolute;
@@ -53,7 +49,7 @@
     pointer-events: none;
   }
 
-  /* Tutto il contenuto nella parte bassa della foto */
+  /* Contenuto sovrapposto nella parte bassa della foto */
   .hero-content {
     position: absolute;
     bottom: 40px; left: 0; right: 0;
@@ -61,7 +57,7 @@
     padding: 0 20px 20px;
     display: flex;
     flex-direction: column;
-    gap: 0;
+    animation: fadeUp 0.7s ease 0.15s both;
   }
 
   /* Nome */
@@ -74,17 +70,16 @@
     margin-bottom: 4px;
     text-align: center;
   }
-  .hero-name span { color: var(--cyan); font-style: normal; }
+  .hero-name span { color: var(--cyan); }
 
   .hero-tagline {
     font-size: 0.72rem;
     font-weight: 300;
-    color: var(--muted);
+    color: #fff;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 14px;
-    color: #fff;
   }
 
   /* Social */
@@ -93,10 +88,9 @@
   .social-icon:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.6); color: #fff; }
   .social-icon svg { width: 20px; height: 20px; fill: currentColor; }
 
-  /* LINKS — dentro la hero */
+  /* CARD PRODOTTI */
   .links { display: flex; flex-direction: column; gap: 11px; margin-bottom: 16px; }
 
-  /* CARD STYLE */
   .link-card {
     display: flex; align-items: center;
     background: rgba(15,15,20,0.65);
@@ -114,51 +108,10 @@
   .link-card-sub { font-size: 0.75rem; color: rgba(255,255,255,0.55); letter-spacing: 0.02em; }
   .link-card-arrow { padding-right: 16px; color: var(--cyan); font-size: 1.6rem; }
 
-  .link-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 13px 18px;
-    background: linear-gradient(135deg, rgba(0,203,219,0.45) 0%, rgba(180,248,255,0.22) 100%);
-    border: none;
-    border-radius: 30px;
-    text-decoration: none;
-    color: var(--text);
-    transition: all 0.2s;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-    text-align: center;
-  }
-  .link-btn:hover { transform: translateX(2px); }
-  .link-btn.primary { border: none; background: linear-gradient(135deg, rgba(240,192,64,0.48) 0%, rgba(255,245,180,0.22) 100%); }
-  
-
-  .link-icon { position: absolute; left: 14px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
-  .link-text { flex: 1; text-align: center; }
-  .link-title { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: #fff; line-height: 1.2; }
-  .link-btn.primary .link-title { color: #fff; }
-  .link-sub { font-size: 0.7rem; font-weight: 300; color: rgba(255,255,255,0.75); margin-top: 1px; }
-  .link-arrow { position: absolute; right: 16px; font-size: 0.85rem; color: rgba(255,255,255,0.4); }
-
-  /* PRESS */
-  .press-bar { text-align: center; }
-  .press-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-  .press-logos img { height: 22px; object-fit: contain; opacity: 1; width: 100%; max-width: 100%; }
-
-  .footer { text-align: center; padding: 32px 24px 0; font-size: 0.65rem; color: rgba(136,136,136,0.4); letter-spacing: 0.1em; }
-
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-  .hero-content { animation: fadeUp 0.7s ease 0.15s both; }
-  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
-  .link-btn.primary { animation: pulse 2.2s ease-in-out infinite; }
-  .link-btn.primary:hover { animation: none; transform: scale(1.03); }
-
   /* SEZIONE SOTTO HERO */
-  .below-hero { padding: 0px 20px 0; background: var(--black); margin-top: -80px; position: relative; z-index: 3; }
+  .below-hero { padding: 0 20px 0; background: var(--black); margin-top: -80px; position: relative; z-index: 3; }
 
-  /* YOUTUBE SECTION */
+  /* YOUTUBE */
   .yt-section { margin: 20px 0 48px; }
   .yt-header { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
   .yt-icon { color: #ff0000; font-size: 1rem; }
@@ -181,6 +134,15 @@
   }
   .yt-card:hover .yt-play { background: rgba(0,0,0,0.15); }
   .yt-card-title { font-size: 0.78rem; color: rgba(255,255,255,0.75); margin-top: 6px; line-height: 1.3; }
+
+  /* PRESS */
+  .press-bar { text-align: center; }
+  .press-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+
+  /* FOOTER */
+  .footer { text-align: center; padding: 32px 24px 0; font-size: 0.65rem; color: rgba(136,136,136,0.4); letter-spacing: 0.1em; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
@@ -202,7 +164,6 @@
         </a>
       </div>
 
-      <!-- 3 CARD PRODOTTI in sovrimpressione -->
       <div class="links">
         <a href="https://club.davegamba.com/optin-quiz.html" class="link-card">
           <div class="link-card-img"><img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg" alt="Quiz Metabolico"></div>
@@ -232,10 +193,8 @@
     </div>
   </div>
 
-  <!-- SEZIONE SOTTO HERO — scrollabile -->
   <div class="below-hero">
 
-    <!-- SEZIONE VIDEO YOUTUBE -->
     <div class="yt-section">
       <div class="yt-header">
         <span class="yt-icon">▶</span>
@@ -266,11 +225,10 @@
       </div>
     </div>
 
-    <!-- PRESS -->
     <div class="press-bar">
       <div class="press-label">Come visto su</div>
       <div style="background:#fff;border-radius:12px;padding:12px 16px;">
-        <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/loghi-press.png" alt="Come visto su" style="width:100%;max-width:100%;height:auto;display:block;">
+        <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/loghi-press.png" alt="Come visto su" style="width:100%;height:auto;display:block;">
       </div>
     </div>
 
