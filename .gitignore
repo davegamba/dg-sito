@@ -43,3 +43,4 @@ blog-memory.md
 
 # TinaCMS
 .tina/__generated__
+tina/__generated__/client.ts
