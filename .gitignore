@@ -40,3 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 blog-memory.md
+
+# TinaCMS
+.tina/__generated__
+public/admin
