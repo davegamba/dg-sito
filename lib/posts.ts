@@ -86,6 +86,7 @@ export function getPostBySlug(slug: string): Post | null {
   if (!fs.existsSync(filePath)) return null;
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
+  if (!isPublished(data)) return null;
   return {
     slug,
     title: data.title ?? "",
@@ -93,7 +94,7 @@ export function getPostBySlug(slug: string): Post | null {
     category: data.category ?? "",
     excerpt: data.excerpt ?? "",
     image: data.image ?? null,
-    published: isPublished(data),
+    published: true,
     content,
     readingTime: calcReadingTime(content),
     toc: extractToc(content),
@@ -103,13 +104,29 @@ export function getPostBySlug(slug: string): Post | null {
 /** Divide il contenuto in succo (prima parte) e corpo (resto).
  *  Il succo è il blocco <div className="succo-box">...</div> iniziale. */
 export function splitContent(content: string): { succo: string; body: string } {
-  const succoEnd = content.indexOf("</div>");
-  if (succoEnd === -1 || !content.trimStart().startsWith("<div")) {
+  if (!content.trimStart().startsWith("<div")) {
     return { succo: "", body: content };
   }
-  const succo = content.slice(0, succoEnd + 6).trim();
-  const body = content.slice(succoEnd + 6).trim();
-  return { succo, body };
+  // Trova la chiusura del div esterno tenendo conto dei div annidati
+  let depth = 0;
+  let i = 0;
+  while (i < content.length) {
+    if (content.startsWith("<div", i)) {
+      depth++;
+      i += 4;
+    } else if (content.startsWith("</div>", i)) {
+      depth--;
+      if (depth === 0) {
+        const succo = content.slice(0, i + 6).trim();
+        const body = content.slice(i + 6).trim();
+        return { succo, body };
+      }
+      i += 6;
+    } else {
+      i++;
+    }
+  }
+  return { succo: "", body: content };
 }
 
 /** Articoli correlati: stessa categoria, escluso quello corrente */

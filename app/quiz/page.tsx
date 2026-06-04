@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { determineProfile } from "@/lib/quiz";
 import Header from "@/components/Header";
 
 /* ─── TYPES ─── */
@@ -156,15 +157,6 @@ const profiles: Record<string, { icon: string; name: string; tagline: string; an
     ],
   },
 };
-
-function determineProfile(answers: Answers): string {
-  const livello = answers["livello"] as string;
-  const blocchi = (answers["blocchi"] as string[]) || [];
-  if (livello === "avanzato") return "salto";
-  if (blocchi.includes("tempo")) return "tempo";
-  if (livello === "principiante") return "zero";
-  return "stallo";
-}
 
 /* ─── COMPONENTE ─── */
 export default function QuizPage() {

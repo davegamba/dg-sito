@@ -1,10 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
+import { determineProfile } from "@/lib/quiz";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const VALID_KEYS = new Set(["obiettivo", "blocchi", "fisico", "tempo", "sessioni", "livello", "luogo"]);
 
 export async function POST(req: NextRequest) {
   const { name, email, answers } = await req.json();
 
-  if (!email || !name) {
+  if (!name || !email || !EMAIL_RE.test(email)) {
     return NextResponse.json({ ok: false, error: "name e email obbligatori" }, { status: 400 });
+  }
+
+  // Filtra solo le chiavi attese per non salvare payload arbitrari
+  const safeAnswers: Record<string, unknown> = {};
+  if (answers && typeof answers === "object") {
+    for (const key of VALID_KEYS) {
+      if (key in answers) safeAnswers[key] = answers[key];
+    }
   }
 
   const errors: string[] = [];
@@ -31,7 +43,7 @@ export async function POST(req: NextRequest) {
 
   if (supabaseUrl && supabaseKey) {
     try {
-      await fetch(`${supabaseUrl}/rest/v1/quiz_leads`, {
+      const supabaseRes = await fetch(`${supabaseUrl}/rest/v1/quiz_leads`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,11 +54,12 @@ export async function POST(req: NextRequest) {
         body: JSON.stringify({
           name,
           email,
-          answers,
-          profile: determineProfile(answers),
+          answers: safeAnswers,
+          profile: determineProfile(safeAnswers as Record<string, string | string[]>),
           created_at: new Date().toISOString(),
         }),
       });
+      if (!supabaseRes.ok) throw new Error(`Supabase ${supabaseRes.status}`);
     } catch (e) {
       errors.push("supabase");
       console.error("Supabase error:", e);
@@ -56,11 +69,3 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ ok: errors.length === 0, errors });
 }
 
-function determineProfile(answers: Record<string, string | string[]>): string {
-  const livello = answers["livello"] as string;
-  const blocchi = (answers["blocchi"] as string[]) || [];
-  if (livello === "avanzato") return "salto";
-  if (blocchi.includes("tempo")) return "tempo";
-  if (livello === "principiante") return "zero";
-  return "stallo";
-}

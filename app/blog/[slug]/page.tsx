@@ -99,7 +99,7 @@ export default async function PostPage({
       logo: { "@type": "ImageObject", url: "https://davegamba.com/logo.png" },
     },
     datePublished: post.date,
-    image: post.image,
+    image: post.image ?? undefined,
     mainEntityOfPage: pageUrl,
   };
 
