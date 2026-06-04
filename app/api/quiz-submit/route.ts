@@ -3,6 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   const { name, email, answers } = await req.json();
 
+  if (!email || !name) {
+    return NextResponse.json({ ok: false, error: "name e email obbligatori" }, { status: 400 });
+  }
+
   const errors: string[] = [];
 
   /* ── 1. SYSTEME.IO ── */
@@ -49,7 +53,7 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  return NextResponse.json({ ok: true, errors });
+  return NextResponse.json({ ok: errors.length === 0, errors });
 }
 
 function determineProfile(answers: Record<string, string | string[]>): string {
