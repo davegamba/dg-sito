@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "https://club.davegamba.com", label: "Protocolli DG Fit Club" },
+  { href: "https://club.davegamba.com", label: "Protocolli" },
   { href: "/blog", label: "Blog" },
   { href: "https://www.youtube.com/@davegamba", label: "Canale YouTube" },
 ];
