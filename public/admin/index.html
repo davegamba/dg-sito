@@ -29,11 +29,12 @@ CMS.init({
         label: "Articoli Blog",
         folder: "content/blog",
         create: true,
-        slug: "{{slug}}",
+        slug: "{{fields.slug}}",
         extension: "mdx",
         format: "frontmatter",
         fields: [
           { label: "Titolo", name: "title", widget: "string" },
+          { label: "Slug (URL)", name: "slug", widget: "string", hint: "URL finale: davegamba.com/blog/questo-slug — solo lettere minuscole e trattini" },
           { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false },
           { label: "Categoria", name: "category", widget: "select", options: ["Allenamento", "Nutrizione", "Dimagrimento", "Testosterone", "Longevità", "Mindset", "Metodo BIM"], required: false },
           { label: "Excerpt (TL;DR)", name: "excerpt", widget: "text", hint: "Breve descrizione per SEO — max 155 caratteri" },
