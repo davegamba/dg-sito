@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const SUPABASE_URL = "https://nkojjrvndjyivsjvrqds.supabase.co";
 const SUPABASE_KEY = "sb_publishable_4WlxUEDHRnR0BGxCViP4NA_QVYLUwtg";
-const QUIZ_URL = "https://club.davegamba.com/optin-quiz.html";
+const QUIZ_URL = "https://quiz.davegamba.com";
 
 export default function Hero() {
   const [email, setEmail] = useState("");
@@ -114,7 +114,7 @@ export default function Hero() {
           >
             {loading ? "..." : (
               <>
-                Scarica gratis
+                Fai il quiz
                 <ArrowRight size={16} />
               </>
             )}
@@ -123,7 +123,7 @@ export default function Hero() {
 
         {/* Micro label */}
         <p className="text-white/35 text-xs tracking-wide">
-          Ricevi il Quiz Metabolico gratuito — nessuno spam
+          Scopri il tuo Profilo Fisico gratuitamente — nessuno spam
         </p>
 
         {/* Social proof */}

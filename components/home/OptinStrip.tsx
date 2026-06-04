@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const SUPABASE_URL = "https://nkojjrvndjyivsjvrqds.supabase.co";
 const SUPABASE_KEY = "sb_publishable_4WlxUEDHRnR0BGxCViP4NA_QVYLUwtg";
-const QUIZ_URL = "https://club.davegamba.com/optin-quiz.html";
+const QUIZ_URL = "https://quiz.davegamba.com";
 
 export default function OptinStrip() {
   const [email, setEmail] = useState("");
@@ -40,16 +40,16 @@ export default function OptinStrip() {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
 
         <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-4 block">
-          Gratis
+          Smetti di aspettare<br />Inizia dal tuo piano gratuito basato sulle tue caratteristiche
         </span>
 
         <h2 className="font-serif text-3xl sm:text-4xl text-[#F0F0F0] mb-4">
           Scopri il tuo{" "}
-          <em className="not-italic text-[#00CBDB]">Tipo Metabolico</em>
+          <em className="not-italic text-[#00CBDB]">Profilo Fisico</em>
         </h2>
 
         <p className="text-[#888888] text-base mb-8 max-w-md mx-auto">
-          Un quiz gratuito in 2 minuti per capire perché non riesci a dimagrire — e cosa fare davvero.
+          Un quiz gratuito in 2 minuti per capire qual è il piano giusto per il tuo fisico.
         </p>
 
         {sent ? (

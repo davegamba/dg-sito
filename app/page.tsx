@@ -9,7 +9,7 @@ import ProductCards from "@/components/home/ProductCards";
 import Testimonials from "@/components/home/Testimonials";
 import YoutubeScroll from "@/components/home/YoutubeScroll";
 import OptinStrip from "@/components/home/OptinStrip";
-import FinalCTA from "@/components/home/FinalCTA";
+
 
 export default function HomePage() {
   return (
@@ -25,7 +25,6 @@ export default function HomePage() {
         <Testimonials />
         <YoutubeScroll />
         <OptinStrip />
-        <FinalCTA />
       </main>
       <Footer />
     </>

@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "/metodo", label: "Il Metodo" },
+  { href: "https://club.davegamba.com", label: "Protocolli DG Fit Club" },
   { href: "/blog", label: "Blog" },
-  { href: "/prodotti", label: "Prodotti" },
+  { href: "https://www.youtube.com/@davegamba", label: "Canale YouTube" },
 ];
 
 export default function Header() {
@@ -22,9 +22,9 @@ export default function Header() {
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 select-none">
+          <Link href="/" className="flex items-center select-none">
             <span className="font-serif text-xl text-[#F0F0F0]">Dave</span>
-            <span className="font-serif text-xl italic text-[#00CBDB]">Gamba</span>
+            <span className="font-serif text-xl text-[#00CBDB]">Gamba</span>
           </Link>
 
           {/* Desktop nav */}
@@ -83,16 +83,9 @@ export default function Header() {
             </Link>
           ))}
           <div className="flex flex-col gap-3 pt-2">
-            <Link
-              href="/login"
-              className="text-[#888888] text-sm text-center"
-              onClick={() => setOpen(false)}
-            >
-              Accedi
-            </Link>
             <Button variant="primary" size="md" className="w-full">
-              <Link href="/optin/sfida" onClick={() => setOpen(false)}>
-                Inizia gratis
+              <Link href="https://club.davegamba.com" onClick={() => setOpen(false)}>
+                Accedi alla tua area personale del Club
               </Link>
             </Button>
           </div>
