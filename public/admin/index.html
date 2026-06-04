@@ -32,6 +32,11 @@ CMS.init({
         slug: "{{fields.slug}}",
         extension: "mdx",
         format: "frontmatter",
+        summary: "{{published == true ? '🟢' : '⬜'}} {{title}}",
+        view_filters: [
+          { label: "✅ Pubblicati", field: "published", pattern: true },
+          { label: "📝 Bozze", field: "published", pattern: false },
+        ],
         fields: [
           { label: "Titolo", name: "title", widget: "string" },
           { label: "Slug (URL)", name: "slug", widget: "string", hint: "URL finale: davegamba.com/blog/questo-slug — solo lettere minuscole e trattini" },
