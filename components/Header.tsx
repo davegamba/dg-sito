@@ -43,14 +43,12 @@ export default function Header() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <Link
-              href="/login"
-              className="text-[#888888] hover:text-[#F0F0F0] text-sm font-medium transition-colors duration-200"
+              href="https://club.davegamba.com"
+              className="text-sm font-bold text-black rounded-xl px-5 py-2 transition-all duration-200 hover:opacity-90"
+              style={{ background: "linear-gradient(90deg, #00CBDB, #00e0a0)" }}
             >
-              Accedi
+              Accedi al Club
             </Link>
-            <Button variant="primary" size="sm">
-              <Link href="/optin/sfida">Inizia gratis</Link>
-            </Button>
           </div>
 
           {/* Mobile hamburger */}
