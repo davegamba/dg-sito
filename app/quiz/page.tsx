@@ -166,6 +166,7 @@ export default function QuizPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
   const [profileKey, setProfileKey] = useState("");
   const [countdown, setCountdown] = useState(15 * 60);
   const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -212,7 +213,7 @@ export default function QuizPage() {
       await fetch("/api/quiz-submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, answers }),
+        body: JSON.stringify({ name, email, answers, website: honeypot }),
       });
     } catch {
       // fallback silenzioso — mostra comunque il risultato
@@ -390,6 +391,11 @@ export default function QuizPage() {
         <h2 style={{ fontFamily: "var(--font-dm-serif, serif)", fontSize: "clamp(28px,6vw,40px)", lineHeight: 1.1, marginBottom: 10 }}>Il tuo profilo<br />è pronto 🔥</h2>
         <p style={{ fontSize: 15, color: "#9a9a94", fontWeight: 300, lineHeight: 1.6, marginBottom: 36 }}>Inserisci nome e email per ricevere i risultati personalizzati e il tuo piano di partenza.</p>
         <form onSubmit={submitEmail} style={{ display: "grid", gap: 12 }}>
+          {/* honeypot — nascosto agli utenti, compilato solo dai bot */}
+          <div style={{ position: "absolute", left: "-9999px", top: "auto", width: 1, height: 1, overflow: "hidden" }} aria-hidden="true">
+            <label htmlFor="website">Website</label>
+            <input id="website" type="text" name="website" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+          </div>
           <div>
             <label style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "#9a9a94", display: "block", marginBottom: 6 }}>Nome</label>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="es. Marco" required style={{ width: "100%", height: 52, padding: "0 18px", background: "rgba(255,255,255,0.05)", border: "1px solid #222220", borderRadius: 12, color: "#fafaf8", fontFamily: "var(--font-dm-sans, sans-serif)", fontSize: 16, outline: "none" }} />

@@ -1,14 +1,32 @@
 import { NextRequest, NextResponse } from "next/server";
+import { promises as dns } from "dns";
 import { determineProfile } from "@/lib/quiz";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const VALID_KEYS = new Set(["obiettivo", "blocchi", "fisico", "tempo", "sessioni", "livello", "luogo"]);
 
 export async function POST(req: NextRequest) {
-  const { name, email, answers } = await req.json();
+  const { name, email, answers, website } = await req.json();
+
+  // Honeypot: campo invisibile agli utenti, compilato solo dai bot
+  if (website) return NextResponse.json({ ok: true });
 
   if (!name || !email || !EMAIL_RE.test(email)) {
     return NextResponse.json({ ok: false, error: "name e email obbligatori" }, { status: 400 });
+  }
+
+  // Verifica MX del dominio — timeout 2s, se non risponde lascia passare
+  const domain = email.split("@")[1];
+  try {
+    const mx = await Promise.race([
+      dns.resolveMx(domain),
+      new Promise<never>((_, reject) => setTimeout(() => reject(new Error("timeout")), 2000)),
+    ]);
+    if (!mx.length) return NextResponse.json({ ok: false, error: "Email non valida" }, { status: 400 });
+  } catch (e) {
+    if ((e as Error).message !== "timeout") {
+      return NextResponse.json({ ok: false, error: "Email non valida" }, { status: 400 });
+    }
   }
 
   // Filtra solo le chiavi attese per non salvare payload arbitrari
