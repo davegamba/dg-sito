@@ -6,6 +6,7 @@
     "dev": "tinacms dev -c \"next dev\"",
     "dev:next": "next dev",
     "studio": "sanity dev",
+    "prebuild": "tinacms build",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
