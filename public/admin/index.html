@@ -32,7 +32,7 @@ CMS.init({
         slug: "{{fields.slug}}",
         extension: "mdx",
         format: "frontmatter",
-        summary: "{{published == true ? '🟢' : '⬜'}} {{title}}",
+        summary: "{{title}} [{{published}}]",
         view_filters: [
           { label: "✅ Pubblicati", field: "published", pattern: true },
           { label: "📝 Bozze", field: "published", pattern: false },
