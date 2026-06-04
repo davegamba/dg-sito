@@ -11,14 +11,14 @@ import ReadingProgress from "@/components/ReadingProgress";
 import type { Metadata } from "next";
 
 // H2 bicolore: prima parte ciano, seconda parte nera
-// Eccezione: "Riferimenti Scientifici" → italic piccolo grigio
+// Eccezione: "Riferimenti Scientifici" → h3 nero con emoji 🔬
 function CustomH2({ children }: { children: ReactNode }) {
   if (typeof children !== "string") return <h2>{children}</h2>;
   if (children.trim().toLowerCase().includes("riferimenti")) {
     return (
-      <h2 style={{ fontStyle: "italic", fontSize: "1rem", color: "#888", fontFamily: "inherit", borderTop: "1px solid #e8e0d4", paddingTop: "1rem", marginTop: "2.5rem" }}>
-        {children}
-      </h2>
+      <h3 style={{ fontSize: "1.1rem", color: "#111", fontWeight: 700, borderTop: "1px solid #e8e0d4", paddingTop: "1.5rem", marginTop: "2.5rem", marginBottom: "0.75rem" }}>
+        🔬 {children}
+      </h3>
     );
   }
   const match = children.match(/^(.+?)\s*(—|:)\s*(.+)$/);
@@ -187,12 +187,13 @@ export default async function PostPage({
               {/* 2. INDICE — dopo il succo, prima del corpo */}
               {post.toc.length > 5 && (
                 <div className="bg-white border border-[#e8e0d4] rounded-[16px] p-5 mb-8">
-                  <p className="text-[11px] font-semibold tracking-widest uppercase text-[#00CBDB] mb-3">In questo articolo</p>
+                  <h3 className="text-base font-bold text-[#111] mb-3">In questo articolo</h3>
                   <ol className="space-y-1.5">
                     {post.toc.map((item) => (
                       <li key={item.id}>
-                        <a href={`#${item.id}`} className="text-sm text-[#444] hover:text-[#00CBDB] transition-colors leading-snug block">
-                          {item.text}
+                        <a href={`#${item.id}`} className="text-sm text-[#444] hover:text-[#00CBDB] transition-colors leading-snug flex items-center gap-1.5 group">
+                          <span className="text-[#00CBDB] text-xs">→</span>
+                          <span className="group-hover:text-[#00CBDB] transition-colors">{item.text}</span>
                         </a>
                       </li>
                     ))}
@@ -206,17 +207,9 @@ export default async function PostPage({
               </div>
             </div>
 
-            {/* Firma */}
-            <div className="max-w-2xl mx-auto px-4 sm:px-6 pb-8">
-              <div className="border-t border-[#e0e0e0] pt-8">
-                <p className="text-[#00CBDB] font-semibold">Sali di livello, Dave</p>
-                <p className="text-[#888] text-sm mt-1">Personal Trainer Online dal 2009</p>
-              </div>
-            </div>
-
             {/* Condivisione social */}
             <div className="max-w-2xl mx-auto px-4 sm:px-6 pb-12">
-              <p className="text-[11px] font-semibold tracking-widest uppercase text-[#aaa] mb-3">Condividi l&apos;articolo</p>
+              <p className="text-base font-bold text-[#111] mb-3">Condividi l&apos;articolo</p>
               <div className="flex flex-wrap gap-3">
                 <a
                   href={`https://wa.me/?text=${titleEncoded}%20${encodeURIComponent(pageUrl)}`}
@@ -249,7 +242,7 @@ export default async function PostPage({
             {related.length > 0 && (
               <div className="border-t border-[#e8e0d4] pt-12 pb-16">
                 <div className="max-w-2xl mx-auto px-4 sm:px-6">
-                  <p className="text-[11px] font-semibold tracking-widest uppercase text-[#00CBDB] mb-6">Potrebbe interessarti</p>
+                  <h2 className="text-xl font-bold text-[#111] mb-6">Potrebbe interessarti</h2>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {related.map((r) => (
                       <Link
