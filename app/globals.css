@@ -123,7 +123,7 @@ body {
 
 /* ─── MDX CONTENT (sfondo chiaro) ───────────────────────────────────── */
 
-.mdx-content p          { color: #222; font-size: 1rem; line-height: 1.9; margin-bottom: 1.4rem; }
+.mdx-content p          { color: #222; font-size: 1rem; line-height: 1.65; margin-bottom: 1.4rem; }
 .mdx-content > p:first-child { font-size: 1.05rem; }
 
 /* H2 — ciano pieno */
@@ -152,10 +152,10 @@ body {
 
 /* Liste */
 .mdx-content ul         { list-style: none; margin-bottom: 1.4rem; padding: 0; }
-.mdx-content ul li      { position: relative; padding-left: 1.4rem; color: #222; margin-bottom: 0.7rem; line-height: 1.75; }
+.mdx-content ul li      { position: relative; padding-left: 1.4rem; color: #222; margin-bottom: 0.7rem; line-height: 1.65; }
 .mdx-content ul li::before { content: "▸"; color: #00CBDB; position: absolute; left: 0; top: 0.15em; font-size: 0.85rem; }
 .mdx-content ol         { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.4rem; color: #222; }
-.mdx-content ol li      { margin-bottom: 0.6rem; line-height: 1.75; }
+.mdx-content ol li      { margin-bottom: 0.6rem; line-height: 1.65; }
 
 /* Blockquote / box evidenziato */
 .mdx-content blockquote {

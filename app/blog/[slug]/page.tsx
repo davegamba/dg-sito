@@ -164,12 +164,6 @@ export default async function PostPage({
                 </div>
               </div>
 
-              {/* Descrizione (excerpt) */}
-              {post.excerpt && (
-                <p className="text-[#999] text-base leading-relaxed mb-2 italic">
-                  {post.excerpt}
-                </p>
-              )}
             </div>
           </div>
 
@@ -192,7 +186,7 @@ export default async function PostPage({
                     {post.toc.map((item) => (
                       <li key={item.id}>
                         <a href={`#${item.id}`} className="text-sm text-[#444] hover:text-[#00CBDB] transition-colors leading-snug flex items-center gap-1.5 group">
-                          <span className="text-[#00CBDB] text-xs">→</span>
+                          <span className="text-[#00CBDB] text-sm">›</span>
                           <span className="group-hover:text-[#00CBDB] transition-colors">{item.text}</span>
                         </a>
                       </li>
