@@ -1,37 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-const SUPABASE_URL = "https://nkojjrvndjyivsjvrqds.supabase.co";
-const SUPABASE_KEY = "sb_publishable_4WlxUEDHRnR0BGxCViP4NA_QVYLUwtg";
-const QUIZ_URL = "https://quiz.davegamba.com";
-
 export default function Hero() {
-  const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const val = email.trim().toLowerCase();
-    if (!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) return;
-    setLoading(true);
-    try {
-      await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
-        method: "POST",
-        headers: {
-          apikey: SUPABASE_KEY,
-          Authorization: `Bearer ${SUPABASE_KEY}`,
-          "Content-Type": "application/json",
-          Prefer: "resolution=ignore-duplicates",
-        },
-        body: JSON.stringify({ name: "", email: val, source: "home-hero" }),
-      });
-    } catch {}
-    window.location.href = `${QUIZ_URL}?email=${encodeURIComponent(val)}`;
-  };
 
   return (
     <section className="relative min-h-dvh flex items-center justify-center overflow-hidden bg-black">
@@ -92,38 +66,19 @@ export default function Hero() {
           per un fisico atletico, asciutto e scolpito
         </p>
 
-        {/* Optin form */}
-        <form
-          onSubmit={handleSubmit}
-          className="w-full max-w-md flex flex-col sm:flex-row gap-3 mt-2"
-        >
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="La tua email..."
-            required
-            className="flex-1 bg-white/10 backdrop-blur border border-white/20 rounded-xl px-5 py-3.5 text-white placeholder-white/40 text-base outline-none focus:border-[#00CBDB]/60 transition-colors"
-          />
-          <motion.button
-            type="submit"
-            disabled={loading}
-            className="flex items-center justify-center gap-2 bg-[#00CBDB] hover:bg-[#00b8c6] disabled:bg-[#006f78] text-black font-bold text-sm tracking-wide rounded-xl px-6 py-3.5 transition-colors whitespace-nowrap"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
+        {/* CTA Quiz */}
+        <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="mt-2">
+          <Link
+            href="/quiz"
+            className="inline-flex items-center gap-2 bg-[#00CBDB] hover:bg-[#00b8c6] text-black font-bold text-base tracking-wide rounded-xl px-8 py-4 transition-colors"
           >
-            {loading ? "..." : (
-              <>
-                Fai il quiz
-                <ArrowRight size={16} />
-              </>
-            )}
-          </motion.button>
-        </form>
+            Fai il quiz <ArrowRight size={18} />
+          </Link>
+        </motion.div>
 
         {/* Micro label */}
         <p className="text-white/35 text-xs tracking-wide">
-          Scopri il tuo Profilo Fisico gratuitamente — nessuno spam
+          Scopri il tuo Profilo Fisico gratuitamente — 2 minuti
         </p>
 
         {/* Social proof */}
