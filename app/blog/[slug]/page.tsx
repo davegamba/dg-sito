@@ -265,21 +265,36 @@ export default async function PostPage({
           </div>{/* fine bg-sabbia */}
         </article>
 
-        {/* CTA */}
+        {/* CTA — Optin Quiz Fisico */}
         <section className="bg-[#0d0d0d] border-t border-[#1a1a1a] py-16">
-          <div className="max-w-xl mx-auto px-4 sm:px-6 text-center">
-            <h2 className="font-serif text-2xl sm:text-3xl text-white mb-4">
-              Metti in pratica quello che hai letto
+          <div className="max-w-md mx-auto px-4 sm:px-6 text-center">
+            <div className="text-3xl mb-4">💪</div>
+            <h2 className="font-serif text-2xl sm:text-3xl text-white mb-3">
+              Scopri il tuo Profilo Fisico
             </h2>
-            <p className="text-[#666] text-base mb-8">
-              Il Metodo BIM — 21 minuti, 3 volte a settimana. Inizia gratis.
+            <p className="text-[#888] text-sm mb-8">
+              Inserisci la tua email — ti mando il quiz gratuito che ho usato con 3.000+ clienti.
             </p>
-            <Link
-              href="/optin/sfida"
-              className="inline-flex items-center gap-2 bg-[#00CBDB] text-black font-semibold px-8 py-4 rounded-[12px] hover:bg-[#00b8c7] transition-colors duration-200"
+            <form
+              action="https://4957-info.systeme.io/dc3ae16e"
+              method="POST"
+              className="flex flex-col sm:flex-row gap-3"
             >
-              Inizia gratis ora
-            </Link>
+              <input
+                type="email"
+                name="email"
+                placeholder="La tua email..."
+                required
+                className="flex-1 bg-[#1a1a1a] border border-[#333] text-white placeholder-[#555] px-4 py-3.5 rounded-[10px] text-sm focus:outline-none focus:border-[#00CBDB] transition-colors"
+              />
+              <button
+                type="submit"
+                className="bg-[#00CBDB] text-black font-semibold px-6 py-3.5 rounded-[10px] text-sm hover:bg-[#00b8c7] transition-colors whitespace-nowrap"
+              >
+                Voglio il quiz →
+              </button>
+            </form>
+            <p className="text-[#444] text-xs mt-4">Nessuno spam. Solo roba utile.</p>
           </div>
         </section>
       </main>
