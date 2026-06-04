@@ -265,7 +265,7 @@ export default async function PostPage({
           </div>{/* fine bg-sabbia */}
         </article>
 
-        {/* CTA — Optin Quiz Fisico */}
+        {/* CTA — Quiz Profilo Fisico */}
         <section className="bg-[#0d0d0d] border-t border-[#1a1a1a] py-16">
           <div className="max-w-md mx-auto px-4 sm:px-6 text-center">
             <div className="text-3xl mb-4">💪</div>
@@ -273,28 +273,15 @@ export default async function PostPage({
               Scopri il tuo Profilo Fisico
             </h2>
             <p className="text-[#888] text-sm mb-8">
-              Inserisci la tua email — ti mando il quiz gratuito che ho usato con 3.000+ clienti.
+              7 domande per capire dove sei adesso e qual è il piano giusto per il tuo fisico. Gratuito.
             </p>
-            <form
-              action="https://4957-info.systeme.io/dc3ae16e"
-              method="POST"
-              className="flex flex-col sm:flex-row gap-3"
+            <Link
+              href="/quiz"
+              className="inline-flex items-center gap-2 bg-[#00CBDB] text-black font-semibold px-8 py-4 rounded-[12px] hover:bg-[#00b8c7] transition-colors duration-200 text-base"
             >
-              <input
-                type="email"
-                name="email"
-                placeholder="La tua email..."
-                required
-                className="flex-1 bg-[#1a1a1a] border border-[#333] text-white placeholder-[#555] px-4 py-3.5 rounded-[10px] text-sm focus:outline-none focus:border-[#00CBDB] transition-colors"
-              />
-              <button
-                type="submit"
-                className="bg-[#00CBDB] text-black font-semibold px-6 py-3.5 rounded-[10px] text-sm hover:bg-[#00b8c7] transition-colors whitespace-nowrap"
-              >
-                Voglio il quiz →
-              </button>
-            </form>
-            <p className="text-[#444] text-xs mt-4">Nessuno spam. Solo roba utile.</p>
+              Fai il quiz gratuito →
+            </Link>
+            <p className="text-[#444] text-xs mt-4">2 minuti · Nessuno spam · Risultati personalizzati</p>
           </div>
         </section>
       </main>
