@@ -102,7 +102,7 @@ export default function CookieBanner() {
             cursor: "pointer",
           }}
         >
-          Rifiuta
+          Solo essenziali
         </button>
         <button
           onClick={accept}
@@ -117,7 +117,7 @@ export default function CookieBanner() {
             cursor: "pointer",
           }}
         >
-          Accetta
+          Accetta tutti
         </button>
       </div>
     </div>
