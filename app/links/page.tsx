@@ -132,7 +132,7 @@ export default function LinksPage() {
         <div style={{ padding: "0 20px", background: "#080C0F", marginTop: -20, position: "relative", zIndex: 3 }}>
 
           {/* YouTube */}
-          <div style={{ margin: "90px 0 48px" }}>
+          <div style={{ margin: "120px 0 48px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
               <span style={{ color: "#ff0000", fontSize: "1rem" }}>▶</span>
               <span style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontSize: "1.45rem", color: "#fff", flex: 1, letterSpacing: "0.04em" }}>Mio Canale Youtube</span>
@@ -141,8 +141,8 @@ export default function LinksPage() {
             <div className="yt-scroll">
               {YT_VIDEOS.map((id) => (
                 <a key={id} href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noopener noreferrer"
-                  style={{ flexShrink: 0, width: 260, textDecoration: "none", color: "#fff" }}>
-                  <div style={{ position: "relative", width: 260, height: 160, borderRadius: 10, overflow: "hidden", background: "#111" }}>
+                  style={{ flexShrink: 0, width: 290, textDecoration: "none", color: "#fff" }}>
+                  <div style={{ position: "relative", width: 290, height: 190, borderRadius: 10, overflow: "hidden", background: "#111" }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={`https://img.youtube.com/vi/${id}/mqdefault.jpg`} alt={`Video ${id}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     <div className="yt-play" style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,0.3)", fontSize: "1.5rem", color: "rgba(255,255,255,0.85)", transition: "background 0.2s" }}>▶</div>
