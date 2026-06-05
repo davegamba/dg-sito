@@ -85,7 +85,7 @@ export default function Footer() {
                 <IconYoutube />
               </a>
               <a
-                href="https://facebook.com/davegamba"
+                href="https://www.facebook.com/davegambafitness/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 flex items-center justify-center rounded-lg border border-[#1e1e2e] text-[#888888] hover:text-[#00CBDB] hover:border-[#00CBDB] transition-all duration-200"
@@ -140,10 +140,10 @@ export default function Footer() {
             © {new Date().getFullYear()} Dave Gamba — P.IVA 09230900962 — Tutti i diritti riservati.
           </p>
           <div className="flex gap-4">
-            <Link href="/privacy" className="text-[#444444] text-xs hover:text-[#888888] transition-colors">
+            <Link href="/privacy" className="text-[#555555] text-xs hover:text-[#888888] transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/termini" className="text-[#444444] text-xs hover:text-[#888888] transition-colors">
+            <Link href="/termini" className="text-[#555555] text-xs hover:text-[#888888] transition-colors">
               Termini
             </Link>
           </div>

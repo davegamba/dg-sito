@@ -2,7 +2,7 @@
 export default function ChiSono() {
   return (
     <section className="py-16 sm:py-24 bg-black gsap-fade">
-      <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 24px" }}>
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px" }}>
 
         {/* Foto + Testo — 50/50, centrati verticalmente */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "24px", flexWrap: "nowrap" }}>
@@ -40,6 +40,13 @@ export default function ChiSono() {
             </p>
           </div>
         </div>
+
+        {/* Frase metodo */}
+        <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.7, marginTop: "24px", marginBottom: "4px", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "24px" }}>
+          La maggior parte delle persone si allena tanto, senza struttura reale, e si chiede perché non vede risultati.{" "}
+          <strong style={{ color: "#fff" }}>Il Metodo Breve Intenso Mirato funziona al contrario:</strong>{" "}
+          <span style={{ color: "#00CBDB" }}>meno ore, più intensità, zero esercizi inutili.</span>
+        </p>
 
         {/* Card BIM */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "12px", marginTop: "28px" }}>
