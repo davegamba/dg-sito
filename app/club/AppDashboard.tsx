@@ -201,7 +201,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         }
         .bc-greeting-name {
           font-family: 'DM Serif Display', serif;
-          font-size: clamp(36px, 5vw, 52px);
+          font-size: clamp(44px, 6vw, 64px);
           color: #F5F0E8;
           line-height: 1.1;
         }
