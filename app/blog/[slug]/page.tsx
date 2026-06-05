@@ -186,7 +186,7 @@ export default async function PostPage({
                     {post.toc.map((item) => (
                       <li key={item.id}>
                         <a href={`#${item.id}`} className="text-sm text-[#444] hover:text-[#00CBDB] transition-colors leading-snug flex items-center gap-1.5 group">
-                          <span className="text-[#00CBDB] text-sm">›</span>
+                          <span className="text-[#00CBDB] text-lg font-bold leading-none">›</span>
                           <span className="group-hover:text-[#00CBDB] transition-colors">{item.text}</span>
                         </a>
                       </li>

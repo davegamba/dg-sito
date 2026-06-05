@@ -13,6 +13,8 @@ const WA_MESSAGE = encodeURIComponent(
 // ──────────────────────────────────────────────────────────────────
 
 export default function WhatsAppButton() {
+  // ← NASCOSTO: attivare quando il numero WhatsApp è pronto
+  return null;
   const [open, setOpen] = useState(false);
 
   const waUrl = `https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`;
@@ -56,7 +58,7 @@ export default function WhatsAppButton() {
                 className="bg-white rounded-2xl rounded-bl-none px-4 py-3 text-[#111] text-sm leading-relaxed shadow-sm max-w-[85%]"
               >
                 Ciao 👋<br />
-                Scrivimi su WhatsApp per saperne di più sul <strong>Metodo BIM</strong> — alleno uomini 35-50 anni a trasformarsi in 21 minuti al giorno.
+                Scrivimi direttamente su WhatsApp per avere più informazioni sui protocolli per la tua trasformazione e prenotare una <strong>chiamata conoscitiva gratuita</strong> senza impegno.
               </div>
             </div>
 
