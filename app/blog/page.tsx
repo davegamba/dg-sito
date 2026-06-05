@@ -19,13 +19,12 @@ export default function BlogPage() {
 
         <section className="py-16 sm:py-24 bg-black border-b border-[#1a1a1a]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-4 block">Blog</span>
+            <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-4 block">Blog DaveGamba.com</span>
             <h1 className="font-serif text-4xl sm:text-5xl text-white mb-4">
-              Niente fuffa.{" "}
-              <em className="not-italic text-[#00CBDB]">Solo risultati.</em>
+              Articoli & Guide di Dave
             </h1>
             <p className="text-[#666] text-lg max-w-xl">
-              Articoli basati su evidenze PubMed. Scritti per chi vuole capire, non solo seguire.
+              Tutte le ultime ricerche scientifiche aggiornate in temi di allenamento, nutrizione, biohacking e anti-aging.
             </p>
           </div>
         </section>

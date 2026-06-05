@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
 
-// Inline SVGs per le icone social non presenti in lucide-react
 const IconInstagram = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -17,21 +16,26 @@ const IconYoutube = () => (
   </svg>
 );
 
+const IconFacebook = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
+
 const footerLinks = {
-  Metodo: [
-    { href: "/metodo", label: "Il Metodo BIM" },
-    { href: "/blog", label: "Blog" },
-    { href: "/prodotti", label: "Tutti i prodotti" },
+  Contenuti: [
+    { href: "/blog", label: "Blog & Guide" },
+    { href: "https://www.youtube.com/@DaveGambaFitness", label: "Canale YouTube", external: true },
   ],
   Prodotti: [
-    { href: "/prodotti/sfida-28-giorni", label: "Sfida 28 Giorni" },
-    { href: "/prodotti/sfida-estiva", label: "Sfida Estiva 21gg" },
-    { href: "/prodotti/club", label: "DG Athletic Club" },
-    { href: "/prodotti/consulenza", label: "Consulenza 1:1" },
+    { href: "https://club.davegamba.com", label: "DG Athletic Club", external: true },
+    { href: "/coming-soon", label: "Sfida Estiva 21gg" },
+    { href: "/coming-soon", label: "Consulenza 1:1" },
   ],
-  Account: [
-    { href: "/login", label: "Accedi" },
-    { href: "/hub", label: "Area personale" },
+  Legale: [
+    { href: "/privacy", label: "Privacy Policy" },
+    { href: "/termini", label: "Termini e Condizioni" },
+    { href: "/coming-soon", label: "Cookie Policy" },
   ],
 };
 
@@ -45,16 +49,23 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="mb-4">
+            <div className="mb-3">
               <span className="font-serif text-2xl text-[#F0F0F0]">Dave</span>
-              <span className="font-serif text-2xl italic text-[#00CBDB]"> Gamba</span>
+              <span className="font-serif text-2xl text-[#00CBDB]">Gamba</span>
             </div>
-            <p className="text-[#888888] text-sm leading-relaxed mb-4">
+            <p className="text-[#888888] text-sm leading-relaxed mb-2">
               Personal trainer online dal 2009.<br />
               3.000+ clienti. Metodo BIM.
             </p>
+            <a
+              href="mailto:info@davegamba.com"
+              className="text-[#555] text-xs hover:text-[#00CBDB] transition-colors duration-200 mb-4 inline-block"
+            >
+              info@davegamba.com
+            </a>
+
             {/* Social */}
-            <div className="flex gap-3">
+            <div className="flex gap-3 mt-4">
               <a
                 href="https://instagram.com/davegamba"
                 target="_blank"
@@ -65,7 +76,7 @@ export default function Footer() {
                 <IconInstagram />
               </a>
               <a
-                href="https://youtube.com/@davegamba"
+                href="https://www.youtube.com/@DaveGambaFitness"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 flex items-center justify-center rounded-lg border border-[#1e1e2e] text-[#888888] hover:text-[#00CBDB] hover:border-[#00CBDB] transition-all duration-200"
@@ -74,7 +85,16 @@ export default function Footer() {
                 <IconYoutube />
               </a>
               <a
-                href="mailto:dave@davegamba.com"
+                href="https://facebook.com/davegamba"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 flex items-center justify-center rounded-lg border border-[#1e1e2e] text-[#888888] hover:text-[#00CBDB] hover:border-[#00CBDB] transition-all duration-200"
+                aria-label="Facebook"
+              >
+                <IconFacebook />
+              </a>
+              <a
+                href="mailto:info@davegamba.com"
                 className="w-9 h-9 flex items-center justify-center rounded-lg border border-[#1e1e2e] text-[#888888] hover:text-[#00CBDB] hover:border-[#00CBDB] transition-all duration-200"
                 aria-label="Email"
               >
@@ -89,13 +109,24 @@ export default function Footer() {
               <h4 className="text-[#F0F0F0] text-sm font-semibold mb-4">{title}</h4>
               <ul className="space-y-2">
                 {links.map((l) => (
-                  <li key={l.href}>
-                    <Link
-                      href={l.href}
-                      className="text-[#888888] text-sm hover:text-[#00CBDB] transition-colors duration-200"
-                    >
-                      {l.label}
-                    </Link>
+                  <li key={l.href + l.label}>
+                    {"external" in l && l.external ? (
+                      <a
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#888888] text-sm hover:text-[#00CBDB] transition-colors duration-200"
+                      >
+                        {l.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={l.href}
+                        className="text-[#888888] text-sm hover:text-[#00CBDB] transition-colors duration-200"
+                      >
+                        {l.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -104,9 +135,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom row */}
-        <div className="border-t border-[#1e1e2e] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-[#1e1e2e] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[#444444] text-xs">
-            © {new Date().getFullYear()} Dave Gamba. Tutti i diritti riservati.
+            © {new Date().getFullYear()} Dave Gamba — P.IVA 09230900962 — Tutti i diritti riservati.
           </p>
           <div className="flex gap-4">
             <Link href="/privacy" className="text-[#444444] text-xs hover:text-[#888888] transition-colors">
@@ -117,6 +148,7 @@ export default function Footer() {
             </Link>
           </div>
         </div>
+
       </div>
     </footer>
   );

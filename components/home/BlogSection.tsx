@@ -1,40 +1,21 @@
 import Link from "next/link";
-
-const articles = [
-  {
-    slug: "come-dimagrire-velocemente",
-    title: "Come dimagrire velocemente senza perdere muscolo (la verità scientifica)",
-    category: "Dimagrimento",
-    image: null,
-  },
-  {
-    slug: "testosterone-dopo-i-40",
-    title: "Testosterone dopo i 40: cosa funziona davvero e cosa è solo marketing",
-    category: "Testosterone",
-    image: null,
-  },
-  {
-    slug: "addominali-smetti-di-fare-sit-up",
-    title: "Addominali: smetti di fare sit-up. Ecco perché non servono",
-    category: "Allenamento",
-    image: null,
-  },
-  {
-    slug: "proteine-quante-ne-servono",
-    title: "Proteine: quante ne servono davvero? La risposta che nessuno ti dà",
-    category: "Nutrizione",
-    image: null,
-  },
-];
+import { getAllPosts } from "@/lib/posts";
 
 const categoryColors: Record<string, string> = {
-  Dimagrimento: "#00CBDB",
-  Testosterone: "#F0C040",
-  Allenamento: "#00CBDB",
-  Nutrizione: "#F0C040",
+  Dimagrimento:  "#00CBDB",
+  Testosterone:  "#F0C040",
+  Allenamento:   "#00CBDB",
+  Nutrizione:    "#F0C040",
+  Longevità:     "#00CBDB",
+  Salute:        "#F0C040",
+  Benessere:     "#00CBDB",
 };
 
 export default function BlogSection() {
+  const articles = getAllPosts()
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 4);
+
   return (
     <section className="py-20 sm:py-28 bg-black gsap-fade">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
@@ -68,9 +49,9 @@ export default function BlogSection() {
           {/* 3 pill BIM */}
           <div className="flex flex-col sm:flex-row gap-3">
             {[
-              { letter: "B", word: "Breve", desc: "21 minuti. Il corpo risponde meglio a stimoli brevi e intensi." },
+              { letter: "B", word: "Breve",  desc: "21 minuti. Il corpo risponde meglio a stimoli brevi e intensi." },
               { letter: "I", word: "Intenso", desc: "La qualità del lavoro batte sempre la quantità delle ore." },
-              { letter: "M", word: "Mirato", desc: "Ogni esercizio ha uno scopo preciso. Niente fatica a vuoto." },
+              { letter: "M", word: "Mirato",  desc: "Ogni esercizio ha uno scopo preciso. Niente fatica a vuoto." },
             ].map((p) => (
               <div
                 key={p.letter}
@@ -87,13 +68,12 @@ export default function BlogSection() {
             ))}
           </div>
 
-          {/* Frase ponte */}
           <p className="text-[#666] text-sm leading-relaxed border-t border-[#1a1a1a] pt-6">
             Ho scritto oltre 200 articoli per smontare i luoghi comuni e spiegare cosa dice davvero la scienza sull'allenamento, la nutrizione e il testosterone. Inizia da qui:
           </p>
         </div>
 
-        {/* Lista articoli */}
+        {/* Lista articoli reali */}
         <div className="flex flex-col">
           {articles.map((a, i) => (
             <Link
@@ -119,7 +99,7 @@ export default function BlogSection() {
               <div className="flex flex-col gap-1.5 flex-1 min-w-0">
                 <span
                   className="text-[10px] font-bold tracking-widest uppercase"
-                  style={{ color: categoryColors[a.category] }}
+                  style={{ color: categoryColors[a.category] ?? "#00CBDB" }}
                 >
                   {a.category}
                 </span>

@@ -15,7 +15,7 @@ export default function BlogList({ posts }: { posts: PostMeta[] }) {
   return (
     <>
       {/* Filtri categoria */}
-      <div className="flex flex-wrap gap-2 mb-10">
+      <div className="flex flex-wrap gap-2 mb-6">
         {CATEGORIE.map((c) => (
           <button
             key={c}
@@ -42,7 +42,7 @@ export default function BlogList({ posts }: { posts: PostMeta[] }) {
               href={`/blog/${post.slug}`}
               className="group flex flex-col bg-[#0d0d0d] border border-[#1a1a1a] rounded-[20px] overflow-hidden hover:border-[#333] transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="relative w-full aspect-[16/9] bg-[#111] overflow-hidden">
+              <div className="relative w-full aspect-[2/1] sm:aspect-[16/9] bg-[#111] overflow-hidden">
                 {post.image ? (
                   <Image
                     src={post.image}
@@ -58,7 +58,7 @@ export default function BlogList({ posts }: { posts: PostMeta[] }) {
                 )}
               </div>
 
-              <div className="flex flex-col gap-2 p-5 flex-1">
+              <div className="flex flex-col gap-2 p-3 sm:p-5 flex-1">
                 {post.category && (
                   <span className="text-[9px] font-semibold tracking-wider uppercase text-[#00CBDB] bg-[#00cbdb0f] border border-[#00cbdb22] px-2 py-0.5 rounded-full w-fit">
                     {post.category}
