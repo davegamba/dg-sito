@@ -132,7 +132,7 @@ export default function LinksPage() {
         <div style={{ padding: "0 20px", background: "#080C0F", marginTop: -20, position: "relative", zIndex: 3 }}>
 
           {/* YouTube */}
-          <div style={{ margin: "120px 0 48px" }}>
+          <div style={{ margin: "60px 0 48px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
               <span style={{ color: "#ff0000", fontSize: "1rem" }}>▶</span>
               <span style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontSize: "1.45rem", color: "#fff", flex: 1, letterSpacing: "0.04em" }}>Mio Canale Youtube</span>
