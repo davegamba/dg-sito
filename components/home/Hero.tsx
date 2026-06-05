@@ -90,14 +90,54 @@ export default function Hero() {
         </p>
 
         {/* CTA Quiz */}
-        <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="mt-2">
-          <Link
-            href="/quiz"
-            className="inline-flex items-center gap-2 bg-[#00CBDB] hover:bg-[#00b8c6] text-black font-bold text-base tracking-wide rounded-xl px-16 py-4 transition-colors"
-          >
+        <style>{`
+          @keyframes shimmer-sweep {
+            0% { transform: translateX(-150%) skewX(-15deg); }
+            100% { transform: translateX(350%) skewX(-15deg); }
+          }
+          .btn-quiz-hero {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #00CBDB 0%, #00AECF 55%, #0077CC 100%);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+            border-radius: 14px;
+            padding: 18px 80px;
+            text-decoration: none;
+            transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
+            box-shadow: 0 4px 18px rgba(0,203,219,0.25);
+          }
+          .btn-quiz-hero:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 16px 40px rgba(0,119,204,0.45), 0 6px 16px rgba(0,203,219,0.35);
+          }
+          .btn-quiz-hero:active {
+            transform: translateY(-1px) scale(0.98);
+            box-shadow: 0 4px 12px rgba(0,203,219,0.3);
+          }
+          .btn-quiz-hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 35%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+            transform: translateX(-150%) skewX(-15deg);
+          }
+          .btn-quiz-hero:hover::after {
+            animation: shimmer-sweep 0.65s ease forwards;
+          }
+        `}</style>
+        <div className="mt-2">
+          <Link href="/quiz" className="btn-quiz-hero">
             Fai il quiz <ArrowRight size={18} />
           </Link>
-        </motion.div>
+        </div>
 
         {/* Micro label */}
         <p className="text-white/35 text-xs tracking-wide">
