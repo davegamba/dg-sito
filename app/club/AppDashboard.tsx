@@ -122,52 +122,46 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .bc-header {
           position: relative;
           z-index: 10;
-          text-align: center;
-          padding: 40px 24px 24px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 24px;
+          height: 52px;
           border-bottom: 1px solid rgba(200,150,62,0.15);
-          background: rgba(10,6,3,0.5);
+          background: rgba(10,6,3,0.6);
           backdrop-filter: blur(12px);
         }
         .bc-header-logo {
           font-family: 'DM Serif Display', serif;
-          font-size: 13px;
-          letter-spacing: 0.25em;
+          font-size: 15px;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: rgba(200,150,62,0.7);
-          margin-bottom: 6px;
+          color: #C8963E;
         }
-        .bc-header-title {
-          font-family: 'DM Serif Display', serif;
-          font-size: 28px;
-          color: #F5F0E8;
-          line-height: 1;
-        }
-        .bc-header-title em { font-style: italic; color: #C8963E; }
-        .bc-header-meta {
-          margin-top: 10px;
+        .bc-header-right {
           display: flex;
           align-items: center;
-          justify-content: center;
-          gap: 12px;
+          gap: 10px;
         }
         .bc-header-email {
           font-size: 12px;
-          color: rgba(245,240,232,0.35);
-          letter-spacing: 0.05em;
+          color: rgba(245,240,232,0.3);
+          letter-spacing: 0.03em;
         }
         .bc-logout-btn {
           background: none;
-          border: none;
-          color: rgba(245,240,232,0.25);
+          border: 1px solid rgba(200,150,62,0.2);
+          border-radius: 100px;
+          color: rgba(245,240,232,0.4);
           font-size: 11px;
           cursor: pointer;
           font-family: 'DM Sans', sans-serif;
           letter-spacing: 0.08em;
           text-transform: uppercase;
-          transition: color 0.2s;
-          padding: 0;
+          transition: all 0.2s;
+          padding: 5px 14px;
         }
-        .bc-logout-btn:hover { color: rgba(245,240,232,0.6); }
+        .bc-logout-btn:hover { color: rgba(245,240,232,0.8); border-color: rgba(200,150,62,0.45); }
 
         /* Main */
         .bc-main {
@@ -183,16 +177,9 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           text-align: center;
           margin-bottom: 48px;
         }
-        .bc-greeting-line {
-          font-size: 11px;
-          letter-spacing: 0.25em;
-          text-transform: uppercase;
-          color: rgba(200,150,62,0.6);
-          margin-bottom: 10px;
-        }
         .bc-greeting-name {
           font-family: 'DM Serif Display', serif;
-          font-size: clamp(32px, 5vw, 48px);
+          font-size: clamp(36px, 5vw, 52px);
           color: #F5F0E8;
           line-height: 1.1;
         }
@@ -361,11 +348,9 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
 
         {/* Header */}
         <header className="bc-header">
-          <div className="bc-header-logo">DG Athletic Club</div>
-          <div className="bc-header-title">Dave <em>Gamba</em></div>
-          <div className="bc-header-meta">
+          <div className="bc-header-logo">DG Fit Club</div>
+          <div className="bc-header-right">
             <span className="bc-header-email">{userEmail}</span>
-            <span style={{ color: "rgba(200,150,62,0.2)", fontSize: 10 }}>·</span>
             <button className="bc-logout-btn" onClick={handleLogout} disabled={loggingOut}>
               {loggingOut ? "..." : "Esci"}
             </button>
@@ -377,11 +362,10 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
 
           {/* Greeting */}
           <div className="bc-greeting">
-            <div className="bc-greeting-line">Bentornato</div>
             <div className="bc-greeting-name">
-              Ciao, <em>{displayName}</em>
+              <em>Welcome</em>
             </div>
-            <div className="bc-greeting-sub">Ecco tutto quello che hai a disposizione.</div>
+            <div className="bc-greeting-sub">Cosa vuoi fare oggi?</div>
           </div>
 
           {/* Ornament */}
