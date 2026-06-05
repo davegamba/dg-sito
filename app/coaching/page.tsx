@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Script from "next/script";
 
 const FAQ_LIST = [
   { q: "Quanto durano gli allenamenti?", a: "20-30 minuti per sessione. Il Metodo BIM — Breve, Intenso, Mirato — è progettato per chi ha poco tempo e vuole massimi risultati. Niente ore in palestra." },
@@ -21,19 +20,19 @@ const PIANI = [
     badge: "Per iniziare", badgeFeatured: false,
     duration: "Coaching da 3 mesi", name: "Starter",
     features: ["Consulenza personale con Dave", "Analisi completa: blocchi, obiettivi, stile di vita", "Piano Strategico su misura", "Piano d'Allenamento BIM stilato da Dave", "Piano Alimentare con biologa nutrizionista", "Video esecuzione per ogni esercizio", "Check settimanale con Dave", { text: "Supporto WhatsApp per ", hl: "3 mesi" }, "Affiancamento fino all'obiettivo"],
-    price: "290€", priceSub: "/ 3 mesi", rate: "", stripe: "https://buy.stripe.com/8x200k6pE4Dc0RkaFC1Nu01",
+    price: "290€", priceSub: "/ 3 mesi", monthly: "≈ 97€/mese", rate: "", stripe: "https://buy.stripe.com/8x200k6pE4Dc0RkaFC1Nu01",
   },
   {
     badge: "Più scelto", badgeFeatured: true,
     duration: "Coaching da 6 mesi", name: "Accelerator",
     features: ["Consulenza personale con Dave", "Analisi completa: blocchi, obiettivi, stile di vita", "Piano Strategico su misura", "Piano d'Allenamento BIM stilato da Dave", "Piano Alimentare con biologa nutrizionista", "Video esecuzione per ogni esercizio", "Check settimanale con Dave", { text: "Supporto WhatsApp per ", hl: "6 mesi" }, "Affiancamento fino all'obiettivo"],
-    price: "530€", priceSub: "/ 6 mesi", rate: "oppure 2 rate da 265€ con Stripe 🔒", stripe: "https://buy.stripe.com/aFa7sM15kedM1Vo2961Nu02",
+    price: "530€", priceSub: "/ 6 mesi", monthly: "≈ 88€/mese", rate: "oppure 2 rate da 265€ con Stripe 🔒", stripe: "https://buy.stripe.com/aFa7sM15kedM1Vo2961Nu02",
   },
   {
     badge: "Il definitivo", badgeFeatured: false,
     duration: "Coaching da 12 mesi", name: "Exclusive",
     features: ["Consulenza personale con Dave", "Analisi completa: blocchi, obiettivi, stile di vita", "Piano Strategico su misura", "Piano d'Allenamento BIM stilato da Dave", "Piano Alimentare con biologa nutrizionista", "Video esecuzione per ogni esercizio", "Check settimanale con Dave", { text: "Supporto WhatsApp per ", hl: "12 mesi" }, "Affiancamento fino all'obiettivo"],
-    price: "960€", priceSub: "/ 12 mesi", rate: "oppure 3 rate da 330€ con Stripe 🔒", stripe: "https://buy.stripe.com/8x228scO27Po0Rk5li1Nu03",
+    price: "960€", priceSub: "/ 12 mesi", monthly: "≈ 80€/mese", rate: "oppure 3 rate da 330€ con Stripe 🔒", stripe: "https://buy.stripe.com/8x228scO27Po0Rk5li1Nu03",
   },
 ];
 
@@ -200,10 +199,6 @@ export default function CoachingPage() {
         @media(max-width:600px){.ch-section{padding:56px 20px}.ch-form-row{grid-template-columns:1fr}}
       `}</style>
 
-      <Script id="fb-pixel-coaching" strategy="afterInteractive">{`
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1727789690815942');fbq('track','PageView');
-      `}</Script>
-
       <div className="ch-body">
         {/* Hero */}
         <section className="ch-hero">
@@ -315,6 +310,7 @@ export default function CoachingPage() {
                   )}
                 </ul>
                 <div className="ch-plan-price">{price} <span>{priceSub}</span></div>
+                <div style={{ fontSize: 12, color: "var(--accent)", fontWeight: 600, marginTop: 2, marginBottom: 2, opacity: 0.8 }}>{(PIANI.find(p => p.name === name) as typeof PIANI[0]).monthly}</div>
                 <div className="ch-plan-rate">{rate || <>&nbsp;</>}</div>
                 <a href={stripe} className="ch-btn-plan" target="_blank" rel="noopener noreferrer">Inizia con {name} →</a>
               </div>
@@ -443,10 +439,42 @@ export default function CoachingPage() {
         </div>
 
         {/* CTA finale */}
-        <div className="ch-cta-block">
-          <h2 className="ch-section-title">I posti sono <em>limitati.</em></h2>
-          <p>Le iscrizioni al Premium Coaching chiudono a esaurimento posti.<br />Compila il questionario per una chiacchierata.</p>
-          <a href="#candidati" className="ch-btn-gold" style={{ fontSize: 16, padding: "18px 44px" }}>Candidati ora →</a>
+        <div style={{ position: "relative", zIndex: 1, overflow: "hidden" }}>
+          {/* Glow background */}
+          <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 600, height: 400, background: "radial-gradient(ellipse at center, rgba(0,203,219,0.10) 0%, transparent 70%)", pointerEvents: "none" }} />
+          <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 300, height: 200, background: "radial-gradient(ellipse at center, rgba(240,192,64,0.07) 0%, transparent 70%)", pointerEvents: "none" }} />
+
+          <div style={{ maxWidth: 720, margin: "0 auto", padding: "100px 24px", textAlign: "center", position: "relative", zIndex: 1 }}>
+            {/* Badge */}
+            <div className="ch-badge ch-badge-gold" style={{ marginBottom: 24, justifyContent: "center" }}>
+              <span className="ch-badge-dot" />Posti disponibili limitati
+            </div>
+
+            <h2 className="ch-section-title" style={{ fontSize: "clamp(36px,5vw,60px)", marginBottom: 16 }}>
+              Pronto a fare il<br /><em>salto di livello?</em>
+            </h2>
+            <p style={{ fontSize: 17, color: "var(--gray-4)", lineHeight: 1.7, marginBottom: 48, maxWidth: 500, margin: "0 auto 48px" }}>
+              Un percorso personalizzato con Dave. Piano di allenamento, alimentazione, check settimanali. Risultati veri, in tempi reali.
+            </p>
+
+            {/* Numeri */}
+            <div style={{ display: "flex", justifyContent: "center", gap: 40, marginBottom: 48, flexWrap: "wrap" }}>
+              {[{ n: "3.000+", l: "Clienti seguiti" }, { n: "15+", l: "Anni di esperienza" }, { n: "93%", l: "Raggiungono l'obiettivo" }].map(({ n, l }) => (
+                <div key={l} style={{ textAlign: "center" }}>
+                  <div style={{ fontFamily: "'DM Serif Display',serif", fontSize: 36, color: "var(--accent)", lineHeight: 1, marginBottom: 6 }}>{n}</div>
+                  <div style={{ fontSize: 12, color: "var(--gray-6)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{l}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA buttons */}
+            <div className="ch-btn-row">
+              <a href="#candidati" className="ch-btn-gold" style={{ fontSize: 16, padding: "18px 44px" }}>Candidati ora — è gratuito →</a>
+              <a href="#piani" className="ch-btn-outline">Vedi i piani</a>
+            </div>
+
+            <p style={{ marginTop: 20, fontSize: 12, color: "var(--gray-6)" }}>✓ Nessun impegno · Call conoscitiva gratuita · Risposta entro 24-48h</p>
+          </div>
         </div>
 
         {/* Footer */}
