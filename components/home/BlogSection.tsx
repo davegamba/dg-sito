@@ -17,7 +17,7 @@ export default function BlogSection() {
     .slice(0, 4);
 
   return (
-    <section className="py-12 sm:py-16 bg-black gsap-fade">
+    <section className="py-12 sm:py-16 gsap-fade" style={{ background: "#0a0a12" }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
 
         {/* Header */}

@@ -29,9 +29,12 @@ export default function Header() {
         className={cn(
           "transition-all duration-400 border-b",
           scrolled
-            ? "bg-[#080810]/90 backdrop-blur-xl border-[#1e1e2e]"
+            ? "backdrop-blur-xl border-[#00CBDB]/20"
             : "bg-transparent backdrop-blur-none border-transparent"
         )}
+        style={scrolled ? {
+          background: "linear-gradient(90deg, #001E28 0%, #005F7A 45%, #00CBDB 100%)",
+        } : undefined}
       >
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
 
