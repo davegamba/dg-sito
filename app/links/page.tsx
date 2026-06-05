@@ -28,8 +28,8 @@ const LINKS = [
   {
     href: "https://club.davegamba.com/optin-quiz.html",
     img: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg",
-    title: "Quiz Metabolico",
-    sub: <>Scopri il tuo Tipo in 2 minuti <span style={{ color: "#F0C040" }}>[Gratuito]</span></>,
+    title: "Quiz Profilo Fisico",
+    sub: <>Scopri il tuo Profilo in 2 minuti <span style={{ color: "#F0C040" }}>[Gratuito]</span></>,
     imgPosition: "center",
   },
   {
