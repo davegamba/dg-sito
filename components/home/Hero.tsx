@@ -74,7 +74,7 @@ export default function Hero() {
         <div className="inline-flex items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-[#00CBDB] animate-pulse" />
           <span className="text-[#00CBDB] text-[11px] font-semibold tracking-[0.2em] uppercase">
-            Personal Trainer Online dal 2009
+            Tutto per la tua Trasformazione Fisica
           </span>
         </div>
 
@@ -86,14 +86,14 @@ export default function Hero() {
         {/* Subtitle */}
         <p className="text-[#cccccc] text-lg sm:text-xl md:text-2xl leading-snug max-w-xl font-light">
           Il Metodo Breve, Intenso, Mirato<br className="hidden sm:block" />
-          per un fisico atletico, asciutto e scolpito
+          per un Fisico Atletico, Asciutto e Scolpito
         </p>
 
         {/* CTA Quiz */}
         <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="mt-2">
           <Link
             href="/quiz"
-            className="inline-flex items-center gap-2 bg-[#00CBDB] hover:bg-[#00b8c6] text-black font-bold text-base tracking-wide rounded-xl px-8 py-4 transition-colors"
+            className="inline-flex items-center gap-2 bg-[#00CBDB] hover:bg-[#00b8c6] text-black font-bold text-base tracking-wide rounded-xl px-16 py-4 transition-colors"
           >
             Fai il quiz <ArrowRight size={18} />
           </Link>

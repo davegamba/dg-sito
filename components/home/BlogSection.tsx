@@ -45,10 +45,10 @@ export default function BlogSection() {
             <Link
               key={a.slug}
               href={`/blog/${a.slug}`}
-              className="flex items-center gap-5 py-5 border-t border-[#1a1a1a] hover:border-[#333] group transition-colors last:border-b"
+              className="flex items-center gap-5 py-3 sm:py-5 border-t border-[#1a1a1a] hover:border-[#333] group transition-colors last:border-b"
             >
               {/* Thumbnail */}
-              <div className="flex-none w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-[10px] overflow-hidden bg-[#111] relative shrink-0">
+              <div className="flex-none w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] rounded-[10px] overflow-hidden bg-[#111] relative shrink-0">
                 {a.image ? (
                   <img src={a.image} alt={a.title} className="w-full h-full object-cover" />
                 ) : (
