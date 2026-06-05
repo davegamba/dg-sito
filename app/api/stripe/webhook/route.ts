@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     const productId = session.metadata?.product_id ?? "sfida";
 
     if (email) {
-      await fetch(`${SUPABASE_URL}/rest/v1/purchases`, {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/purchases`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,6 +36,11 @@ export async function POST(req: NextRequest) {
         },
         body: JSON.stringify({ email: email.toLowerCase(), product: productId }),
       });
+      // Se Supabase fallisce, ritorna 500 così Stripe riprova automaticamente
+      if (!res.ok) {
+        console.error(`Supabase insert failed: ${res.status}`, await res.text());
+        return NextResponse.json({ error: "DB error" }, { status: 500 });
+      }
     }
   }
 
