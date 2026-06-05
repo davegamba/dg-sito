@@ -3,6 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // /quiz → /quiz-fisico
+      {
+        source: "/quiz",
+        destination: "/quiz-fisico",
+        permanent: false,
+      },
       // links.html → /links (URL pulito)
       {
         source: "/links.html",

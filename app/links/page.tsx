@@ -26,7 +26,7 @@ const SOCIAL = [
 
 const LINKS = [
   {
-    href: "https://club.davegamba.com/quiz-profilo-fisico.html",
+    href: "/quiz-fisico",
     img: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg",
     title: "Quiz Profilo Fisico",
     sub: <>Scopri il tuo Profilo in 2 minuti <span style={{ color: "#F0C040" }}>[Gratuito]</span></>,
