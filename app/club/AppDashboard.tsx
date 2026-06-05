@@ -115,7 +115,12 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           content: '';
           position: absolute;
           inset: 0;
-          background: rgba(14, 9, 5, 0.82);
+          background: linear-gradient(
+            160deg,
+            rgba(0,28,35,0.68) 0%,
+            rgba(0,18,25,0.72) 50%,
+            rgba(5,12,8,0.78) 100%
+          );
         }
 
         /* Header */
@@ -127,16 +132,16 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           justify-content: space-between;
           padding: 0 24px;
           height: 52px;
-          border-bottom: 1px solid rgba(200,150,62,0.15);
-          background: rgba(10,6,3,0.6);
-          backdrop-filter: blur(12px);
+          border-bottom: none;
+          background: linear-gradient(135deg, #00CBDB 0%, #0099AA 60%, #007A8A 100%);
+          backdrop-filter: none;
         }
         .bc-header-logo {
           font-family: 'DM Serif Display', serif;
           font-size: 15px;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: #C8963E;
+          color: #fff;
         }
         .bc-header-right {
           display: flex;
@@ -145,14 +150,14 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         }
         .bc-header-email {
           font-size: 12px;
-          color: rgba(245,240,232,0.3);
+          color: rgba(255,255,255,0.65);
           letter-spacing: 0.03em;
         }
         .bc-logout-btn {
-          background: none;
-          border: 1px solid rgba(200,150,62,0.2);
+          background: rgba(255,255,255,0.15);
+          border: 1px solid rgba(255,255,255,0.3);
           border-radius: 100px;
-          color: rgba(245,240,232,0.4);
+          color: #fff;
           font-size: 11px;
           cursor: pointer;
           font-family: 'DM Sans', sans-serif;
@@ -161,7 +166,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           transition: all 0.2s;
           padding: 5px 14px;
         }
-        .bc-logout-btn:hover { color: rgba(245,240,232,0.8); border-color: rgba(200,150,62,0.45); }
+        .bc-logout-btn:hover { background: rgba(255,255,255,0.25); }
 
         /* Main */
         .bc-main {
