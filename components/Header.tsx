@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -14,11 +14,25 @@ const navLinks = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header className="fixed top-0 inset-x-0 z-50">
       {/* Backdrop blur bar */}
-      <div className="bg-[#080810]/80 backdrop-blur-xl border-b border-[#1e1e2e]">
+      <div
+        className={cn(
+          "transition-all duration-400 border-b",
+          scrolled
+            ? "bg-[#080810]/90 backdrop-blur-xl border-[#1e1e2e]"
+            : "bg-transparent backdrop-blur-none border-transparent"
+        )}
+      >
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
 
           {/* Logo */}
@@ -33,7 +47,7 @@ export default function Header() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="text-[#888888] hover:text-[#F0F0F0] text-sm font-medium transition-colors duration-200"
+                className="text-white hover:text-[#00CBDB] text-base font-semibold transition-colors duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
               >
                 {l.label}
               </Link>
@@ -53,7 +67,7 @@ export default function Header() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-[#888888] hover:text-[#F0F0F0] transition-colors"
+            className="md:hidden text-white hover:text-[#00CBDB] transition-colors drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
@@ -74,7 +88,7 @@ export default function Header() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-[#F0F0F0] text-base font-medium py-2 border-b border-[#1e1e2e]"
+              className="text-[#F0F0F0] text-base font-semibold py-2 border-b border-[#1e1e2e]"
               onClick={() => setOpen(false)}
             >
               {l.label}
