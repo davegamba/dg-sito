@@ -131,17 +131,34 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           align-items: center;
           justify-content: space-between;
           padding: 0 24px;
-          height: 52px;
-          border-bottom: none;
+          height: 64px;
           background: linear-gradient(135deg, #00CBDB 0%, #00AECF 55%, #0077CC 100%);
-          backdrop-filter: none;
+          backdrop-filter: blur(16px);
+          border-bottom: 1px solid rgba(0,203,219,0.2);
         }
         .bc-header-logo {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+        }
+        .bc-header-logo-dave {
           font-family: 'DM Serif Display', serif;
-          font-size: 15px;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
+          font-size: 1.875rem;
           color: #fff;
+          line-height: 1;
+        }
+        .bc-header-logo-gamba {
+          font-family: 'DM Serif Display', serif;
+          font-size: 1.875rem;
+          color: #001E28;
+          line-height: 1;
+        }
+        .bc-header-center {
+          font-size: 13px;
+          font-weight: 500;
+          color: rgba(255,255,255,0.75);
+          letter-spacing: 0.06em;
+          font-family: 'DM Sans', sans-serif;
         }
         .bc-header-right {
           display: flex;
@@ -345,6 +362,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         @media (max-width: 520px) {
           .bc-grid { grid-template-columns: 1fr; }
           .bc-header-email { display: none; }
+          .bc-header-center { display: none; }
         }
       `}</style>
 
@@ -353,7 +371,11 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
 
         {/* Header */}
         <header className="bc-header">
-          <a href="https://davegamba.com" className="bc-header-logo" style={{ textDecoration: "none", color: "#fff" }}>Dave Gamba</a>
+          <a href="https://davegamba.com" className="bc-header-logo">
+            <span className="bc-header-logo-dave">Dave</span>
+            <span className="bc-header-logo-gamba">Gamba</span>
+          </a>
+          <div className="bc-header-center">Il tuo spazio personale</div>
           <div className="bc-header-right">
             <span className="bc-header-email">{userEmail}</span>
             <button className="bc-logout-btn" onClick={handleLogout} disabled={loggingOut}>
