@@ -55,11 +55,12 @@ export async function POST(req: NextRequest) {
     console.error("Systeme.io error:", e);
   }
 
-  /* ── 2. SUPABASE ── */
+  /* ── 2. SUPABASE — salva lead + crea utente Auth ── */
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (supabaseUrl && supabaseKey) {
+    // 2a. Salva in quiz_leads
     try {
       const supabaseRes = await fetch(`${supabaseUrl}/rest/v1/quiz_leads`, {
         method: "POST",
@@ -81,6 +82,27 @@ export async function POST(req: NextRequest) {
     } catch (e) {
       errors.push("supabase");
       console.error("Supabase error:", e);
+    }
+
+    // 2b. Crea utente Auth (se non esiste già) e invia magic link per l'app
+    try {
+      // inviteUserByEmail crea l'utente se non esiste e manda il magic link
+      await fetch(`${supabaseUrl}/auth/v1/invite`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
+        },
+        body: JSON.stringify({
+          email,
+          data: { name },
+          redirect_to: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://davegamba.com"}/auth/callback`,
+        }),
+      });
+      // Non blocchiamo se fallisce — l'utente può sempre fare login manuale da /login
+    } catch (e) {
+      console.error("Supabase invite error:", e);
     }
   }
 
