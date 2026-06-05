@@ -40,7 +40,7 @@ const LINKS = [
     imgPosition: "center 65%",
   },
   {
-    href: "https://club.davegamba.com/coaching.html",
+    href: "/coaching",
     img: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
     title: "Premium Coaching 1-1",
     sub: <>Percorso personalizzato con Dave</>,
