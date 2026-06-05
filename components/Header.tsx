@@ -33,7 +33,7 @@ export default function Header() {
             : "bg-transparent backdrop-blur-none border-transparent"
         )}
         style={scrolled ? {
-          background: "linear-gradient(90deg, #001E28 0%, #005F7A 45%, #00CBDB 100%)",
+          background: "linear-gradient(135deg, #00CBDB, #0077CC)",
         } : undefined}
       >
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
