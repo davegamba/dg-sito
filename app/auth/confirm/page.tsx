@@ -15,13 +15,13 @@ export default function AuthConfirmPage() {
     // Supabase processa automaticamente il hash fragment alla creazione del client
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
-        router.replace("/app");
+        router.replace("/club");
       } else {
         // Ascolta il cambio di stato auth (hash processato in modo asincrono)
         const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
           if (session) {
             subscription.unsubscribe();
-            router.replace("/app");
+            router.replace("/club");
           }
         });
 

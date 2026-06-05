@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
       }
     );
     const { error } = await supabase.auth.exchangeCodeForSession(code);
-    if (!error) return NextResponse.redirect(`${origin}/app`);
+    if (!error) return NextResponse.redirect(`${origin}/club`);
   }
 
   // Token hash flow (magic link classico)
@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
       }
     );
     const { error } = await supabase.auth.verifyOtp({ token_hash: tokenHash, type: type as "magiclink" | "email" });
-    if (!error) return NextResponse.redirect(`${origin}/app`);
+    if (!error) return NextResponse.redirect(`${origin}/club`);
   }
 
   // Fallback: pagina client-side che gestisce il hash fragment

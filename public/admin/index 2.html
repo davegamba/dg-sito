@@ -1,55 +1,71 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DaveGamba.com — CMS</title>
-  <script>
-    window.CMS_MANUAL_INIT = true;
-  </script>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-</head>
-<body>
-<script>
-CMS.init({
-  config: {
-    backend: {
-      name: "github",
-      repo: "davegamba/dg-sito",
-      branch: "main",
-      base_url: "https://dg-sito.vercel.app",
-      auth_endpoint: "/api/decap-oauth/authorize",
-    },
-    media_folder: "public/images/blog",
-    public_folder: "/images/blog",
-    locale: "it",
-    collections: [
-      {
-        name: "blog",
-        label: "Articoli Blog",
-        folder: "content/blog",
-        create: true,
-        slug: "{{slug}}",
-        extension: "mdx",
-        format: "frontmatter",
-        summary: "{{published}} | {{title}}",
-        view_filters: [
-          { label: "✅ Pubblicati", field: "published", pattern: "true" },
-          { label: "📝 Bozze", field: "published", pattern: "false" },
-        ],
-        fields: [
-          { label: "Titolo", name: "title", widget: "string" },
-          { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false },
-          { label: "Categoria", name: "category", widget: "select", options: ["Allenamento", "Nutrizione", "Dimagrimento", "Testosterone", "Longevità", "Mindset", "Metodo BIM"], required: false },
-          { label: "Excerpt (TL;DR)", name: "excerpt", widget: "text", hint: "Breve descrizione per SEO — max 155 caratteri" },
-          { label: "Immagine copertina", name: "image", widget: "image", required: false },
-          { label: "Pubblicato", name: "published", widget: "boolean", default: false, hint: "OFF = bozza invisibile sul sito. ON = visibile." },
-          { label: "Contenuto", name: "body", widget: "markdown" },
-        ],
-      },
-    ],
-  },
-});
-</script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/admin/assets/favicon-eb31bc17.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TinaCMS</title>
+    <script type="module" crossorigin src="/admin/assets/index-ae4bc2bd.js"></script>
+    <link rel="stylesheet" href="/admin/assets/index-71ca28d0.css">
+  </head>
+  <body class="tina-tailwind">
+    <div id="root"></div>
+    <script>
+      function handleLoadError() {
+        console.error('Failed to load assets')
+        // Assets have failed to load
+        document.getElementById('root').innerHTML =
+          '<style type="text/css">\
+        #no-assets-placeholder body {\
+          font-family: sans-serif;\
+          font-size: 16px;\
+          line-height: 1.4;\
+          color: #333;\
+          background-color: #f5f5f5;\
+        }\
+        #no-assets-placeholder {\
+          max-width: 600px;\
+          margin: 0 auto;\
+          padding: 40px;\
+          text-align: center;\
+          background-color: #fff;\
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);\
+        }\
+        #no-assets-placeholder h1 {\
+          font-size: 24px;\
+          margin-bottom: 20px;\
+        }\
+        #no-assets-placeholder p {\
+          margin-bottom: 10px;\
+        }\
+        #no-assets-placeholder a {\
+          color: #0077cc;\
+          text-decoration: none;\
+        }\
+        #no-assets-placeholder a:hover {\
+          text-decoration: underline;\
+        }\
+        </style>\
+        <div id=\'no-assets-placeholder\'>\
+          <h1>Failed loading TinaCMS assets</h1>\
+          <p>\
+            Your TinaCMS configuration may be misconfigured, and we could not load\
+            the assets for this page.\
+          </p>\
+          <p>\
+            Please visit <a href="https://tina.io/docs/r/FAQ/#13-how-do-i-resolve-failed-loading-tinacms-assets-error">this doc</a> for help.\
+          </p>\
+        </div>'
+      }
+
+      // Check if #root has childen after 2 seconds
+      // If not, we assume that the assets have failed to load
+      setTimeout(() => {
+        if (!document.getElementById('root').children.length) {
+          handleLoadError()
+        }
+      }, 2000)
+    </script>
+    
+  </body>
 </html>
