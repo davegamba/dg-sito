@@ -154,10 +154,11 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           line-height: 1;
         }
         .bc-header-center {
-          font-size: 13px;
-          font-weight: 500;
-          color: rgba(255,255,255,0.75);
-          letter-spacing: 0.06em;
+          font-size: 15px;
+          font-weight: 700;
+          color: rgba(255,255,255,0.85);
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
           font-family: 'DM Sans', sans-serif;
         }
         .bc-header-right {
