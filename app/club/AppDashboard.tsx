@@ -53,8 +53,8 @@ const PRODUCTS: Product[] = [
   },
   {
     id: "coaching",
-    title: "Coaching Personalizzato",
-    description: "Scheda su misura, nutrizione, supporto diretto. Per chi vuole risultati seri.",
+    title: "Coaching Personale 1-1",
+    description: "Il servizio online di piani personalizzati sotto la guida personale di Dave fino al tuo risultato.",
     tag: "Premium",
     tagColor: "#C8963E",
     isCoachingCta: true,
