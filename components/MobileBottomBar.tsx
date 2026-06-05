@@ -1,4 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const STANDALONE_PAGES = ["/links"];
 
 const items = [
   {
@@ -41,6 +46,9 @@ const items = [
 ];
 
 export default function MobileBottomBar() {
+  const pathname = usePathname();
+  if (STANDALONE_PAGES.includes(pathname)) return null;
+
   return (
     <nav
       className="sm:hidden fixed bottom-3 left-3 right-3 z-40 rounded-2xl overflow-hidden"

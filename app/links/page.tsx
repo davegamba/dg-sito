@@ -60,8 +60,9 @@ export default function LinksPage() {
   return (
     <>
       <style>{`
-        html,body{background:#080C0F;}
+        html,body{background:#080C0F;overflow-x:hidden;margin:0;padding:0;}
         body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,rgba(0,203,219,0.10) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;z-index:0;}
+        .links-page{width:100%;max-width:480px;margin:0 auto;overflow-x:hidden;}
         .yt-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none;-ms-overflow-style:none;margin:0 -20px;padding-left:20px;padding-right:20px;}
         .yt-scroll::-webkit-scrollbar{display:none;}
         @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
@@ -71,7 +72,7 @@ export default function LinksPage() {
         .yt-card:hover .yt-play{background:rgba(0,0,0,0.15)!important;}
       `}</style>
 
-      <div style={{ maxWidth: 480, margin: "0 auto", position: "relative", zIndex: 1, paddingBottom: 60, fontFamily: "var(--font-dm-sans, 'DM Sans', sans-serif)" }}>
+      <div className="links-page" style={{ position: "relative", zIndex: 1, paddingBottom: 60, fontFamily: "var(--font-dm-sans, 'DM Sans', sans-serif)" }}>
 
         {/* HERO */}
         <div style={{ position: "relative", width: "100%", height: "100vh", maxHeight: 780, overflow: "hidden" }}>
@@ -87,7 +88,7 @@ export default function LinksPage() {
           <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "75%", background: "linear-gradient(to top, rgba(8,12,15,0.97) 0%, rgba(8,12,15,0.88) 40%, rgba(8,12,15,0.5) 65%, transparent 100%)", pointerEvents: "none" }} />
 
           {/* Content overlay */}
-          <div className="hero-content" style={{ position: "absolute", bottom: -30, left: 0, right: 0, zIndex: 2, padding: "0 20px 20px", display: "flex", flexDirection: "column" }}>
+          <div className="hero-content" style={{ position: "absolute", bottom: 24, left: 0, right: 0, zIndex: 2, padding: "0 20px", display: "flex", flexDirection: "column" }}>
 
             {/* Nome */}
             <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontSize: "2.2rem", lineHeight: 1, color: "#fff", letterSpacing: "0.02em", marginBottom: 4, textAlign: "center" }}>
@@ -128,7 +129,7 @@ export default function LinksPage() {
         </div>
 
         {/* BELOW HERO */}
-        <div style={{ padding: "0 20px", background: "#080C0F", marginTop: -80, position: "relative", zIndex: 3 }}>
+        <div style={{ padding: "0 20px", background: "#080C0F", marginTop: -20, position: "relative", zIndex: 3 }}>
 
           {/* YouTube */}
           <div style={{ margin: "90px 0 48px" }}>

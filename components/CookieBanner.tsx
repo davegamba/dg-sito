@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const CONSENT_KEY = "dg_cookie_consent";
 
@@ -38,10 +39,14 @@ function loadTracking() {
   document.head.appendChild(pixelScript);
 }
 
+const STANDALONE_PAGES = ["/links"];
+
 export default function CookieBanner() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (STANDALONE_PAGES.includes(pathname)) return;
     const consent = localStorage.getItem(CONSENT_KEY);
     if (consent === "accepted") {
       loadTracking();
