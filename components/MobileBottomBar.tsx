@@ -53,7 +53,7 @@ export default function MobileBottomBar() {
     <nav
       className="sm:hidden fixed bottom-3 left-3 right-3 z-40 rounded-2xl overflow-hidden"
       style={{
-        background: "linear-gradient(135deg, #00E5F5 0%, #00CBDB 50%, #00A8B8 100%)",
+        background: "linear-gradient(135deg, #00CBDB 0%, #00AECF 55%, #0077CC 100%)",
         boxShadow: "0 4px 24px rgba(0,203,219,0.35)",
       }}
     >
