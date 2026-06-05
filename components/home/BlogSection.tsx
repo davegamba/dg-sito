@@ -17,17 +17,17 @@ export default function BlogSection() {
     .slice(0, 4);
 
   return (
-    <section className="py-20 sm:py-28 bg-black gsap-fade">
+    <section className="py-12 sm:py-16 bg-black gsap-fade">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
 
         {/* Header */}
         <div className="flex items-end justify-between mb-8">
           <div>
             <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
-              Dal blog
+              Le Guide del Blog
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-white">
-              Il metodo, spiegato
+              Tutto quello che devi sapere
             </h2>
           </div>
           <Link

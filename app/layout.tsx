@@ -5,6 +5,7 @@ import ExitPopup from "@/components/ExitPopup";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import MobileBottomBar from "@/components/MobileBottomBar";
 import ScrollAnimations from "@/components/ScrollAnimations";
+import CookieBanner from "@/components/CookieBanner";
 import "./globals.css";
 
 const dmSerif = DM_Serif_Display({
@@ -54,11 +55,7 @@ export default function RootLayout({
         <ExitPopup />
         <WhatsAppButton />
         <MobileBottomBar />
-        {/* Cookie consent */}
-        <Script
-          src="//cdn.cookiescript.net/siteapi/923639d0a67cfff88e54366d1992683c/cookiescript.min.js"
-          strategy="afterInteractive"
-        />
+        <CookieBanner />
 
         {/* Google Analytics */}
         <Script

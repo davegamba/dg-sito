@@ -24,7 +24,7 @@ const steps = [
 
 export default function MetodoBIM() {
   return (
-    <section className="py-20 sm:py-28 bg-[#0f0f1a]/40">
+    <section className="py-12 sm:py-16 bg-[#0f0f1a]/40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Header */}

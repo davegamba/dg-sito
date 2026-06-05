@@ -1,7 +1,7 @@
 
 export default function ChiSono() {
   return (
-    <section className="py-16 sm:py-24 bg-black gsap-fade">
+    <section className="py-10 sm:py-14 bg-black gsap-fade">
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px" }}>
 
         {/* Foto + Testo — 50/50, centrati verticalmente */}

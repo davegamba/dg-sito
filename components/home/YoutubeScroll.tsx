@@ -21,7 +21,7 @@ export default function YoutubeScroll() {
   };
 
   return (
-    <section className="py-20 sm:py-28 bg-black overflow-hidden">
+    <section className="py-12 sm:py-16 bg-black overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Header row */}

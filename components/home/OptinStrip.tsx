@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function OptinStrip() {
   return (
-    <section className="py-20 sm:py-28 bg-[#0f0f1a]/60 border-y border-[#1e1e2e]">
+    <section className="py-12 sm:py-16 bg-[#0f0f1a]/60 border-y border-[#1e1e2e]">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
 
         <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-4 block">

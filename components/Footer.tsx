@@ -54,8 +54,8 @@ export default function Footer() {
               <span className="font-serif text-2xl text-[#00CBDB]">Gamba</span>
             </div>
             <p className="text-[#888888] text-sm leading-relaxed mb-2">
-              Personal trainer online dal 2009.<br />
-              3.000+ clienti. Metodo BIM.
+              Il Metodo Breve, Intenso, Mirato<br />
+              per un Fisico Atletico, Asciutto e Scolpito
             </p>
             <a
               href="mailto:info@davegamba.com"

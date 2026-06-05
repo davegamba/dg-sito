@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function FinalCTA() {
   return (
-    <section className="py-20 sm:py-32 relative overflow-hidden gsap-fade">
+    <section className="py-12 sm:py-20 relative overflow-hidden gsap-fade">
       {/* Background glow */}
       <div
         aria-hidden

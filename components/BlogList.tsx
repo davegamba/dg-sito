@@ -15,7 +15,7 @@ export default function BlogList({ posts }: { posts: PostMeta[] }) {
   return (
     <>
       {/* Filtri categoria */}
-      <div className="flex flex-wrap gap-2 mb-6">
+      <div className="flex flex-wrap gap-2 mb-4 pt-2">
         {CATEGORIE.map((c) => (
           <button
             key={c}
