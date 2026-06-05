@@ -33,15 +33,15 @@ export default function Header() {
             : "bg-transparent backdrop-blur-none border-transparent"
         )}
         style={scrolled ? {
-          background: "linear-gradient(135deg, #00CBDB, #0077CC)",
+          background: "linear-gradient(135deg, #00CBDB 0%, #00AECF 55%, #0077CC 100%)",
         } : undefined}
       >
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
 
           {/* Logo */}
           <Link href="/" className="flex items-center select-none">
-            <span className="font-serif text-3xl text-[#F0F0F0]">Dave</span>
-            <span className="font-serif text-3xl text-[#00CBDB]">Gamba</span>
+            <span className={`font-serif text-3xl transition-colors duration-400 ${scrolled ? "text-white" : "text-[#F0F0F0]"}`}>Dave</span>
+            <span className={`font-serif text-3xl transition-colors duration-400 ${scrolled ? "text-[#001E28]" : "text-[#00CBDB]"}`}>Gamba</span>
           </Link>
 
           {/* Desktop nav */}

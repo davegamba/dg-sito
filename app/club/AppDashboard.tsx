@@ -133,7 +133,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           padding: 0 24px;
           height: 52px;
           border-bottom: none;
-          background: linear-gradient(135deg, #00CBDB, #0077CC);
+          background: linear-gradient(135deg, #00CBDB 0%, #00AECF 55%, #0077CC 100%);
           backdrop-filter: none;
         }
         .bc-header-logo {
