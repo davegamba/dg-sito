@@ -28,9 +28,9 @@ const footerLinks = {
     { href: "https://www.youtube.com/@DaveGambaFitness", label: "Canale YouTube", external: true },
   ],
   Prodotti: [
-    { href: "https://club.davegamba.com", label: "DG Athletic Club", external: true },
+    { href: "/coming-soon", label: "Quiz Profilo Fisico" },
     { href: "/coming-soon", label: "Sfida Estiva 21gg" },
-    { href: "/coming-soon", label: "Consulenza 1:1" },
+    { href: "/coming-soon", label: "Coaching" },
   ],
   Legale: [
     { href: "/privacy", label: "Privacy Policy" },
