@@ -27,7 +27,7 @@ const products = [
     price: null,
     cta: "Fai il quiz →",
     ctaStyle: { background: "#F0C040", color: "#000" },
-    href: "https://club.davegamba.com/optin-quiz.html",
+    href: "/coming-soon",
   },
   {
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_25-03-2026-09-35-25.jpg",

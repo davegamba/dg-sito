@@ -3,7 +3,7 @@ import Link from "next/link";
 const items = [
   {
     label: "Quiz",
-    href: "https://club.davegamba.com/optin-quiz.html",
+    href: "/coming-soon",
     icon: (
       <svg viewBox="0 0 24 24" fill="white" width="36" height="36">
         <path d="M12 2a7 7 0 0 1 7 7c0 2.5-1.3 4.7-3.3 6l-.7.5V17H9v-1.5l-.7-.5A7 7 0 0 1 12 2zm-2 17h4v1a2 2 0 0 1-4 0v-1z"/>
