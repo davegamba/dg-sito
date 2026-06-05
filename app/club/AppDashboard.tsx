@@ -33,7 +33,7 @@ const PRODUCTS: Product[] = [
     id: "calorie",
     title: "App Conta Calorie",
     description: "Calcola il tuo fabbisogno calorico e tieni traccia dei macro.",
-    href: "https://club.davegamba.com/conta-calorie.html",
+    href: "https://club.davegamba.com/calorie/",
     tag: "Gratuito",
     tagColor: "#00CBDB",
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_29-05-2026-20-47-56.jpg",
@@ -133,7 +133,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           padding: 0 24px;
           height: 52px;
           border-bottom: none;
-          background: linear-gradient(135deg, #00CBDB 0%, #0099AA 60%, #007A8A 100%);
+          background: linear-gradient(90deg, #001E28 0%, #005F7A 45%, #00CBDB 100%);
           backdrop-filter: none;
         }
         .bc-header-logo {
