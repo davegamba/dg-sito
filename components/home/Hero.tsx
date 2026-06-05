@@ -81,20 +81,32 @@ export default function Hero() {
           Scopri il tuo Profilo Fisico gratuitamente — 2 minuti
         </p>
 
-        {/* Social proof */}
-        <div className="flex items-center gap-6 mt-4">
-          {[
-            { num: "15+", label: "anni online" },
-            { num: "3K+", label: "clienti" },
-            { num: "2M+", label: "lettori" },
-          ].map(({ num, label }) => (
-            <div key={label} className="text-center">
-              <div className="font-serif text-2xl text-[#00CBDB] leading-none">{num}</div>
-              <div className="text-white/40 text-[10px] uppercase tracking-widest mt-0.5">{label}</div>
-            </div>
-          ))}
+      </div>
+
+      {/* STATS OVERLAY — fissi in basso sull'hero */}
+      <div className="absolute bottom-0 inset-x-0">
+        {/* Gradient di raccordo */}
+        <div
+          aria-hidden
+          className="h-24"
+          style={{ background: "linear-gradient(to bottom, transparent, rgba(0,0,0,0.55))" }}
+        />
+        <div className="bg-black/40 backdrop-blur-sm border-t border-white/10">
+          <div className="max-w-3xl mx-auto px-6 py-5 flex items-center justify-center gap-0 divide-x divide-white/20">
+            {[
+              { num: "15+", label: "Anni Online" },
+              { num: "3K+", label: "Clienti" },
+              { num: "2M+", label: "Lettori" },
+            ].map(({ num, label }) => (
+              <div key={label} className="flex-1 text-center px-6">
+                <div className="font-serif text-3xl sm:text-4xl text-[#00CBDB] leading-none">{num}</div>
+                <div className="text-white/50 text-[10px] uppercase tracking-[0.2em] mt-1.5">{label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
     </section>
   );
 }

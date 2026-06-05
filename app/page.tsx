@@ -18,7 +18,7 @@ export default function HomePage() {
       <main className="flex-1">
         <Hero />
         <PressStrip />
-        <Stats />
+        {/* Stats rimosso — numeri spostati nell'Hero */}
         <ChiSono />
         <ProductCards />
         <BlogSection />
