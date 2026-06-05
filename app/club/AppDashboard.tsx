@@ -46,7 +46,7 @@ const PRODUCTS: Product[] = [
     price: "€37",
     stripeLink: "https://buy.stripe.com/5kQdRa9BQc5EgQi2961Nu00",
     tag: "21 Giorni",
-    tagColor: "#F0C040",
+    tagColor: "#C8963E",
     href: "https://sfida.davegamba.com",
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_25-03-2026-09-35-25.jpg",
     imagePosition: "center 65%",
@@ -56,7 +56,7 @@ const PRODUCTS: Product[] = [
     title: "Coaching Personalizzato",
     description: "Scheda su misura, nutrizione, supporto diretto. Per chi vuole risultati seri.",
     tag: "Premium",
-    tagColor: "#F0C040",
+    tagColor: "#C8963E",
     isCoachingCta: true,
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
     imagePosition: "center top",
@@ -73,11 +73,8 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
   const [loggingOut, setLoggingOut] = useState(false);
 
   const isUnlocked = (productId: string) => {
-    // Quiz e calorie sempre liberi
     if (productId === "quiz" || productId === "calorie") return true;
-    // Coaching è sempre una CTA, non si "sblocca"
     if (productId === "coaching") return true;
-    // Sfida: controlla in purchases
     return unlockedProducts.includes(productId);
   };
 
@@ -88,260 +85,352 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
     router.push("/login");
   };
 
-  const getInitial = (email: string) => email.charAt(0).toUpperCase();
+  const firstName = userEmail.split("@")[0].split(".")[0];
+  const displayName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap');
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: #080810; }
-        .da-wrap {
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .bc-wrap {
           min-height: 100dvh;
-          background: #080810;
           font-family: 'DM Sans', sans-serif;
-          color: #F0F0F0;
+          color: #F5F0E8;
+          position: relative;
+          overflow-x: hidden;
         }
-        .da-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 20px 24px;
-          border-bottom: 1px solid #1A1A2E;
-          background: #0A0A18;
+
+        /* Sfondo palme fisso */
+        .bc-bg {
+          position: fixed;
+          inset: 0;
+          background-image: url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/palmeBg.jpeg');
+          background-size: cover;
+          background-position: center top;
+          z-index: 0;
         }
-        .da-logo {
+        .bc-bg::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: rgba(14, 9, 5, 0.82);
+        }
+
+        /* Header */
+        .bc-header {
+          position: relative;
+          z-index: 10;
+          text-align: center;
+          padding: 40px 24px 24px;
+          border-bottom: 1px solid rgba(200,150,62,0.15);
+          background: rgba(10,6,3,0.5);
+          backdrop-filter: blur(12px);
+        }
+        .bc-header-logo {
           font-family: 'DM Serif Display', serif;
-          font-size: 22px;
-          background: linear-gradient(135deg, #00F0FF, #0077CC);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          font-size: 13px;
+          letter-spacing: 0.25em;
+          text-transform: uppercase;
+          color: rgba(200,150,62,0.7);
+          margin-bottom: 6px;
         }
-        .da-user {
-          display: flex;
-          align-items: center;
-          gap: 12px;
+        .bc-header-title {
+          font-family: 'DM Serif Display', serif;
+          font-size: 28px;
+          color: #F5F0E8;
+          line-height: 1;
         }
-        .da-avatar {
-          width: 36px;
-          height: 36px;
-          border-radius: 50%;
-          background: linear-gradient(135deg, #00CBDB, #0077CC);
+        .bc-header-title em { font-style: italic; color: #C8963E; }
+        .bc-header-meta {
+          margin-top: 10px;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-weight: 700;
-          font-size: 14px;
-          color: #fff;
-          flex-shrink: 0;
+          gap: 12px;
         }
-        .da-email {
-          color: #888;
-          font-size: 13px;
-          max-width: 180px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-        .da-logout {
-          background: none;
-          border: 1px solid #2A2A3E;
-          border-radius: 8px;
-          color: #666;
+        .bc-header-email {
           font-size: 12px;
-          padding: 6px 12px;
+          color: rgba(245,240,232,0.35);
+          letter-spacing: 0.05em;
+        }
+        .bc-logout-btn {
+          background: none;
+          border: none;
+          color: rgba(245,240,232,0.25);
+          font-size: 11px;
           cursor: pointer;
           font-family: 'DM Sans', sans-serif;
-          transition: all 0.2s;
-        }
-        .da-logout:hover { color: #F0F0F0; border-color: #444; }
-        .da-main {
-          max-width: 900px;
-          margin: 0 auto;
-          padding: 40px 24px 80px;
-        }
-        .da-greeting {
-          margin-bottom: 40px;
-        }
-        .da-greeting-title {
-          font-family: 'DM Serif Display', serif;
-          font-size: 32px;
-          color: #F0F0F0;
-          margin-bottom: 8px;
-        }
-        .da-greeting-sub {
-          color: #666;
-          font-size: 15px;
-        }
-        .da-section-label {
-          color: #555;
-          font-size: 11px;
-          letter-spacing: 0.15em;
+          letter-spacing: 0.08em;
           text-transform: uppercase;
-          margin-bottom: 20px;
+          transition: color 0.2s;
+          padding: 0;
         }
-        .da-grid {
+        .bc-logout-btn:hover { color: rgba(245,240,232,0.6); }
+
+        /* Main */
+        .bc-main {
+          position: relative;
+          z-index: 5;
+          max-width: 960px;
+          margin: 0 auto;
+          padding: 48px 24px 100px;
+        }
+
+        /* Greeting */
+        .bc-greeting {
+          text-align: center;
+          margin-bottom: 48px;
+        }
+        .bc-greeting-line {
+          font-size: 11px;
+          letter-spacing: 0.25em;
+          text-transform: uppercase;
+          color: rgba(200,150,62,0.6);
+          margin-bottom: 10px;
+        }
+        .bc-greeting-name {
+          font-family: 'DM Serif Display', serif;
+          font-size: clamp(32px, 5vw, 48px);
+          color: #F5F0E8;
+          line-height: 1.1;
+        }
+        .bc-greeting-name em { font-style: italic; color: #C8963E; }
+        .bc-greeting-sub {
+          margin-top: 10px;
+          font-size: 14px;
+          color: rgba(245,240,232,0.4);
+          font-weight: 300;
+          letter-spacing: 0.03em;
+        }
+
+        /* Divider ornamentale */
+        .bc-ornament {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 32px;
+        }
+        .bc-ornament-line { flex: 1; height: 1px; background: rgba(200,150,62,0.15); }
+        .bc-ornament-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(200,150,62,0.4); }
+
+        /* Grid card */
+        .bc-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
           gap: 20px;
         }
-        .da-card {
+
+        /* Card */
+        .bc-card {
+          position: relative;
           border-radius: 20px;
           overflow: hidden;
-          position: relative;
-          min-height: 280px;
+          min-height: 320px;
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
-          border: 2px solid transparent;
-          transition: border-color 0.2s, transform 0.2s;
+          border: 1px solid rgba(200,150,62,0.15);
+          transition: border-color 0.3s, transform 0.3s;
           cursor: pointer;
         }
-        .da-card.unlocked:hover { border-color: rgba(0,203,219,0.4); transform: translateY(-2px); }
-        .da-card.locked { filter: brightness(0.75) saturate(0.6); }
-        .da-card.coaching-card:hover { border-color: rgba(240,192,64,0.4); transform: translateY(-2px); }
-        .da-card-bg {
+        .bc-card.unlocked:hover {
+          border-color: rgba(200,150,62,0.45);
+          transform: translateY(-3px);
+        }
+        .bc-card.locked {
+          filter: brightness(0.6) saturate(0.4);
+        }
+        .bc-card.coaching {
+          border-color: rgba(200,150,62,0.25);
+        }
+        .bc-card.coaching:hover {
+          border-color: rgba(200,150,62,0.55);
+          transform: translateY(-3px);
+        }
+
+        /* Card bg */
+        .bc-card-bg {
           position: absolute;
           inset: 0;
           background-size: cover;
           z-index: 0;
+          transition: transform 0.4s ease;
         }
-        .da-card-overlay {
+        .bc-card:hover .bc-card-bg { transform: scale(1.03); }
+
+        /* Card overlay — più caldo del nero puro */
+        .bc-card-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0.1) 100%);
+          background: linear-gradient(
+            to top,
+            rgba(14,8,3,0.97) 0%,
+            rgba(14,8,3,0.65) 45%,
+            rgba(14,8,3,0.08) 100%
+          );
           z-index: 1;
         }
-        .da-card-body {
+
+        /* Card body */
+        .bc-card-body {
           position: relative;
           z-index: 2;
-          padding: 20px;
+          padding: 22px;
           display: flex;
           flex-direction: column;
           gap: 8px;
         }
-        .da-tag {
+
+        /* Tag */
+        .bc-tag {
           display: inline-flex;
           align-items: center;
+          gap: 5px;
           padding: 3px 10px;
-          border-radius: 20px;
-          font-size: 10px;
+          border-radius: 100px;
+          font-size: 9px;
           font-weight: 700;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.14em;
           text-transform: uppercase;
           width: fit-content;
           border: 1px solid;
         }
-        .da-card-title {
+
+        .bc-card-title {
           font-family: 'DM Serif Display', serif;
-          font-size: 20px;
-          color: #fff;
+          font-size: 21px;
+          color: #F5F0E8;
           line-height: 1.2;
         }
-        .da-card-desc {
-          color: rgba(255,255,255,0.6);
+        .bc-card-desc {
           font-size: 13px;
-          line-height: 1.5;
+          color: rgba(245,240,232,0.5);
+          line-height: 1.55;
+          font-weight: 300;
         }
-        .da-card-footer {
+        .bc-card-footer {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          margin-top: 4px;
+          margin-top: 6px;
         }
-        .da-lock { font-size: 18px; }
-        .da-price {
-          color: #F0C040;
-          font-size: 20px;
-          font-weight: 700;
+        .bc-price {
           font-family: 'DM Serif Display', serif;
+          font-size: 22px;
+          color: #C8963E;
         }
-        .da-btn {
+
+        /* Bottoni */
+        .bc-btn {
           display: inline-flex;
           align-items: center;
-          padding: 10px 20px;
-          border-radius: 10px;
-          font-size: 14px;
-          font-weight: 700;
+          padding: 10px 22px;
+          border-radius: 100px;
+          font-size: 13px;
+          font-weight: 600;
           font-family: 'DM Sans', sans-serif;
           text-decoration: none;
           cursor: pointer;
           border: none;
-          transition: opacity 0.2s;
+          transition: all 0.2s;
+          letter-spacing: 0.04em;
         }
-        .da-btn:hover { opacity: 0.85; }
-        .da-btn-cyan { background: linear-gradient(135deg, #00CBDB, #0077CC); color: #fff; }
-        .da-btn-gold { background: linear-gradient(135deg, #FFE066, #D4800A); color: #000; }
-        .da-btn-outline {
-          background: none;
-          border: 1px solid #2A2A3E;
-          color: #666;
-          cursor: not-allowed;
+        .bc-btn-cyan {
+          background: rgba(0,203,219,0.15);
+          color: #00CBDB;
+          border: 1px solid rgba(0,203,219,0.3);
         }
-        @media (max-width: 480px) {
-          .da-email { display: none; }
-          .da-grid { grid-template-columns: 1fr; }
-          .da-greeting-title { font-size: 26px; }
+        .bc-btn-cyan:hover { background: rgba(0,203,219,0.25); }
+        .bc-btn-gold {
+          background: linear-gradient(135deg, #D4A84B, #C8963E);
+          color: #0A0603;
+          font-weight: 700;
+        }
+        .bc-btn-gold:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+        @media (max-width: 520px) {
+          .bc-grid { grid-template-columns: 1fr; }
+          .bc-header-email { display: none; }
         }
       `}</style>
 
-      <div className="da-wrap">
+      <div className="bc-wrap">
+        <div className="bc-bg" />
+
         {/* Header */}
-        <header className="da-header">
-          <div className="da-logo">DaveGamba</div>
-          <div className="da-user">
-            <div className="da-avatar">{getInitial(userEmail)}</div>
-            <span className="da-email">{userEmail}</span>
-            <button className="da-logout" onClick={handleLogout} disabled={loggingOut}>
+        <header className="bc-header">
+          <div className="bc-header-logo">DG Athletic Club</div>
+          <div className="bc-header-title">Dave <em>Gamba</em></div>
+          <div className="bc-header-meta">
+            <span className="bc-header-email">{userEmail}</span>
+            <span style={{ color: "rgba(200,150,62,0.2)", fontSize: 10 }}>·</span>
+            <button className="bc-logout-btn" onClick={handleLogout} disabled={loggingOut}>
               {loggingOut ? "..." : "Esci"}
             </button>
           </div>
         </header>
 
         {/* Main */}
-        <main className="da-main">
-          <div className="da-greeting">
-            <div className="da-greeting-title">Ciao 👋</div>
-            <div className="da-greeting-sub">Ecco tutto quello che hai a disposizione.</div>
+        <main className="bc-main">
+
+          {/* Greeting */}
+          <div className="bc-greeting">
+            <div className="bc-greeting-line">Bentornato</div>
+            <div className="bc-greeting-name">
+              Ciao, <em>{displayName}</em>
+            </div>
+            <div className="bc-greeting-sub">Ecco tutto quello che hai a disposizione.</div>
           </div>
 
-          <div className="da-section-label">I tuoi contenuti</div>
+          {/* Ornament */}
+          <div className="bc-ornament">
+            <div className="bc-ornament-line" />
+            <div className="bc-ornament-dot" />
+            <div className="bc-ornament-dot" />
+            <div className="bc-ornament-dot" />
+            <div className="bc-ornament-line" />
+          </div>
 
-          <div className="da-grid">
+          {/* Grid */}
+          <div className="bc-grid">
             {PRODUCTS.map((product) => {
               const unlocked = isUnlocked(product.id);
 
-              if (product.isCoachingCta) {
-                return (
-                  <div key={product.id} className="da-card coaching-card">
-                    <div className="da-card-bg" style={{ backgroundImage: `url('${product.image}')`, backgroundPosition: product.imagePosition }} />
-                    <div className="da-card-overlay" />
-                    <div className="da-card-body">
-                      <span className="da-tag" style={{ color: product.tagColor, borderColor: product.tagColor + "44" }}>{product.tag}</span>
-                      <div className="da-card-title">{product.title}</div>
-                      <div className="da-card-desc">{product.description}</div>
-                      <a href="/coaching" className="da-btn da-btn-gold" style={{ marginTop: 4, justifyContent: "center" }}>
-                        Scopri il coaching →
-                      </a>
-                    </div>
-                  </div>
-                );
-              }
-
               return (
-                <div key={product.id} className={`da-card ${unlocked ? "unlocked" : "locked"}`}>
-                  <div className="da-card-bg" style={{ backgroundImage: `url('${product.image}')`, backgroundPosition: product.imagePosition }} />
-                  <div className="da-card-overlay" />
-                  <div className="da-card-body">
-                    <span className="da-tag" style={{ color: product.tagColor, borderColor: product.tagColor + "44" }}>{product.tag}</span>
-                    <div className="da-card-title">{product.title}</div>
-                    <div className="da-card-desc">{product.description}</div>
-                    <div className="da-card-footer">
-                      {unlocked ? (
+                <div
+                  key={product.id}
+                  className={`bc-card ${product.isCoachingCta ? "coaching" : unlocked ? "unlocked" : "locked"}`}
+                >
+                  <div
+                    className="bc-card-bg"
+                    style={{
+                      backgroundImage: `url('${product.image}')`,
+                      backgroundPosition: product.imagePosition ?? "center",
+                    }}
+                  />
+                  <div className="bc-card-overlay" />
+                  <div className="bc-card-body">
+                    {product.tag && (
+                      <span
+                        className="bc-tag"
+                        style={{ color: product.tagColor, borderColor: product.tagColor + "44" }}
+                      >
+                        {product.tag}
+                      </span>
+                    )}
+                    <div className="bc-card-title">{product.title}</div>
+                    <div className="bc-card-desc">{product.description}</div>
+                    <div className="bc-card-footer">
+                      {product.isCoachingCta ? (
+                        <a href="/coaching" className="bc-btn bc-btn-gold">
+                          Scopri il coaching →
+                        </a>
+                      ) : unlocked ? (
                         <a
                           href={product.href}
-                          className="da-btn da-btn-cyan"
+                          className="bc-btn bc-btn-cyan"
                           target={product.href?.startsWith("http") ? "_blank" : undefined}
                           rel="noopener noreferrer"
                         >
@@ -349,8 +438,13 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
                         </a>
                       ) : (
                         <>
-                          <span className="da-price">{product.price}</span>
-                          <a href={product.stripeLink} className="da-btn da-btn-gold" target="_blank" rel="noopener noreferrer">
+                          <span className="bc-price">{product.price}</span>
+                          <a
+                            href={product.stripeLink}
+                            className="bc-btn bc-btn-gold"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             🔒 Sblocca
                           </a>
                         </>
