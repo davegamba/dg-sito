@@ -3,6 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // links.html → /links (URL pulito)
+      {
+        source: "/links.html",
+        destination: "/links",
+        permanent: true,
+      },
       // Redirect da vecchi URL Podia → nuovi slug ottimizzati
       {
         source: "/blog/le-proteine-fanno-male-quante-come-quali",
