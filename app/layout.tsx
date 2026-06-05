@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, DM_Sans } from "next/font/google";
 import ExitPopup from "@/components/ExitPopup";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import MobileBottomBar from "@/components/MobileBottomBar";
 import ScrollAnimations from "@/components/ScrollAnimations";
 import "./globals.css";
@@ -50,6 +51,7 @@ export default function RootLayout({
         {children}
         <ScrollAnimations />
         <ExitPopup />
+        <WhatsAppButton />
         <MobileBottomBar />
         <script
           src="//cdn.cookiescript.net/siteapi/923639d0a67cfff88e54366d1992683c/cookiescript.min.js"
