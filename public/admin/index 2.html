@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DaveGamba.com — CMS</title>
+  <script>
+    window.CMS_MANUAL_INIT = true;
+  </script>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+</head>
+<body>
+<script>
+CMS.init({
+  config: {
+    backend: {
+      name: "github",
+      repo: "davegamba/dg-sito",
+      branch: "main",
+      base_url: "https://dg-sito.vercel.app",
+      auth_endpoint: "/api/decap-oauth/authorize",
+    },
+    media_folder: "public/images/blog",
+    public_folder: "/images/blog",
+    locale: "it",
+    collections: [
+      {
+        name: "blog",
+        label: "Articoli Blog",
+        folder: "content/blog",
+        create: true,
+        slug: "{{slug}}",
+        extension: "mdx",
+        format: "frontmatter",
+        summary: "{{published}} | {{title}}",
+        view_filters: [
+          { label: "✅ Pubblicati", field: "published", pattern: "true" },
+          { label: "📝 Bozze", field: "published", pattern: "false" },
+        ],
+        fields: [
+          { label: "Titolo", name: "title", widget: "string" },
+          { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false },
+          { label: "Categoria", name: "category", widget: "select", options: ["Allenamento", "Nutrizione", "Dimagrimento", "Testosterone", "Longevità", "Mindset", "Metodo BIM"], required: false },
+          { label: "Excerpt (TL;DR)", name: "excerpt", widget: "text", hint: "Breve descrizione per SEO — max 155 caratteri" },
+          { label: "Immagine copertina", name: "image", widget: "image", required: false },
+          { label: "Pubblicato", name: "published", widget: "boolean", default: false, hint: "OFF = bozza invisibile sul sito. ON = visibile." },
+          { label: "Contenuto", name: "body", widget: "markdown" },
+        ],
+      },
+    ],
+  },
+});
+</script>
+</body>
+</html>

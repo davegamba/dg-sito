@@ -3,7 +3,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+
+function AnimatedNumber({ target, suffix }: { target: number; suffix: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true });
+  const [display, setDisplay] = useState("0");
+
+  useEffect(() => {
+    if (!inView) return;
+    const duration = 1800;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      setDisplay(Math.round(ease * target).toLocaleString("it-IT"));
+      if (progress < 1) requestAnimationFrame(tick);
+      else setDisplay(target.toLocaleString("it-IT"));
+    };
+    requestAnimationFrame(tick);
+  }, [inView, target]);
+
+  return <span ref={ref}>{display}{suffix}</span>;
+}
 
 export default function Hero() {
 
@@ -45,7 +68,7 @@ export default function Hero() {
       </div>
 
       {/* CONTENUTO */}
-      <div className="relative w-full max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-6 pt-48 sm:pt-32 pb-10 sm:pb-20">
+      <div className="relative w-full max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-6 pt-64 sm:pt-48 pb-10 sm:pb-20">
 
         {/* Badge */}
         <div className="inline-flex items-center gap-2">
@@ -83,27 +106,20 @@ export default function Hero() {
 
       </div>
 
-      {/* STATS OVERLAY — fissi in basso sull'hero */}
-      <div className="absolute bottom-0 inset-x-0">
-        {/* Gradient di raccordo */}
-        <div
-          aria-hidden
-          className="h-24"
-          style={{ background: "linear-gradient(to bottom, transparent, rgba(0,0,0,0.55))" }}
-        />
-        <div className="bg-black/40 backdrop-blur-sm border-t border-white/10">
-          <div className="max-w-3xl mx-auto px-6 py-5 flex items-center justify-center gap-0 divide-x divide-white/20">
-            {[
-              { num: "15+", label: "Anni Online" },
-              { num: "3K+", label: "Clienti" },
-              { num: "2M+", label: "Lettori" },
-            ].map(({ num, label }) => (
-              <div key={label} className="flex-1 text-center px-6">
-                <div className="font-serif text-3xl sm:text-4xl text-[#00CBDB] leading-none">{num}</div>
-                <div className="text-white/50 text-[10px] uppercase tracking-[0.2em] mt-1.5">{label}</div>
+      {/* STATS OVERLAY — fissi in basso sull'hero, completamente trasparenti */}
+      <div className="absolute bottom-8 inset-x-0">
+        <div className="max-w-3xl mx-auto px-6 flex items-center justify-center divide-x divide-white/30">
+          {[
+            { target: 15, suffix: "+", label: "Anni di Esperienza" },
+            { target: 3000, suffix: "+", label: "Clienti Trasformati" },
+          ].map(({ target, suffix, label }) => (
+            <div key={label} className="flex-1 text-center px-8">
+              <div className="font-serif text-4xl sm:text-5xl text-[#00CBDB] leading-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                <AnimatedNumber target={target} suffix={suffix} />
               </div>
-            ))}
-          </div>
+              <div className="text-white/60 text-[11px] uppercase tracking-[0.2em] mt-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">{label}</div>
+            </div>
+          ))}
         </div>
       </div>
 

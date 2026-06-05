@@ -37,8 +37,8 @@ export default function Header() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center select-none">
-            <span className="font-serif text-xl text-[#F0F0F0]">Dave</span>
-            <span className="font-serif text-xl text-[#00CBDB]">Gamba</span>
+            <span className="font-serif text-3xl text-[#F0F0F0]">Dave</span>
+            <span className="font-serif text-3xl text-[#00CBDB]">Gamba</span>
           </Link>
 
           {/* Desktop nav */}
