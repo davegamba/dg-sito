@@ -353,7 +353,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
 
         {/* Header */}
         <header className="bc-header">
-          <div className="bc-header-logo">DG Fit Club</div>
+          <a href="https://davegamba.com" className="bc-header-logo" style={{ textDecoration: "none", color: "#fff" }}>Dave Gamba</a>
           <div className="bc-header-right">
             <span className="bc-header-email">{userEmail}</span>
             <button className="bc-logout-btn" onClick={handleLogout} disabled={loggingOut}>
@@ -368,7 +368,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           {/* Greeting */}
           <div className="bc-greeting">
             <div className="bc-greeting-name">
-              <em>Welcome</em>
+              <span style={{ color: "#fff" }}>DG </span><span style={{ color: "#00CBDB" }}>Fit Club</span>
             </div>
             <div className="bc-greeting-sub">Cosa vuoi fare oggi?</div>
           </div>
