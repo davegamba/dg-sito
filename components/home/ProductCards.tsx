@@ -81,10 +81,10 @@ export default function ProductCards() {
         <div className="flex items-end justify-between mb-8 gap-4">
           <div>
             <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
-              Il DG Fit Club
+              Entra nel DG Fit Club
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-white">
-              Scegli lo strumento per te
+              Gli strumenti per te
             </h2>
           </div>
           <div className="flex gap-2 shrink-0">

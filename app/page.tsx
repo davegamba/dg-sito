@@ -18,11 +18,10 @@ export default function HomePage() {
       <main className="flex-1">
         <Hero />
         <PressStrip />
-        {/* Stats rimosso — numeri spostati nell'Hero */}
-        <ChiSono />
         <ProductCards />
-        <BlogSection />
         <Testimonials />
+        <ChiSono />
+        <BlogSection />
         <YoutubeScroll />
         <OptinStrip />
       </main>
