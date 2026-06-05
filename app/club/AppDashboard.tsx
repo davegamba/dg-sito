@@ -14,16 +14,20 @@ interface Product {
   tag?: string;
   tagColor?: string;
   isCoachingCta?: boolean;
+  image?: string;
+  imagePosition?: string;
 }
 
 const PRODUCTS: Product[] = [
   {
     id: "quiz",
-    title: "Quiz — Il tuo profilo fitness",
+    title: "Quiz Profilo Fisico",
     description: "Scopri il tuo punto di partenza e il percorso giusto per te.",
-    href: "/quiz",
+    href: "/quiz-fisico",
     tag: "Gratuito",
     tagColor: "#00CBDB",
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg",
+    imagePosition: "center",
   },
   {
     id: "calorie",
@@ -32,24 +36,30 @@ const PRODUCTS: Product[] = [
     href: "https://club.davegamba.com/conta-calorie.html",
     tag: "Gratuito",
     tagColor: "#00CBDB",
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_29-05-2026-20-47-56.jpg",
+    imagePosition: "center",
   },
   {
     id: "sfida",
     title: "Sfida Estiva 21 Giorni",
-    description: "21 allenamenti BIM da 21 minuti. Brucia grasso, mantieni muscolo. Risultati visibili in 3 settimane.",
+    description: "21 allenamenti BIM da 21 minuti. Brucia grasso, mantieni muscolo.",
     price: "€37",
     stripeLink: "https://buy.stripe.com/5kQdRa9BQc5EgQi2961Nu00",
     tag: "21 Giorni",
     tagColor: "#F0C040",
     href: "https://sfida.davegamba.com",
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_25-03-2026-09-35-25.jpg",
+    imagePosition: "center 65%",
   },
   {
     id: "coaching",
     title: "Coaching Personalizzato",
-    description: "Scheda su misura, nutrizione, supporto diretto. Per chi vuole risultati seri senza perdere tempo.",
+    description: "Scheda su misura, nutrizione, supporto diretto. Per chi vuole risultati seri.",
     tag: "Premium",
     tagColor: "#F0C040",
     isCoachingCta: true,
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
+    imagePosition: "center top",
   },
 ];
 
@@ -177,34 +187,48 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           gap: 20px;
         }
         .da-card {
-          background: #111118;
-          border: 1px solid #1E1E2E;
-          border-radius: 16px;
-          padding: 28px 24px;
+          border-radius: 20px;
+          overflow: hidden;
+          position: relative;
+          min-height: 280px;
           display: flex;
           flex-direction: column;
-          gap: 12px;
-          transition: border-color 0.2s;
+          justify-content: flex-end;
+          border: 2px solid transparent;
+          transition: border-color 0.2s, transform 0.2s;
+          cursor: pointer;
+        }
+        .da-card.unlocked:hover { border-color: rgba(0,203,219,0.4); transform: translateY(-2px); }
+        .da-card.locked { filter: brightness(0.75) saturate(0.6); }
+        .da-card.coaching-card:hover { border-color: rgba(240,192,64,0.4); transform: translateY(-2px); }
+        .da-card-bg {
+          position: absolute;
+          inset: 0;
+          background-size: cover;
+          z-index: 0;
+        }
+        .da-card-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0.1) 100%);
+          z-index: 1;
+        }
+        .da-card-body {
           position: relative;
-          overflow: hidden;
+          z-index: 2;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
         }
-        .da-card.unlocked:hover { border-color: #00CBDB44; }
-        .da-card.locked {
-          opacity: 0.7;
-        }
-        .da-card.coaching-card {
-          border-color: #F0C04022;
-          background: #131310;
-        }
-        .da-card.coaching-card:hover { border-color: #F0C04044; }
         .da-tag {
           display: inline-flex;
           align-items: center;
           padding: 3px 10px;
           border-radius: 20px;
-          font-size: 11px;
-          font-weight: 600;
-          letter-spacing: 0.08em;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
           width: fit-content;
           border: 1px solid;
@@ -212,14 +236,13 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .da-card-title {
           font-family: 'DM Serif Display', serif;
           font-size: 20px;
-          color: #F0F0F0;
-          line-height: 1.3;
+          color: #fff;
+          line-height: 1.2;
         }
         .da-card-desc {
-          color: #888;
-          font-size: 14px;
-          line-height: 1.6;
-          flex: 1;
+          color: rgba(255,255,255,0.6);
+          font-size: 13px;
+          line-height: 1.5;
         }
         .da-card-footer {
           display: flex;
@@ -227,12 +250,10 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           justify-content: space-between;
           margin-top: 4px;
         }
-        .da-lock {
-          font-size: 20px;
-        }
+        .da-lock { font-size: 18px; }
         .da-price {
           color: #F0C040;
-          font-size: 18px;
+          font-size: 20px;
           font-weight: 700;
           font-family: 'DM Serif Display', serif;
         }
@@ -294,54 +315,47 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
               if (product.isCoachingCta) {
                 return (
                   <div key={product.id} className="da-card coaching-card">
-                    <span
-                      className="da-tag"
-                      style={{ color: product.tagColor, borderColor: product.tagColor + "44" }}
-                    >
-                      {product.tag}
-                    </span>
-                    <div className="da-card-title">{product.title}</div>
-                    <div className="da-card-desc">{product.description}</div>
-                    <a href="/coaching" className="da-btn da-btn-gold" style={{ marginTop: 4, justifyContent: "center" }}>
-                      Scopri il coaching →
-                    </a>
+                    <div className="da-card-bg" style={{ backgroundImage: `url('${product.image}')`, backgroundPosition: product.imagePosition }} />
+                    <div className="da-card-overlay" />
+                    <div className="da-card-body">
+                      <span className="da-tag" style={{ color: product.tagColor, borderColor: product.tagColor + "44" }}>{product.tag}</span>
+                      <div className="da-card-title">{product.title}</div>
+                      <div className="da-card-desc">{product.description}</div>
+                      <a href="/coaching" className="da-btn da-btn-gold" style={{ marginTop: 4, justifyContent: "center" }}>
+                        Scopri il coaching →
+                      </a>
+                    </div>
                   </div>
                 );
               }
 
               return (
                 <div key={product.id} className={`da-card ${unlocked ? "unlocked" : "locked"}`}>
-                  <span
-                    className="da-tag"
-                    style={{ color: product.tagColor, borderColor: product.tagColor + "44" }}
-                  >
-                    {product.tag}
-                  </span>
-                  <div className="da-card-title">{product.title}</div>
-                  <div className="da-card-desc">{product.description}</div>
-                  <div className="da-card-footer">
-                    {unlocked ? (
-                      <a
-                        href={product.href}
-                        className="da-btn da-btn-cyan"
-                        target={product.href?.startsWith("http") ? "_blank" : undefined}
-                        rel="noopener noreferrer"
-                      >
-                        Apri →
-                      </a>
-                    ) : (
-                      <>
-                        <span className="da-price">{product.price}</span>
+                  <div className="da-card-bg" style={{ backgroundImage: `url('${product.image}')`, backgroundPosition: product.imagePosition }} />
+                  <div className="da-card-overlay" />
+                  <div className="da-card-body">
+                    <span className="da-tag" style={{ color: product.tagColor, borderColor: product.tagColor + "44" }}>{product.tag}</span>
+                    <div className="da-card-title">{product.title}</div>
+                    <div className="da-card-desc">{product.description}</div>
+                    <div className="da-card-footer">
+                      {unlocked ? (
                         <a
-                          href={product.stripeLink}
-                          className="da-btn da-btn-gold"
-                          target="_blank"
+                          href={product.href}
+                          className="da-btn da-btn-cyan"
+                          target={product.href?.startsWith("http") ? "_blank" : undefined}
                           rel="noopener noreferrer"
                         >
-                          🔒 Sblocca
+                          Apri →
                         </a>
-                      </>
-                    )}
+                      ) : (
+                        <>
+                          <span className="da-price">{product.price}</span>
+                          <a href={product.stripeLink} className="da-btn da-btn-gold" target="_blank" rel="noopener noreferrer">
+                            🔒 Sblocca
+                          </a>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
               );
