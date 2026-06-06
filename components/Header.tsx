@@ -27,7 +27,7 @@ export default function Header() {
       {/* Backdrop blur bar */}
       <div
         className={cn(
-          "transition-all duration-400",
+          "transition-all duration-400 border-b border-white/20",
           scrolled
             ? "backdrop-blur-xl"
             : "bg-transparent backdrop-blur-none"
