@@ -145,7 +145,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .bc-header-logo-gamba {
           font-family: 'DM Serif Display', serif;
           font-size: 1.875rem;
-          color: #001E28;
+          color: #fff;
           line-height: 1;
         }
         .bc-header-center {
@@ -197,11 +197,11 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         }
         .bc-greeting-name {
           font-family: 'DM Sans', sans-serif;
-          font-size: clamp(13px, 2.5vw, 16px);
+          font-size: clamp(48px, 13vw, 108px);
           font-weight: 700;
-          letter-spacing: 0.32em;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
-          line-height: 1.2;
+          line-height: 1;
         }
         .bc-greeting-name em { font-style: normal; }
         .bc-greeting-sub {
@@ -390,16 +390,6 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
             <div className="bc-greeting-name">
               <span style={{ color: "#0A1A20" }}>DG </span><span style={{ color: "#00CBDB" }}>Fit Club</span>
             </div>
-            <div className="bc-greeting-sub">Cosa vuoi fare oggi?</div>
-          </div>
-
-          {/* Ornament */}
-          <div className="bc-ornament">
-            <div className="bc-ornament-line" />
-            <div className="bc-ornament-dot" />
-            <div className="bc-ornament-dot" />
-            <div className="bc-ornament-dot" />
-            <div className="bc-ornament-line" />
           </div>
 
           {/* Grid */}
