@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase-client";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
-  const [sent, setSent] = useState(false);
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -15,21 +15,18 @@ export default function LoginPage() {
     setError("");
 
     const supabase = createClient();
-    const { error: err } = await supabase.auth.signInWithOtp({
+    const { error: err } = await supabase.auth.signInWithPassword({
       email: email.trim().toLowerCase(),
-      options: {
-        emailRedirectTo: `https://davegamba.com/auth/callback`,
-      },
+      password,
     });
 
     if (err) {
-      setError("Qualcosa è andato storto. Riprova.");
+      setError("Email o password errati. Riprova.");
       setLoading(false);
       return;
     }
 
-    setSent(true);
-    setLoading(false);
+    window.location.href = "/club";
   };
 
   return (
@@ -223,46 +220,41 @@ export default function LoginPage() {
 
           {/* Card */}
           <div className="lg-card">
-            {sent ? (
-              <div className="lg-success">
-                <div className="lg-success-icon">📬</div>
-                <div className="lg-success-title">Controlla la mail</div>
-                <p className="lg-success-text">
-                  Ti ho inviato un link di accesso a{" "}
-                  <strong>{email}</strong>.
-                  <br /><br />
-                  Clicca il link per entrare nell&apos;area personale. Scade tra 1 ora.
-                </p>
+            <form onSubmit={handleSubmit}>
+              <div className="lg-title">Accedi</div>
+              <p className="lg-desc">Inserisci le tue credenziali per entrare.</p>
+              {error && <div className="lg-error">{error}</div>}
+              <label className="lg-label" htmlFor="email">Email</label>
+              <input
+                id="email"
+                className="lg-input"
+                type="email"
+                placeholder="tua@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                autoComplete="email"
+              />
+              <label className="lg-label" htmlFor="password">Password</label>
+              <input
+                id="password"
+                className="lg-input"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                autoComplete="current-password"
+              />
+              <button className="lg-btn" type="submit" disabled={loading || !email.trim() || !password.trim()}>
+                {loading ? "Accesso in corso..." : "Entra →"}
+              </button>
+              <div className="lg-divider">
+                <div className="lg-divider-line" />
+                <span className="lg-divider-text">accesso sicuro</span>
+                <div className="lg-divider-line" />
               </div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                <div className="lg-title">Accedi</div>
-                <p className="lg-desc">
-                  Inserisci la tua email. Ti mando un link — niente password.
-                </p>
-                {error && <div className="lg-error">{error}</div>}
-                <label className="lg-label" htmlFor="email">Email</label>
-                <input
-                  id="email"
-                  className="lg-input"
-                  type="email"
-                  placeholder="tua@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  autoComplete="email"
-                />
-                <button className="lg-btn" type="submit" disabled={loading || !email.trim()}>
-                  {loading ? "Invio in corso..." : "Invia link di accesso →"}
-                </button>
-
-                <div className="lg-divider">
-                  <div className="lg-divider-line" />
-                  <span className="lg-divider-text">accesso sicuro</span>
-                  <div className="lg-divider-line" />
-                </div>
-              </form>
-            )}
+            </form>
           </div>
 
           {/* Footer */}
