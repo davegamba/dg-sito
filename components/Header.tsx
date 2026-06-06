@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { href: "https://club.davegamba.com", label: "Protocolli" },
   { href: "/blog", label: "Blog" },
-  { href: "https://www.youtube.com/@DaveGambaFitness", label: "Canale YouTube" },
+  { href: "https://www.youtube.com/@DaveGambaFitness", label: "YouTube" },
 ];
 
 export default function Header() {

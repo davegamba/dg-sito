@@ -1,19 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Fuse from "fuse.js";
 import type { PostMeta } from "@/lib/posts";
 
 const CATEGORIE = ["Tutti", "Allenamento", "Nutrizione", "Dimagrimento", "Longevità", "Metodo BIM", "Mindset", "Testosterone"];
 
 export default function BlogList({ posts }: { posts: PostMeta[] }) {
   const [cat, setCat] = useState("Tutti");
+  const [query, setQuery] = useState("");
 
-  const filtered = cat === "Tutti" ? posts : posts.filter((p) => p.category === cat);
+  const fuse = useMemo(
+    () => new Fuse(posts, { keys: ["title", "excerpt", "category"], threshold: 0.35 }),
+    [posts]
+  );
+
+  const bySearch = query.trim()
+    ? fuse.search(query.trim()).map((r) => r.item)
+    : posts;
+
+  const filtered = cat === "Tutti" ? bySearch : bySearch.filter((p) => p.category === cat);
 
   return (
     <>
+      {/* Search bar */}
+      <div className="mb-6">
+        <input
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Cerca nel blog..."
+          className="w-full bg-[#0a0a12] text-white placeholder-[#444] border border-[#00CBDB33] focus:border-[#00CBDB] focus:outline-none rounded-xl px-5 py-3 text-sm transition-colors duration-200"
+        />
+      </div>
+
       {/* Filtri categoria */}
       <div className="flex flex-wrap gap-2 mb-4 pt-2">
         {CATEGORIE.map((c) => (
@@ -23,7 +45,7 @@ export default function BlogList({ posts }: { posts: PostMeta[] }) {
             className={`text-[11px] font-semibold tracking-wider uppercase px-4 py-2 rounded-full transition-all duration-200 ${
               cat === c
                 ? "bg-[#00CBDB] text-black"
-                : "bg-[#111] text-[#666] hover:text-[#00CBDB] hover:border-[#00CBDB] border border-[#222]"
+                : "bg-[#00CBDB0D] text-[#00CBDB] border border-[#00CBDB55] hover:bg-[#00CBDB22] hover:border-[#00CBDB]"
             }`}
           >
             {c}
