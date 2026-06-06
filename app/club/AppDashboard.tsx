@@ -234,12 +234,12 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           inset: 0;
           background: linear-gradient(
             to bottom,
-            rgba(255,255,255,0.91) 0%,
-            rgba(255,255,255,0.91) calc(30% - 1.5px),
+            rgba(0,203,219,0.88)   0%,
+            rgba(0,203,219,0.88)   calc(30% - 1.5px),
             rgba(0,170,190,0.5)    calc(30% - 1.5px),
             rgba(0,170,190,0.5)    calc(30% + 1.5px),
-            rgba(0,203,219,0.88)   calc(30% + 1.5px),
-            rgba(0,203,219,0.88)   100%
+            rgba(255,255,255,0.91) calc(30% + 1.5px),
+            rgba(255,255,255,0.91) 100%
           );
         }
 
@@ -259,14 +259,14 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           display: flex;
           align-items: center;
           text-decoration: none;
-          color: #0A1A20;
+          color: #fff;
         }
         .bc-header-logo-dave,
         .bc-header-logo-gamba {
           font-family: 'DM Serif Display', serif;
           font-size: 1.5rem;
           line-height: 1;
-          color: #0A1A20;
+          color: #fff;
         }
         .bc-header-right {
           display: flex;
@@ -276,7 +276,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         }
         .bc-header-email {
           font-size: 11px;
-          color: rgba(10,26,32,0.45);
+          color: rgba(255,255,255,0.7);
           letter-spacing: 0.02em;
           max-width: 140px;
           overflow: hidden;
@@ -285,9 +285,9 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         }
         .bc-logout-btn {
           background: transparent;
-          border: 1px solid rgba(10,26,32,0.2);
+          border: 1px solid rgba(255,255,255,0.4);
           border-radius: 100px;
-          color: rgba(10,26,32,0.6);
+          color: rgba(255,255,255,0.85);
           font-size: 10px;
           cursor: pointer;
           font-family: 'DM Sans', sans-serif;
@@ -296,7 +296,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           transition: all 0.2s;
           padding: 4px 12px;
         }
-        .bc-logout-btn:hover { background: rgba(10,26,32,0.06); }
+        .bc-logout-btn:hover { background: rgba(255,255,255,0.15); }
 
 
         /* Main */
@@ -318,7 +318,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           font-weight: 600;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: rgba(10,26,32,0.45);
+          color: rgba(255,255,255,0.7);
           margin-bottom: 8px;
           font-family: 'DM Sans', sans-serif;
         }
