@@ -27,10 +27,10 @@ export default function Header() {
       {/* Backdrop blur bar */}
       <div
         className={cn(
-          "transition-all duration-400 border-b",
+          "transition-all duration-400",
           scrolled
-            ? "backdrop-blur-xl border-[#00CBDB]/20"
-            : "bg-transparent backdrop-blur-none border-transparent"
+            ? "backdrop-blur-xl border-b border-[#00CBDB]/20"
+            : "bg-transparent backdrop-blur-none"
         )}
         style={scrolled ? {
           background: "linear-gradient(135deg, #00CBDB 0%, #00AECF 55%, #0077CC 100%)",
