@@ -97,7 +97,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .bc-wrap {
           min-height: 100dvh;
           font-family: 'DM Sans', sans-serif;
-          color: #F5F0E8;
+          color: #0A1A20;
           position: relative;
           overflow-x: hidden;
         }
@@ -115,12 +115,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(
-            160deg,
-            rgba(0,28,35,0.68) 0%,
-            rgba(0,18,25,0.72) 50%,
-            rgba(5,12,8,0.78) 100%
-          );
+          background: rgba(255,255,255,0.78);
         }
 
         /* Header */
@@ -203,14 +198,14 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .bc-greeting-name {
           font-family: 'DM Serif Display', serif;
           font-size: clamp(44px, 6vw, 64px);
-          color: #F5F0E8;
+          color: #0A1A20;
           line-height: 1.1;
         }
         .bc-greeting-name em { font-style: italic; color: #C8963E; }
         .bc-greeting-sub {
           margin-top: 10px;
           font-size: 14px;
-          color: rgba(245,240,232,0.4);
+          color: rgba(10,26,32,0.45);
           font-weight: 300;
           letter-spacing: 0.03em;
         }
@@ -222,8 +217,8 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           gap: 12px;
           margin-bottom: 32px;
         }
-        .bc-ornament-line { flex: 1; height: 1px; background: rgba(200,150,62,0.15); }
-        .bc-ornament-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(200,150,62,0.4); }
+        .bc-ornament-line { flex: 1; height: 1px; background: rgba(200,150,62,0.25); }
+        .bc-ornament-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(200,150,62,0.55); }
 
         /* Grid card */
         .bc-grid {
@@ -391,7 +386,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           {/* Greeting */}
           <div className="bc-greeting">
             <div className="bc-greeting-name">
-              <span style={{ color: "#fff" }}>DG </span><span style={{ color: "#00CBDB" }}>Fit Club</span>
+              <span style={{ color: "#0A1A20" }}>DG </span><span style={{ color: "#0077CC" }}>Fit Club</span>
             </div>
             <div className="bc-greeting-sub">Cosa vuoi fare oggi?</div>
           </div>
