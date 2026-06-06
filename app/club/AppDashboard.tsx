@@ -20,6 +20,11 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
+interface BeforeInstallPromptEvent extends Event {
+  prompt(): Promise<void>;
+  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
+}
+
 interface Product {
   id: string;
   title: string;
@@ -192,6 +197,53 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
   const [loggingOut, setLoggingOut] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [products, setProducts] = useState<Product[]>(PRODUCTS_DEFAULT);
+  const [installPrompt, setInstallPrompt] = useState<Event | null>(null);
+  const [showInstall, setShowInstall] = useState(false);
+  const [isIos, setIsIos] = useState(false);
+  const [showIosHint, setShowIosHint] = useState(false);
+
+  useEffect(() => {
+    // Già installata? Non mostrare
+    const dismissed = localStorage.getItem("dg_pwa_dismissed");
+    if (dismissed) return;
+
+    // iOS detection
+    const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) && !(window.navigator as Navigator & { standalone?: boolean }).standalone;
+    if (ios) {
+      setIsIos(true);
+      setShowInstall(true);
+      return;
+    }
+
+    // Android/Chrome: intercetta beforeinstallprompt
+    const handler = (e: Event) => {
+      e.preventDefault();
+      setInstallPrompt(e);
+      setShowInstall(true);
+    };
+    window.addEventListener("beforeinstallprompt", handler);
+    return () => window.removeEventListener("beforeinstallprompt", handler);
+  }, []);
+
+  const handleInstall = async () => {
+    if (isIos) {
+      setShowIosHint(true);
+      return;
+    }
+    if (!installPrompt) return;
+    (installPrompt as BeforeInstallPromptEvent).prompt();
+    const { outcome } = await (installPrompt as BeforeInstallPromptEvent).userChoice;
+    if (outcome === "accepted") {
+      localStorage.setItem("dg_pwa_dismissed", "1");
+      setShowInstall(false);
+    }
+  };
+
+  const dismissInstall = () => {
+    localStorage.setItem("dg_pwa_dismissed", "1");
+    setShowInstall(false);
+    setShowIosHint(false);
+  };
 
   useEffect(() => {
     setProducts(getOrderedProducts());
@@ -656,6 +708,51 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
             <div className="bc-greeting-name">
               <span style={{ color: "#0A1A20" }}>DG Athletic Club</span>
             </div>
+
+            {/* Install banner */}
+            {showInstall && (
+              <div style={{ marginBottom: "8px" }}>
+                <button
+                  onClick={handleInstall}
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    color: "#0077CC",
+                    letterSpacing: "0.04em",
+                    padding: "2px 0",
+                  }}
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2v13M7 11l5 5 5-5"/><rect x="3" y="18" width="18" height="3" rx="1.5"/>
+                  </svg>
+                  Aggiungi alla schermata Home
+                </button>
+                {showIosHint && (
+                  <div style={{
+                    marginTop: "8px",
+                    background: "rgba(10,26,32,0.08)",
+                    border: "1px solid rgba(10,26,32,0.12)",
+                    borderRadius: "10px",
+                    padding: "10px 14px",
+                    fontSize: "11px",
+                    color: "rgba(10,26,32,0.75)",
+                    lineHeight: 1.6,
+                    textAlign: "left",
+                    position: "relative",
+                  }}>
+                    Tocca <strong>□↑</strong> in basso nel browser, poi <strong>"Aggiungi a schermata Home"</strong>
+                    <button onClick={dismissInstall} style={{ position: "absolute", top: "6px", right: "8px", background: "none", border: "none", cursor: "pointer", fontSize: "14px", color: "rgba(10,26,32,0.4)" }}>✕</button>
+                  </div>
+                )}
+              </div>
+            )}
+
             <div className="bc-drag-hint">Tieni premuto per riordinare i protocolli</div>
           </div>
 
