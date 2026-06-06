@@ -232,7 +232,15 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           content: '';
           position: absolute;
           inset: 0;
-          background: rgba(255,255,255,0.91);
+          background: linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.91) 0%,
+            rgba(255,255,255,0.91) calc(30% - 1.5px),
+            rgba(0,170,190,0.5)    calc(30% - 1.5px),
+            rgba(0,170,190,0.5)    calc(30% + 1.5px),
+            rgba(0,203,219,0.88)   calc(30% + 1.5px),
+            rgba(0,203,219,0.88)   100%
+          );
         }
 
         /* Header */
@@ -310,7 +318,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           font-weight: 600;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: rgba(0,203,219,0.7);
+          color: rgba(10,26,32,0.45);
           margin-bottom: 8px;
           font-family: 'DM Sans', sans-serif;
         }
@@ -325,7 +333,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .bc-drag-hint {
           margin-top: 6px;
           font-size: 11px;
-          color: rgba(10,26,32,0.6);
+          color: rgba(255,255,255,0.7);
           letter-spacing: 0.04em;
         }
         .bc-grid-wrap {
@@ -450,7 +458,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           <div className="bc-greeting">
             <div className="bc-greeting-sub">Il tuo spazio personale</div>
             <div className="bc-greeting-name">
-              <span style={{ color: "#0A1A20" }}>DG Fit Club</span>
+              <span style={{ color: "#fff" }}>DG Fit Club</span>
             </div>
             <div className="bc-drag-hint">Tieni premuto per riordinare</div>
           </div>
