@@ -96,16 +96,14 @@ export default function LoginPage() {
           text-align: center;
           margin-bottom: 40px;
         }
-        .lg-logo-eyebrow { display: none; }
         .lg-logo {
           font-family: 'DM Sans', sans-serif;
-          font-size: clamp(28px, 7vw, 52px);
+          font-size: clamp(22px, 5vw, 40px);
           font-weight: 300;
-          letter-spacing: 0.18em;
+          letter-spacing: 0.35em;
           text-transform: uppercase;
           line-height: 1;
         }
-        .lg-logo em { font-style: normal; }
 
         /* Card vetro */
         .lg-card {

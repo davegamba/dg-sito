@@ -85,9 +85,6 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
     router.push("/login");
   };
 
-  const firstName = userEmail.split("@")[0].split(".")[0];
-  const displayName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
-
   return (
     <>
       <style>{`
@@ -136,12 +133,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           align-items: center;
           text-decoration: none;
         }
-        .bc-header-logo-dave {
-          font-family: 'DM Serif Display', serif;
-          font-size: 1.875rem;
-          color: #fff;
-          line-height: 1;
-        }
+        .bc-header-logo-dave,
         .bc-header-logo-gamba {
           font-family: 'DM Serif Display', serif;
           font-size: 1.875rem;
@@ -197,30 +189,12 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         }
         .bc-greeting-name {
           font-family: 'DM Sans', sans-serif;
-          font-size: clamp(28px, 7vw, 52px);
+          font-size: clamp(22px, 5vw, 40px);
           font-weight: 300;
-          letter-spacing: 0.18em;
+          letter-spacing: 0.35em;
           text-transform: uppercase;
           line-height: 1;
         }
-        .bc-greeting-name em { font-style: normal; }
-        .bc-greeting-sub {
-          margin-top: 10px;
-          font-size: 14px;
-          color: rgba(10,26,32,0.45);
-          font-weight: 300;
-          letter-spacing: 0.03em;
-        }
-
-        /* Divider ornamentale */
-        .bc-ornament {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          margin-bottom: 32px;
-        }
-        .bc-ornament-line { flex: 1; height: 1px; background: rgba(200,150,62,0.25); }
-        .bc-ornament-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(200,150,62,0.55); }
 
         /* Grid card */
         .bc-grid {
