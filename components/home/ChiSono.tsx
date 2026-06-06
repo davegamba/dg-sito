@@ -28,7 +28,7 @@ export default function ChiSono() {
             <span style={{ display: "block", marginBottom: "10px", fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "#00CBDB" }}>
               About me
             </span>
-            <h2 style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", color: "#fff", marginBottom: "20px", lineHeight: 1.2, fontFamily: "var(--font-dm-serif)" }}>
+            <h2 className="font-serif text-3xl sm:text-4xl" style={{ color: "#fff", marginBottom: "20px", lineHeight: 1.2 }}>
               15 anni di trasformazioni fisiche.<br />
               3.000+ clienti.<br />
               <em style={{ color: "#00CBDB", fontStyle: "normal" }}>Un solo metodo.</em>

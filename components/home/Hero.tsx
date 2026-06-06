@@ -68,7 +68,7 @@ export default function Hero() {
       </div>
 
       {/* CONTENUTO */}
-      <div className="relative w-full max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-6 pt-40 sm:pt-36 pb-16 sm:pb-20">
+      <div className="relative w-full max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-6 pt-52 sm:pt-48 pb-16 sm:pb-20">
 
         {/* Badge */}
         <div className="inline-flex items-center gap-2">
@@ -141,7 +141,7 @@ export default function Hero() {
 
         {/* Micro label */}
         <p className="text-white/35 text-xs tracking-wide">
-          Scopri il tuo Profilo Fisico gratuitamente — 2 minuti
+          Scopri il tuo profilo fisico gratuitamente — 2 minuti
         </p>
 
         {/* STATS — inline con il contenuto */}
