@@ -26,7 +26,11 @@ export async function GET(request: NextRequest) {
       }
     );
     const { error } = await supabase.auth.exchangeCodeForSession(code);
-    if (!error) return NextResponse.redirect(`${origin}/club`);
+    if (!error) {
+      // Recovery flow → pagina cambio password
+      if (type === "recovery") return NextResponse.redirect(`${origin}/auth/confirm`);
+      return NextResponse.redirect(`${origin}/club`);
+    }
   }
 
   // Token hash flow (magic link classico)
