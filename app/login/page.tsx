@@ -8,6 +8,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [view, setView] = useState<"login" | "reset" | "reset-sent">("login");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,6 +28,22 @@ export default function LoginPage() {
     }
 
     window.location.href = "/club";
+  };
+
+  const handleReset = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    const supabase = createClient();
+    const { error: err } = await supabase.auth.resetPasswordForEmail(
+      email.trim().toLowerCase(),
+      { redirectTo: "https://davegamba.com/auth/confirm" }
+    );
+
+    setLoading(false);
+    if (err) { setError("Errore: " + err.message); return; }
+    setView("reset-sent");
   };
 
   return (
@@ -220,41 +237,67 @@ export default function LoginPage() {
 
           {/* Card */}
           <div className="lg-card">
-            <form onSubmit={handleSubmit}>
-              <div className="lg-title">Accedi</div>
-              <p className="lg-desc">Inserisci le tue credenziali per entrare.</p>
-              {error && <div className="lg-error">{error}</div>}
-              <label className="lg-label" htmlFor="email">Email</label>
-              <input
-                id="email"
-                className="lg-input"
-                type="email"
-                placeholder="tua@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                autoComplete="email"
-              />
-              <label className="lg-label" htmlFor="password">Password</label>
-              <input
-                id="password"
-                className="lg-input"
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                autoComplete="current-password"
-              />
-              <button className="lg-btn" type="submit" disabled={loading || !email.trim() || !password.trim()}>
-                {loading ? "Accesso in corso..." : "Entra →"}
-              </button>
-              <div className="lg-divider">
-                <div className="lg-divider-line" />
-                <span className="lg-divider-text">accesso sicuro</span>
-                <div className="lg-divider-line" />
+
+            {view === "login" && (
+              <form onSubmit={handleSubmit}>
+                <div className="lg-title">Accedi</div>
+                <p className="lg-desc">Inserisci le tue credenziali per entrare.</p>
+                {error && <div className="lg-error">{error}</div>}
+                <label className="lg-label" htmlFor="email">Email</label>
+                <input id="email" className="lg-input" type="email" placeholder="tua@email.com"
+                  value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
+                <label className="lg-label" htmlFor="password">Password</label>
+                <input id="password" className="lg-input" type="password" placeholder="••••••••"
+                  value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="current-password" />
+                <button className="lg-btn" type="submit" disabled={loading || !email.trim() || !password.trim()}>
+                  {loading ? "Accesso in corso..." : "Entra →"}
+                </button>
+                <div className="lg-divider">
+                  <div className="lg-divider-line" />
+                  <span className="lg-divider-text">accesso sicuro</span>
+                  <div className="lg-divider-line" />
+                </div>
+                <p style={{ textAlign: "center", marginTop: "16px", fontSize: "13px" }}>
+                  <button type="button" onClick={() => { setError(""); setView("reset"); }}
+                    style={{ background: "none", border: "none", color: "rgba(0,203,219,0.8)", cursor: "pointer", fontSize: "13px" }}>
+                    Hai dimenticato la password?
+                  </button>
+                </p>
+              </form>
+            )}
+
+            {view === "reset" && (
+              <form onSubmit={handleReset}>
+                <div className="lg-title">Reset password</div>
+                <p className="lg-desc">Inserisci la tua email. Ti mando un link per impostare una nuova password.</p>
+                {error && <div className="lg-error">{error}</div>}
+                <label className="lg-label" htmlFor="reset-email">Email</label>
+                <input id="reset-email" className="lg-input" type="email" placeholder="tua@email.com"
+                  value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" autoFocus />
+                <button className="lg-btn" type="submit" disabled={loading || !email.trim()}>
+                  {loading ? "Invio in corso..." : "Invia link →"}
+                </button>
+                <p style={{ textAlign: "center", marginTop: "16px", fontSize: "13px" }}>
+                  <button type="button" onClick={() => { setError(""); setView("login"); }}
+                    style={{ background: "none", border: "none", color: "rgba(0,203,219,0.8)", cursor: "pointer", fontSize: "13px" }}>
+                    ← Torna al login
+                  </button>
+                </p>
+              </form>
+            )}
+
+            {view === "reset-sent" && (
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontSize: "40px", marginBottom: "16px" }}>📬</div>
+                <div className="lg-title" style={{ marginBottom: "8px" }}>Controlla la mail</div>
+                <p className="lg-desc">Ti ho inviato il link a <strong style={{ color: "#0A1A20" }}>{email}</strong>. Clicca il link per impostare la nuova password.</p>
+                <button type="button" onClick={() => setView("login")}
+                  style={{ marginTop: "16px", background: "none", border: "none", color: "rgba(0,203,219,0.8)", cursor: "pointer", fontSize: "13px" }}>
+                  ← Torna al login
+                </button>
               </div>
-            </form>
+            )}
+
           </div>
 
           {/* Footer */}
