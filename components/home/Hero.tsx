@@ -79,7 +79,7 @@ export default function Hero() {
         </div>
 
         {/* Nome */}
-        <h1 className="font-serif text-7xl sm:text-7xl md:text-8xl lg:text-9xl text-white leading-none whitespace-nowrap uppercase" style={{ letterSpacing: '0.18em', fontWeight: 600 }}>
+        <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white leading-none whitespace-nowrap uppercase" style={{ letterSpacing: '0.18em', fontWeight: 600 }}>
           Dave Gamba
         </h1>
 

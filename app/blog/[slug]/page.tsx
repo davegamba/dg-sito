@@ -13,7 +13,7 @@ import type { Metadata } from "next";
 // H2 bicolore: prima parte ciano, seconda parte nera
 // Eccezione: "Riferimenti Scientifici" → h3 nero con emoji 🔬
 function CustomH2({ children }: { children: ReactNode }) {
-  if (typeof children !== "string") return <h2>{children}</h2>;
+  if (typeof children !== "string") return <h2 className="font-serif">{children}</h2>;
   if (children.trim().toLowerCase().includes("riferimenti")) {
     return (
       <h3 style={{ fontSize: "1.1rem", color: "#111", fontWeight: 700, borderTop: "1px solid #e8e0d4", paddingTop: "1.5rem", marginTop: "2.5rem", marginBottom: "0.75rem" }}>
@@ -25,13 +25,13 @@ function CustomH2({ children }: { children: ReactNode }) {
   if (match) {
     const sep = match[2] === "—" ? " — " : ": ";
     return (
-      <h2>
+      <h2 className="font-serif">
         <span style={{ color: "#00CBDB" }}>{match[1]}</span>
         <span style={{ color: "#1a1a1a" }}>{sep}{match[3]}</span>
       </h2>
     );
   }
-  return <h2>{children}</h2>;
+  return <h2 className="font-serif">{children}</h2>;
 }
 
 const mdxComponents = { h2: CustomH2 };

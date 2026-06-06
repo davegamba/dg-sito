@@ -29,8 +29,7 @@ export default function ChiSono() {
               About me
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl" style={{ color: "#fff", marginBottom: "20px", lineHeight: 1.2 }}>
-              15 anni di trasformazioni fisiche.<br />
-              3.000+ clienti.<br />
+              15 anni. Oltre 3.000 clienti trasformati.<br />
               <em style={{ color: "#00CBDB", fontStyle: "normal" }}>Un solo metodo.</em>
             </h2>
             <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.8)", lineHeight: 1.7, marginBottom: 0 }}>
