@@ -5,10 +5,9 @@ import { createClient } from "@/lib/supabase-client";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [view, setView] = useState<"login" | "reset" | "reset-sent">("login");
+  const [sent, setSent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,40 +15,39 @@ export default function LoginPage() {
     setError("");
 
     const supabase = createClient();
-    const { error: err } = await supabase.auth.signInWithPassword({
+    const { error: err } = await supabase.auth.signInWithOtp({
       email: email.trim().toLowerCase(),
-      password,
+      options: {
+        emailRedirectTo: "https://davegamba.com/club",
+      },
     });
 
+    setLoading(false);
     if (err) {
-      setError("Email o password errati. Riprova.");
-      setLoading(false);
+      setError("Qualcosa è andato storto. Riprova.");
       return;
     }
-
-    window.location.href = "/club";
-  };
-
-  const handleReset = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-
-    const supabase = createClient();
-    const { error: err } = await supabase.auth.resetPasswordForEmail(
-      email.trim().toLowerCase(),
-      { redirectTo: "https://davegamba.com/auth/confirm" }
-    );
-
-    setLoading(false);
-    if (err) { setError("Errore: " + err.message); return; }
-    setView("reset-sent");
+    setSent(true);
   };
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
+        @font-face {
+          font-family: 'Flatline';
+          src: url('/fonts/Flatline-Regular.otf') format('opentype');
+          font-weight: 400;
+          font-style: normal;
+          font-display: swap;
+        }
+        @font-face {
+          font-family: 'Flatline';
+          src: url('/fonts/Flatline-SemiBold.otf') format('opentype');
+          font-weight: 500;
+          font-style: normal;
+          font-display: swap;
+        }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         .lg-wrap {
@@ -64,7 +62,6 @@ export default function LoginPage() {
           overflow: hidden;
         }
 
-        /* Sfondo palme */
         .lg-bg {
           position: fixed;
           inset: 0;
@@ -77,10 +74,9 @@ export default function LoginPage() {
           content: '';
           position: absolute;
           inset: 0;
-          background: rgba(255,255,255,0.91);
+          background: rgba(250,246,240,0.92);
         }
 
-        /* Contenuto */
         .lg-content {
           position: relative;
           z-index: 5;
@@ -91,34 +87,35 @@ export default function LoginPage() {
           align-items: center;
         }
 
-        /* Logo */
         .lg-logo-wrap {
           text-align: center;
           margin-bottom: 40px;
         }
         .lg-logo {
-          font-family: 'DM Sans', sans-serif;
-          font-size: clamp(36px, 8vw, 64px);
-          font-weight: 200;
-          letter-spacing: 0.38em;
+          font-family: 'Flatline', sans-serif;
+          font-size: clamp(22px, 5.5vw, 48px);
+          font-weight: 500;
+          letter-spacing: 0.28em;
           text-transform: uppercase;
           line-height: 1;
+          white-space: nowrap;
+          color: #0A1A20;
         }
 
-        /* Card vetro */
         .lg-card {
           width: 100%;
-          background: rgba(255,255,255,0.75);
+          background: rgba(255,255,255,0.80);
           backdrop-filter: blur(28px);
-          border: 1.5px solid rgba(0,203,219,0.55);
+          border: 1.5px solid rgba(0,203,219,0.45);
           border-radius: 24px;
-          padding: 24px 28px;
-          box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+          padding: 32px 28px;
+          box-shadow: 0 4px 32px rgba(0,0,0,0.07);
         }
 
         .lg-title {
-          font-family: 'DM Serif Display', serif;
-          font-size: 24px;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 20px;
+          font-weight: 600;
           color: #0A1A20;
           margin: 0 0 8px;
         }
@@ -149,10 +146,10 @@ export default function LoginPage() {
           font-family: 'DM Sans', sans-serif;
           outline: none;
           margin-bottom: 20px;
-          transition: border-color 0.2s, background 0.2s;
+          transition: border-color 0.2s;
         }
         .lg-input::placeholder { color: rgba(10,26,32,0.35); }
-        .lg-input:focus { border-color: rgba(0,203,219,0.75); background: rgba(255,255,255,0.15); }
+        .lg-input:focus { border-color: rgba(0,203,219,0.75); }
 
         .lg-btn {
           width: 100%;
@@ -181,45 +178,36 @@ export default function LoginPage() {
           margin-bottom: 16px;
         }
 
-        /* Divider */
-        .lg-divider {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          margin: 24px 0 0;
+        .lg-sent {
+          text-align: center;
+          padding: 8px 0;
         }
-        .lg-divider-line { flex: 1; height: 1px; background: rgba(0,203,219,0.12); }
-        .lg-divider-text { font-size: 11px; color: rgba(245,240,232,0.2); letter-spacing: 0.05em; }
-
-        /* Success */
-        .lg-success { text-align: center; }
-        .lg-success-icon { font-size: 52px; margin-bottom: 16px; }
-        .lg-success-title {
-          font-family: 'DM Serif Display', serif;
-          font-size: 26px;
-          color: #F5F0E8;
-          margin: 0 0 12px;
+        .lg-sent-icon { font-size: 48px; margin-bottom: 20px; }
+        .lg-sent-title {
+          font-size: 20px;
+          font-weight: 600;
+          color: #0A1A20;
+          margin-bottom: 12px;
         }
-        .lg-success-text {
-          color: rgba(245,240,232,0.45);
+        .lg-sent-text {
+          color: rgba(10,26,32,0.55);
           font-size: 14px;
           line-height: 1.65;
           font-weight: 300;
         }
-        .lg-success-text strong { color: #F5F0E8; font-weight: 500; }
+        .lg-sent-text strong { color: #0A1A20; font-weight: 600; }
 
-        /* Footer */
         .lg-footer {
           position: relative;
           z-index: 5;
-          margin-top: 28px;
+          margin-top: 24px;
           color: #0A1A20;
-          font-size: 14px;
-          font-weight: 500;
+          font-size: 13px;
+          font-weight: 400;
           text-align: center;
           line-height: 1.6;
         }
-        .lg-footer a { color: #00CBDB; text-decoration: none; font-weight: 700; transition: color 0.2s; }
+        .lg-footer a { color: #00CBDB; text-decoration: none; font-weight: 700; }
         .lg-footer a:hover { color: #0077CC; }
       `}</style>
 
@@ -227,84 +215,50 @@ export default function LoginPage() {
         <div className="lg-bg" />
 
         <div className="lg-content">
-          {/* Logo */}
           <div className="lg-logo-wrap">
-            <div className="lg-logo">
-              <span style={{ color: "#0A1A20" }}>DG </span><span style={{ color: "#00CBDB" }}>Fit Club</span>
-            </div>
+            <div className="lg-logo">DG Athletic Club</div>
           </div>
 
-          {/* Card */}
           <div className="lg-card">
-
-            {view === "login" && (
+            {!sent ? (
               <form onSubmit={handleSubmit}>
-                <div className="lg-title">Accedi</div>
-                <p className="lg-desc">Inserisci le tue credenziali per entrare.</p>
+                <div className="lg-title">Accedi al Club</div>
+                <p className="lg-desc">Inserisci la tua email. Ti mando un link diretto — nessuna password.</p>
                 {error && <div className="lg-error">{error}</div>}
                 <label className="lg-label" htmlFor="email">Email</label>
-                <input id="email" className="lg-input" type="email" placeholder="tua@email.com"
-                  value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
-                <label className="lg-label" htmlFor="password">Password</label>
-                <input id="password" className="lg-input" type="password" placeholder="••••••••"
-                  value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="current-password" />
-                <button className="lg-btn" type="submit" disabled={loading || !email.trim() || !password.trim()}>
-                  {loading ? "Accesso in corso..." : "Entra →"}
-                </button>
-                <div className="lg-divider">
-                  <div className="lg-divider-line" />
-                  <span className="lg-divider-text">accesso sicuro</span>
-                  <div className="lg-divider-line" />
-                </div>
-                <p style={{ textAlign: "center", marginTop: "16px", fontSize: "13px" }}>
-                  <button type="button" onClick={() => { setError(""); setView("reset"); }}
-                    style={{ background: "none", border: "none", color: "rgba(0,203,219,0.8)", cursor: "pointer", fontSize: "13px" }}>
-                    Hai dimenticato la password?
-                  </button>
-                </p>
-              </form>
-            )}
-
-            {view === "reset" && (
-              <form onSubmit={handleReset}>
-                <div className="lg-title">Reset password</div>
-                <p className="lg-desc">Inserisci la tua email. Ti mando un link per impostare una nuova password.</p>
-                {error && <div className="lg-error">{error}</div>}
-                <label className="lg-label" htmlFor="reset-email">Email</label>
-                <input id="reset-email" className="lg-input" type="email" placeholder="tua@email.com"
-                  value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" autoFocus />
+                <input
+                  id="email"
+                  className="lg-input"
+                  type="email"
+                  placeholder="tua@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  autoComplete="email"
+                  autoFocus
+                />
                 <button className="lg-btn" type="submit" disabled={loading || !email.trim()}>
-                  {loading ? "Invio in corso..." : "Invia link →"}
+                  {loading ? "Invio in corso..." : "Invia link di accesso →"}
                 </button>
-                <p style={{ textAlign: "center", marginTop: "16px", fontSize: "13px" }}>
-                  <button type="button" onClick={() => { setError(""); setView("login"); }}
-                    style={{ background: "none", border: "none", color: "rgba(0,203,219,0.8)", cursor: "pointer", fontSize: "13px" }}>
-                    ← Torna al login
-                  </button>
-                </p>
               </form>
-            )}
-
-            {view === "reset-sent" && (
-              <div style={{ textAlign: "center" }}>
-                <div style={{ fontSize: "40px", marginBottom: "16px" }}>📬</div>
-                <div className="lg-title" style={{ marginBottom: "8px" }}>Controlla la mail</div>
-                <p className="lg-desc">Ti ho inviato il link a <strong style={{ color: "#0A1A20" }}>{email}</strong>. Clicca il link per impostare la nuova password.</p>
-                <button type="button" onClick={() => setView("login")}
-                  style={{ marginTop: "16px", background: "none", border: "none", color: "rgba(0,203,219,0.8)", cursor: "pointer", fontSize: "13px" }}>
-                  ← Torna al login
-                </button>
+            ) : (
+              <div className="lg-sent">
+                <div className="lg-sent-icon">📬</div>
+                <div className="lg-sent-title">Controlla la mail</div>
+                <p className="lg-sent-text">
+                  Ho inviato il link a <strong>{email}</strong>.<br />
+                  Clicca il link per entrare nel Club.
+                </p>
               </div>
             )}
-
           </div>
 
-          {/* Footer */}
-          <div className="lg-footer">
-            Prima volta qui?{" "}
-            <a href="/registrati">Registrati gratis</a>
-            {" "}e ottieni gli strumenti per la tua trasformazione fisica.
-          </div>
+          {!sent && (
+            <div className="lg-footer">
+              Non hai ancora un account?{" "}
+              <a href="/registrati">Registrati gratis</a>
+            </div>
+          )}
         </div>
       </div>
     </>

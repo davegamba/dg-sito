@@ -31,7 +31,6 @@ interface Product {
   isCoachingCta?: boolean;
   image?: string;
   imagePosition?: string;
-  titleCase?: boolean;
 }
 
 const COACHING: Product = {
@@ -78,7 +77,6 @@ const PRODUCTS_DEFAULT: Product[] = [
   {
     id: "addominali",
     title: "Protocollo Addominali Scolpiti",
-    titleCase: true,
     price: "€21",
     stripeLink: "",
     tag: "🔒 Sblocca",
@@ -156,7 +154,7 @@ function SortableCard({ product, unlocked, onClick }: CardProps) {
             {product.tag}
           </span>
         )}
-        <div className="bc-card-title" style={product.titleCase ? { textTransform: 'none' } : undefined}>{product.title}</div>
+        <div className="bc-card-title">{product.title}</div>
       </div>
     </div>
   );
@@ -348,7 +346,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           font-weight: 600;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.7);
+          color: #D4A84B;
           margin-bottom: 18px;
           font-family: 'DM Sans', sans-serif;
         }
@@ -384,7 +382,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           position: relative;
           border-radius: 16px;
           overflow: hidden;
-          height: 160px;
+          height: 172px;
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
@@ -459,11 +457,12 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .bc-card-title {
           font-family: 'Flatline', sans-serif;
           font-weight: 600;
-          font-size: 15px;
+          font-size: 13px;
           color: #F5F0E8;
-          line-height: 1.25;
-          letter-spacing: 0.06em;
+          line-height: 1.2;
+          letter-spacing: 0.03em;
           text-transform: uppercase;
+          text-shadow: 0 1px 4px rgba(0,0,0,0.4);
         }
 
         .bc-card-price-badge {
