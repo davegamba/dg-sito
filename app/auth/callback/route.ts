@@ -26,11 +26,7 @@ export async function GET(request: NextRequest) {
       }
     );
     const { error } = await supabase.auth.exchangeCodeForSession(code);
-    if (!error) {
-      const next = searchParams.get("next");
-      if (next && next.startsWith("/")) return NextResponse.redirect(`${origin}${next}`);
-      return NextResponse.redirect(`${origin}/club`);
-    }
+    if (!error) return NextResponse.redirect(`${origin}/club`);
   }
 
   // Token hash flow (magic link classico)

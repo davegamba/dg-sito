@@ -38,7 +38,7 @@ export default function LoginPage() {
     const supabase = createClient();
     const { error: err } = await supabase.auth.resetPasswordForEmail(
       email.trim().toLowerCase(),
-      { redirectTo: "https://davegamba.com/auth/callback?next=/auth/confirm%3Fmode%3Drecovery" }
+      { redirectTo: "https://davegamba.com/auth/confirm" }
     );
 
     setLoading(false);
