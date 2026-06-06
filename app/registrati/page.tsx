@@ -3,47 +3,56 @@
 import { useState } from "react";
 import { createClient } from "@/lib/supabase-client";
 
-export default function LoginPage() {
+export default function RegistratiPage() {
+  const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [view, setView] = useState<"login" | "reset" | "reset-sent">("login");
+  const [done, setDone] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
-    const supabase = createClient();
-    const { error: err } = await supabase.auth.signInWithPassword({
-      email: email.trim().toLowerCase(),
-      password,
-    });
-
-    if (err) {
-      setError("Email o password errati. Riprova.");
+    if (password.length < 6) {
+      setError("La password deve essere di almeno 6 caratteri.");
       setLoading(false);
       return;
     }
 
-    window.location.href = "/club";
-  };
-
-  const handleReset = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-
     const supabase = createClient();
-    const { error: err } = await supabase.auth.resetPasswordForEmail(
-      email.trim().toLowerCase(),
-      { redirectTo: "https://davegamba.com/auth/confirm" }
-    );
+    const { error: err } = await supabase.auth.signUp({
+      email: email.trim().toLowerCase(),
+      password,
+      options: {
+        data: { full_name: nome.trim() },
+      },
+    });
+
+    if (err) {
+      if (err.message.includes("already registered") || err.message.includes("User already registered")) {
+        setError("Questa email è già registrata. Accedi dalla pagina di login.");
+      } else {
+        setError("Errore durante la registrazione. Riprova.");
+      }
+      setLoading(false);
+      return;
+    }
+
+    // Auto-login dopo signup
+    const { error: loginErr } = await supabase.auth.signInWithPassword({
+      email: email.trim().toLowerCase(),
+      password,
+    });
 
     setLoading(false);
-    if (err) { setError("Errore: " + err.message); return; }
-    setView("reset-sent");
+    if (loginErr) {
+      setDone(true); // mostra messaggio di conferma email
+    } else {
+      window.location.href = "/club";
+    }
   };
 
   return (
@@ -64,7 +73,6 @@ export default function LoginPage() {
           overflow: hidden;
         }
 
-        /* Sfondo palme */
         .lg-bg {
           position: fixed;
           inset: 0;
@@ -80,7 +88,6 @@ export default function LoginPage() {
           background: rgba(255,255,255,0.91);
         }
 
-        /* Contenuto */
         .lg-content {
           position: relative;
           z-index: 5;
@@ -91,7 +98,6 @@ export default function LoginPage() {
           align-items: center;
         }
 
-        /* Logo */
         .lg-logo-wrap {
           text-align: center;
           margin-bottom: 40px;
@@ -105,7 +111,6 @@ export default function LoginPage() {
           line-height: 1;
         }
 
-        /* Card vetro */
         .lg-card {
           width: 100%;
           background: rgba(255,255,255,0.75);
@@ -181,7 +186,6 @@ export default function LoginPage() {
           margin-bottom: 16px;
         }
 
-        /* Divider */
         .lg-divider {
           display: flex;
           align-items: center;
@@ -189,26 +193,8 @@ export default function LoginPage() {
           margin: 24px 0 0;
         }
         .lg-divider-line { flex: 1; height: 1px; background: rgba(0,203,219,0.12); }
-        .lg-divider-text { font-size: 11px; color: rgba(245,240,232,0.2); letter-spacing: 0.05em; }
+        .lg-divider-text { font-size: 11px; color: rgba(10,26,32,0.25); letter-spacing: 0.05em; }
 
-        /* Success */
-        .lg-success { text-align: center; }
-        .lg-success-icon { font-size: 52px; margin-bottom: 16px; }
-        .lg-success-title {
-          font-family: 'DM Serif Display', serif;
-          font-size: 26px;
-          color: #F5F0E8;
-          margin: 0 0 12px;
-        }
-        .lg-success-text {
-          color: rgba(245,240,232,0.45);
-          font-size: 14px;
-          line-height: 1.65;
-          font-weight: 300;
-        }
-        .lg-success-text strong { color: #F5F0E8; font-weight: 500; }
-
-        /* Footer */
         .lg-footer {
           position: relative;
           z-index: 5;
@@ -220,89 +206,97 @@ export default function LoginPage() {
         }
         .lg-footer a { color: rgba(0,203,219,0.7); text-decoration: none; transition: color 0.2s; }
         .lg-footer a:hover { color: #00CBDB; }
+
+        .lg-success-icon { font-size: 48px; margin-bottom: 16px; text-align: center; }
       `}</style>
 
       <div className="lg-wrap">
         <div className="lg-bg" />
 
         <div className="lg-content">
-          {/* Logo */}
           <div className="lg-logo-wrap">
             <div className="lg-logo">
               <span style={{ color: "#0A1A20" }}>DG </span><span style={{ color: "#00CBDB" }}>Fit Club</span>
             </div>
           </div>
 
-          {/* Card */}
           <div className="lg-card">
-
-            {view === "login" && (
+            {done ? (
+              <div style={{ textAlign: "center" }}>
+                <div className="lg-success-icon">📬</div>
+                <div className="lg-title" style={{ marginBottom: "8px" }}>Controlla la mail</div>
+                <p className="lg-desc">
+                  Ti ho inviato un link di conferma a{" "}
+                  <strong style={{ color: "#0A1A20" }}>{email}</strong>.{" "}
+                  Clicca il link per attivare il tuo account.
+                </p>
+                <a href="/login" style={{ color: "rgba(0,203,219,0.8)", fontSize: "13px", textDecoration: "none" }}>
+                  ← Torna al login
+                </a>
+              </div>
+            ) : (
               <form onSubmit={handleSubmit}>
-                <div className="lg-title">Accedi</div>
-                <p className="lg-desc">Inserisci le tue credenziali per entrare.</p>
+                <div className="lg-title">Crea il tuo account</div>
+                <p className="lg-desc">Accedi gratuitamente a tutti gli strumenti del Club.</p>
                 {error && <div className="lg-error">{error}</div>}
+
+                <label className="lg-label" htmlFor="nome">Nome</label>
+                <input
+                  id="nome"
+                  className="lg-input"
+                  type="text"
+                  placeholder="Il tuo nome"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  required
+                  autoComplete="given-name"
+                  autoFocus
+                />
+
                 <label className="lg-label" htmlFor="email">Email</label>
-                <input id="email" className="lg-input" type="email" placeholder="tua@email.com"
-                  value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
+                <input
+                  id="email"
+                  className="lg-input"
+                  type="email"
+                  placeholder="tua@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  autoComplete="email"
+                />
+
                 <label className="lg-label" htmlFor="password">Password</label>
-                <input id="password" className="lg-input" type="password" placeholder="••••••••"
-                  value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="current-password" />
-                <button className="lg-btn" type="submit" disabled={loading || !email.trim() || !password.trim()}>
-                  {loading ? "Accesso in corso..." : "Entra →"}
+                <input
+                  id="password"
+                  className="lg-input"
+                  type="password"
+                  placeholder="Minimo 6 caratteri"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  autoComplete="new-password"
+                />
+
+                <button
+                  className="lg-btn"
+                  type="submit"
+                  disabled={loading || !nome.trim() || !email.trim() || !password.trim()}
+                >
+                  {loading ? "Creazione account..." : "Crea account →"}
                 </button>
+
                 <div className="lg-divider">
                   <div className="lg-divider-line" />
-                  <span className="lg-divider-text">accesso sicuro</span>
+                  <span className="lg-divider-text">registrazione gratuita</span>
                   <div className="lg-divider-line" />
                 </div>
-                <p style={{ textAlign: "center", marginTop: "16px", fontSize: "13px" }}>
-                  <button type="button" onClick={() => { setError(""); setView("reset"); }}
-                    style={{ background: "none", border: "none", color: "rgba(0,203,219,0.8)", cursor: "pointer", fontSize: "13px" }}>
-                    Hai dimenticato la password?
-                  </button>
-                </p>
               </form>
             )}
-
-            {view === "reset" && (
-              <form onSubmit={handleReset}>
-                <div className="lg-title">Reset password</div>
-                <p className="lg-desc">Inserisci la tua email. Ti mando un link per impostare una nuova password.</p>
-                {error && <div className="lg-error">{error}</div>}
-                <label className="lg-label" htmlFor="reset-email">Email</label>
-                <input id="reset-email" className="lg-input" type="email" placeholder="tua@email.com"
-                  value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" autoFocus />
-                <button className="lg-btn" type="submit" disabled={loading || !email.trim()}>
-                  {loading ? "Invio in corso..." : "Invia link →"}
-                </button>
-                <p style={{ textAlign: "center", marginTop: "16px", fontSize: "13px" }}>
-                  <button type="button" onClick={() => { setError(""); setView("login"); }}
-                    style={{ background: "none", border: "none", color: "rgba(0,203,219,0.8)", cursor: "pointer", fontSize: "13px" }}>
-                    ← Torna al login
-                  </button>
-                </p>
-              </form>
-            )}
-
-            {view === "reset-sent" && (
-              <div style={{ textAlign: "center" }}>
-                <div style={{ fontSize: "40px", marginBottom: "16px" }}>📬</div>
-                <div className="lg-title" style={{ marginBottom: "8px" }}>Controlla la mail</div>
-                <p className="lg-desc">Ti ho inviato il link a <strong style={{ color: "#0A1A20" }}>{email}</strong>. Clicca il link per impostare la nuova password.</p>
-                <button type="button" onClick={() => setView("login")}
-                  style={{ marginTop: "16px", background: "none", border: "none", color: "rgba(0,203,219,0.8)", cursor: "pointer", fontSize: "13px" }}>
-                  ← Torna al login
-                </button>
-              </div>
-            )}
-
           </div>
 
-          {/* Footer */}
           <div className="lg-footer">
-            Prima volta qui?{" "}
-            <a href="/registrati">Registrati gratis</a>
-            {" "}e ottieni gli strumenti per la tua trasformazione fisica.
+            Hai già un account?{" "}
+            <a href="/login">Accedi</a>
           </div>
         </div>
       </div>
