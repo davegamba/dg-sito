@@ -98,7 +98,7 @@ export default function LoginPage() {
         }
         .lg-logo {
           font-family: 'DM Sans', sans-serif;
-          font-size: clamp(26px, 6vw, 48px);
+          font-size: clamp(36px, 8vw, 64px);
           font-weight: 200;
           letter-spacing: 0.38em;
           text-transform: uppercase;
@@ -112,7 +112,7 @@ export default function LoginPage() {
           backdrop-filter: blur(28px);
           border: 1.5px solid rgba(0,203,219,0.55);
           border-radius: 24px;
-          padding: 40px 32px;
+          padding: 24px 28px;
           box-shadow: 0 4px 32px rgba(0,0,0,0.08);
         }
 
@@ -213,13 +213,14 @@ export default function LoginPage() {
           position: relative;
           z-index: 5;
           margin-top: 28px;
-          color: rgba(10,26,32,0.45);
-          font-size: 12px;
+          color: #0A1A20;
+          font-size: 14px;
+          font-weight: 500;
           text-align: center;
           line-height: 1.6;
         }
-        .lg-footer a { color: rgba(0,203,219,0.7); text-decoration: none; transition: color 0.2s; }
-        .lg-footer a:hover { color: #00CBDB; }
+        .lg-footer a { color: #00CBDB; text-decoration: none; font-weight: 700; transition: color 0.2s; }
+        .lg-footer a:hover { color: #0077CC; }
       `}</style>
 
       <div className="lg-wrap">

@@ -266,3 +266,8 @@ body {
 .mdx-content h2 + p + table tr:last-child td {
   border-bottom: none;
 }
+
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}

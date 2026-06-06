@@ -136,17 +136,16 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .bc-header-logo-dave,
         .bc-header-logo-gamba {
           font-family: 'DM Serif Display', serif;
-          font-size: 1.875rem;
-          color: #fff;
+          font-size: 1.5rem;
           line-height: 1;
         }
-        .bc-header-center {
-          font-size: 15px;
-          font-weight: 700;
-          color: rgba(255,255,255,0.85);
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          font-family: 'DM Sans', sans-serif;
+        .bc-header-logo {
+          background: linear-gradient(105deg, #fff 0%, #fff 38%, #e8f8ff 50%, #fff 62%, #fff 100%);
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: shimmer 4s linear infinite;
         }
         .bc-header-right {
           display: flex;
@@ -172,6 +171,10 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           padding: 5px 14px;
         }
         .bc-logout-btn:hover { background: rgba(255,255,255,0.25); }
+        @keyframes shimmer {
+          0% { background-position: 200% center; }
+          100% { background-position: -200% center; }
+        }
 
         /* Main */
         .bc-main {
@@ -189,7 +192,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         }
         .bc-greeting-name {
           font-family: 'DM Sans', sans-serif;
-          font-size: clamp(26px, 6vw, 48px);
+          font-size: clamp(36px, 8vw, 64px);
           font-weight: 200;
           letter-spacing: 0.38em;
           text-transform: uppercase;
@@ -333,7 +336,6 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
 
         @media (max-width: 520px) {
           .bc-grid { grid-template-columns: 1fr; }
-          .bc-header-email { display: none; }
           .bc-header-center { display: none; }
         }
       `}</style>
@@ -347,7 +349,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
             <span className="bc-header-logo-dave">Dave</span>
             <span className="bc-header-logo-gamba">Gamba</span>
           </a>
-          <div className="bc-header-center">Il tuo spazio personale</div>
+          <div className="bc-header-center" />
           <div className="bc-header-right">
             <span className="bc-header-email">{userEmail}</span>
             <button className="bc-logout-btn" onClick={handleLogout} disabled={loggingOut}>
@@ -361,6 +363,9 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
 
           {/* Greeting */}
           <div className="bc-greeting">
+            <div style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(0,203,219,0.7)", marginBottom: "10px", fontFamily: "'DM Sans', sans-serif" }}>
+              Il tuo spazio personale
+            </div>
             <div className="bc-greeting-name">
               <span style={{ color: "#0A1A20" }}>DG </span><span style={{ color: "#00CBDB" }}>Fit Club</span>
             </div>

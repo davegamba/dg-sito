@@ -39,9 +39,16 @@ export default function Header() {
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center select-none">
-            <span className={`font-serif text-2xl transition-colors duration-400 ${scrolled ? "text-white" : "text-[#F0F0F0]"}`}>Dave</span>
-            <span className={`font-serif text-2xl transition-colors duration-400 ${scrolled ? "text-[#001E28]" : "text-[#00CBDB]"}`}>Gamba</span>
+          <Link href="/" className="flex items-center select-none" style={{
+            background: "linear-gradient(105deg, #fff 0%, #fff 38%, #e8f8ff 50%, #fff 62%, #fff 100%)",
+            backgroundSize: "200% auto",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            animation: "shimmer 4s linear infinite",
+          }}>
+            <span className="font-serif text-2xl">Dave</span>
+            <span className="font-serif text-2xl">Gamba</span>
           </Link>
 
           {/* Desktop nav */}
