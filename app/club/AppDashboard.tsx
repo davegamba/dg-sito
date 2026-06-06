@@ -445,13 +445,14 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           top: 10px;
           right: 10px;
           z-index: 3;
-          font-family: 'DM Serif Display', serif;
-          font-size: 15px;
-          color: #F5F0E8;
-          background: rgba(200,150,62,0.85);
-          border-radius: 8px;
-          padding: 2px 8px;
-          backdrop-filter: blur(4px);
+          font-family: 'DM Sans', sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+          color: #0A0603;
+          background: linear-gradient(135deg, #D4A84B, #C8963E);
+          border-radius: 100px;
+          padding: 5px 12px;
+          box-shadow: 0 2px 8px rgba(200,150,62,0.4);
         }
 
         /* Striscia coaching */
@@ -588,7 +589,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
                   <span className="bc-coaching-strip-tag">Premium</span>
                   <span className="bc-coaching-strip-title">Coaching Personale 1-1</span>
                 </div>
-                <button className="bc-coaching-strip-cta">Scopri →</button>
+                <a href="/coaching" className="bc-coaching-strip-cta" onClick={e => e.stopPropagation()}>Scopri →</a>
               </div>
             </div>
           </div>
