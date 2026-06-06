@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AuthHashRedirect from "@/components/AuthHashRedirect";
 import Hero from "@/components/home/Hero";
 import PressStrip from "@/components/home/PressStrip";
 import ChiSono from "@/components/home/ChiSono";
@@ -14,6 +15,7 @@ import OptinStrip from "@/components/home/OptinStrip";
 export default function HomePage() {
   return (
     <>
+      <AuthHashRedirect />
       <Header />
       <main className="flex-1">
         <Hero />
