@@ -100,7 +100,7 @@ export default function Header() {
           <div className="flex flex-col gap-3 pt-2">
             <Button variant="primary" size="md" className="w-full">
               <Link href="https://club.davegamba.com" onClick={() => setOpen(false)}>
-                Accedi alla tua area personale del Club
+                Accedi al Club
               </Link>
             </Button>
           </div>

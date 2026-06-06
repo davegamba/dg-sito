@@ -31,7 +31,7 @@ function AnimatedNumber({ target, suffix }: { target: number; suffix: string }) 
 export default function Hero() {
 
   return (
-    <section className="relative min-h-dvh flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-dvh flex items-start justify-center overflow-hidden bg-black">
 
       {/* FOTO FULL-BLEED */}
       <div className="absolute inset-0 pointer-events-none">
@@ -68,7 +68,7 @@ export default function Hero() {
       </div>
 
       {/* CONTENUTO */}
-      <div className="relative w-full max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-6 pt-64 sm:pt-48 pb-10 sm:pb-20">
+      <div className="relative w-full max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-6 pt-32 sm:pt-28 pb-24 sm:pb-32">
 
         {/* Badge */}
         <div className="inline-flex items-center gap-2">
