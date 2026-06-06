@@ -32,7 +32,7 @@ export default function BlogList({ posts }: { posts: PostMeta[] }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Cerca nel blog..."
-          className="w-full bg-[#0a0a12] text-white placeholder-[#444] border border-[#00CBDB33] focus:border-[#00CBDB] focus:outline-none rounded-xl px-5 py-3 text-sm transition-colors duration-200"
+          className="w-full bg-[#0a0a12] text-white placeholder-[#777] border-2 border-[#00CBDB99] focus:border-[#00CBDB] focus:outline-none rounded-xl px-5 py-3 text-sm transition-colors duration-200"
         />
       </div>
 
@@ -62,7 +62,7 @@ export default function BlogList({ posts }: { posts: PostMeta[] }) {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group flex flex-col bg-[#0d0d0d] border border-[#1a1a1a] rounded-[20px] overflow-hidden hover:border-[#333] transition-all duration-300 hover:-translate-y-1"
+              className="group flex flex-col bg-white border border-[#e8e8e8] rounded-[20px] overflow-hidden hover:border-[#00CBDB] hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               <div className="relative w-full aspect-[2/1] sm:aspect-[16/9] bg-[#111] overflow-hidden">
                 {post.image ? (
@@ -86,13 +86,13 @@ export default function BlogList({ posts }: { posts: PostMeta[] }) {
                     {post.category}
                   </span>
                 )}
-                <h2 className="font-serif text-lg text-white leading-snug group-hover:text-[#00CBDB] transition-colors duration-200 flex-1">
+                <h2 className="font-serif text-lg text-[#0a0a12] leading-snug group-hover:text-[#00CBDB] transition-colors duration-200 flex-1">
                   {post.title}
                 </h2>
                 {post.excerpt && (
-                  <p className="text-[#555] text-sm leading-relaxed line-clamp-2">{post.excerpt}</p>
+                  <p className="text-[#666] text-sm leading-relaxed line-clamp-2">{post.excerpt}</p>
                 )}
-                <div className="flex items-center gap-2 text-[#333] text-xs">
+                <div className="flex items-center gap-2 text-[#999] text-xs">
                   <time>{new Date(post.date).toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" })}</time>
                   <span>·</span>
                   <span>{post.readingTime} min</span>
