@@ -31,6 +31,7 @@ interface Product {
   isCoachingCta?: boolean;
   image?: string;
   imagePosition?: string;
+  titleCase?: boolean;
 }
 
 const COACHING: Product = {
@@ -77,6 +78,7 @@ const PRODUCTS_DEFAULT: Product[] = [
   {
     id: "addominali",
     title: "Protocollo Addominali Scolpiti",
+    titleCase: true,
     price: "€21",
     stripeLink: "",
     tag: "🔒 Sblocca",
@@ -154,7 +156,7 @@ function SortableCard({ product, unlocked, onClick }: CardProps) {
             {product.tag}
           </span>
         )}
-        <div className="bc-card-title">{product.title}</div>
+        <div className="bc-card-title" style={product.titleCase ? { textTransform: 'none' } : undefined}>{product.title}</div>
       </div>
     </div>
   );
@@ -404,8 +406,11 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           border-color: rgba(0,203,219,0.7);
         }
         .bc-card.locked {
-          filter: brightness(0.55) saturate(0.3);
           cursor: pointer;
+        }
+        .bc-card.locked .bc-card-bg,
+        .bc-card.locked .bc-card-overlay {
+          filter: brightness(0.6) saturate(0.4);
         }
 
         .bc-card-bg {
@@ -577,7 +582,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
             <div className="bc-greeting-name">
               <span style={{ color: "#fff" }}>DG Athletic Club</span>
             </div>
-            <div className="bc-drag-hint">Tieni premuto per riordinare</div>
+            <div className="bc-drag-hint">Tieni premuto per riordinare i protocolli</div>
           </div>
 
           <div className="bc-grid-wrap">
