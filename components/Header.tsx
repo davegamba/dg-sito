@@ -29,7 +29,7 @@ export default function Header() {
         className={cn(
           "transition-all duration-400",
           scrolled
-            ? "backdrop-blur-xl border-b border-[#00CBDB]/20"
+            ? "backdrop-blur-xl"
             : "bg-transparent backdrop-blur-none"
         )}
         style={scrolled ? {
