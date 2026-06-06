@@ -189,9 +189,9 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         }
         .bc-greeting-name {
           font-family: 'DM Sans', sans-serif;
-          font-size: clamp(22px, 5vw, 40px);
-          font-weight: 300;
-          letter-spacing: 0.35em;
+          font-size: clamp(26px, 6vw, 48px);
+          font-weight: 200;
+          letter-spacing: 0.38em;
           text-transform: uppercase;
           line-height: 1;
         }
