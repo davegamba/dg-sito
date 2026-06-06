@@ -246,11 +246,11 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           inset: 0;
           background: linear-gradient(
             to bottom,
-            rgba(0,203,219,0.88)   0%,
-            rgba(0,203,219,0.88)   calc(30% - 1.5px),
-            rgba(0,170,190,0.5)    calc(30% - 1.5px),
-            rgba(0,170,190,0.5)    calc(30% + 1.5px),
-            rgba(255,255,255,0.91) calc(30% + 1.5px),
+            rgba(0,203,219,0.93)   0%,
+            rgba(0,203,219,0.93)   calc(38% - 1.5px),
+            rgba(0,170,190,0.5)    calc(38% - 1.5px),
+            rgba(0,170,190,0.5)    calc(38% + 1.5px),
+            rgba(255,255,255,0.91) calc(38% + 1.5px),
             rgba(255,255,255,0.91) 100%
           );
         }
@@ -262,10 +262,10 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 0 20px;
-          height: 58px;
+          padding: 0 16px;
+          height: 46px;
           background: transparent;
-          border-bottom: 1px solid rgba(10,26,32,0.08);
+          border-bottom: 1px solid rgba(255,255,255,0.15);
         }
         .bc-header-logo {
           display: flex;
@@ -276,7 +276,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .bc-header-logo-dave,
         .bc-header-logo-gamba {
           font-family: 'DM Serif Display', serif;
-          font-size: 1.5rem;
+          font-size: 1.15rem;
           line-height: 1;
           color: #fff;
         }
@@ -345,11 +345,11 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .bc-drag-hint {
           margin-top: 6px;
           font-size: 11px;
-          color: rgba(255,255,255,0.7);
+          color: rgba(10,26,32,0.55);
           letter-spacing: 0.04em;
         }
         .bc-grid-wrap {
-          margin-top: 20px;
+          margin-top: 28px;
         }
 
         /* Grid 2 colonne */
