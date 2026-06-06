@@ -232,7 +232,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         @font-face {
           font-family: 'Flatline';
           src: url('/fonts/Flatline-SemiBold.otf') format('opentype');
-          font-weight: 600;
+          font-weight: 500;
           font-style: normal;
           font-display: swap;
         }
@@ -288,8 +288,11 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         }
         .bc-header-logo-dave,
         .bc-header-logo-gamba {
-          font-family: 'DM Serif Display', serif;
-          font-size: 1.15rem;
+          font-family: 'Flatline', sans-serif;
+          font-weight: 400;
+          font-size: 1.1rem;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
           line-height: 1;
           color: #fff;
         }
@@ -350,7 +353,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .bc-greeting-name {
           font-family: 'Flatline', sans-serif;
           font-size: clamp(22px, 5.5vw, 58px);
-          font-weight: 400;
+          font-weight: 500;
           letter-spacing: 0.28em;
           text-transform: uppercase;
           line-height: 1;
