@@ -221,7 +221,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=Josefin+Sans:wght@100;200;300&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         .bc-wrap {
@@ -335,10 +335,10 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           font-family: 'DM Sans', sans-serif;
         }
         .bc-greeting-name {
-          font-family: 'DM Sans', sans-serif;
+          font-family: 'Josefin Sans', sans-serif;
           font-size: clamp(32px, 8vw, 56px);
-          font-weight: 200;
-          letter-spacing: 0.38em;
+          font-weight: 100;
+          letter-spacing: 0.45em;
           text-transform: uppercase;
           line-height: 1;
         }
