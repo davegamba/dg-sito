@@ -63,7 +63,7 @@ export default function LoginPage() {
           content: '';
           position: absolute;
           inset: 0;
-          background: rgba(10,6,3,0.85);
+          background: rgba(255,255,255,0.91);
         }
 
         /* Contenuto */
@@ -82,41 +82,36 @@ export default function LoginPage() {
           text-align: center;
           margin-bottom: 40px;
         }
-        .lg-logo-eyebrow {
-          font-size: 11px;
-          letter-spacing: 0.32em;
-          text-transform: uppercase;
-          color: rgba(0,203,219,0.75);
-          margin-bottom: 10px;
-          font-weight: 600;
-        }
+        .lg-logo-eyebrow { display: none; }
         .lg-logo {
-          font-family: 'DM Serif Display', serif;
-          font-size: clamp(42px, 10vw, 58px);
-          color: #F5F0E8;
+          font-family: 'DM Sans', sans-serif;
+          font-size: clamp(48px, 13vw, 108px);
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
           line-height: 1;
         }
-        .lg-logo em { font-style: italic; color: #00CBDB; }
+        .lg-logo em { font-style: normal; }
 
         /* Card vetro */
         .lg-card {
           width: 100%;
-          background: rgba(255,255,255,0.10);
+          background: rgba(255,255,255,0.75);
           backdrop-filter: blur(28px);
           border: 1.5px solid rgba(0,203,219,0.55);
           border-radius: 24px;
           padding: 40px 32px;
-          box-shadow: 0 0 40px rgba(0,203,219,0.08);
+          box-shadow: 0 4px 32px rgba(0,0,0,0.08);
         }
 
         .lg-title {
           font-family: 'DM Serif Display', serif;
           font-size: 24px;
-          color: #ffffff;
+          color: #0A1A20;
           margin: 0 0 8px;
         }
         .lg-desc {
-          color: rgba(255,255,255,0.65);
+          color: rgba(10,26,32,0.55);
           font-size: 14px;
           line-height: 1.6;
           margin: 0 0 28px;
@@ -134,17 +129,17 @@ export default function LoginPage() {
         .lg-input {
           width: 100%;
           padding: 14px 16px;
-          background: rgba(255,255,255,0.10);
+          background: rgba(255,255,255,0.85);
           border: 1px solid rgba(0,203,219,0.35);
           border-radius: 12px;
-          color: #ffffff;
+          color: #0A1A20;
           font-size: 16px;
           font-family: 'DM Sans', sans-serif;
           outline: none;
           margin-bottom: 20px;
           transition: border-color 0.2s, background 0.2s;
         }
-        .lg-input::placeholder { color: rgba(255,255,255,0.35); }
+        .lg-input::placeholder { color: rgba(10,26,32,0.35); }
         .lg-input:focus { border-color: rgba(0,203,219,0.75); background: rgba(255,255,255,0.15); }
 
         .lg-btn {
@@ -206,7 +201,7 @@ export default function LoginPage() {
           position: relative;
           z-index: 5;
           margin-top: 28px;
-          color: rgba(245,240,232,0.25);
+          color: rgba(10,26,32,0.45);
           font-size: 12px;
           text-align: center;
           line-height: 1.6;
@@ -221,8 +216,9 @@ export default function LoginPage() {
         <div className="lg-content">
           {/* Logo */}
           <div className="lg-logo-wrap">
-            <div className="lg-logo-eyebrow">DG Fit Club</div>
-            <div className="lg-logo">Dave <em>Gamba</em></div>
+            <div className="lg-logo">
+              <span style={{ color: "#0A1A20" }}>DG </span><span style={{ color: "#00CBDB" }}>Fit Club</span>
+            </div>
           </div>
 
           {/* Card */}
