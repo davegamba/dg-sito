@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const STANDALONE_PAGES = ["/links"];
+const STANDALONE_PREFIXES = ["/club", "/login", "/auth"];
 
 const items = [
   {
@@ -48,6 +49,7 @@ const items = [
 export default function MobileBottomBar() {
   const pathname = usePathname();
   if (STANDALONE_PAGES.includes(pathname)) return null;
+  if (STANDALONE_PREFIXES.some((p) => pathname.startsWith(p))) return null;
 
   return (
     <nav
