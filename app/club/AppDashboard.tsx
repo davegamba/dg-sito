@@ -261,11 +261,11 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           inset: 0;
           background: linear-gradient(
             to bottom,
-            rgba(0,203,219,0.93)   0%,
-            rgba(0,203,219,0.93)   37%,
+            rgba(250,246,240,0.95) 0%,
+            rgba(250,246,240,0.95) 37%,
             rgba(0,185,205,0.96)   38%,
-            rgba(250,246,240,0.93) 39%,
-            rgba(250,246,240,0.93) 100%
+            rgba(0,203,219,0.93)   39%,
+            rgba(0,203,219,0.93)   100%
           );
         }
 
@@ -279,7 +279,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           padding: 0 16px;
           height: 52px;
           background: transparent;
-          border-bottom: 1px solid rgba(255,255,255,0.15);
+          border-bottom: 1px solid rgba(10,26,32,0.1);
         }
         .bc-header-logo {
           display: flex;
@@ -295,7 +295,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           letter-spacing: 0.18em;
           text-transform: uppercase;
           line-height: 1;
-          color: #fff;
+          color: #0A1A20;
         }
         .bc-hamburger {
           background: transparent;
@@ -310,7 +310,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .bc-hamburger span {
           display: block;
           height: 1.5px;
-          background: #fff;
+          background: #0A1A20;
           border-radius: 2px;
           transition: all 0.3s;
         }
@@ -388,7 +388,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           font-weight: 600;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.65);
+          color: rgba(10,26,32,0.45);
           margin-bottom: 18px;
           font-family: 'DM Sans', sans-serif;
         }
@@ -632,7 +632,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           <div className="bc-greeting">
             <div className="bc-greeting-sub">Il tuo spazio personale</div>
             <div className="bc-greeting-name">
-              <span style={{ color: "#fff" }}>DG Athletic Club</span>
+              <span style={{ color: "#0A1A20" }}>DG Athletic Club</span>
             </div>
             <div className="bc-drag-hint">Tieni premuto per riordinare i protocolli</div>
           </div>
@@ -676,6 +676,22 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           </div>
 
         </main>
+
+        {/* Footer */}
+        <footer style={{
+          position: "relative", zIndex: 5,
+          textAlign: "center",
+          padding: "20px 16px 32px",
+          fontSize: "11px",
+          color: "rgba(255,255,255,0.5)",
+          fontFamily: "'DM Sans', sans-serif",
+          letterSpacing: "0.04em",
+        }}>
+          © 2026 Dave Gamba — DG Athletic Club{" "}·{" "}
+          <a href="/privacy" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Privacy Policy</a>
+          {" "}·{" "}
+          <a href="/termini" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Termini e Condizioni</a>
+        </footer>
       </div>
     </>
   );
