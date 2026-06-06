@@ -68,7 +68,7 @@ export default function Hero() {
       </div>
 
       {/* CONTENUTO */}
-      <div className="relative w-full max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-6 pt-32 sm:pt-28 pb-24 sm:pb-32">
+      <div className="relative w-full max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-6 pt-40 sm:pt-36 pb-16 sm:pb-20">
 
         {/* Badge */}
         <div className="inline-flex items-center gap-2">
@@ -144,11 +144,8 @@ export default function Hero() {
           Scopri il tuo Profilo Fisico gratuitamente — 2 minuti
         </p>
 
-      </div>
-
-      {/* STATS OVERLAY — fissi in basso sull'hero, completamente trasparenti */}
-      <div className="absolute bottom-8 inset-x-0">
-        <div className="max-w-3xl mx-auto px-6 flex items-center justify-center divide-x divide-white/30">
+        {/* STATS — inline con il contenuto */}
+        <div className="w-full mt-4 flex items-center justify-center divide-x divide-white/30">
           {[
             { target: 15, suffix: "+", label: "Anni di Esperienza" },
             { target: 3000, suffix: "+", label: "Clienti Trasformati" },
@@ -161,6 +158,7 @@ export default function Hero() {
             </div>
           ))}
         </div>
+
       </div>
 
     </section>
