@@ -4,6 +4,17 @@ export default function ChiSono() {
     <section className="py-10 sm:py-14 bg-black gsap-fade">
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px" }}>
 
+        {/* Titolo sopra tutto */}
+        <div style={{ marginBottom: "28px" }}>
+          <span style={{ display: "block", marginBottom: "10px", fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "#00CBDB" }}>
+            About me
+          </span>
+          <h2 className="font-serif text-3xl sm:text-4xl" style={{ color: "#fff", lineHeight: 1.2 }}>
+            15 anni. Oltre 3.000 clienti trasformati.<br />
+            <em style={{ color: "#00CBDB", fontStyle: "normal" }}>Un solo metodo.</em>
+          </h2>
+        </div>
+
         {/* Foto + Testo — 50/50, centrati verticalmente */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "24px", flexWrap: "nowrap" }}>
 
@@ -25,13 +36,6 @@ export default function ChiSono() {
 
           {/* Testo */}
           <div style={{ flex: 1, minWidth: 0 }}>
-            <span style={{ display: "block", marginBottom: "10px", fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "#00CBDB" }}>
-              About me
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl" style={{ color: "#fff", marginBottom: "20px", lineHeight: 1.2 }}>
-              15 anni. Oltre 3.000 clienti trasformati.<br />
-              <em style={{ color: "#00CBDB", fontStyle: "normal" }}>Un solo metodo.</em>
-            </h2>
             <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.8)", lineHeight: 1.7, marginBottom: 0 }}>
               Da oltre 20 anni atleta fitness ed ex agonista sportivo.<br />
               Personal Trainer internazionale certificato ISSA. Intervistato da Corriere della Sera, La Repubblica, Vanity Fair e molti altri come uno dei primi Personal Trainer online in Italia — creando il proprio metodo{" "}

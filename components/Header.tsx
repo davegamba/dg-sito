@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "https://club.davegamba.com", label: "Protocolli" },
+  { href: "/quiz-fisico", label: "Quiz Gratuito" },
   { href: "/blog", label: "Blog" },
   { href: "https://www.youtube.com/@DaveGambaFitness", label: "YouTube" },
 ];
@@ -67,11 +67,11 @@ export default function Header() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <Link
-              href="https://club.davegamba.com"
+              href="https://www.davegamba.com/club"
               className="text-sm font-bold text-white rounded-xl px-5 py-2 transition-all duration-200 hover:bg-white/20"
               style={{ border: "1.5px solid rgba(255,255,255,0.7)", background: "rgba(255,255,255,0.08)" }}
             >
-              Accedi al Club
+              Allenati nel Club
             </Link>
           </div>
 
@@ -107,7 +107,7 @@ export default function Header() {
           <div className="flex flex-col gap-3 pt-2">
             <Button variant="primary" size="md" className="w-full">
               <Link href="https://club.davegamba.com" onClick={() => setOpen(false)}>
-                Accedi al Club
+                Allenati nel Club
               </Link>
             </Button>
           </div>
