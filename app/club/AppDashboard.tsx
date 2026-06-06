@@ -753,7 +753,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
               </div>
             )}
 
-            <div className="bc-drag-hint">Tieni premuto per riordinare i protocolli</div>
+            <div className="bc-drag-hint">Tieni premuto per riordinare gli strumenti</div>
           </div>
 
           <div className="bc-grid-wrap">
@@ -802,14 +802,14 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           textAlign: "center",
           padding: "20px 16px 32px",
           fontSize: "11px",
-          color: "rgba(255,255,255,0.5)",
+          color: "rgba(255,255,255,0.75)",
           fontFamily: "'DM Sans', sans-serif",
           letterSpacing: "0.04em",
         }}>
           © 2026 Dave Gamba — DG Athletic Club{" "}·{" "}
-          <a href="/privacy" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Privacy Policy</a>
+          <a href="/privacy" style={{ color: "rgba(255,255,255,0.75)", textDecoration: "none" }}>Privacy Policy</a>
           {" "}·{" "}
-          <a href="/termini" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Termini e Condizioni</a>
+          <a href="/termini" style={{ color: "rgba(255,255,255,0.75)", textDecoration: "none" }}>Termini e Condizioni</a>
         </footer>
       </div>
     </>
