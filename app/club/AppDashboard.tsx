@@ -118,6 +118,7 @@ function SortableCard({ product, unlocked, onClick }: CardProps) {
       {...attributes}
       {...listeners}
       onClick={onClick}
+      onContextMenu={(e) => e.preventDefault()}
       className={`bc-card ${product.isCoachingCta ? "coaching" : unlocked ? "unlocked" : "locked"}`}
     >
       <div
@@ -265,15 +266,15 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         }
         .bc-header-right {
           display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-          gap: 3px;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
         }
         .bc-header-email {
-          font-size: 10px;
+          font-size: 11px;
           color: rgba(255,255,255,0.65);
           letter-spacing: 0.02em;
-          max-width: 160px;
+          max-width: 140px;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -331,8 +332,9 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         }
         .bc-drag-hint {
           margin-top: 10px;
+          margin-bottom: -8px;
           font-size: 11px;
-          color: rgba(10,26,32,0.35);
+          color: rgba(10,26,32,0.6);
           letter-spacing: 0.04em;
         }
 
@@ -356,7 +358,9 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           transition: border-color 0.3s, transform 0.2s;
           cursor: pointer;
           -webkit-tap-highlight-color: transparent;
-          touch-action: manipulation;
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          user-select: none;
         }
         .bc-card.unlocked:active,
         .bc-card.coaching:active {
@@ -453,7 +457,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
             <div className="bc-greeting-name">
               <span style={{ color: "#0A1A20" }}>DG </span><span style={{ color: "#00CBDB" }}>Fit Club</span>
             </div>
-            <div className="bc-drag-hint">tieni premuto per riordinare</div>
+            <div className="bc-drag-hint">Tieni premuto per riordinare</div>
           </div>
 
           <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
