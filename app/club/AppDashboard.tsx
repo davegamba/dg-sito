@@ -33,6 +33,17 @@ interface Product {
   imagePosition?: string;
 }
 
+const COACHING: Product = {
+  id: "coaching",
+  title: "Coaching Personale 1-1",
+  tag: "Premium",
+  tagColor: "#C8963E",
+  isCoachingCta: true,
+  href: "/coaching",
+  image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
+  imagePosition: "center top",
+};
+
 const PRODUCTS_DEFAULT: Product[] = [
   {
     id: "quiz",
@@ -54,24 +65,25 @@ const PRODUCTS_DEFAULT: Product[] = [
   },
   {
     id: "sfida",
-    title: "Sfida Estiva 21gg",
-    price: "€37",
+    title: "Protocollo Estivo — Asciutti o Scolpiti",
+    price: "€33",
     stripeLink: "https://buy.stripe.com/5kQdRa9BQc5EgQi2961Nu00",
-    tag: "21 Giorni",
+    tag: "🔒 Sblocca",
     tagColor: "#C8963E",
     href: "https://sfida.davegamba.com",
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_25-03-2026-09-35-25.jpg",
     imagePosition: "center 65%",
   },
   {
-    id: "coaching",
-    title: "Coaching 1-1",
-    tag: "Premium",
+    id: "addominali",
+    title: "Protocollo Addominali Scolpiti",
+    price: "€21",
+    stripeLink: "",
+    tag: "🔒 Sblocca",
     tagColor: "#C8963E",
-    isCoachingCta: true,
-    href: "/coaching",
-    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
-    imagePosition: "center top",
+    href: "",
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg",
+    imagePosition: "center",
   },
 ];
 
@@ -129,19 +141,20 @@ function SortableCard({ product, unlocked, onClick }: CardProps) {
         }}
       />
       <div className="bc-card-overlay" />
+      {/* Prezzo in alto a destra */}
+      {isLocked && product.price && (
+        <div className="bc-card-price-badge">{product.price}</div>
+      )}
       <div className="bc-card-body">
         {product.tag && (
           <span
             className="bc-tag"
             style={{ color: product.tagColor, borderColor: (product.tagColor ?? "#fff") + "44" }}
           >
-            {isLocked && "🔒 "}{product.tag}
+            {product.tag}
           </span>
         )}
         <div className="bc-card-title">{product.title}</div>
-        {isLocked && product.price && (
-          <div className="bc-card-price">{product.price}</div>
-        )}
       </div>
     </div>
   );
@@ -163,7 +176,6 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
 
   const isUnlocked = useCallback((productId: string) => {
     if (productId === "quiz" || productId === "calorie") return true;
-    if (productId === "coaching") return true;
     return unlockedProducts.includes(productId);
   }, [unlockedProducts]);
 
@@ -428,10 +440,90 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           line-height: 1.2;
         }
 
-        .bc-card-price {
+        .bc-card-price-badge {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          z-index: 3;
           font-family: 'DM Serif Display', serif;
           font-size: 15px;
+          color: #F5F0E8;
+          background: rgba(200,150,62,0.85);
+          border-radius: 8px;
+          padding: 2px 8px;
+          backdrop-filter: blur(4px);
+        }
+
+        /* Striscia coaching */
+        .bc-coaching-strip {
+          position: relative;
+          border-radius: 16px;
+          overflow: hidden;
+          height: 90px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border: 1px solid rgba(200,150,62,0.4);
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          user-select: none;
+          transition: border-color 0.2s, transform 0.2s;
+          padding: 0 22px;
+        }
+        .bc-coaching-strip:active { transform: scale(0.98); }
+        .bc-coaching-strip:hover { border-color: rgba(200,150,62,0.7); }
+        .bc-coaching-strip-bg {
+          position: absolute;
+          inset: 0;
+          background-size: cover;
+          background-position: center top;
+          z-index: 0;
+        }
+        .bc-coaching-strip-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(90deg, rgba(8,4,2,0.92) 0%, rgba(8,4,2,0.6) 100%);
+          z-index: 1;
+        }
+        .bc-coaching-strip-body {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+        }
+        .bc-coaching-strip-text {
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+        }
+        .bc-coaching-strip-tag {
+          font-size: 8px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
           color: #C8963E;
+        }
+        .bc-coaching-strip-title {
+          font-family: 'DM Serif Display', serif;
+          font-size: 18px;
+          color: #F5F0E8;
+        }
+        .bc-coaching-strip-cta {
+          background: linear-gradient(135deg, #D4A84B, #C8963E);
+          color: #0A0603;
+          font-size: 12px;
+          font-weight: 700;
+          font-family: 'DM Sans', sans-serif;
+          border: none;
+          border-radius: 100px;
+          padding: 8px 18px;
+          cursor: pointer;
+          white-space: nowrap;
+          letter-spacing: 0.03em;
         }
       `}</style>
 
@@ -478,6 +570,27 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
                 </div>
               </SortableContext>
             </DndContext>
+
+            {/* Striscia Coaching — fuori dal drag */}
+            <div
+              className="bc-coaching-strip"
+              style={{ marginTop: "12px" }}
+              onClick={() => router.push("/coaching")}
+              onContextMenu={(e) => e.preventDefault()}
+            >
+              <div
+                className="bc-coaching-strip-bg"
+                style={{ backgroundImage: `url('${COACHING.image}')` }}
+              />
+              <div className="bc-coaching-strip-overlay" />
+              <div className="bc-coaching-strip-body">
+                <div className="bc-coaching-strip-text">
+                  <span className="bc-coaching-strip-tag">Premium</span>
+                  <span className="bc-coaching-strip-title">Coaching Personale 1-1</span>
+                </div>
+                <button className="bc-coaching-strip-cta">Scopri →</button>
+              </div>
+            </div>
           </div>
 
         </main>
