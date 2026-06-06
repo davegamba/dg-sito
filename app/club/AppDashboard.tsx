@@ -247,11 +247,10 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           background: linear-gradient(
             to bottom,
             rgba(0,203,219,0.93)   0%,
-            rgba(0,203,219,0.93)   calc(38% - 1.5px),
-            rgba(0,170,190,0.5)    calc(38% - 1.5px),
-            rgba(0,170,190,0.5)    calc(38% + 1.5px),
-            rgba(255,255,255,0.91) calc(38% + 1.5px),
-            rgba(255,255,255,0.91) 100%
+            rgba(0,203,219,0.93)   37%,
+            rgba(0,185,205,0.96)   38%,
+            rgba(250,246,240,0.93) 39%,
+            rgba(250,246,240,0.93) 100%
           );
         }
 
@@ -315,15 +314,15 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .bc-main {
           position: relative;
           z-index: 5;
-          max-width: 600px;
+          max-width: 860px;
           margin: 0 auto;
-          padding: 32px 16px 80px;
+          padding: 32px 24px 80px;
         }
 
         /* Greeting */
         .bc-greeting {
           text-align: center;
-          margin-bottom: 12px;
+          margin-bottom: 20px;
         }
         .bc-greeting-sub {
           font-size: 11px;
@@ -331,19 +330,21 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           letter-spacing: 0.22em;
           text-transform: uppercase;
           color: rgba(255,255,255,0.7);
-          margin-bottom: 8px;
+          margin-bottom: 18px;
           font-family: 'DM Sans', sans-serif;
         }
         .bc-greeting-name {
           font-family: 'Josefin Sans', sans-serif;
-          font-size: clamp(32px, 8vw, 56px);
-          font-weight: 100;
-          letter-spacing: 0.45em;
+          font-size: clamp(32px, 6vw, 64px);
+          font-weight: 200;
+          letter-spacing: 0.32em;
           text-transform: uppercase;
           line-height: 1;
+          white-space: nowrap;
+          margin-bottom: 18px;
         }
         .bc-drag-hint {
-          margin-top: 6px;
+          margin-top: 0px;
           font-size: 11px;
           color: rgba(10,26,32,0.55);
           letter-spacing: 0.04em;
