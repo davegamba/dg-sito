@@ -14,14 +14,23 @@ export default function AuthConfirmPage() {
 
   useEffect(() => {
     const supabase = createClient();
+    const searchParams = new URLSearchParams(window.location.search);
+    const modeParam = searchParams.get("mode");
+
+    // Flusso PKCE recovery: sessione già settata dal callback, mostra form
+    if (modeParam === "recovery") {
+      setMode("recovery");
+      return;
+    }
+
+    // Flusso legacy hash (access_token nel fragment)
     const hash = window.location.hash;
-    const params = new URLSearchParams(hash.replace("#", ""));
-    const type = params.get("type");
-    const accessToken = params.get("access_token");
-    const refreshToken = params.get("refresh_token");
+    const hashParams = new URLSearchParams(hash.replace("#", ""));
+    const type = hashParams.get("type");
+    const accessToken = hashParams.get("access_token");
+    const refreshToken = hashParams.get("refresh_token");
 
     if (type === "recovery" && accessToken && refreshToken) {
-      // Setta la sessione direttamente dai token nell'hash
       supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken })
         .then(({ error }) => {
           if (error) { setMode("error"); return; }

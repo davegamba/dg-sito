@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
       // Recovery flow → pagina cambio password
-      if (type === "recovery") return NextResponse.redirect(`${origin}/auth/confirm`);
+      if (type === "recovery") return NextResponse.redirect(`${origin}/auth/confirm?mode=recovery`);
       return NextResponse.redirect(`${origin}/club`);
     }
   }
