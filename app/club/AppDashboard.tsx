@@ -169,7 +169,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
-    useSensor(TouchSensor, { activationConstraint: { delay: 200, tolerance: 5 } })
+    useSensor(TouchSensor, { activationConstraint: { delay: 300, tolerance: 8 } })
   );
 
   const handleDragEnd = (event: DragEndEvent) => {
@@ -311,7 +311,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         /* Greeting */
         .bc-greeting {
           text-align: center;
-          margin-bottom: 32px;
+          margin-bottom: 12px;
         }
         .bc-greeting-sub {
           font-size: 11px;
@@ -331,11 +331,13 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           line-height: 1;
         }
         .bc-drag-hint {
-          margin-top: 10px;
-          margin-bottom: -8px;
+          margin-top: 6px;
           font-size: 11px;
           color: rgba(10,26,32,0.6);
           letter-spacing: 0.04em;
+        }
+        .bc-grid-wrap {
+          margin-top: 20px;
         }
 
         /* Grid 2 colonne */
@@ -356,11 +358,12 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           justify-content: flex-end;
           border: 1px solid rgba(0,203,219,0.3);
           transition: border-color 0.3s, transform 0.2s;
-          cursor: pointer;
+          cursor: grab;
           -webkit-tap-highlight-color: transparent;
           -webkit-touch-callout: none;
           -webkit-user-select: none;
           user-select: none;
+          touch-action: none;
         }
         .bc-card.unlocked:active,
         .bc-card.coaching:active {
@@ -460,20 +463,22 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
             <div className="bc-drag-hint">Tieni premuto per riordinare</div>
           </div>
 
-          <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-            <SortableContext items={products.map(p => p.id)} strategy={rectSortingStrategy}>
-              <div className="bc-grid">
-                {products.map((product) => (
-                  <SortableCard
-                    key={product.id}
-                    product={product}
-                    unlocked={isUnlocked(product.id)}
-                    onClick={() => handleCardClick(product)}
-                  />
-                ))}
-              </div>
-            </SortableContext>
-          </DndContext>
+          <div className="bc-grid-wrap">
+            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+              <SortableContext items={products.map(p => p.id)} strategy={rectSortingStrategy}>
+                <div className="bc-grid">
+                  {products.map((product) => (
+                    <SortableCard
+                      key={product.id}
+                      product={product}
+                      unlocked={isUnlocked(product.id)}
+                      onClick={() => handleCardClick(product)}
+                    />
+                  ))}
+                </div>
+              </SortableContext>
+            </DndContext>
+          </div>
 
         </main>
       </div>
