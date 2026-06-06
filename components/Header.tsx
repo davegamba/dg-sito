@@ -27,10 +27,10 @@ export default function Header() {
       {/* Backdrop blur bar */}
       <div
         className={cn(
-          "transition-all duration-400 border-b",
+          "transition-all duration-400",
           scrolled
-            ? "backdrop-blur-xl border-[#00CBDB]/20"
-            : "bg-transparent backdrop-blur-none border-transparent"
+            ? "backdrop-blur-xl border-b border-[#00CBDB]/20"
+            : "bg-transparent backdrop-blur-none"
         )}
         style={scrolled ? {
           background: "linear-gradient(135deg, #00CBDB 0%, #00AECF 55%, #0077CC 100%)",
@@ -40,8 +40,8 @@ export default function Header() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center select-none">
-            <span className={`font-serif text-3xl transition-colors duration-400 ${scrolled ? "text-white" : "text-[#F0F0F0]"}`}>Dave</span>
-            <span className={`font-serif text-3xl transition-colors duration-400 ${scrolled ? "text-[#001E28]" : "text-[#00CBDB]"}`}>Gamba</span>
+            <span className={`font-serif text-2xl transition-colors duration-400 ${scrolled ? "text-white" : "text-[#F0F0F0]"}`}>Dave</span>
+            <span className={`font-serif text-2xl transition-colors duration-400 ${scrolled ? "text-[#001E28]" : "text-[#00CBDB]"}`}>Gamba</span>
           </Link>
 
           {/* Desktop nav */}

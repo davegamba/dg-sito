@@ -62,10 +62,10 @@ export default function MobileBottomBar() {
           <Link
             key={item.label}
             href={item.href}
-            className="flex-1 flex flex-col items-center justify-center gap-1.5 py-3 active:opacity-70 transition-opacity"
+            className="flex-1 flex flex-col items-center justify-center gap-1 py-2 active:opacity-70 transition-opacity"
           >
             {item.icon}
-            <span className="text-white text-[11px] font-bold tracking-wide uppercase">
+            <span className="text-white text-[9px] font-medium tracking-wide uppercase">
               {item.label}
             </span>
           </Link>
