@@ -168,6 +168,7 @@ interface Props {
 export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
   const router = useRouter();
   const [loggingOut, setLoggingOut] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [products, setProducts] = useState<Product[]>(PRODUCTS_DEFAULT);
 
   useEffect(() => {
@@ -276,7 +277,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           align-items: center;
           justify-content: space-between;
           padding: 0 16px;
-          height: 46px;
+          height: 52px;
           background: transparent;
           border-bottom: 1px solid rgba(255,255,255,0.15);
         }
@@ -284,7 +285,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           display: flex;
           align-items: center;
           text-decoration: none;
-          color: #fff;
+          gap: 0;
         }
         .bc-header-logo-dave,
         .bc-header-logo-gamba {
@@ -296,35 +297,76 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           line-height: 1;
           color: #fff;
         }
-        .bc-header-right {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          gap: 10px;
-        }
-        .bc-header-email {
-          font-size: 11px;
-          color: rgba(255,255,255,0.7);
-          letter-spacing: 0.02em;
-          max-width: 140px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-        .bc-logout-btn {
+        .bc-hamburger {
           background: transparent;
-          border: 1px solid rgba(255,255,255,0.4);
-          border-radius: 100px;
-          color: rgba(255,255,255,0.85);
-          font-size: 10px;
+          border: none;
           cursor: pointer;
+          padding: 4px;
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          align-items: flex-end;
+        }
+        .bc-hamburger span {
+          display: block;
+          height: 1.5px;
+          background: #fff;
+          border-radius: 2px;
+          transition: all 0.3s;
+        }
+        .bc-hamburger span:nth-child(1) { width: 22px; }
+        .bc-hamburger span:nth-child(2) { width: 16px; }
+        .bc-hamburger span:nth-child(3) { width: 22px; }
+        .bc-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); width: 22px; }
+        .bc-hamburger.open span:nth-child(2) { opacity: 0; }
+        .bc-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); width: 22px; }
+
+        /* Mobile menu */
+        .bc-mobile-menu {
+          position: relative;
+          z-index: 9;
+          background: rgba(8,20,26,0.97);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(255,255,255,0.08);
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+        }
+        .bc-mobile-menu.closed { max-height: 0; }
+        .bc-mobile-menu.open { max-height: 400px; }
+        .bc-mobile-menu-inner {
+          padding: 20px 20px 24px;
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+        }
+        .bc-menu-link {
+          color: rgba(255,255,255,0.85);
+          text-decoration: none;
+          font-size: 15px;
+          font-weight: 500;
+          font-family: 'DM Sans', sans-serif;
+          padding: 14px 0;
+          border-bottom: 1px solid rgba(255,255,255,0.07);
+          display: block;
+          transition: color 0.2s;
+        }
+        .bc-menu-link:hover { color: #00CBDB; }
+        .bc-menu-logout {
+          margin-top: 16px;
+          background: transparent;
+          border: 1px solid rgba(255,255,255,0.25);
+          border-radius: 100px;
+          color: rgba(255,255,255,0.7);
+          font-size: 12px;
           font-family: 'DM Sans', sans-serif;
           letter-spacing: 0.08em;
           text-transform: uppercase;
+          padding: 10px 20px;
+          cursor: pointer;
+          width: 100%;
           transition: all 0.2s;
-          padding: 4px 12px;
         }
-        .bc-logout-btn:hover { background: rgba(255,255,255,0.15); }
+        .bc-menu-logout:hover { background: rgba(255,255,255,0.08); }
 
 
         /* Main */
@@ -346,7 +388,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           font-weight: 600;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: #D4A84B;
+          color: rgba(255,255,255,0.65);
           margin-bottom: 18px;
           font-family: 'DM Sans', sans-serif;
         }
@@ -563,15 +605,26 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         <header className="bc-header">
           <a href="https://davegamba.com" className="bc-header-logo">
             <span className="bc-header-logo-dave">Dave</span>
-            <span className="bc-header-logo-gamba">Gamba</span>
+            <span className="bc-header-logo-gamba">{" "}Gamba</span>
           </a>
-          <div className="bc-header-right">
-            <span className="bc-header-email">{userEmail}</span>
-            <button className="bc-logout-btn" onClick={handleLogout} disabled={loggingOut}>
-              {loggingOut ? "..." : "Esci"}
-            </button>
-          </div>
+          <button className={`bc-hamburger ${menuOpen ? "open" : ""}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+            <span /><span /><span />
+          </button>
         </header>
+
+        {/* Mobile menu */}
+        <div className={`bc-mobile-menu ${menuOpen ? "open" : "closed"}`}>
+          <div className="bc-mobile-menu-inner">
+            <a href="https://davegamba.com/blog" className="bc-menu-link" onClick={() => setMenuOpen(false)}>Blog</a>
+            <a href="https://www.youtube.com/@DaveGambaFitness" className="bc-menu-link" onClick={() => setMenuOpen(false)}>YouTube</a>
+            <a href="/coaching" className="bc-menu-link" onClick={() => setMenuOpen(false)}>Coaching</a>
+            {userEmail && (
+              <button className="bc-menu-logout" onClick={handleLogout} disabled={loggingOut}>
+                {loggingOut ? "..." : `Esci (${userEmail})`}
+              </button>
+            )}
+          </div>
+        </div>
 
         {/* Main */}
         <main className="bc-main">
