@@ -289,7 +289,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .bc-header-logo-dave,
         .bc-header-logo-gamba {
           font-family: 'Flatline', sans-serif;
-          font-weight: 400;
+          font-weight: 500;
           font-size: 1.1rem;
           letter-spacing: 0.18em;
           text-transform: uppercase;
@@ -352,7 +352,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         }
         .bc-greeting-name {
           font-family: 'Flatline', sans-serif;
-          font-size: clamp(22px, 5.5vw, 58px);
+          font-size: clamp(30px, 5.5vw, 58px);
           font-weight: 500;
           letter-spacing: 0.28em;
           text-transform: uppercase;
@@ -452,10 +452,13 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         }
 
         .bc-card-title {
-          font-family: 'DM Serif Display', serif;
-          font-size: 16px;
+          font-family: 'Flatline', sans-serif;
+          font-weight: 600;
+          font-size: 15px;
           color: #F5F0E8;
-          line-height: 1.2;
+          line-height: 1.25;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
         }
 
         .bc-card-price-badge {
@@ -527,9 +530,12 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           color: #C8963E;
         }
         .bc-coaching-strip-title {
-          font-family: 'DM Serif Display', serif;
-          font-size: 18px;
+          font-family: 'Flatline', sans-serif;
+          font-weight: 500;
+          font-size: 16px;
           color: #F5F0E8;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
         }
         .bc-coaching-strip-cta {
           background: linear-gradient(135deg, #D4A84B, #C8963E);
