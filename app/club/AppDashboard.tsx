@@ -244,25 +244,21 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           justify-content: space-between;
           padding: 0 20px;
           height: 58px;
-          background: linear-gradient(135deg, #00CBDB 0%, #00AECF 55%, #0077CC 100%);
-          border-bottom: 1px solid rgba(0,203,219,0.2);
+          background: transparent;
+          border-bottom: 1px solid rgba(10,26,32,0.08);
         }
         .bc-header-logo {
           display: flex;
           align-items: center;
           text-decoration: none;
-          background: linear-gradient(105deg, #fff 0%, #fff 38%, #e8f8ff 50%, #fff 62%, #fff 100%);
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          animation: shimmer 4s linear infinite;
+          color: #0A1A20;
         }
         .bc-header-logo-dave,
         .bc-header-logo-gamba {
           font-family: 'DM Serif Display', serif;
           font-size: 1.5rem;
           line-height: 1;
+          color: #0A1A20;
         }
         .bc-header-right {
           display: flex;
@@ -272,7 +268,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         }
         .bc-header-email {
           font-size: 11px;
-          color: rgba(255,255,255,0.65);
+          color: rgba(10,26,32,0.45);
           letter-spacing: 0.02em;
           max-width: 140px;
           overflow: hidden;
@@ -280,10 +276,10 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           white-space: nowrap;
         }
         .bc-logout-btn {
-          background: rgba(255,255,255,0.15);
-          border: 1px solid rgba(255,255,255,0.3);
+          background: transparent;
+          border: 1px solid rgba(10,26,32,0.2);
           border-radius: 100px;
-          color: #fff;
+          color: rgba(10,26,32,0.6);
           font-size: 10px;
           cursor: pointer;
           font-family: 'DM Sans', sans-serif;
@@ -292,12 +288,8 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           transition: all 0.2s;
           padding: 4px 12px;
         }
-        .bc-logout-btn:hover { background: rgba(255,255,255,0.25); }
+        .bc-logout-btn:hover { background: rgba(10,26,32,0.06); }
 
-        @keyframes shimmer {
-          0% { background-position: 200% center; }
-          100% { background-position: -200% center; }
-        }
 
         /* Main */
         .bc-main {
@@ -458,7 +450,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           <div className="bc-greeting">
             <div className="bc-greeting-sub">Il tuo spazio personale</div>
             <div className="bc-greeting-name">
-              <span style={{ color: "#0A1A20" }}>DG </span><span style={{ color: "#00CBDB" }}>Fit Club</span>
+              <span style={{ color: "#0A1A20" }}>DG Fit Club</span>
             </div>
             <div className="bc-drag-hint">Tieni premuto per riordinare</div>
           </div>
