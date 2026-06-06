@@ -17,7 +17,7 @@ export default function BlogSection() {
     .slice(0, 4);
 
   return (
-    <section className="py-12 sm:py-16 gsap-fade" style={{ background: "#0a0a12" }}>
+    <section className="py-12 sm:py-16 gsap-fade" style={{ background: "#F5F1EB" }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
 
         {/* Header */}
@@ -26,7 +26,7 @@ export default function BlogSection() {
             <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
               Le Guide del Blog
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-white">
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#0a0a12]">
               Tutto quello che devi sapere
             </h2>
           </div>
@@ -45,7 +45,7 @@ export default function BlogSection() {
             <Link
               key={a.slug}
               href={`/blog/${a.slug}`}
-              className="flex items-center gap-5 py-3 sm:py-5 border-t border-[#1a1a1a] hover:border-[#333] group transition-colors last:border-b"
+              className="flex items-center gap-5 py-3 sm:py-5 border-t border-[#ddd8d0] hover:border-[#00CBDB] group transition-colors last:border-b"
             >
               {/* Thumbnail */}
               <div className="flex-none w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] rounded-[10px] overflow-hidden bg-[#111] relative shrink-0">
@@ -54,9 +54,9 @@ export default function BlogSection() {
                 ) : (
                   <div
                     className="w-full h-full flex items-center justify-center"
-                    style={{ background: "linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 100%)" }}
+                    style={{ background: "linear-gradient(135deg, #e8e3dc 0%, #ddd8d0 100%)" }}
                   >
-                    <span className="font-serif text-2xl text-[#333]">{i + 1}</span>
+                    <span className="font-serif text-2xl text-[#bbb5ad]">{i + 1}</span>
                   </div>
                 )}
               </div>
@@ -69,13 +69,13 @@ export default function BlogSection() {
                 >
                   {a.category}
                 </span>
-                <h3 className="font-serif text-lg sm:text-xl text-white leading-snug group-hover:text-[#00CBDB] transition-colors duration-200 line-clamp-2">
+                <h3 className="font-serif text-lg sm:text-xl text-[#0a0a12] leading-snug group-hover:text-[#00CBDB] transition-colors duration-200 line-clamp-2">
                   {a.title}
                 </h3>
               </div>
 
               {/* Freccia */}
-              <span className="text-[#333] group-hover:text-[#00CBDB] transition-colors shrink-0 text-lg">→</span>
+              <span className="text-[#aaa8a3] group-hover:text-[#00CBDB] transition-colors shrink-0 text-lg">→</span>
             </Link>
           ))}
         </div>
