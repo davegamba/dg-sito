@@ -50,8 +50,8 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="mb-3">
-              <span className="font-serif text-2xl text-[#F0F0F0]">Dave</span>
-              <span className="font-serif text-2xl text-[#00CBDB]">Gamba</span>
+              <span className="font-serif text-2xl text-[#F0F0F0]" style={{ letterSpacing: '0.18em', textTransform: 'uppercase' }}>Dave{" "}</span>
+              <span className="font-serif text-2xl text-[#00CBDB]" style={{ letterSpacing: '0.18em', textTransform: 'uppercase' }}>Gamba</span>
             </div>
             <p className="text-[#888888] text-sm leading-relaxed mb-2">
               Il Metodo Breve, Intenso, Mirato<br />

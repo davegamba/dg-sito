@@ -79,13 +79,13 @@ export default function Hero() {
         </div>
 
         {/* Nome */}
-        <h1 className="font-serif text-7xl sm:text-7xl md:text-8xl lg:text-9xl text-white leading-none tracking-tight">
+        <h1 className="font-serif text-7xl sm:text-7xl md:text-8xl lg:text-9xl text-white leading-none whitespace-nowrap uppercase" style={{ letterSpacing: '0.18em', fontWeight: 600 }}>
           Dave Gamba
         </h1>
 
         {/* Subtitle */}
         <p className="text-[#cccccc] text-lg sm:text-xl md:text-2xl leading-snug max-w-xl font-light">
-          Il Metodo Breve, Intenso, Mirato<br className="hidden sm:block" />
+          Il Metodo Breve-Intenso-Mirato<br />
           per un Fisico Atletico, Asciutto e Scolpito
         </p>
 
@@ -135,7 +135,7 @@ export default function Hero() {
         `}</style>
         <div className="mt-2">
           <Link href="/quiz" className="btn-quiz-hero">
-            Fai il quiz <ArrowRight size={18} />
+            Fai il quiz per scoprire il tuo profilo fisico <ArrowRight size={18} />
           </Link>
         </div>
 

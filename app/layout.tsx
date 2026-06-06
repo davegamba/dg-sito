@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, DM_Sans } from "next/font/google";
+import { DM_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import ExitPopup from "@/components/ExitPopup";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import MobileBottomBar from "@/components/MobileBottomBar";
@@ -7,11 +8,12 @@ import ScrollAnimations from "@/components/ScrollAnimations";
 import CookieBanner from "@/components/CookieBanner";
 import "./globals.css";
 
-const dmSerif = DM_Serif_Display({
+const dmSerif = localFont({
+  src: [
+    { path: "../public/fonts/Flatline-Regular.otf", weight: "400", style: "normal" },
+    { path: "../public/fonts/Flatline-SemiBold.otf", weight: "600", style: "normal" },
+  ],
   variable: "--font-dm-serif",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
   display: "swap",
 });
 

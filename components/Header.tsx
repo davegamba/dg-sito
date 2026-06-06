@@ -27,10 +27,10 @@ export default function Header() {
       {/* Backdrop blur bar */}
       <div
         className={cn(
-          "transition-all duration-400",
+          "transition-all duration-400 border-b",
           scrolled
-            ? "backdrop-blur-xl border-b border-[#00CBDB]/20"
-            : "bg-transparent backdrop-blur-none"
+            ? "backdrop-blur-xl border-[#00CBDB]/20"
+            : "bg-transparent backdrop-blur-none border-transparent"
         )}
         style={scrolled ? {
           background: "linear-gradient(135deg, #00CBDB 0%, #00AECF 55%, #0077CC 100%)",
@@ -47,8 +47,8 @@ export default function Header() {
             backgroundClip: "text",
             animation: "shimmer 4s linear infinite",
           }}>
-            <span className="font-serif text-2xl">Dave</span>
-            <span className="font-serif text-2xl">Gamba</span>
+            <span className="font-serif text-2xl" style={{ fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase' }}>Dave{" "}</span>
+            <span className="font-serif text-2xl" style={{ fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase' }}>Gamba</span>
           </Link>
 
           {/* Desktop nav */}

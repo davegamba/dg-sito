@@ -50,6 +50,6 @@ export async function GET(request: NextRequest) {
     if (!error) return NextResponse.redirect(`${origin}/club`);
   }
 
-  // Fallback: pagina client-side che gestisce il hash fragment
-  return NextResponse.redirect(`${origin}/auth/confirm`);
+  // Fallback
+  return NextResponse.redirect(`${origin}/login`);
 }
