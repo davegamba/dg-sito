@@ -28,6 +28,7 @@ interface BeforeInstallPromptEvent extends Event {
 interface Product {
   id: string;
   title: string;
+  highlight?: string;
   price?: string;
   href?: string;
   stripeLink?: string;
@@ -71,6 +72,7 @@ const PRODUCTS_DEFAULT: Product[] = [
   {
     id: "sfida",
     title: "Protocollo Estivo da 8 Settimane — Asciutti e Scolpiti",
+    highlight: "Asciutti e Scolpiti",
     price: "€33",
     stripeLink: "https://buy.stripe.com/5kQdRa9BQc5EgQi2961Nu00",
     tag: "🔒 Sblocca",
@@ -82,6 +84,7 @@ const PRODUCTS_DEFAULT: Product[] = [
   {
     id: "addominali",
     title: "Protocollo Addominali Scolpiti da 8 Settimane",
+    highlight: "Addominali",
     price: "€21",
     stripeLink: "",
     tag: "🔒 Sblocca",
@@ -93,6 +96,7 @@ const PRODUCTS_DEFAULT: Product[] = [
   {
     id: "glutei",
     title: "Protocollo Glutei Alti e Sodi da 6 Settimane",
+    highlight: "Glutei",
     price: "€67",
     stripeLink: "",
     tag: "🔒 Sblocca",
@@ -104,6 +108,7 @@ const PRODUCTS_DEFAULT: Product[] = [
   {
     id: "piano-alimentare",
     title: "Il Piano Alimentare di Dave",
+    highlight: "Piano Alimentare",
     price: "€67",
     stripeLink: "",
     tag: "🔒 Sblocca",
@@ -181,7 +186,13 @@ function SortableCard({ product, unlocked, onClick }: CardProps) {
             {product.tag}
           </span>
         )}
-        <div className="bc-card-title">{product.title}</div>
+        <div className="bc-card-title">
+          {product.highlight
+            ? product.title.split(product.highlight).map((part, i, arr) => (
+                <span key={i}>{part}{i < arr.length - 1 && <span style={{ color: "#F0C040" }}>{product.highlight}</span>}</span>
+              ))
+            : product.title}
+        </div>
       </div>
     </div>
   );
