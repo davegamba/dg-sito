@@ -62,7 +62,7 @@ export default function BlogList({ posts }: { posts: PostMeta[] }) {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group flex flex-col bg-white border border-[#e8e8e8] rounded-[20px] overflow-hidden hover:border-[#00CBDB] hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="group flex flex-col bg-[#F5F1EB] border border-[#e0dbd3] rounded-[20px] overflow-hidden hover:border-[#00CBDB] hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               <div className="relative w-full aspect-[2/1] sm:aspect-[16/9] bg-[#111] overflow-hidden">
                 {post.image ? (

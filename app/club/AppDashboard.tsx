@@ -49,7 +49,7 @@ const PRODUCTS_DEFAULT: Product[] = [
     id: "quiz",
     title: "Quiz Profilo Fisico",
     href: "/quiz-fisico",
-    tag: "Gratis",
+    tag: "Sbloccato",
     tagColor: "#00CBDB",
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg",
     imagePosition: "center",
@@ -58,14 +58,14 @@ const PRODUCTS_DEFAULT: Product[] = [
     id: "calorie",
     title: "Conta Calorie",
     href: "https://club.davegamba.com/calorie/",
-    tag: "Gratis",
+    tag: "Sbloccato",
     tagColor: "#00CBDB",
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_29-05-2026-20-47-56.jpg",
     imagePosition: "center",
   },
   {
     id: "sfida",
-    title: "Protocollo Estivo — Asciutti o Scolpiti",
+    title: "Protocollo Estivo da 8 Settimane — Asciutti e Scolpiti",
     price: "€33",
     stripeLink: "https://buy.stripe.com/5kQdRa9BQc5EgQi2961Nu00",
     tag: "🔒 Sblocca",
@@ -76,13 +76,24 @@ const PRODUCTS_DEFAULT: Product[] = [
   },
   {
     id: "addominali",
-    title: "Protocollo Addominali Scolpiti",
+    title: "Protocollo Addominali Scolpiti da 8 Settimane",
     price: "€21",
     stripeLink: "",
     tag: "🔒 Sblocca",
     tagColor: "#C8963E",
     href: "",
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg",
+    imagePosition: "center",
+  },
+  {
+    id: "glutei",
+    title: "Protocollo Glutei Alti e Sodi da 6 Settimane",
+    price: "€21",
+    stripeLink: "",
+    tag: "🔒 Sblocca",
+    tagColor: "#C8963E",
+    href: "",
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/foto-sfida-estiva.jpg",
     imagePosition: "center",
   },
 ];
@@ -388,7 +399,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           font-weight: 600;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: rgba(10,26,32,0.45);
+          color: #00CBDB;
           margin-bottom: 18px;
           font-family: 'DM Sans', sans-serif;
         }

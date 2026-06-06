@@ -1,5 +1,10 @@
 import { createServerSupabaseClient } from "@/lib/supabase-server";
 import AppDashboard from "./AppDashboard";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "DG Athletic Club — Dave Gamba",
+};
 
 export default async function AppPage() {
   const supabase = await createServerSupabaseClient();

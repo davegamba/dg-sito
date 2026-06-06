@@ -10,7 +10,7 @@ export default function ChiSono() {
             About me
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl" style={{ color: "#fff", lineHeight: 1.2 }}>
-            15 anni. Oltre 3.000 clienti trasformati.<br />
+            15 anni. Oltre 3.000 clienti trasformati.{" "}
             <em style={{ color: "#00CBDB", fontStyle: "normal" }}>Un solo metodo.</em>
           </h2>
         </div>
