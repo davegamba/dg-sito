@@ -335,11 +335,11 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           inset: 0;
           background: linear-gradient(
             to bottom,
-            rgba(250,246,240,0.95) 0%,
-            rgba(250,246,240,0.95) 37%,
-            rgba(0,185,205,0.96)   38%,
-            rgba(0,203,219,0.93)   39%,
-            rgba(0,203,219,0.93)   100%
+            rgba(250,246,240,0.82) 0%,
+            rgba(250,246,240,0.82) 37%,
+            rgba(0,185,205,0.82)   38%,
+            rgba(0,203,219,0.80)   39%,
+            rgba(0,203,219,0.80)   100%
           );
         }
 
