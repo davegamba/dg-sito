@@ -302,8 +302,9 @@ export default function LoginPage() {
 
           {/* Footer */}
           <div className="lg-footer">
-            Non hai ancora un account?{" "}
-            <a href="/quiz-fisico">Parti dal quiz gratuito</a>
+            Prima volta qui?{" "}
+            <a href="/quiz-fisico">Registrati gratis</a>
+            {" "}e ottieni gli strumenti per la tua trasformazione fisica.
           </div>
         </div>
       </div>
