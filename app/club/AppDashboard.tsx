@@ -638,7 +638,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           </div>
 
           <div className="bc-grid-wrap">
-            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+            <DndContext id="club-dashboard-dnd" sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
               <SortableContext items={products.map(p => p.id)} strategy={rectSortingStrategy}>
                 <div className="bc-grid">
                   {products.map((product) => (
