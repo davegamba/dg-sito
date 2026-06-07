@@ -24,7 +24,7 @@ jobs:
           # Cerca articoli con published: true e data <= oggi
           COUNT=$(grep -rl "published: true" content/blog/ | xargs grep -l "^date:" | while read f; do
             DATE=$(grep "^date:" "$f" | head -1 | sed 's/date: //' | tr -d ' ')
-            if [[ "$DATE" <= "$TODAY" ]]; then
+            if [[ ! "$DATE" > "$TODAY" ]]; then
               echo "$f"
             fi
           done | wc -l)
