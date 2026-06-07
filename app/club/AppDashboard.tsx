@@ -91,13 +91,13 @@ const PRODUCTS_DEFAULT: Product[] = [
     tagColor: "#C8963E",
     href: "",
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/davegamba-estate-cover3.jpg",
-    imagePosition: "center",
+    imagePosition: "center 20%",
   },
   {
     id: "glutei",
     title: "Protocollo Glutei Alti e Sodi da 6 Settimane",
     highlight: "Glutei",
-    price: "€67",
+    price: "€55",
     stripeLink: "",
     tag: "🔒 Sblocca",
     tagColor: "#C8963E",
@@ -114,8 +114,8 @@ const PRODUCTS_DEFAULT: Product[] = [
     tag: "🔒 Sblocca",
     tagColor: "#C8963E",
     href: "",
-    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_29-05-2026-20-47-56.jpg",
-    imagePosition: "center top",
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg",
+    imagePosition: "center",
   },
 ];
 
