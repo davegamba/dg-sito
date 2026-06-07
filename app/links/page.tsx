@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Dave Gamba — Link",
@@ -57,6 +58,10 @@ const YT_VIDEOS = [
 ];
 
 export default function LinksPage() {
+  const articles = getAllPosts()
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 6);
+
   return (
     <>
       <style>{`
@@ -73,6 +78,13 @@ export default function LinksPage() {
       `}</style>
 
       <div className="links-page" style={{ position: "relative", zIndex: 1, paddingBottom: 60, fontFamily: "var(--font-dm-sans, 'DM Sans', sans-serif)" }}>
+
+        {/* Barra "Come visto su" */}
+        <div style={{ background: "#fff", padding: "10px 20px" }}>
+          <div style={{ fontSize: "0.55rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", textAlign: "center", marginBottom: 6 }}>Come visto su</div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/loghi-press.png" alt="Come visto su" style={{ width: "100%", height: "auto", display: "block", maxWidth: 360, margin: "0 auto" }} />
+        </div>
 
         {/* HERO */}
         <div style={{ position: "relative", width: "100%", height: "100vh", maxHeight: 780, overflow: "hidden" }}>
@@ -152,12 +164,31 @@ export default function LinksPage() {
             </div>
           </div>
 
-          {/* Press */}
-          <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: "0.6rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#888", marginBottom: 8 }}>Come visto su</div>
-            <div style={{ background: "#fff", borderRadius: 12, padding: "12px 16px" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/loghi-press.png" alt="Come visto su" style={{ width: "100%", height: "auto", display: "block" }} />
+          {/* Blog */}
+          <div style={{ margin: "0 0 48px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+              <span style={{ color: "#00CBDB", fontSize: "1rem" }}>✎</span>
+              <span style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontSize: "1.45rem", color: "#fff", flex: 1, letterSpacing: "0.04em" }}>Ultimi articoli dal Blog</span>
+              <a href="/blog" style={{ fontSize: "0.75rem", color: "#00CBDB", textDecoration: "none" }}>Vai al blog ›</a>
+            </div>
+            <div className="yt-scroll">
+              {articles.map((a) => (
+                <a key={a.slug} href={`/blog/${a.slug}`}
+                  style={{ flexShrink: 0, width: 230, textDecoration: "none", color: "#fff" }}>
+                  <div style={{ position: "relative", width: 230, height: 150, borderRadius: 10, overflow: "hidden", background: "#111", marginBottom: 10 }}>
+                    {a.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={a.image} alt={a.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    ) : (
+                      <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #111 0%, #1a1a1a 100%)" }}>
+                        <span style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontSize: "1.5rem", color: "#333" }}>DG</span>
+                      </div>
+                    )}
+                  </div>
+                  <div style={{ fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#00CBDB", marginBottom: 4 }}>{a.category}</div>
+                  <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontSize: "0.95rem", color: "#fff", lineHeight: 1.3, letterSpacing: "0.02em" }}>{a.title}</div>
+                </a>
+              ))}
             </div>
           </div>
 
