@@ -57,7 +57,7 @@ const PRODUCTS_DEFAULT: Product[] = [
     href: "/quiz-fisico",
     tag: "Sbloccato",
     tagColor: "#00CBDB",
-    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg",
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/img_02.jpeg",
     imagePosition: "center",
   },
   {
@@ -90,7 +90,7 @@ const PRODUCTS_DEFAULT: Product[] = [
     tag: "🔒 Sblocca",
     tagColor: "#C8963E",
     href: "",
-    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg",
+    image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/davegamba-estate-cover3.jpg",
     imagePosition: "center",
   },
   {
@@ -115,7 +115,7 @@ const PRODUCTS_DEFAULT: Product[] = [
     tagColor: "#C8963E",
     href: "",
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_29-05-2026-20-47-56.jpg",
-    imagePosition: "center",
+    imagePosition: "center top",
   },
 ];
 

@@ -16,6 +16,9 @@ export default function ExitPopup() {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
+    // Non mostrare nella pagina club
+    if (window.location.pathname.startsWith("/club")) return;
+
     // Forza popup se ?popup=1 nell'URL
     const force = new URLSearchParams(window.location.search).get("popup") === "1";
 
