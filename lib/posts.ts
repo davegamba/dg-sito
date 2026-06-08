@@ -25,7 +25,14 @@ function getFiles(): string[] {
 }
 
 function isPublished(data: Record<string, unknown>): boolean {
+  // Compatibilità con il vecchio campo booleano "published"
   if (data.published === false) return false;
+
+  const status = data.status;
+  if (status === "bozza") return false;
+
+  // "programmato" (e il vecchio formato senza "status") diventano visibili
+  // automaticamente quando la data di pubblicazione arriva
   if (data.date) {
     const postDate = new Date(String(data.date));
     if (postDate > new Date()) return false;
