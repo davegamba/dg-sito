@@ -21,7 +21,7 @@ export default function BlogPage() {
           className="relative py-16 sm:py-24 bg-black border-b border-[#1a1a1a] bg-cover bg-center"
           style={{ backgroundImage: "url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/copertina-blog-davegamba.jpg')" }}
         >
-          <div className="absolute inset-0 bg-black/70" />
+          <div className="absolute inset-0 bg-black/65" />
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
             <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-4 block">Blog DaveGamba.com</span>
             <h1 className="font-serif text-4xl sm:text-5xl text-white mb-4">
