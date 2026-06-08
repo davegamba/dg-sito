@@ -103,8 +103,8 @@ export default function LinksPage() {
           <div className="hero-content" style={{ position: "absolute", bottom: 24, left: 0, right: 0, zIndex: 2, padding: "0 20px", display: "flex", flexDirection: "column" }}>
 
             {/* Nome */}
-            <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontSize: "2.2rem", lineHeight: 1, color: "#fff", letterSpacing: "0.02em", marginBottom: 4, textAlign: "center" }}>
-              Dave<span style={{ color: "#00CBDB" }}>Gamba</span>
+            <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "2.2rem", lineHeight: 1, color: "#fff", letterSpacing: "0.02em", marginBottom: 4, textAlign: "center" }}>
+              DAVE<span style={{ color: "#00CBDB" }}>GAMBA</span>
             </div>
             <div style={{ fontSize: "0.72rem", fontWeight: 300, color: "#fff", letterSpacing: "0.18em", textTransform: "uppercase", textAlign: "center", marginBottom: 14 }}>
               Sistema Breve. Intenso. Mirato.<br />Per un fisico atletico, asciutto e scolpito.
@@ -124,13 +124,13 @@ export default function LinksPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: 13, marginBottom: 16 }}>
               {LINKS.map(({ href, img, title, sub, imgPosition }) => (
                 <a key={href} href={href} className="link-card"
-                  style={{ display: "flex", alignItems: "center", background: "rgba(15,15,20,0.25)", border: "1px solid rgba(255,255,255,0.28)", borderRadius: 16, overflow: "hidden", textDecoration: "none", color: "#fff", backdropFilter: "blur(12px)", transition: "border-color 0.2s" }}>
+                  style={{ display: "flex", alignItems: "center", background: "rgba(15,15,20,0.25)", border: "1px solid rgba(0,203,219,0.4)", borderRadius: 16, overflow: "hidden", textDecoration: "none", color: "#fff", backdropFilter: "blur(12px)", transition: "border-color 0.2s" }}>
                   <div style={{ flexShrink: 0, width: 90, height: 92, overflow: "hidden" }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={img} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: imgPosition }} />
                   </div>
                   <div style={{ flex: 1, padding: "0 16px", textAlign: "center" }}>
-                    <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontSize: "1.15rem", color: "#fff", marginBottom: 4, letterSpacing: "0.04em" }}>{title}</div>
+                    <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "1.15rem", color: "#fff", marginBottom: 4, letterSpacing: "0.04em" }}>{title}</div>
                     <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.55)", letterSpacing: "0.02em" }}>{sub}</div>
                   </div>
                   <span style={{ paddingRight: 16, color: "#00CBDB", fontSize: "1.6rem" }}>›</span>
@@ -144,10 +144,10 @@ export default function LinksPage() {
         <div style={{ padding: "0 20px", background: "#080C0F", marginTop: -20, position: "relative", zIndex: 3 }}>
 
           {/* YouTube */}
-          <div style={{ margin: "60px 0 48px" }}>
+          <div style={{ margin: "28px 0 48px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
               <span style={{ color: "#ff0000", fontSize: "1rem" }}>▶</span>
-              <span style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontSize: "1.45rem", color: "#fff", flex: 1, letterSpacing: "0.04em" }}>Mio Canale Youtube</span>
+              <span style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "1.45rem", color: "#fff", flex: 1, letterSpacing: "0.04em" }}>Mio Canale Youtube</span>
               <a href="https://www.youtube.com/@DaveGambaFitness" style={{ fontSize: "0.75rem", color: "#00CBDB", textDecoration: "none" }}>Vai al canale ›</a>
             </div>
             <div className="yt-scroll">
@@ -168,7 +168,7 @@ export default function LinksPage() {
           <div style={{ margin: "0 0 48px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
               <span style={{ color: "#00CBDB", fontSize: "1rem" }}>✎</span>
-              <span style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontSize: "1.45rem", color: "#fff", flex: 1, letterSpacing: "0.04em" }}>Ultimi articoli dal Blog</span>
+              <span style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "1.45rem", color: "#fff", flex: 1, letterSpacing: "0.04em" }}>Ultimi articoli dal Blog</span>
               <a href="/blog" style={{ fontSize: "0.75rem", color: "#00CBDB", textDecoration: "none" }}>Vai al blog ›</a>
             </div>
             <div className="yt-scroll">
@@ -186,7 +186,7 @@ export default function LinksPage() {
                     )}
                   </div>
                   <div style={{ fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#00CBDB", marginBottom: 4 }}>{a.category}</div>
-                  <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontSize: "0.95rem", color: "#fff", lineHeight: 1.3, letterSpacing: "0.02em" }}>{a.title}</div>
+                  <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "0.95rem", color: "#fff", lineHeight: 1.3, letterSpacing: "0.02em" }}>{a.title}</div>
                 </a>
               ))}
             </div>
