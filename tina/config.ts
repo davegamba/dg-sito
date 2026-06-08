@@ -68,7 +68,6 @@ export default defineConfig({
               "Dimagrimento",
               "Testosterone",
               "Longevità",
-              "Mindset",
               "Metodo BIM",
             ],
           },

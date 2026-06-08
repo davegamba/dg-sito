@@ -6,7 +6,7 @@ import Image from "next/image";
 import Fuse from "fuse.js";
 import type { PostMeta } from "@/lib/posts";
 
-const CATEGORIE = ["Tutti", "Allenamento", "Nutrizione", "Dimagrimento", "Longevità", "Mindset", "Testosterone"];
+const CATEGORIE = ["Tutti", "Allenamento", "Nutrizione", "Dimagrimento", "Longevità", "Testosterone"];
 
 export default function BlogList({ posts }: { posts: PostMeta[] }) {
   const [cat, setCat] = useState("Tutti");
