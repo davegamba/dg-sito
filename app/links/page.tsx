@@ -147,8 +147,8 @@ export default function LinksPage() {
           <div style={{ margin: "28px 0 48px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
               <span style={{ color: "#ff0000", fontSize: "1rem" }}>▶</span>
-              <span style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "1.45rem", color: "#fff", flex: 1, letterSpacing: "0.04em" }}>Mio Canale Youtube</span>
-              <a href="https://www.youtube.com/@DaveGambaFitness" style={{ fontSize: "0.75rem", color: "#00CBDB", textDecoration: "none" }}>Vai al canale ›</a>
+              <span style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "1.45rem", color: "#fff", flex: 1, letterSpacing: "0.04em" }}>Mio Canale <span style={{ color: "#00CBDB" }}>Youtube</span></span>
+              <a href="https://www.youtube.com/@DaveGambaFitness" style={{ fontSize: "0.85rem", color: "#00CBDB", textDecoration: "none" }}>Vai al canale ›</a>
             </div>
             <div className="yt-scroll">
               {YT_VIDEOS.map((id) => (
@@ -168,8 +168,8 @@ export default function LinksPage() {
           <div style={{ margin: "0 0 48px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
               <span style={{ color: "#00CBDB", fontSize: "1rem" }}>✎</span>
-              <span style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "1.45rem", color: "#fff", flex: 1, letterSpacing: "0.04em" }}>Ultimi articoli dal Blog</span>
-              <a href="/blog" style={{ fontSize: "0.75rem", color: "#00CBDB", textDecoration: "none" }}>Vai al blog ›</a>
+              <span style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "1.45rem", color: "#fff", flex: 1, letterSpacing: "0.04em" }}>Ultimi articoli dal <span style={{ color: "#00CBDB" }}>Blog</span></span>
+              <a href="/blog" style={{ fontSize: "0.85rem", color: "#00CBDB", textDecoration: "none" }}>Vai al blog ›</a>
             </div>
             <div className="yt-scroll">
               {articles.map((a) => (
