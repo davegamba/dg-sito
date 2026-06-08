@@ -27,7 +27,7 @@ export default function BlogPage() {
             <h1 className="font-serif text-4xl sm:text-5xl text-white mb-4">
               Articoli & Guide di Dave
             </h1>
-            <p className="text-[#666] text-lg max-w-xl">
+            <p className="text-[#e5e5e5] text-lg max-w-xl">
               Tutte le ultime ricerche scientifiche aggiornate in temi di allenamento, nutrizione, biohacking e anti-aging.
             </p>
           </div>
