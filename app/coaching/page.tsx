@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Testimonials from "@/components/home/Testimonials";
 
 const FAQ_LIST = [
   { q: "Quanto durano gli allenamenti?", a: "20-30 minuti per sessione. Il Metodo BIM — Breve, Intenso, Mirato — è progettato per chi ha poco tempo e vuole massimi risultati. Niente ore in palestra." },
@@ -101,6 +102,8 @@ export default function CoachingPage() {
         .ch-btn-gold:hover{filter:brightness(1.06);transform:translateY(-1px)}
         .ch-btn-outline{display:inline-flex;align-items:center;gap:10px;background:transparent;color:rgba(255,255,255,0.6);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;padding:14px 28px;border-radius:100px;border:1px solid rgba(255,255,255,0.15);cursor:pointer;text-decoration:none;transition:all 0.2s}
         .ch-btn-outline:hover{border-color:rgba(255,255,255,0.35);color:var(--white)}
+        .ch-btn-gold-outline{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--gold);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;padding:16px 36px;border-radius:100px;border:1.5px solid var(--gold);cursor:pointer;text-decoration:none;transition:all 0.2s;letter-spacing:0.02em}
+        .ch-btn-gold-outline:hover{background:rgba(240,192,64,0.1);transform:translateY(-1px)}
         .ch-press-bar{position:relative;z-index:1;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 24px;background:var(--bg-1);display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
         .ch-press-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-6);margin-right:4px}
         .ch-press-logos{display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:center}
@@ -116,8 +119,8 @@ export default function CoachingPage() {
         .ch-funziona-foto img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
         .ch-funziona-caption{padding:20px;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,0.08)}
         .ch-steps{display:flex;flex-direction:column;gap:16px}
-        .ch-step{background:var(--cyan-card);border:1px solid rgba(0,203,219,0.15);border-radius:20px;padding:28px;display:flex;gap:20px;align-items:flex-start}
-        .ch-step-num{font-family:'DM Serif Display',serif;font-size:42px;color:rgba(0,203,219,0.15);line-height:1;flex-shrink:0;width:48px}
+        .ch-step{background:var(--cyan-card);border:1px solid var(--accent);border-radius:20px;padding:28px;display:flex;gap:20px;align-items:flex-start}
+        .ch-step-num{font-family:'DM Serif Display',serif;font-size:42px;color:var(--accent);line-height:1;flex-shrink:0;width:48px}
         .ch-step-title{font-size:16px;font-weight:600;margin-bottom:6px}
         .ch-step-text{font-size:14px;color:var(--gray-4);line-height:1.6}
         .ch-cambio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:40px}
@@ -129,7 +132,7 @@ export default function CoachingPage() {
         .ch-non-box{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 24px 60px}
         .ch-non-inner{background:var(--bg-2);border:1px solid var(--border);border-radius:20px;padding:32px 36px;display:flex;flex-direction:column;gap:12px}
         .ch-non-title{font-size:13px;font-weight:600;color:var(--gray-6);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:4px}
-        .ch-non-item{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--gray-4);line-height:1.5}
+        .ch-non-item{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:#e05555;line-height:1.5}
         .ch-non-x{color:#e05555;flex-shrink:0;font-size:15px;margin-top:1px}
         .ch-plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;align-items:start}
         .ch-plan-card{background:var(--cyan-card);border:1px solid rgba(0,203,219,0.2);border-radius:24px;padding:44px 28px 32px;display:flex;flex-direction:column;transition:border-color 0.2s;position:relative;overflow:visible}
@@ -150,7 +153,7 @@ export default function CoachingPage() {
         .ch-btn-plan{display:block;width:100%;background:linear-gradient(to bottom,#F7E27A 0%,#F0C040 100%);color:#000;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;padding:15px;border-radius:12px;border:none;cursor:pointer;text-decoration:none;text-align:center;transition:all 0.2s;letter-spacing:0.02em}
         .ch-btn-plan:hover{filter:brightness(1.06);transform:translateY(-1px)}
         .ch-plans-note{text-align:center;font-size:12px;color:var(--gray-6);margin-top:24px;line-height:1.9}
-        .ch-form-section{position:relative;z-index:1;background:var(--bg-1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+        .ch-form-section{position:relative;z-index:1;background:#262626;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
         .ch-form-inner{max-width:800px;margin:0 auto;padding:80px 24px}
         .ch-coaching-form{display:flex;flex-direction:column;gap:28px}
         .ch-form-field{display:flex;flex-direction:column;gap:8px}
@@ -209,47 +212,42 @@ export default function CoachingPage() {
             <h1 className="ch-hero-title">Premium<br /><em>Coaching 1-1</em></h1>
             <p className="ch-hero-sub">Per chi vuole il massimo risultato fisico nel minor tempo possibile, con un percorso personalizzato e guidato da Dave.</p>
             <div className="ch-btn-row">
-              <a href="#candidati" className="ch-btn-gold">Candidati ora →</a>
-              <a href="#piani" className="ch-btn-outline">Vedi i piani</a>
+              <a href="#candidati" className="ch-btn-gold-outline">Candidati ora →</a>
+              <a href="#piani" className="ch-btn-gold-outline">Vedi i piani</a>
             </div>
           </div>
         </section>
 
         {/* Press */}
-        <div className="ch-press-bar">
-          <span className="ch-press-label">Visto su</span>
-          <div className="ch-press-logos">
-            {["logo-vanityfair.png", "logo-corriere.png", "logo-repubblica.png", "logo-rairadio2.png"].map((f) => (
-              <img key={f} src={`https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/${f}`} alt={f.replace("logo-", "").replace(".png", "")} />
-            ))}
+        <section className="w-full bg-white py-3 sm:py-4">
+          <div className="w-full px-4 sm:px-8 flex flex-col items-center gap-2">
+            <p className="text-[#999] text-[9px] font-semibold tracking-[0.2em] uppercase">
+              Come visto su
+            </p>
+            <img
+              src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/loghi-press.png"
+              alt="Vanity Fair, Corriere della Sera, la Repubblica, Rai Radio 2"
+              className="w-full max-w-2xl h-7 sm:h-9 object-contain"
+            />
           </div>
-        </div>
+        </section>
 
         {/* Come funziona */}
         <div className="ch-bg-section">
           <section className="ch-section reveal">
             <h2 className="ch-section-title">Come funziona <em>in 3 passi</em></h2>
             <p className="ch-section-sub">Tre passi. Nessuna attesa. Cominci direttamente con Dave entro 48 ore.</p>
-            <div className="ch-funziona-grid">
-              <div className="ch-funziona-foto">
-                <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/heroBg.jpeg" alt="Dave Gamba" />
-                <div className="ch-funziona-caption">
-                  <div style={{ fontFamily: "'DM Serif Display',serif", fontSize: 20, color: "#fafaf8", marginBottom: 6 }}>Dave <em style={{ fontStyle: "italic", color: "var(--accent)" }}>Gamba</em></div>
-                  <div style={{ fontSize: 13, color: "var(--gray-4)", lineHeight: 1.6 }}>Personal Trainer da oltre 15 anni, atleta da oltre trent&apos;anni. Specializzato nel Metodo Breve, Intenso, Mirato per un fisico atletico, asciutto e scolpito.</div>
+            <div className="ch-steps" style={{ marginTop: 48 }}>
+              {[
+                { n: "01", t: "Candidati e fissa la call", d: "Compila il questionario qui sotto. È gratuito e senza impegno. Ti ricontatto entro 24-48h per una call conoscitiva — per capire se posso aiutarti davvero." },
+                { n: "02", t: "Scegli il tuo piano", d: "Dopo la call scegli il pacchetto più adatto — 3, 6 o 12 mesi. Stesso sistema per tutti, durata diversa in base al tuo obiettivo." },
+                { n: "03", t: "Ricevi i piani e si parte", d: "Analizzo la tua situazione e ricevi i tuoi piani personalizzati — allenamento e alimentazione. Da quel momento sono al tuo fianco ogni settimana." },
+              ].map(({ n, t, d }) => (
+                <div key={n} className="ch-step">
+                  <div className="ch-step-num">{n}</div>
+                  <div><div className="ch-step-title">{t}</div><p className="ch-step-text">{d}</p></div>
                 </div>
-              </div>
-              <div className="ch-steps">
-                {[
-                  { n: "01", t: "Candidati e fissa la call", d: "Compila il questionario qui sotto. È gratuito e senza impegno. Ti ricontatto entro 24-48h per una call conoscitiva — per capire se posso aiutarti davvero." },
-                  { n: "02", t: "Scegli il tuo piano", d: "Dopo la call scegli il pacchetto più adatto — 3, 6 o 12 mesi. Stesso sistema per tutti, durata diversa in base al tuo obiettivo." },
-                  { n: "03", t: "Ricevi i piani e si parte", d: "Analizzo la tua situazione e ricevi i tuoi piani personalizzati — allenamento e alimentazione. Da quel momento sono al tuo fianco ogni settimana." },
-                ].map(({ n, t, d }) => (
-                  <div key={n} className="ch-step">
-                    <div className="ch-step-num">{n}</div>
-                    <div><div className="ch-step-title">{t}</div><p className="ch-step-text">{d}</p></div>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
           </section>
         </div>
@@ -321,11 +319,15 @@ export default function CoachingPage() {
 
         <div className="ch-divider" />
 
+        {/* Testimonianze */}
+        <Testimonials />
+
+        <div className="ch-divider" />
+
         {/* Form candidatura */}
         <div className="ch-form-section" id="candidati">
           <div className="ch-form-inner">
             <div style={{ textAlign: "center", marginBottom: 48 }}>
-              <div className="ch-badge ch-badge-gold" style={{ marginBottom: 20 }}><span className="ch-badge-dot" />Disponibilità attuale: 2 posti</div>
               <h2 className="ch-section-title">Parliamoci.<br /><em>Candidati al Coaching.</em></h2>
               <p className="ch-section-sub" style={{ margin: "0 auto", textAlign: "center" }}>Hai domande? Vuoi parlare con Dave prima di iniziare? Compila il questionario e ti ricontattiamo entro 24-48h per una call conoscitiva gratuita e senza impegno.</p>
             </div>
@@ -423,7 +425,7 @@ export default function CoachingPage() {
         {/* FAQ */}
         <div className="ch-bg-section">
           <section className="ch-section reveal">
-            <h2 className="ch-section-title"><em>Domande frequenti</em></h2>
+            <h2 className="ch-section-title" style={{ fontSize: "clamp(36px,5vw,56px)" }}><em>Domande frequenti</em></h2>
             <div className="ch-faq-list">
               {FAQ_LIST.map(({ q, a }, i) => (
                 <div key={i} className={`ch-faq-item${openFaq === i ? " open" : ""}`}>

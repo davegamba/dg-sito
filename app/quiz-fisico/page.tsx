@@ -504,14 +504,14 @@ export default function QuizFisicoPage() {
             </div>
 
             {/* Card analisi */}
-            <div style={{ background: "linear-gradient(135deg,rgba(0,203,219,0.07) 0%,rgba(0,203,219,0.02) 100%)", border: "1px solid rgba(0,203,219,0.2)", borderRadius: 16, padding: 28, marginBottom: 14 }}>
-              <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#00CBDB", marginBottom: 14, display: "block" }}>Cosa sta succedendo davvero</span>
+            <div style={{ background: "linear-gradient(135deg,rgba(255,80,80,0.08) 0%,rgba(255,80,80,0.02) 100%)", border: "1px solid rgba(255,80,80,0.25)", borderRadius: 16, padding: 28, marginBottom: 14 }}>
+              <h3 style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#ff6b6b", marginBottom: 14, display: "block" }}>Cosa sta succedendo davvero</h3>
               <p style={{ fontSize: 15, color: "#e4e4e0", lineHeight: 1.75 }} dangerouslySetInnerHTML={{ __html: profile.analysis }} />
             </div>
 
             {/* Card tips */}
             <div style={{ background: "linear-gradient(135deg,rgba(0,203,219,0.07) 0%,rgba(0,203,219,0.02) 100%)", border: "1px solid rgba(0,203,219,0.2)", borderRadius: 16, padding: 28, marginBottom: 14 }}>
-              <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#00CBDB", marginBottom: 14, display: "block" }}>3 mosse da applicare subito</span>
+              <h3 style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#00CBDB", marginBottom: 14, display: "block" }}>3 mosse da applicare subito</h3>
               <ul style={{ listStyle: "none", display: "grid", gap: 14 }}>
                 {profile.tips.map((tip, i) => (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12, fontSize: 15, color: "#e4e4e0", lineHeight: 1.6 }}>
@@ -525,7 +525,7 @@ export default function QuizFisicoPage() {
             {/* CTA section */}
             <div style={{ marginTop: 40 }}>
               <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(24px,5vw,32px)", textAlign: "center", lineHeight: 1.15, marginBottom: 10 }}>
-                Sei a 1 passo dal trasformare<br />definitivamente il tuo fisico
+                Sei a <span style={{ color: "#f5c842" }}>1 passo</span> dal trasformare<br />definitivamente il tuo fisico
               </h3>
               <p style={{ fontSize: 15, color: "#9a9a94", textAlign: "center", fontWeight: 300, lineHeight: 1.6, marginBottom: 28 }}>
                 In base alle tue risposte la strada più rapida per il fisico che vuoi sono i programmi:
@@ -546,24 +546,24 @@ export default function QuizFisicoPage() {
               {/* CTA cards */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 24 }}>
                 <a href="https://sfidaestiva.davegamba.com/" target="_blank" rel="noopener noreferrer"
-                  style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "2px solid transparent", minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none", transition: "border-color 0.2s" }}>
+                  style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "2px solid rgba(0,203,219,0.5)", minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none", transition: "border-color 0.2s" }}>
                   <div style={{ position: "absolute", inset: 0, backgroundImage: "url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/foto-sfida-estiva.jpg')", backgroundSize: "cover", backgroundPosition: "center top" }} />
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.4) 50%,rgba(0,0,0,0.1) 100%)" }} />
                   <div style={{ position: "relative", zIndex: 1, padding: 16, display: "flex", flexDirection: "column", gap: 8 }}>
+                    <div style={{ display: "inline-block", background: "#00CBDB", color: "#0a0a0a", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "3px 8px", borderRadius: 100, alignSelf: "flex-start" }}>Offerta a tempo limitato</div>
                     <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 18, lineHeight: 1.2, color: "#fafaf8" }}>Sfida Estiva<br />21 Giorni</h3>
-                    <div style={{ fontSize: 20, fontWeight: 700, color: "#fafaf8" }}>€37</div>
-                    <div style={{ display: "block", background: "rgba(255,255,255,0.12)", color: "#fafaf8", fontSize: 13, fontWeight: 700, padding: 11, borderRadius: 8, textAlign: "center", border: "1px solid rgba(255,255,255,0.2)" }}>Inizia subito →</div>
+                    <div style={{ fontSize: 20, fontWeight: 700, color: "#fafaf8" }}>€33</div>
+                    <div style={{ display: "block", background: "#00CBDB", color: "#0a0a0a", fontSize: 13, fontWeight: 700, padding: 11, borderRadius: 8, textAlign: "center" }}>Inizia subito →</div>
                   </div>
                 </a>
                 <a href="https://davegamba.com/coaching" target="_blank" rel="noopener noreferrer"
-                  style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "2px solid rgba(0,203,219,0.5)", minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none" }}>
+                  style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "2px solid rgba(245,200,66,0.5)", minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none" }}>
                   <div style={{ position: "absolute", inset: 0, backgroundImage: "url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg')", backgroundSize: "cover", backgroundPosition: "center top" }} />
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.4) 50%,rgba(0,0,0,0.1) 100%)" }} />
                   <div style={{ position: "relative", zIndex: 1, padding: 16, display: "flex", flexDirection: "column", gap: 8 }}>
-                    <div style={{ display: "inline-block", background: "#00CBDB", color: "#0a0a0a", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "3px 8px", borderRadius: 100, alignSelf: "flex-start" }}>Consigliato</div>
+                    <div style={{ display: "inline-block", background: "#f5c842", color: "#0a0a0a", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "3px 8px", borderRadius: 100, alignSelf: "flex-start" }}>Servizio Premium</div>
                     <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 18, lineHeight: 1.2, color: "#fafaf8" }}>Coaching<br />Personale 1:1</h3>
-                    <div style={{ fontSize: 20, fontWeight: 700, color: "#fafaf8" }}>€920</div>
-                    <div style={{ display: "block", background: "#00CBDB", color: "#0a0a0a", fontSize: 13, fontWeight: 700, padding: 11, borderRadius: 8, textAlign: "center" }}>Prenota una call →</div>
+                    <div style={{ display: "block", background: "#f5c842", color: "#0a0a0a", fontSize: 13, fontWeight: 700, padding: 11, borderRadius: 8, textAlign: "center" }}>Prenota una call →</div>
                   </div>
                 </a>
               </div>
