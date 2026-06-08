@@ -135,7 +135,7 @@ export default function Hero() {
         `}</style>
         <div className="mt-2">
           <Link href="/quiz" className="btn-quiz-hero">
-            Fai il quiz per scoprire il tuo profilo fisico <ArrowRight size={18} />
+            Scopri il tuo Profilo Fisico <ArrowRight size={18} />
           </Link>
         </div>
 

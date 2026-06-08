@@ -35,6 +35,7 @@ interface Product {
   tag?: string;
   tagColor?: string;
   isCoachingCta?: boolean;
+  inProgress?: boolean;
   image?: string;
   imagePosition?: string;
 }
@@ -63,9 +64,9 @@ const PRODUCTS_DEFAULT: Product[] = [
   {
     id: "calorie",
     title: "Conta Calorie",
-    href: "https://club.davegamba.com/calorie/",
-    tag: "Sbloccato",
-    tagColor: "#00CBDB",
+    inProgress: true,
+    tag: "In costruzione",
+    tagColor: "rgba(255,255,255,0.6)",
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_29-05-2026-20-47-56.jpg",
     imagePosition: "center",
   },
@@ -153,7 +154,7 @@ function SortableCard({ product, unlocked, onClick }: CardProps) {
     zIndex: isDragging ? 50 : undefined,
   };
 
-  const isLocked = !unlocked && !product.isCoachingCta;
+  const isLocked = !unlocked && !product.isCoachingCta && !product.inProgress;
 
   return (
     <div
@@ -161,9 +162,9 @@ function SortableCard({ product, unlocked, onClick }: CardProps) {
       style={style}
       {...attributes}
       {...listeners}
-      onClick={onClick}
+      onClick={product.inProgress ? undefined : onClick}
       onContextMenu={(e) => e.preventDefault()}
-      className={`bc-card ${product.isCoachingCta ? "coaching" : unlocked ? "unlocked" : "locked"}`}
+      className={`bc-card ${product.isCoachingCta ? "coaching" : product.inProgress ? "in-progress" : unlocked ? "unlocked" : "locked"}`}
     >
       <div
         className="bc-card-bg"
@@ -193,6 +194,9 @@ function SortableCard({ product, unlocked, onClick }: CardProps) {
               ))
             : product.title}
         </div>
+        {product.inProgress && (
+          <span className="bc-in-progress-note">In costruzione, presto disponibile</span>
+        )}
       </div>
     </div>
   );
@@ -261,7 +265,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
   }, []);
 
   const isUnlocked = useCallback((productId: string) => {
-    if (productId === "quiz" || productId === "calorie") return true;
+    if (productId === "quiz") return true;
     return unlockedProducts.includes(productId);
   }, [unlockedProducts]);
 
@@ -283,6 +287,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
   };
 
   const handleCardClick = (product: Product) => {
+    if (product.inProgress) return;
     const unlocked = isUnlocked(product.id);
     if (product.isCoachingCta) {
       router.push("/coaching");
@@ -536,6 +541,21 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
         .bc-card.locked .bc-card-bg,
         .bc-card.locked .bc-card-overlay {
           filter: brightness(0.6) saturate(0.4);
+        }
+        .bc-card.in-progress {
+          cursor: default;
+        }
+        .bc-card.in-progress .bc-card-bg,
+        .bc-card.in-progress .bc-card-overlay {
+          filter: brightness(0.55) saturate(0.3);
+        }
+        .bc-in-progress-note {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 10px;
+          font-weight: 500;
+          color: rgba(245,240,232,0.6);
+          letter-spacing: 0.02em;
+          text-transform: none;
         }
 
         .bc-card-bg {

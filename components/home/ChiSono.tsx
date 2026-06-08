@@ -1,7 +1,7 @@
 
 export default function ChiSono() {
   return (
-    <section className="py-10 sm:py-14 gsap-fade" style={{ background: "#F5F1EB" }}>
+    <section className="py-10 sm:py-14 gsap-fade" style={{ background: "#0a0a12" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px" }}>
 
         {/* Titolo sopra tutto */}
@@ -9,7 +9,7 @@ export default function ChiSono() {
           <span style={{ display: "block", marginBottom: "10px", fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "#00CBDB" }}>
             About me
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl" style={{ color: "#0A1A20", lineHeight: 1.2 }}>
+          <h2 className="font-serif text-3xl sm:text-4xl" style={{ color: "#fff", lineHeight: 1.2 }}>
             15 anni. Oltre 3.000 clienti trasformati.{" "}
             <em style={{ color: "#00CBDB", fontStyle: "normal" }}>Un solo metodo.</em>
           </h2>
@@ -36,18 +36,18 @@ export default function ChiSono() {
 
           {/* Testo */}
           <div style={{ flex: 1, minWidth: 0 }}>
-            <p style={{ fontSize: "0.82rem", color: "rgba(10,26,32,0.75)", lineHeight: 1.7, marginBottom: 0 }}>
+            <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.7, marginBottom: 0 }}>
               Da oltre 20 anni atleta fitness ed ex agonista sportivo.<br />
               Personal Trainer internazionale certificato ISSA. Intervistato da Corriere della Sera, La Repubblica, Vanity Fair e molti altri come uno dei primi Personal Trainer online in Italia — creando il proprio metodo{" "}
-              <strong style={{ color: "#0A1A20" }}>Breve-Intenso-Mirato.</strong>
+              <strong style={{ color: "#fff" }}>Breve-Intenso-Mirato.</strong>
             </p>
           </div>
         </div>
 
         {/* Frase metodo */}
-        <p style={{ fontSize: "1rem", color: "rgba(10,26,32,0.7)", lineHeight: 1.7, marginTop: "24px", marginBottom: "4px", borderTop: "1px solid rgba(10,26,32,0.1)", paddingTop: "24px" }}>
+        <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginTop: "24px", marginBottom: "4px", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "24px" }}>
           La maggior parte delle persone si allena tanto, senza struttura reale, e si chiede perché non vede risultati.{" "}
-          <strong style={{ color: "#0A1A20" }}>Il Metodo Breve Intenso Mirato funziona al contrario:</strong>{" "}
+          <strong style={{ color: "#fff" }}>Il Metodo Breve Intenso Mirato funziona al contrario:</strong>{" "}
           <span style={{ color: "#00CBDB" }}>meno ore, più intensità, zero esercizi inutili.</span>
         </p>
 
@@ -58,9 +58,9 @@ export default function ChiSono() {
             { title: "INTENSO", body: "Nel fitness, l'intensità batte la quantità." },
             { title: "MIRATO", body: "Ogni esercizio ha uno scopo preciso. Niente fatica a vuoto." },
           ].map((c) => (
-            <div key={c.title} style={{ background: "rgba(10,26,32,0.05)", border: "1px solid rgba(10,26,32,0.12)", borderRadius: "12px", padding: "14px 16px" }}>
+            <div key={c.title} style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "12px", padding: "14px 16px" }}>
               <div style={{ fontFamily: "var(--font-dm-serif)", fontSize: "1rem", color: "#00CBDB", letterSpacing: "0.04em", marginBottom: "6px" }}>{c.title}</div>
-              <div style={{ fontSize: "0.85rem", color: "rgba(10,26,32,0.65)" }}>{c.body}</div>
+              <div style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)" }}>{c.body}</div>
             </div>
           ))}
         </div>

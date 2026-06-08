@@ -92,20 +92,20 @@ const testimonials = [
 
 function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
   return (
-    <div className="flex-none w-[290px] sm:w-[320px] flex flex-col gap-4 p-6 bg-[#0d0d0d] border border-[#1a1a1a] rounded-[20px]">
-      <span className="inline-flex items-center w-fit px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wide uppercase bg-[#00cbdb0f] border border-[#00cbdb22] text-[#00CBDB]">
+    <div className="flex-none w-[290px] sm:w-[320px] flex flex-col gap-4 p-6 bg-white border border-[#e5ddd0] rounded-[20px]">
+      <span className="inline-flex items-center w-fit px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wide uppercase bg-[#00cbdb0f] border border-[#00cbdb33] text-[#0098A8]">
         {t.result}
       </span>
-      <p className="text-[#ccc] text-sm leading-relaxed flex-1">
+      <p className="text-[#5a5248] text-sm leading-relaxed flex-1">
         &ldquo;{t.text}&rdquo;
       </p>
-      <div className="flex items-center gap-3 pt-3 border-t border-[#1a1a1a]">
-        <div className="w-9 h-9 rounded-full bg-[#00cbdb18] flex items-center justify-center text-[#00CBDB] text-sm font-bold shrink-0">
+      <div className="flex items-center gap-3 pt-3 border-t border-[#e5ddd0]">
+        <div className="w-9 h-9 rounded-full bg-[#00cbdb18] flex items-center justify-center text-[#0098A8] text-sm font-bold shrink-0">
           {t.name[0]}
         </div>
         <div>
-          <div className="text-white text-xs font-semibold">{t.name}, {t.age} anni</div>
-          <div className="text-[#444] text-xs">{t.job}</div>
+          <div className="text-[#0A1A20] text-xs font-semibold">{t.name}, {t.age} anni</div>
+          <div className="text-[#9a9184] text-xs">{t.job}</div>
         </div>
       </div>
     </div>
@@ -116,12 +116,12 @@ export default function Testimonials() {
   const doubled = [...testimonials, ...testimonials];
 
   return (
-    <section className="py-12 sm:py-16 overflow-hidden gsap-fade" style={{ background: "#0a0a12" }}>
+    <section className="py-12 sm:py-16 overflow-hidden gsap-fade" style={{ background: "#F5F1EB" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8">
-        <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
+        <span className="text-[#0098A8] text-xs font-semibold tracking-widest uppercase mb-3 block">
           Risultati reali
         </span>
-        <h2 className="font-serif text-3xl sm:text-4xl text-white">
+        <h2 className="font-serif text-3xl sm:text-4xl text-[#0A1A20]">
           Cosa dicono i clienti
         </h2>
       </div>
