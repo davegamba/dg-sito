@@ -155,8 +155,7 @@ export default async function PostPage({
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-white text-sm font-semibold">Dave Gamba</div>
-                  <div className="text-[#00CBDB] text-[10px] mb-0.5">Personal trainer online dal 2009 · Metodo BIM</div>
-                  <div className="flex items-center gap-2 text-[#555] text-xs mt-0.5">
+                  <div className="flex items-center gap-2 text-[#e0e0e0] text-xs mt-0.5">
                     <time>{new Date(post.date).toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" })}</time>
                     <span>·</span>
                     <span>{post.readingTime} min di lettura</span>
