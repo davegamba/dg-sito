@@ -51,8 +51,6 @@ export default defineConfig({
             type: "datetime",
             name: "date",
             label: "Data pubblicazione",
-            description:
-              "Se lo Stato è 'Programmato', l'articolo diventa visibile sul sito automaticamente da questa data.",
             required: true,
             ui: {
               dateFormat: "DD/MM/YYYY",
@@ -86,17 +84,9 @@ export default defineConfig({
             label: "Immagine copertina",
           },
           {
-            type: "string",
-            name: "status",
-            label: "Stato",
-            description:
-              "Bozza = mai visibile. Programmato = diventa visibile in automatico alla Data pubblicazione. Pubblicato = visibile da subito (se la data non è nel futuro).",
-            options: [
-              { value: "bozza", label: "🔴 Bozza" },
-              { value: "programmato", label: "🟡 Programmato" },
-              { value: "pubblicato", label: "🟢 Pubblicato" },
-            ],
-            required: true,
+            type: "boolean",
+            name: "published",
+            label: "Pubblicato",
           },
           {
             type: "rich-text",
