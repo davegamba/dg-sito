@@ -162,42 +162,42 @@ export default function CoachingPage() {
         .ch-btn-plan{display:block;width:100%;background:linear-gradient(to bottom,#F7E27A 0%,#F0C040 100%);color:#000;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;padding:15px;border-radius:12px;border:none;cursor:pointer;text-decoration:none;text-align:center;transition:all 0.2s;letter-spacing:0.02em}
         .ch-btn-plan:hover{filter:brightness(1.06);transform:translateY(-1px)}
         .ch-plans-note{text-align:center;font-size:12px;color:var(--gray-6);margin-top:24px;line-height:1.9}
-        .ch-form-section{position:relative;z-index:1;background:#f5f0e8;border-top:1px solid #e0d9cc;border-bottom:1px solid #e0d9cc}
+        .ch-form-section{position:relative;z-index:1;background:#06080f;border-top:1px solid #1a1a2a;border-bottom:1px solid #1a1a2a}
         .ch-form-inner{max-width:800px;margin:0 auto;padding:80px 24px}
         .ch-coaching-form{display:flex;flex-direction:column;gap:28px}
         .ch-form-field{display:flex;flex-direction:column;gap:8px}
         .ch-form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-        .ch-form-label{font-size:13px;font-weight:600;color:#0A1A20;letter-spacing:0.02em}
+        .ch-form-label{font-size:13px;font-weight:600;color:var(--white);letter-spacing:0.02em}
         .ch-form-label span{color:var(--accent);margin-left:2px}
-        .ch-form-hint{font-size:12px;color:#888;margin-top:-4px}
-        .ch-form-input,.ch-form-textarea{background:#fff;border:1px solid #d5cfc5;border-radius:12px;padding:14px 16px;color:#0A1A20;font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border-color 0.2s;width:100%}
-        .ch-form-input:focus,.ch-form-textarea:focus{border-color:rgba(0,203,219,0.6)}
-        .ch-form-input::placeholder,.ch-form-textarea::placeholder{color:rgba(10,26,32,0.3)}
+        .ch-form-hint{font-size:12px;color:var(--gray-6);margin-top:-4px}
+        .ch-form-input,.ch-form-textarea{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border-color 0.2s;width:100%}
+        .ch-form-input:focus,.ch-form-textarea:focus{border-color:rgba(0,203,219,0.5)}
+        .ch-form-input::placeholder,.ch-form-textarea::placeholder{color:rgba(255,255,255,0.2)}
         .ch-form-textarea{resize:vertical;min-height:100px;line-height:1.6}
         .ch-radio-group,.ch-check-group{display:flex;flex-direction:column;gap:8px}
-        .ch-radio-row,.ch-check-row{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #d5cfc5;border-radius:10px;padding:12px 16px;cursor:pointer;transition:border-color 0.15s,background 0.15s;font-size:14px;color:#444;user-select:none}
-        .ch-radio-row:has(input:checked),.ch-check-row:has(input:checked){border-color:rgba(0,203,219,0.5);background:rgba(0,203,219,0.06);color:#0A1A20}
+        .ch-radio-row,.ch-check-row{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 16px;cursor:pointer;transition:border-color 0.15s,background 0.15s;font-size:14px;color:var(--gray-3);user-select:none}
+        .ch-radio-row:has(input:checked),.ch-check-row:has(input:checked){border-color:rgba(0,203,219,0.4);background:rgba(0,203,219,0.05);color:var(--white)}
         .ch-radio-row input,.ch-check-row input{accent-color:var(--accent);width:16px;height:16px;flex-shrink:0}
         .ch-scale-group{display:flex;gap:8px;flex-wrap:wrap}
-        .ch-scale-btn{flex:1;min-width:40px;aspect-ratio:1;background:#fff;border:1px solid #d5cfc5;border-radius:10px;color:#888;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center}
-        .ch-scale-btn:hover{border-color:rgba(0,203,219,0.4);color:#0A1A20}
-        .ch-scale-btn.active{background:rgba(0,203,219,0.1);border-color:rgba(0,203,219,0.6);color:var(--accent)}
-        .ch-form-divider{height:1px;background:#e0d9cc;margin:4px 0}
+        .ch-scale-btn{flex:1;min-width:40px;aspect-ratio:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:var(--gray-4);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center}
+        .ch-scale-btn:hover{border-color:rgba(0,203,219,0.3);color:var(--white)}
+        .ch-scale-btn.active{background:rgba(0,203,219,0.1);border-color:rgba(0,203,219,0.5);color:var(--accent)}
+        .ch-form-divider{height:1px;background:var(--border);margin:4px 0}
         .ch-consent-row{display:flex;align-items:flex-start;gap:12px;cursor:pointer}
         .ch-consent-row input{width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:var(--accent);cursor:pointer}
-        .ch-consent-row span{font-size:12px;color:#888;line-height:1.5}
+        .ch-consent-row span{font-size:12px;color:var(--gray-6);line-height:1.5}
         .ch-consent-row a{color:var(--accent);text-decoration:underline}
         .ch-btn-submit{width:100%;background:linear-gradient(to bottom,#F7E27A 0%,#F0C040 100%);color:#000;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;padding:18px;border-radius:14px;border:none;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:10px;letter-spacing:0.02em}
         .ch-btn-submit:hover{filter:brightness(1.06);transform:translateY(-1px)}
         .ch-btn-submit:disabled{opacity:0.6;cursor:default;transform:none}
         .ch-form-success{text-align:center;padding:48px 24px;background:rgba(0,203,219,0.04);border:1px solid rgba(0,203,219,0.2);border-radius:20px}
         .ch-faq-list{display:flex;flex-direction:column;gap:8px;margin-top:48px}
-        .ch-faq-item{background:var(--cyan-card);border:1px solid rgba(0,203,219,0.15);border-radius:14px;overflow:hidden;transition:border-color 0.2s}
-        .ch-faq-item.open{border-color:rgba(0,203,219,0.35)}
-        .ch-faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:none;border:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;text-align:left;cursor:pointer}
-        .ch-faq-icon{width:22px;height:22px;border-radius:50%;border:1px solid rgba(0,203,219,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gray-4);font-size:14px;transition:all 0.2s}
+        .ch-faq-item{background:#fff;border:1px solid #e0d9cc;border-radius:14px;overflow:hidden;transition:border-color 0.2s}
+        .ch-faq-item.open{border-color:rgba(0,203,219,0.4)}
+        .ch-faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:none;border:none;color:#0A1A20;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;text-align:left;cursor:pointer}
+        .ch-faq-icon{width:22px;height:22px;border-radius:50%;border:1px solid #d0c9be;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#888;font-size:14px;transition:all 0.2s}
         .ch-faq-item.open .ch-faq-icon{border-color:var(--accent);color:var(--accent);transform:rotate(45deg)}
-        .ch-faq-answer{display:none;padding:0 24px 20px;font-size:14px;color:var(--gray-4);line-height:1.7}
+        .ch-faq-answer{display:none;padding:0 24px 20px;font-size:14px;color:#666;line-height:1.7}
         .ch-faq-item.open .ch-faq-answer{display:block}
         .ch-cta-block{position:relative;z-index:1;text-align:center;max-width:660px;margin:0 auto;padding:100px 24px}
         .ch-cta-block p{font-size:16px;color:var(--gray-4);line-height:1.7;margin:20px 0 36px}
@@ -270,9 +270,9 @@ export default function CoachingPage() {
         <div className="ch-divider" />
 
         {/* Cambio vita */}
-        <section className="ch-section ch-section-antr reveal">
-          <h2 className="ch-section-title">Non solo fisico.<br /><em>Un cambio di vita.</em></h2>
-          <p className="ch-section-sub">Quello che costruiamo insieme rimane. Non è una dieta temporanea o una scheda da buttare dopo tre mesi.</p>
+        <section className="ch-section reveal" style={{ background: "#f5f0e8" }}>
+          <h2 className="ch-section-title" style={{ color: "#0A1A20" }}>Non solo fisico.<br /><em style={{ color: "var(--accent)" }}>Un cambio di vita.</em></h2>
+          <p className="ch-section-sub" style={{ color: "#666" }}>Quello che costruiamo insieme rimane. Non è una dieta temporanea o una scheda da buttare dopo tre mesi.</p>
           <div className="ch-cambio-grid">
             {[
               { icon: "check", t: "La tua migliore forma fisica di sempre — non temporanea, definitiva" },
@@ -285,9 +285,9 @@ export default function CoachingPage() {
               { icon: "arrow", t: "Qualcuno che ti tiene in rotta quando la motivazione cala" },
               { icon: "arrow", t: "Ti alleni da mesi o anni, ma il fisico non si muove — questo lo cambia" },
             ].map(({ icon, t }) => (
-              <div key={t} className="ch-cambio-item">
+              <div key={t} className="ch-cambio-item" style={{ background: "#fff", border: "1px solid #e0d9cc" }}>
                 <div className={`ch-cambio-icon ${icon}`}>{icon === "check" ? "✓" : "▸"}</div>
-                <p>{t}</p>
+                <p style={{ color: "#333" }}>{t}</p>
               </div>
             ))}
           </div>
@@ -340,11 +340,12 @@ export default function CoachingPage() {
         <div className="ch-divider" />
 
         {/* Form candidatura */}
-        <div className="ch-form-section ch-section-navy" id="candidati">
-          <div className="ch-form-inner">
+        <div className="ch-form-section" id="candidati">
+          <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 50% 40%, rgba(0,203,219,0.07) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
+          <div className="ch-form-inner" style={{ position: "relative", zIndex: 1 }}>
             <div style={{ textAlign: "center", marginBottom: 48 }}>
-              <h2 className="ch-section-title" style={{ color: "#0A1A20" }}>Parliamoci.<br /><em style={{ color: "var(--accent)" }}>Candidati al Coaching.</em></h2>
-              <p className="ch-section-sub" style={{ margin: "0 auto", textAlign: "center", color: "#666" }}>Hai domande? Vuoi parlare con Dave prima di iniziare? Compila il questionario e ti ricontattiamo entro 24-48h per una call conoscitiva gratuita e senza impegno.</p>
+              <h2 className="ch-section-title">Parliamoci.<br /><em>Candidati al Coaching.</em></h2>
+              <p className="ch-section-sub" style={{ margin: "0 auto", textAlign: "center" }}>Hai domande? Vuoi parlare con Dave prima di iniziare? Compila il questionario e ti ricontattiamo entro 24-48h per una call conoscitiva gratuita e senza impegno.</p>
             </div>
 
             {success ? (
@@ -421,7 +422,7 @@ export default function CoachingPage() {
                 <button type="submit" className="ch-btn-submit" disabled={loading}>
                   {loading ? "Invio in corso…" : "Invia candidatura →"}
                 </button>
-                <p style={{ textAlign: "center", fontSize: 12, color: "#999" }}>✓ Gratuito e senza impegno — ti ricontatto entro 24-48h</p>
+                <p style={{ textAlign: "center", fontSize: 12, color: "var(--gray-6)" }}>✓ Gratuito e senza impegno — ti ricontatto entro 24-48h</p>
               </form>
             )}
           </div>
@@ -430,9 +431,9 @@ export default function CoachingPage() {
         <div className="ch-divider" />
 
         {/* FAQ */}
-        <div className="ch-bg-section ch-section-antr">
+        <div className="ch-bg-section" style={{ background: "#f5f0e8", borderColor: "#e0d9cc" }}>
           <section className="ch-section reveal">
-            <h2 className="ch-section-title" style={{ fontSize: "clamp(36px,5vw,56px)" }}><em>Domande frequenti</em></h2>
+            <h2 className="ch-section-title" style={{ fontSize: "clamp(36px,5vw,56px)", color: "#0A1A20" }}><em style={{ color: "var(--accent)" }}>Domande frequenti</em></h2>
             <div className="ch-faq-list">
               {FAQ_LIST.map(({ q, a }, i) => (
                 <div key={i} className={`ch-faq-item${openFaq === i ? " open" : ""}`}>
