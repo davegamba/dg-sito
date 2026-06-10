@@ -479,24 +479,18 @@ export default function QuizFisicoPage() {
             <div style={{ paddingTop: 40 }}>
               <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#00CBDB", marginBottom: 14, display: "block" }}>Step Finale</span>
               <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(28px,6vw,40px)", lineHeight: 1.1, marginBottom: 10 }}>
-                Il tuo profilo<br />è pronto 🔥
+                Il Piano del tuo profilo<br />è pronto 🔥
               </h2>
               <p style={{ fontSize: 15, color: "#9a9a94", fontWeight: 300, lineHeight: 1.6, marginBottom: 36 }}>
-                Inserisci nome e email per ricevere i risultati personalizzati e il tuo piano di partenza.
+                Inserisci nome e email per ricevere il tuo piano di partenza:
               </p>
               <form onSubmit={submitEmail} style={{ display: "grid", gap: 12 }}>
                 {/* Honeypot */}
                 <input type="text" name="website" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
-                <div>
-                  <label style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "#9a9a94", display: "block", marginBottom: 6 }}>Nome</label>
-                  <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="es. Marco" autoComplete="given-name" required
-                    style={{ width: "100%", height: 52, padding: "0 18px", background: "rgba(255,255,255,0.05)", border: "1px solid #222220", borderRadius: 12, color: "#fafaf8", fontFamily: "inherit", fontSize: 16, outline: "none" }} />
-                </div>
-                <div>
-                  <label style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "#9a9a94", display: "block", marginBottom: 6 }}>Email</label>
-                  <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="es. marco@email.com" autoComplete="email" required
-                    style={{ width: "100%", height: 52, padding: "0 18px", background: "rgba(255,255,255,0.05)", border: "1px solid #222220", borderRadius: 12, color: "#fafaf8", fontFamily: "inherit", fontSize: 16, outline: "none" }} />
-                </div>
+                <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Nome" autoComplete="given-name" required
+                  style={{ width: "100%", height: 52, padding: "0 18px", background: "rgba(255,255,255,0.05)", border: "1px solid #222220", borderRadius: 12, color: "#fafaf8", fontFamily: "inherit", fontSize: 16, outline: "none" }} />
+                <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" autoComplete="email" required
+                  style={{ width: "100%", height: 52, padding: "0 18px", background: "rgba(255,255,255,0.05)", border: "1px solid #222220", borderRadius: 12, color: "#fafaf8", fontFamily: "inherit", fontSize: 16, outline: "none" }} />
                 <button type="submit" disabled={submitting}
                   style={{ width: "100%", background: "#00CBDB", color: "#0a0a0a", fontFamily: "inherit", fontSize: 16, fontWeight: 700, padding: 18, borderRadius: 12, border: "none", cursor: "pointer", marginTop: 6, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, opacity: submitting ? 0.7 : 1 }}>
                   {submitting ? "Un momento..." : "Ottieni il tuo piano gratuito →"}
