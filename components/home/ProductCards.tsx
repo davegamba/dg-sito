@@ -63,7 +63,7 @@ const products = [
     price: null,
     cta: "Scopri di più →",
     ctaStyle: { background: "#F0C040", color: "#000" },
-    href: "https://club.davegamba.com/coaching.html",
+    href: "/coaching#candidati",
   },
 ];
 

@@ -37,7 +37,7 @@ const items = [
   },
   {
     label: "Coaching 1-1",
-    href: "https://club.davegamba.com/coaching.html",
+    href: "/coaching#candidati",
     icon: (
       <svg viewBox="0 0 24 24" fill="white" width="36" height="36">
         <path d="M12 2l2.9 6.3 6.8.6-5 4.7 1.5 6.7L12 17l-6.2 3.3 1.5-6.7-5-4.7 6.8-.6z"/>

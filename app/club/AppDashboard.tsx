@@ -46,7 +46,7 @@ const COACHING: Product = {
   tag: "Premium",
   tagColor: "#C8963E",
   isCoachingCta: true,
-  href: "/coaching",
+  href: "/coaching#candidati",
   image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
   imagePosition: "center top",
 };
@@ -820,7 +820,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
                   <span className="bc-coaching-strip-tag">Premium</span>
                   <span className="bc-coaching-strip-title">Coaching Personale 1-1</span>
                 </div>
-                <a href="/coaching" className="bc-coaching-strip-cta" onClick={e => e.stopPropagation()}>Scopri →</a>
+                <a href="/coaching#candidati" className="bc-coaching-strip-cta" onClick={e => e.stopPropagation()}>Scopri →</a>
               </div>
             </div>
           </div>
