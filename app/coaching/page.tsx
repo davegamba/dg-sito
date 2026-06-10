@@ -120,9 +120,9 @@ export default function CoachingPage() {
         .ch-section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:80px 24px}
         .ch-bg-section{position:relative;z-index:1;background:var(--bg-1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
         .ch-divider{height:1px;background:var(--border);position:relative;z-index:1}
-        .ch-section-title{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,50px);line-height:1.1;letter-spacing:-0.02em;margin-bottom:14px}
+        .ch-section-title{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,50px);line-height:1.1;letter-spacing:-0.02em;margin-bottom:14px;text-align:center}
         .ch-section-title em{font-style:italic;color:var(--accent)}
-        .ch-section-sub{font-size:16px;color:var(--gray-4);font-weight:300;line-height:1.7;max-width:580px}
+        .ch-section-sub{font-size:16px;color:var(--gray-4);font-weight:300;line-height:1.7;max-width:580px;text-align:center;margin-left:auto;margin-right:auto}
         .ch-funziona-grid{display:grid;grid-template-columns:380px 1fr;gap:60px;align-items:center;margin-top:48px}
         .ch-funziona-foto{border-radius:20px;overflow:hidden;aspect-ratio:3/4;background:var(--bg-2);position:relative}
         .ch-funziona-foto img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
@@ -214,7 +214,7 @@ export default function CoachingPage() {
       <div className="ch-body">
         {/* Hero */}
         <section className="ch-hero">
-          <img className="bg" src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/heroBg.jpeg" alt="Dave Gamba Premium Coaching" />
+          <img className="bg" src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/foto-sfida-estiva.jpg" alt="Dave Gamba Premium Coaching" />
           <div className="ch-hero-content">
             <div style={{ fontSize: 12, fontWeight: 300, color: "rgba(255,255,255,0.4)", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 10 }}>Coaching Online con Dave</div>
             <h1 className="ch-hero-title">Premium<br /><em>Coaching 1-1</em></h1>
@@ -243,13 +243,11 @@ export default function CoachingPage() {
         {/* Come funziona */}
         <div className="ch-bg-section ch-section-navy">
           <section className="ch-section reveal">
-            <h2 className="ch-section-title">Come funziona <em>in 3 passi</em></h2>
-            <p className="ch-section-sub">Tre passi. Nessuna attesa. Cominci direttamente con Dave entro 48 ore.</p>
+            <h2 className="ch-section-title" style={{ textAlign: "center" }}>Come funziona <em>in 3 passi</em></h2>
+            <p className="ch-section-sub" style={{ textAlign: "center", maxWidth: 560, margin: "0 auto" }}>Il Premium Coaching 1:1 per la tua trasformazione fisica definitiva con Dave.</p>
             <div className="ch-funziona-grid">
               <div className="ch-funziona-foto">
-                <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg,#0d2028,#0a1520)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 420 }}>
-                  <span style={{ color: "rgba(0,203,219,0.25)", fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase" }}>foto Dave</span>
-                </div>
+                <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/davegamba-estate-cover3.jpg" alt="Dave Gamba — Premium Coaching" />
               </div>
               <div className="ch-steps">
               {[
@@ -270,33 +268,32 @@ export default function CoachingPage() {
         <div className="ch-divider" />
 
         {/* Cambio vita */}
-        <section className="ch-section reveal" style={{ background: "#f5f0e8" }}>
-          <h2 className="ch-section-title" style={{ color: "#0A1A20" }}>Non solo fisico.<br /><em style={{ color: "var(--accent)" }}>Un cambio di vita.</em></h2>
-          <p className="ch-section-sub" style={{ color: "#666" }}>Quello che costruiamo insieme rimane. Non è una dieta temporanea o una scheda da buttare dopo tre mesi.</p>
-          <div className="ch-cambio-grid">
-            {[
-              { icon: "check", t: "La tua migliore forma fisica di sempre — non temporanea, definitiva" },
-              { icon: "check", t: "Un fisico atletico e attraente costruito in modo sostenibile" },
-              { icon: "check", t: "Allenamenti brevi e mirati che ti danno più risultati in meno tempo" },
-              { icon: "check", t: "Un'alimentazione su misura — flessibile, senza rinunce inutili" },
-              { icon: "check", t: "L'energia e la lucidità che credevi di aver perso con gli anni" },
-              { icon: "check", t: "La certezza, finalmente, di essere sulla strada giusta" },
-              { icon: "arrow", t: "Un piano su misura — non la solita scheda uguale per tutti" },
-              { icon: "arrow", t: "Qualcuno che ti tiene in rotta quando la motivazione cala" },
-              { icon: "arrow", t: "Ti alleni da mesi o anni, ma il fisico non si muove — questo lo cambia" },
-            ].map(({ icon, t }) => (
-              <div key={t} className="ch-cambio-item" style={{ background: "#fff", border: "1px solid #e0d9cc" }}>
-                <div className={`ch-cambio-icon ${icon}`}>{icon === "check" ? "✓" : "▸"}</div>
-                <p style={{ color: "#333" }}>{t}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <div style={{ background: "#f5f0e8", position: "relative", zIndex: 1 }}>
+          <section className="ch-section reveal">
+            <h2 className="ch-section-title" style={{ color: "#0A1A20", textAlign: "center" }}>Non solo fisico.<br /><em style={{ color: "var(--accent)" }}>Un cambio di vita.</em></h2>
+            <p className="ch-section-sub" style={{ color: "#666", textAlign: "center", maxWidth: 560, margin: "0 auto" }}>Quello che costruiamo insieme rimane. Con il Premium Coaching otterrai:</p>
+            <div className="ch-cambio-grid">
+              {[
+                { icon: "check", t: "La tua migliore forma fisica di sempre — atletica, attraente, e soprattutto definitiva, non temporanea." },
+                { icon: "check", t: "Allenamenti brevi e mirati che ti danno più risultati in meno tempo" },
+                { icon: "check", t: "Un'alimentazione su misura — flessibile, senza rinunce inutili" },
+                { icon: "check", t: "L'energia e la lucidità che credevi di aver perso con gli anni" },
+                { icon: "check", t: "La certezza, finalmente, di essere sulla strada giusta" },
+                { icon: "arrow", t: "Qualcuno che ti tiene in rotta quando la motivazione cala" },
+              ].map(({ icon, t }) => (
+                <div key={t} className="ch-cambio-item">
+                  <div className={`ch-cambio-icon ${icon}`}>{icon === "check" ? "✓" : "▸"}</div>
+                  <p>{t}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
 
         {/* Non è per te */}
         <div className="ch-non-box ch-section-navy" style={{ paddingTop: 40, paddingBottom: 40 }}>
           <div className="ch-non-inner">
-            <div className="ch-non-title">Non è per te se…</div>
+            <h3 style={{ fontFamily: "'DM Serif Display',serif", fontSize: "clamp(18px,3vw,24px)", fontStyle: "italic", color: "var(--gray-3)", marginBottom: 12 }}>Non è per te se…</h3>
             {["Non sei disposto a seguire un piano strutturato per almeno 90 giorni", "Vuoi bodybuilding estremo o prepararti a competizioni agonistiche", "Cerchi solo \"la dieta del momento\" senza costruire un metodo duraturo"].map((t) => (
               <div key={t} className="ch-non-item"><span className="ch-non-x">✕</span>{t}</div>
             ))}
@@ -433,7 +430,7 @@ export default function CoachingPage() {
         {/* FAQ */}
         <div className="ch-bg-section" style={{ background: "#f5f0e8", borderColor: "#e0d9cc" }}>
           <section className="ch-section reveal">
-            <h2 className="ch-section-title" style={{ fontSize: "clamp(36px,5vw,56px)", color: "#0A1A20" }}><em style={{ color: "var(--accent)" }}>Domande frequenti</em></h2>
+            <h2 className="ch-section-title" style={{ fontSize: "clamp(36px,5vw,56px)", color: "#0A1A20" }}>Domande <em style={{ color: "var(--accent)" }}>frequenti</em></h2>
             <div className="ch-faq-list">
               {FAQ_LIST.map(({ q, a }, i) => (
                 <div key={i} className={`ch-faq-item${openFaq === i ? " open" : ""}`}>
@@ -475,7 +472,7 @@ export default function CoachingPage() {
             {/* CTA buttons */}
             <div className="ch-btn-row">
               <a href="#candidati" className="ch-btn-gold" style={{ fontSize: 16, padding: "18px 44px" }}>Parla con Dave →</a>
-              <a href="#piani" className="ch-btn-outline">Torna ai Piani</a>
+              <a href="#piani" className="ch-btn-gold-outline">Torna ai Piani</a>
             </div>
 
             <p style={{ marginTop: 20, fontSize: 12, color: "var(--gray-6)" }}>✓ Nessun impegno · Call conoscitiva gratuita · Risposta entro 24-48h</p>
