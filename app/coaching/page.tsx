@@ -87,6 +87,8 @@ export default function CoachingPage() {
         .ch-body{font-family:'DM Sans',sans-serif;background:#0a0a0a;color:#fafaf8;overflow-x:hidden}
         .ch-body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.032) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:0}
         :root{--accent:#00CBDB;--gold:#F0C040;--bg:#0a0a0a;--bg-1:#111;--bg-2:#161616;--bg-3:#1c1c1c;--cyan-card:#0d1a1e;--cyan-card-ft:#0d2028;--white:#fafaf8;--gray-3:#c8c8c4;--gray-4:#9a9a94;--gray-6:#5a5a55;--border:#252525;--border-2:#333}
+        .ch-section-antr{background:#0f0f14}
+        .ch-section-navy{background:#080e1c}
         .ch-hero{position:relative;width:100%;height:100vh;max-height:860px;overflow:hidden;display:flex;align-items:center;justify-content:center}
         .ch-hero img.bg{position:absolute;inset:0;width:100%;height:115%;object-fit:cover;object-position:center top;display:block;transform:translateY(-3%)}
         .ch-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(10,10,10,0.78) 50%,rgba(10,10,10,0.15) 100%);pointer-events:none}
@@ -207,7 +209,6 @@ export default function CoachingPage() {
         <section className="ch-hero">
           <img className="bg" src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/heroBg.jpeg" alt="Dave Gamba Premium Coaching" />
           <div className="ch-hero-content">
-            <div className="ch-badge ch-badge-gold"><span className="ch-badge-dot" />Solo 2 posti disponibili</div>
             <div style={{ fontSize: 12, fontWeight: 300, color: "rgba(255,255,255,0.4)", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 10 }}>Coaching Online con Dave</div>
             <h1 className="ch-hero-title">Premium<br /><em>Coaching 1-1</em></h1>
             <p className="ch-hero-sub">Per chi vuole il massimo risultato fisico nel minor tempo possibile, con un percorso personalizzato e guidato da Dave.</p>
@@ -233,11 +234,17 @@ export default function CoachingPage() {
         </section>
 
         {/* Come funziona */}
-        <div className="ch-bg-section">
+        <div className="ch-bg-section ch-section-navy">
           <section className="ch-section reveal">
             <h2 className="ch-section-title">Come funziona <em>in 3 passi</em></h2>
             <p className="ch-section-sub">Tre passi. Nessuna attesa. Cominci direttamente con Dave entro 48 ore.</p>
-            <div className="ch-steps" style={{ marginTop: 48 }}>
+            <div className="ch-funziona-grid">
+              <div className="ch-funziona-foto">
+                <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg,#0d2028,#0a1520)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 420 }}>
+                  <span style={{ color: "rgba(0,203,219,0.25)", fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase" }}>foto Dave</span>
+                </div>
+              </div>
+              <div className="ch-steps">
               {[
                 { n: "01", t: "Candidati e fissa la call", d: "Compila il questionario qui sotto. È gratuito e senza impegno. Ti ricontatto entro 24-48h per una call conoscitiva — per capire se posso aiutarti davvero." },
                 { n: "02", t: "Scegli il tuo piano", d: "Dopo la call scegli il pacchetto più adatto — 3, 6 o 12 mesi. Stesso sistema per tutti, durata diversa in base al tuo obiettivo." },
@@ -248,6 +255,7 @@ export default function CoachingPage() {
                   <div><div className="ch-step-title">{t}</div><p className="ch-step-text">{d}</p></div>
                 </div>
               ))}
+              </div>
             </div>
           </section>
         </div>
@@ -255,7 +263,7 @@ export default function CoachingPage() {
         <div className="ch-divider" />
 
         {/* Cambio vita */}
-        <section className="ch-section reveal">
+        <section className="ch-section ch-section-antr reveal">
           <h2 className="ch-section-title">Non solo fisico.<br /><em>Un cambio di vita.</em></h2>
           <p className="ch-section-sub">Quello che costruiamo insieme rimane. Non è una dieta temporanea o una scheda da buttare dopo tre mesi.</p>
           <div className="ch-cambio-grid">
@@ -279,7 +287,7 @@ export default function CoachingPage() {
         </section>
 
         {/* Non è per te */}
-        <div className="ch-non-box">
+        <div className="ch-non-box ch-section-navy" style={{ paddingTop: 40, paddingBottom: 40 }}>
           <div className="ch-non-inner">
             <div className="ch-non-title">Non è per te se…</div>
             {["Non sei disposto a seguire un piano strutturato per almeno 90 giorni", "Vuoi bodybuilding estremo o prepararti a competizioni agonistiche", "Cerchi solo \"la dieta del momento\" senza costruire un metodo duraturo"].map((t) => (
@@ -291,7 +299,7 @@ export default function CoachingPage() {
         <div className="ch-divider" />
 
         {/* Piani */}
-        <section className="ch-section reveal" id="piani">
+        <section className="ch-section ch-section-antr reveal" id="piani">
           <h2 className="ch-section-title" style={{ fontSize: "clamp(42px,6vw,72px)", textAlign: "center", maxWidth: 600, margin: "0 auto 20px" }}>I Piani del<br /><em>Premium Coaching</em></h2>
           <p className="ch-section-sub" style={{ textAlign: "center", margin: "0 auto" }}>Scegli il piano ideale per te:</p>
           <div className="ch-plans">
@@ -325,7 +333,7 @@ export default function CoachingPage() {
         <div className="ch-divider" />
 
         {/* Form candidatura */}
-        <div className="ch-form-section" id="candidati">
+        <div className="ch-form-section ch-section-navy" id="candidati">
           <div className="ch-form-inner">
             <div style={{ textAlign: "center", marginBottom: 48 }}>
               <h2 className="ch-section-title">Parliamoci.<br /><em>Candidati al Coaching.</em></h2>
@@ -423,7 +431,7 @@ export default function CoachingPage() {
         <div className="ch-divider" />
 
         {/* FAQ */}
-        <div className="ch-bg-section">
+        <div className="ch-bg-section ch-section-antr">
           <section className="ch-section reveal">
             <h2 className="ch-section-title" style={{ fontSize: "clamp(36px,5vw,56px)" }}><em>Domande frequenti</em></h2>
             <div className="ch-faq-list">
@@ -441,17 +449,12 @@ export default function CoachingPage() {
         </div>
 
         {/* CTA finale */}
-        <div style={{ position: "relative", zIndex: 1, overflow: "hidden" }}>
+        <div style={{ position: "relative", zIndex: 1, overflow: "hidden", background: "#080e1c" }}>
           {/* Glow background */}
           <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 600, height: 400, background: "radial-gradient(ellipse at center, rgba(0,203,219,0.10) 0%, transparent 70%)", pointerEvents: "none" }} />
           <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 300, height: 200, background: "radial-gradient(ellipse at center, rgba(240,192,64,0.07) 0%, transparent 70%)", pointerEvents: "none" }} />
 
           <div style={{ maxWidth: 720, margin: "0 auto", padding: "100px 24px", textAlign: "center", position: "relative", zIndex: 1 }}>
-            {/* Badge */}
-            <div className="ch-badge ch-badge-gold" style={{ marginBottom: 24, justifyContent: "center" }}>
-              <span className="ch-badge-dot" />Posti disponibili limitati
-            </div>
-
             <h2 className="ch-section-title" style={{ fontSize: "clamp(36px,5vw,60px)", marginBottom: 16 }}>
               Pronto a fare il<br /><em>salto di livello?</em>
             </h2>
@@ -471,8 +474,8 @@ export default function CoachingPage() {
 
             {/* CTA buttons */}
             <div className="ch-btn-row">
-              <a href="#candidati" className="ch-btn-gold" style={{ fontSize: 16, padding: "18px 44px" }}>Candidati ora — è gratuito →</a>
-              <a href="#piani" className="ch-btn-outline">Vedi i piani</a>
+              <a href="#candidati" className="ch-btn-gold" style={{ fontSize: 16, padding: "18px 44px" }}>Parla con Dave →</a>
+              <a href="#piani" className="ch-btn-outline">Torna ai Piani</a>
             </div>
 
             <p style={{ marginTop: 20, fontSize: 12, color: "var(--gray-6)" }}>✓ Nessun impegno · Call conoscitiva gratuita · Risposta entro 24-48h</p>
