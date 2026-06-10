@@ -155,30 +155,30 @@ export default function CoachingPage() {
         .ch-btn-plan{display:block;width:100%;background:linear-gradient(to bottom,#F7E27A 0%,#F0C040 100%);color:#000;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;padding:15px;border-radius:12px;border:none;cursor:pointer;text-decoration:none;text-align:center;transition:all 0.2s;letter-spacing:0.02em}
         .ch-btn-plan:hover{filter:brightness(1.06);transform:translateY(-1px)}
         .ch-plans-note{text-align:center;font-size:12px;color:var(--gray-6);margin-top:24px;line-height:1.9}
-        .ch-form-section{position:relative;z-index:1;background:#262626;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+        .ch-form-section{position:relative;z-index:1;background:#f5f0e8;border-top:1px solid #e0d9cc;border-bottom:1px solid #e0d9cc}
         .ch-form-inner{max-width:800px;margin:0 auto;padding:80px 24px}
         .ch-coaching-form{display:flex;flex-direction:column;gap:28px}
         .ch-form-field{display:flex;flex-direction:column;gap:8px}
         .ch-form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-        .ch-form-label{font-size:13px;font-weight:600;color:var(--white);letter-spacing:0.02em}
+        .ch-form-label{font-size:13px;font-weight:600;color:#0A1A20;letter-spacing:0.02em}
         .ch-form-label span{color:var(--accent);margin-left:2px}
-        .ch-form-hint{font-size:12px;color:var(--gray-6);margin-top:-4px}
-        .ch-form-input,.ch-form-textarea{background:var(--bg-3);border:1px solid var(--border-2);border-radius:12px;padding:14px 16px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border-color 0.2s;width:100%}
-        .ch-form-input:focus,.ch-form-textarea:focus{border-color:rgba(0,203,219,0.5)}
-        .ch-form-input::placeholder,.ch-form-textarea::placeholder{color:rgba(255,255,255,0.2)}
+        .ch-form-hint{font-size:12px;color:#888;margin-top:-4px}
+        .ch-form-input,.ch-form-textarea{background:#fff;border:1px solid #d5cfc5;border-radius:12px;padding:14px 16px;color:#0A1A20;font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border-color 0.2s;width:100%}
+        .ch-form-input:focus,.ch-form-textarea:focus{border-color:rgba(0,203,219,0.6)}
+        .ch-form-input::placeholder,.ch-form-textarea::placeholder{color:rgba(10,26,32,0.3)}
         .ch-form-textarea{resize:vertical;min-height:100px;line-height:1.6}
         .ch-radio-group,.ch-check-group{display:flex;flex-direction:column;gap:8px}
-        .ch-radio-row,.ch-check-row{display:flex;align-items:center;gap:12px;background:var(--bg-3);border:1px solid var(--border-2);border-radius:10px;padding:12px 16px;cursor:pointer;transition:border-color 0.15s,background 0.15s;font-size:14px;color:var(--gray-3);user-select:none}
-        .ch-radio-row:has(input:checked),.ch-check-row:has(input:checked){border-color:rgba(0,203,219,0.4);background:rgba(0,203,219,0.05);color:var(--white)}
+        .ch-radio-row,.ch-check-row{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #d5cfc5;border-radius:10px;padding:12px 16px;cursor:pointer;transition:border-color 0.15s,background 0.15s;font-size:14px;color:#444;user-select:none}
+        .ch-radio-row:has(input:checked),.ch-check-row:has(input:checked){border-color:rgba(0,203,219,0.5);background:rgba(0,203,219,0.06);color:#0A1A20}
         .ch-radio-row input,.ch-check-row input{accent-color:var(--accent);width:16px;height:16px;flex-shrink:0}
         .ch-scale-group{display:flex;gap:8px;flex-wrap:wrap}
-        .ch-scale-btn{flex:1;min-width:40px;aspect-ratio:1;background:var(--bg-3);border:1px solid var(--border-2);border-radius:10px;color:var(--gray-4);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center}
-        .ch-scale-btn:hover{border-color:rgba(0,203,219,0.3);color:var(--white)}
-        .ch-scale-btn.active{background:rgba(0,203,219,0.1);border-color:rgba(0,203,219,0.5);color:var(--accent)}
-        .ch-form-divider{height:1px;background:var(--border);margin:4px 0}
+        .ch-scale-btn{flex:1;min-width:40px;aspect-ratio:1;background:#fff;border:1px solid #d5cfc5;border-radius:10px;color:#888;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center}
+        .ch-scale-btn:hover{border-color:rgba(0,203,219,0.4);color:#0A1A20}
+        .ch-scale-btn.active{background:rgba(0,203,219,0.1);border-color:rgba(0,203,219,0.6);color:var(--accent)}
+        .ch-form-divider{height:1px;background:#e0d9cc;margin:4px 0}
         .ch-consent-row{display:flex;align-items:flex-start;gap:12px;cursor:pointer}
         .ch-consent-row input{width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:var(--accent);cursor:pointer}
-        .ch-consent-row span{font-size:12px;color:var(--gray-6);line-height:1.5}
+        .ch-consent-row span{font-size:12px;color:#888;line-height:1.5}
         .ch-consent-row a{color:var(--accent);text-decoration:underline}
         .ch-btn-submit{width:100%;background:linear-gradient(to bottom,#F7E27A 0%,#F0C040 100%);color:#000;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;padding:18px;border-radius:14px;border:none;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:10px;letter-spacing:0.02em}
         .ch-btn-submit:hover{filter:brightness(1.06);transform:translateY(-1px)}
@@ -336,8 +336,8 @@ export default function CoachingPage() {
         <div className="ch-form-section ch-section-navy" id="candidati">
           <div className="ch-form-inner">
             <div style={{ textAlign: "center", marginBottom: 48 }}>
-              <h2 className="ch-section-title">Parliamoci.<br /><em>Candidati al Coaching.</em></h2>
-              <p className="ch-section-sub" style={{ margin: "0 auto", textAlign: "center" }}>Hai domande? Vuoi parlare con Dave prima di iniziare? Compila il questionario e ti ricontattiamo entro 24-48h per una call conoscitiva gratuita e senza impegno.</p>
+              <h2 className="ch-section-title" style={{ color: "#0A1A20" }}>Parliamoci.<br /><em style={{ color: "var(--accent)" }}>Candidati al Coaching.</em></h2>
+              <p className="ch-section-sub" style={{ margin: "0 auto", textAlign: "center", color: "#666" }}>Hai domande? Vuoi parlare con Dave prima di iniziare? Compila il questionario e ti ricontattiamo entro 24-48h per una call conoscitiva gratuita e senza impegno.</p>
             </div>
 
             {success ? (
@@ -369,14 +369,6 @@ export default function CoachingPage() {
                   <div className="ch-radio-group">
                     {["Ricomposizione — perdere grasso e tonificare", "Sviluppare un fisico muscoloso e atletico", "Aumentare energia e testosterone", "Altro"].map((v) => (
                       <label key={v} className="ch-radio-row"><input type="radio" name="obiettivo" value={v} required />{v}</label>
-                    ))}
-                  </div>
-                </div>
-                <div className="ch-form-field">
-                  <label className="ch-form-label">Cosa hai già provato in passato? <span>*</span></label>
-                  <div className="ch-check-group">
-                    {["Diete", "Schede palestra", "Personal trainer", "Niente — parto da zero"].map((v) => (
-                      <label key={v} className="ch-check-row"><input type="checkbox" name="passato" value={v} />{v}</label>
                     ))}
                   </div>
                 </div>
@@ -422,7 +414,7 @@ export default function CoachingPage() {
                 <button type="submit" className="ch-btn-submit" disabled={loading}>
                   {loading ? "Invio in corso…" : "Invia candidatura →"}
                 </button>
-                <p style={{ textAlign: "center", fontSize: 12, color: "var(--gray-6)" }}>✓ Gratuito e senza impegno — ti ricontatto entro 24-48h</p>
+                <p style={{ textAlign: "center", fontSize: 12, color: "#999" }}>✓ Gratuito e senza impegno — ti ricontatto entro 24-48h</p>
               </form>
             )}
           </div>
