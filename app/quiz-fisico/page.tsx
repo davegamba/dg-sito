@@ -10,6 +10,7 @@ interface StepOption {
   label: string;
   gradient?: string;
   icon?: string;
+  img?: string;
   num?: string;
   sub?: string;
 }
@@ -31,17 +32,32 @@ interface Profile {
 }
 
 /* ── DATI ── */
+const R2 = "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/";
+
+const TESTIMONIAL_PHOTOS = [
+  `${R2}img_07.jpeg`,
+  `${R2}alessandra-pilo-testimonianze-davegamba.jpg`,
+  `${R2}img_08.jpeg`,
+  `${R2}emiliano-testimonianze-dave-gamba.jpeg`,
+  `${R2}img_09.jpeg`,
+  `${R2}gloria-testimonianze-dave-gamba.jpeg`,
+  `${R2}gus-recensioni-davegamba.jpg`,
+  `${R2}marco-iacovalessandra-pilo-testimonianze-davegamba.jpeg`,
+  `${R2}marta-marranzano.png`,
+  `${R2}valerya-testimonianze-dave-gamba.jpeg`,
+  `${R2}veronica-gonz-testimonianze-dave-gamba.jpeg`,
+];
+
 const STEPS: Step[] = [
   {
-    type: "image-grid-2",
+    type: "image-grid-3",
     question: "Qual è il tuo obiettivo principale?",
     hint: "Seleziona uno per iniziare",
     key: "obiettivo",
     options: [
-      { value: "asciutto", label: "Diventare più asciutto e definito", gradient: "linear-gradient(135deg,#0d2b30,#1a4a50)", icon: "🏃" },
-      { value: "massa", label: "Costruire massa muscolare", gradient: "linear-gradient(135deg,#2b1a0d,#4a2f1a)", icon: "💪" },
-      { value: "peso", label: "Perdere peso per salute e stare bene", gradient: "linear-gradient(135deg,#0d2b1a,#1a4a30)", icon: "❤️" },
-      { value: "atletico", label: "Diventare più agile e atletico", gradient: "linear-gradient(135deg,#1a0d2b,#2f1a4a)", icon: "⚡" },
+      { value: "peso",     label: "Perdere peso importante per salute e benessere", img: `${R2}perdere-peso.jpg` },
+      { value: "atletico", label: "Sviluppare un fisico atletico e definito",        img: `${R2}atletico-sbarra-spiaggia.jpg` },
+      { value: "massa",    label: "Costruire massa muscolare",                       img: `${R2}massa-muscolare.jpeg` },
     ],
   },
   {
@@ -54,17 +70,6 @@ const STEPS: Step[] = [
       { value: "risultati", label: "Mi alleno ma non vedo risultati" },
       { value: "alimentazione", label: "Non so cosa mangiare" },
       { value: "costanza", label: "Inizio e mollo sempre" },
-    ],
-  },
-  {
-    type: "image-grid-3",
-    question: "Il tuo fisico ideale?",
-    hint: "Scegli il risultato che vuoi raggiungere",
-    key: "fisico",
-    options: [
-      { value: "sottile", label: "Sottile e asciutto", gradient: "linear-gradient(135deg,#0d2030,#1a3850)", icon: "🏊" },
-      { value: "atletico", label: "Atletico e scolpito", gradient: "linear-gradient(135deg,#002020,#003535)", icon: "🏋️" },
-      { value: "grosso", label: "Grosso e forte", gradient: "linear-gradient(135deg,#200a0a,#3a1515)", icon: "🦁" },
     ],
   },
   {
@@ -298,7 +303,7 @@ export default function QuizFisicoPage() {
                 Scopri il tuo<br /><em style={{ fontStyle: "italic", color: "#00CBDB" }}>Profilo Fisico</em>
               </h1>
               <p style={{ fontSize: 16, color: "#9a9a94", fontWeight: 300, lineHeight: 1.65, marginBottom: 40 }}>
-                7 domande per capire dove sei adesso<br />e qual è il piano giusto per il tuo fisico.
+                6 domande per capire dove sei adesso<br />e qual è il piano giusto per il tuo fisico.
               </p>
               <div style={{ display: "flex", gap: 32, justifyContent: "center", marginBottom: 40 }}>
                 {[{ v: "3.000+", l: "Clienti seguiti" }, { v: "15+", l: "Anni di esperienza" }, { v: "2 min", l: "Per il tuo profilo" }].map(s => (
@@ -368,17 +373,31 @@ export default function QuizFisicoPage() {
               {/* image-grid-3 */}
               {currentStepData.type === "image-grid-3" && (
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
-                  {currentStepData.options.map(opt => (
-                    <div key={opt.value} onClick={() => selectSingle(currentStepData.key, opt.value)}
-                      style={{ position: "relative", borderRadius: 12, overflow: "hidden", cursor: "pointer", border: `2px solid ${answers[currentStepData.key] === opt.value ? "#00CBDB" : "transparent"}`, transition: "all 0.2s", background: "#1a1a18", aspectRatio: "2/3" }}>
-                      <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: opt.gradient }}>
-                        <span style={{ fontSize: 42 }}>{opt.icon}</span>
+                  {currentStepData.options.map(opt => {
+                    const sel = answers[currentStepData.key] === opt.value;
+                    return (
+                      <div key={opt.value} onClick={() => selectSingle(currentStepData.key, opt.value)}
+                        style={{ position: "relative", borderRadius: 12, overflow: "hidden", cursor: "pointer", border: `2px solid ${sel ? "#00CBDB" : "transparent"}`, transition: "all 0.2s", background: "#1a1a18", aspectRatio: "2/3" }}>
+                        {/* Background: foto reale o gradiente/emoji */}
+                        {opt.img ? (
+                          <div style={{ position: "absolute", inset: 0, backgroundImage: `url('${opt.img}')`, backgroundSize: "cover", backgroundPosition: "center top" }} />
+                        ) : (
+                          <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", background: opt.gradient }}>
+                            <span style={{ fontSize: 42 }}>{opt.icon}</span>
+                          </div>
+                        )}
+                        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.2) 55%,transparent 100%)" }} />
+                        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "24px 10px 12px", fontSize: 13, fontWeight: 600, color: sel ? "#00CBDB" : "#fafaf8", lineHeight: 1.3, textAlign: "center" }}>
+                          {opt.label}
+                        </div>
+                        {sel && (
+                          <div style={{ position: "absolute", top: 8, right: 8, width: 22, height: 22, borderRadius: "50%", background: "#00CBDB", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <span style={{ color: "#0a0a0a", fontSize: 11, fontWeight: 700 }}>✓</span>
+                          </div>
+                        )}
                       </div>
-                      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(transparent,rgba(0,0,0,0.88))", padding: "24px 10px 12px", fontSize: 13, fontWeight: 600, color: answers[currentStepData.key] === opt.value ? "#00CBDB" : "#fafaf8", lineHeight: 1.3, textAlign: "center" }}>
-                        {opt.label}
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
 
@@ -499,19 +518,19 @@ export default function QuizFisicoPage() {
             <div style={{ textAlign: "center", padding: "48px 0 40px" }}>
               <span style={{ fontSize: 64, marginBottom: 16, display: "block" }}>{profile.icon}</span>
               <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#00CBDB", marginBottom: 12, display: "block" }}>Il tuo Profilo Fisico</span>
-              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(34px,7vw,52px)", lineHeight: 1.05, marginBottom: 16 }}>{profile.name}</h2>
+              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(34px,7vw,52px)", lineHeight: 1.05, marginBottom: 16, fontWeight: 800 }}>{profile.name}</h2>
               <p style={{ fontSize: 16, color: "#9a9a94", fontWeight: 300, lineHeight: 1.65, maxWidth: 400, margin: "0 auto" }}>{profile.tagline}</p>
             </div>
 
             {/* Card analisi */}
             <div style={{ background: "linear-gradient(135deg,rgba(255,80,80,0.08) 0%,rgba(255,80,80,0.02) 100%)", border: "1px solid rgba(255,80,80,0.25)", borderRadius: 16, padding: 28, marginBottom: 14 }}>
-              <h3 style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#ff6b6b", marginBottom: 14, display: "block" }}>Cosa sta succedendo davvero</h3>
+              <h4 style={{ fontSize: 15, fontWeight: 700, fontStyle: "italic", color: "#ff6b6b", marginBottom: 14, display: "block" }}>Cosa sta succedendo davvero</h4>
               <p style={{ fontSize: 15, color: "#e4e4e0", lineHeight: 1.75 }} dangerouslySetInnerHTML={{ __html: profile.analysis }} />
             </div>
 
             {/* Card tips */}
             <div style={{ background: "linear-gradient(135deg,rgba(0,203,219,0.07) 0%,rgba(0,203,219,0.02) 100%)", border: "1px solid rgba(0,203,219,0.2)", borderRadius: 16, padding: 28, marginBottom: 14 }}>
-              <h3 style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#00CBDB", marginBottom: 14, display: "block" }}>3 mosse da applicare subito</h3>
+              <h3 style={{ fontSize: 18, fontWeight: 700, color: "#00CBDB", marginBottom: 14, display: "block" }}>3 mosse da applicare subito</h3>
               <ul style={{ listStyle: "none", display: "grid", gap: 14 }}>
                 {profile.tips.map((tip, i) => (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12, fontSize: 15, color: "#e4e4e0", lineHeight: 1.6 }}>
@@ -524,11 +543,11 @@ export default function QuizFisicoPage() {
 
             {/* CTA section */}
             <div style={{ marginTop: 40 }}>
-              <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(24px,5vw,32px)", textAlign: "center", lineHeight: 1.15, marginBottom: 10 }}>
+              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(26px,5.5vw,36px)", textAlign: "center", lineHeight: 1.15, marginBottom: 10, fontWeight: 800 }}>
                 Sei a <span style={{ color: "#f5c842" }}>1 passo</span> dal trasformare<br />definitivamente il tuo fisico
-              </h3>
+              </h2>
               <p style={{ fontSize: 15, color: "#9a9a94", textAlign: "center", fontWeight: 300, lineHeight: 1.6, marginBottom: 28 }}>
-                In base alle tue risposte la strada più rapida per il fisico che vuoi sono i programmi:
+                In base alle tue risposte la strada più rapida per il fisico che vuoi sono i Protocolli:
               </p>
 
               {/* Countdown */}
@@ -572,6 +591,20 @@ export default function QuizFisicoPage() {
                 style={{ display: "block", textAlign: "center", fontSize: 13, color: "#5a5a55", cursor: "pointer", marginTop: 8, background: "none", border: "none", fontFamily: "inherit", width: "100%", transition: "color 0.2s" }}>
                 ↩ Rifai il quiz
               </button>
+            </div>
+
+            {/* Strip testimoniali */}
+            <div style={{ margin: "40px -24px 0", overflow: "hidden" }}>
+              <style>{`
+                @keyframes marqueeQuiz { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+              `}</style>
+              <p style={{ textAlign: "center", fontSize: 11, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "#5a5a55", marginBottom: 16 }}>Risultati reali dei clienti</p>
+              <div style={{ display: "flex", gap: 12, width: "max-content", animation: "marqueeQuiz 40s linear infinite" }}>
+                {[...TESTIMONIAL_PHOTOS, ...TESTIMONIAL_PHOTOS].map((src, i) => (
+                  <img key={i} src={src} alt="Risultato" loading="lazy"
+                    style={{ width: 160, height: 160, objectFit: "cover", objectPosition: "center top", borderRadius: 14, flexShrink: 0 }} />
+                ))}
+              </div>
             </div>
           </div>
         )}
