@@ -6,6 +6,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import MobileBottomBar from "@/components/MobileBottomBar";
 import ScrollAnimations from "@/components/ScrollAnimations";
 import CookieBanner from "@/components/CookieBanner";
+import TawkChat from "@/components/TawkChat";
 import "./globals.css";
 
 const dmSerif = localFont({
@@ -57,6 +58,7 @@ export default function RootLayout({
         <WhatsAppButton />
         <MobileBottomBar />
         <CookieBanner />
+        <TawkChat />
       </body>
     </html>
   );
