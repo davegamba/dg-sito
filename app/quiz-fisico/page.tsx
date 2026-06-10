@@ -284,7 +284,7 @@ export default function QuizFisicoPage() {
         body{font-family:var(--font-dm-sans,'DM Sans',sans-serif);background:#0a0a0a;color:#fafaf8;min-height:100vh;overflow-x:hidden;}
         @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
         .step-anim{animation:fadeUp 0.3s ease;}
-        .quiz-wrap{max-width:560px;margin:0 auto;}
+        .quiz-wrap{max-width:680px;margin:0 auto;}
       `}</style>
       <div ref={topRef} />
 
@@ -372,12 +372,12 @@ export default function QuizFisicoPage() {
 
               {/* image-grid-3 */}
               {currentStepData.type === "image-grid-3" && (
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, margin: "0 -8px" }}>
                   {currentStepData.options.map(opt => {
                     const sel = answers[currentStepData.key] === opt.value;
                     return (
                       <div key={opt.value} onClick={() => selectSingle(currentStepData.key, opt.value)}
-                        style={{ position: "relative", borderRadius: 12, overflow: "hidden", cursor: "pointer", border: `2px solid ${sel ? "#00CBDB" : "transparent"}`, transition: "all 0.2s", background: "#1a1a18", aspectRatio: "2/3" }}>
+                        style={{ position: "relative", borderRadius: 16, overflow: "hidden", cursor: "pointer", border: `2px solid ${sel ? "#00CBDB" : "transparent"}`, transition: "all 0.2s", background: "#1a1a18", aspectRatio: "3/4" }}>
                         {/* Background: foto reale o gradiente/emoji */}
                         {opt.img ? (
                           <div style={{ position: "absolute", inset: 0, backgroundImage: `url('${opt.img}')`, backgroundSize: "cover", backgroundPosition: "center top" }} />
