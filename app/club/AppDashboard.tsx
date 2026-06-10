@@ -514,7 +514,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
           position: relative;
           border-radius: 16px;
           overflow: hidden;
-          height: 172px;
+          height: 210px;
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
