@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
         const ext = foto.name.split(".").pop() ?? "jpg";
         const filename = `coaching/${Date.now()}_${nome.replace(/\s+/g, "_")}.${ext}`;
         const uploadRes = await fetch(
-          `${supabaseUrl}/storage/v1/object/coaching-photos/${filename}`,
+          `${supabaseUrl}/storage/v1/object/coaching-foto/${filename}`,
           {
             method: "POST",
             headers: {
@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
           }
         );
         if (uploadRes.ok) {
-          foto_url = `${supabaseUrl}/storage/v1/object/public/coaching-photos/${filename}`;
+          foto_url = `${supabaseUrl}/storage/v1/object/public/coaching-foto/${filename}`;
         }
       }
 
