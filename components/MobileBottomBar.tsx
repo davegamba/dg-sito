@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const STANDALONE_PAGES = ["/links"];
+const STANDALONE_PAGES = ["/links", "/quiz"];
 const STANDALONE_PREFIXES = ["/club", "/login", "/auth"];
 
 const WA_NUMBER = "393331234567"; // ← sostituisci con il numero reale
