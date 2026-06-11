@@ -124,7 +124,7 @@ export default function LinksPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: 13, marginBottom: 16 }}>
               {LINKS.map(({ href, img, title, sub, imgPosition }) => (
                 <a key={href} href={href} className="link-card"
-                  style={{ display: "flex", alignItems: "center", background: "rgba(15,15,20,0.25)", border: "1px solid rgba(0,203,219,0.4)", borderRadius: 16, overflow: "hidden", textDecoration: "none", color: "#fff", backdropFilter: "blur(12px)", transition: "border-color 0.2s" }}>
+                  style={{ display: "flex", alignItems: "center", background: "rgba(0,18,22,0.38)", border: "1.5px solid rgba(0,203,219,0.45)", borderRadius: 9999, overflow: "hidden", textDecoration: "none", color: "#fff", backdropFilter: "blur(20px) saturate(1.8)", WebkitBackdropFilter: "blur(20px) saturate(1.8)", boxShadow: "0 8px 32px rgba(0,0,0,0.45), 0 0 0 0.5px rgba(0,203,219,0.08) inset", transition: "border-color 0.2s" }}>
                   <div style={{ flexShrink: 0, width: 90, height: 92, overflow: "hidden" }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={img} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: imgPosition }} />
