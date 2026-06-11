@@ -54,7 +54,6 @@ var config_default = defineConfig({
               "Dimagrimento",
               "Testosterone",
               "Longevit\xE0",
-              "Mindset",
               "Metodo BIM"
             ]
           },
@@ -75,8 +74,7 @@ var config_default = defineConfig({
           {
             type: "boolean",
             name: "published",
-            label: "Pubblicato",
-            description: "OFF = bozza invisibile sul sito. ON = visibile."
+            label: "Pubblicato"
           },
           {
             type: "rich-text",
