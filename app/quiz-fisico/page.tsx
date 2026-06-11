@@ -124,45 +124,45 @@ const PROFILES: Record<string, Profile> = {
   zero: {
     icon: "🚀",
     name: "Da Zero a Fit",
-    tagline: "Il tuo problema non è la motivazione. È il troppo.",
-    analysis: `Hai provato cose diverse, schede diverse, forse diete diverse. Risultato: confusione e zero progressi stabili. <strong>Il troppo blocca più della pigrizia.</strong> Il cervello in sovraccarico di informazioni sceglie l'inerzia. La soluzione non è trovare la strategia giusta tra mille — è scegliere le poche cose che producono il 90% dei risultati e diventare bravo in quelle.`,
+    tagline: "Il tuo problema non è la motivazione. È la scelta.",
+    analysis: `Non è che non sai abbastanza. È che fuori c'è troppo da scegliere. Keto, digiuno intermittente, calisthenics, pesi, HIIT, funzionale — ognuno giura che il suo metodo sia quello giusto. Il risultato? Non parti. O parti e molli dopo due settimane perché non sei sicuro di stare facendo la cosa giusta. <strong>La paralisi da scelta blocca più della pigrizia.</strong> Non ti serve trovare il metodo perfetto tra mille — ti servono i principi base che funzionano per tutti, applicati con costanza.`,
     tips: [
-      "<strong>Dimentica la varietà.</strong> Scegli 5 esercizi fondamentali (squat, stacco, panca, rematore, spinta sopra la testa) e ripetili fino a padroneggiarli. La padronanza dei fondamentali batte sempre la varietà casuale.",
-      "<strong>A tavola, stessa logica.</strong> Non cambiare dieta ogni settimana. Impara prima una sola cosa: mangiare abbastanza proteine ad ogni pasto. Solo questo. Poi aggiungi.",
-      "<strong>3 sessioni a settimana, niente di più.</strong> La costanza su poco batte l'intensità su tutto. Il corpo si trasforma nella continuità, non nello sforzo massimo sporadico.",
+      "<strong>Scegli 5 esercizi e basta.</strong> Squat, stacco, panca, rematore, spinta sopra la testa. Basta. Non cercare varianti, non ottimizzare. Ripetili finché non li padroneggi. La padronanza di pochi movimenti batte la varietà casuale ogni volta.",
+      "<strong>Una sola regola a tavola per iniziare.</strong> Proteine ad ogni pasto. Non serve contare niente, non serve eliminare niente. Solo questo. Quando diventa automatico, aggiungi la prossima regola.",
+      "<strong>3 sessioni a settimana, non di più.</strong> Chi inizia tende a fare troppo troppo presto — e molla. Il corpo si trasforma nella continuità, non nello sforzo massimo della prima settimana.",
     ],
   },
   stallo: {
     icon: "⚡",
     name: "In Stallo",
     tagline: "Ti alleni. Ma ti alleni sempre uguale.",
-    analysis: `Il corpo si adatta. È progettato per farlo. Se fai le stesse serie, gli stessi pesi, gli stessi esercizi — smette di rispondere. <strong>Non è colpa tua, è fisiologia.</strong> Lo stimolo si esaurisce quando non cresce. Senza una progressione mirata, il tuo allenamento diventa una manutenzione, non un miglioramento.`,
+    analysis: `Ti alleni. Ci vai, non salti, non molli. Eppure il fisico non si muove più. Questo è il punto più frustrante dell'allenamento — perché la colpa non è la pigrizia, e lo sai. <strong>Il problema è che il corpo si è adattato.</strong> È progettato per farlo: ogni stimolo che ripeti uguale, nel tempo, smette di produrre risposta. Il tuo allenamento è diventato una manutenzione. Non un miglioramento.`,
     tips: [
-      "<strong>Progressione mirata, non a occhio.</strong> Ogni sessione deve avere un numero da battere — un chilo in più, un rep in più. Se non c'è un obiettivo numerico, non c'è stimolo.",
-      "<strong>Tieni un log.</strong> Anche su carta. Chi non misura non migliora. Chi misura migliora quasi sempre. È il cambiamento più semplice con il ritorno più alto.",
-      "<strong>Cambia il parametro, non l'esercizio.</strong> Prima di buttare un esercizio, prova a variare tempi di esecuzione, recuperi o carico. Il problema raramente è l'esercizio — è come lo fai.",
+      "<strong>Ogni sessione deve avere un numero da battere.</strong> Un chilo in più, un rep in più, un secondo di recupero in meno. Se non c'è un obiettivo numerico, non c'è stimolo. Semplice così.",
+      "<strong>Tieni un log.</strong> Anche su carta, anche sul telefono. Chi non misura non migliora — non perché è una regola motivazionale, ma perché senza dati non sai cosa cambiare. È il gesto più piccolo con il ritorno più alto.",
+      "<strong>Cambia il parametro, non l'esercizio.</strong> Prima di buttare uno squat o una panca, prova a variare tempi di esecuzione, recuperi o carico. Il problema non è quasi mai l'esercizio — è come lo stai facendo.",
     ],
   },
   salto: {
     icon: "🏆",
     name: "Salto di Livello",
-    tagline: "Bravo. Ora è il momento di fare cose diverse.",
-    analysis: `Sei già avanti rispetto al 90% delle persone — ti alleni con costanza. Questo è il vero vantaggio competitivo. Ma per fare il salto di qualità <strong>non serve lavorare di più. Serve lavorare in modo diverso.</strong> A questo livello i guadagni vengono dai dettagli: esecuzione, recupero, periodizzazione, alimentazione di precisione.`,
+    tagline: "Ci sei. Ora si lavora sui dettagli.",
+    analysis: `Sei già avanti rispetto al 90% delle persone. Ti alleni con costanza, sai come farlo, i fondamentali li hai. Ma senti che c'è un soffitto — e fai fatica a capire dove sia. <strong>A questo livello il problema non è lavorare di più. È che i progressi si nascondono nei dettagli.</strong> Un centimetro di ROM in meno, un recupero troppo corto, un deficit proteico leggero che si accumula — sono cose invisibili ai principianti ma che a te fanno la differenza tra migliorare e stagnare.`,
     tips: [
-      "<strong>I dettagli fanno la differenza.</strong> Un centimetro di ROM in più, il tempo sotto tensione corretto, la qualità del recupero tra le serie. A questo livello è qui che si nasconde il progresso.",
-      "<strong>Alimentazione di precisione.</strong> Non serve contare calorie per sempre — ma capire una volta i tuoi macro di mantenimento e di surplus ti dà un controllo che la maggior parte delle persone non ha mai avuto.",
-      "<strong>Il recovery è allenamento.</strong> Chi è al tuo livello guadagna tanto fuori dalla palestra quanto dentro. Sonno, gestione dello stress, mobilità. Lì c'è ancora molto margine.",
+      "<strong>Controlla l'esecuzione, non solo il carico.</strong> Filma qualche serie. ROM completo, tempo sotto tensione corretto, controllo della fase eccentrica. Spesso il limite non è la forza — è la qualità del movimento che lascia progressi sul tavolo.",
+      "<strong>Calcola i tuoi macro almeno una volta.</strong> Non serve farlo per sempre. Ma sapere il tuo mantenimento calorico e il tuo fabbisogno proteico reale — non stimato — ti dà un controllo che la maggior parte delle persone non avrà mai.",
+      "<strong>Tratta il recupero come allenamento.</strong> Sonno, gestione dello stress, mobilità. A questo livello guadagni tanto fuori dalla palestra quanto dentro. È lì che si nasconde ancora molto margine.",
     ],
   },
   tempo: {
     icon: "⏱️",
     name: "Zero Tempo, Massimo Risultato",
-    tagline: "Il problema non è il tempo. È lo spreco di tempo.",
-    analysis: `Un allenamento efficace non richiede un'ora. Richiede la giusta sequenza. <strong>La maggior parte del tempo in palestra viene sprecato</strong> — recuperi troppo lunghi, esercizi accessori inutili, volume eccessivo che non produce risultati proporzionali. Con il metodo giusto, 21 minuti producono più stimolo di un'ora random.`,
+    tagline: "Il problema non è il tempo. È come lo stai usando.",
+    analysis: `Non hai tempo. O meglio — hai il tempo che hai, e non è molto. E senti che non basta per fare le cose per bene. <strong>Ma il problema non è quanto tempo hai. È come lo stai usando.</strong> La maggior parte del tempo in palestra viene sprecato: recuperi lunghi, esercizi accessori che non spostano niente, volume che stanca senza costruire. Con la sequenza giusta, 21 minuti producono più stimolo di un'ora fatta a caso.`,
     tips: [
-      "<strong>21 minuti sono sufficienti.</strong> Con gli esercizi giusti, nell'ordine giusto, con il recupero calibrato — è tutto quello che serve. L'efficacia non dipende dalla durata, dipende dalla densità.",
-      "<strong>Superserie intelligenti.</strong> Due esercizi in sequenza senza riposo tra loro. Si dimezza il tempo, si raddoppia la densità di lavoro. È il principio cardine del metodo BIM.",
-      "<strong>3 volte a settimana, non di più.</strong> Con il tuo stile di vita, il recupero è parte del processo. Chi si allena 5 volte con poco tempo ottiene meno di chi si allena 3 volte in modo mirato.",
+      "<strong>21 minuti sono sufficienti.</strong> Con gli esercizi giusti, nell'ordine giusto, con il recupero calibrato — è tutto quello che serve. L'efficacia non dipende dalla durata, dipende dalla densità del lavoro fatto.",
+      "<strong>Usa le superserie.</strong> Due esercizi in sequenza senza riposo tra loro. Si dimezza il tempo, si raddoppia la densità. È il principio che permette di fare in 21 minuti quello che altri fanno in un'ora.",
+      "<strong>3 volte a settimana, non di più.</strong> Con i tuoi ritmi, il recupero è parte del processo. Chi si allena 5 volte con poco tempo ottiene meno di chi si allena 3 volte in modo mirato. Meno è più — se il meno è fatto bene.",
     ],
   },
 };
@@ -527,8 +527,8 @@ export default function QuizFisicoPage() {
               <h3 style={{ fontSize: 18, fontWeight: 700, color: "#00CBDB", marginBottom: 14, display: "block" }}>3 mosse da applicare subito</h3>
               <ul style={{ listStyle: "none", display: "grid", gap: 14 }}>
                 {profile.tips.map((tip, i) => (
-                  <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12, fontSize: 15, color: "#e4e4e0", lineHeight: 1.6 }}>
-                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#00CBDB", flexShrink: 0, marginTop: 8 }} />
+                  <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 14, fontSize: 15, color: "#e4e4e0", lineHeight: 1.6 }}>
+                    <span style={{ width: 26, height: 26, borderRadius: "50%", border: "1.5px solid #00CBDB", color: "#00CBDB", fontSize: 12, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>{i + 1}</span>
                     <span dangerouslySetInnerHTML={{ __html: tip }} />
                   </li>
                 ))}
