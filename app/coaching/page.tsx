@@ -291,7 +291,7 @@ export default function CoachingPage() {
         </div>
 
         {/* Non è per te */}
-        <div className="ch-non-box ch-section-navy" style={{ paddingTop: 40, paddingBottom: 40 }}>
+        <div className="ch-non-box" style={{ paddingTop: 40, paddingBottom: 60, background: "#f5f0e8" }}>
           <div className="ch-non-inner">
             <h3 style={{ fontFamily: "'DM Serif Display',serif", fontSize: "clamp(18px,3vw,24px)", fontStyle: "italic", color: "var(--gray-3)", marginBottom: 12 }}>Non è per te se…</h3>
             {["Non sei disposto a seguire un piano strutturato per almeno 90 giorni", "Vuoi bodybuilding estremo o prepararti a competizioni agonistiche", "Cerchi solo \"la dieta del momento\" senza costruire un metodo duraturo"].map((t) => (

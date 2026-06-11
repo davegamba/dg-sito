@@ -51,29 +51,65 @@ export default function MobileBottomBar() {
   if (STANDALONE_PAGES.includes(pathname)) return null;
   if (STANDALONE_PREFIXES.some((p) => pathname.startsWith(p))) return null;
 
+  const isActive = (href: string) => {
+    if (href.startsWith("http")) return false;
+    const base = href.split("#")[0];
+    return base === "/" ? pathname === "/" : pathname.startsWith(base);
+  };
+
   return (
     <nav
-      className="sm:hidden fixed bottom-3 left-3 right-3 z-40 rounded-2xl overflow-hidden"
+      className="sm:hidden fixed z-40"
       style={{
-        background: "linear-gradient(135deg, #00CBDB 0%, #00AECF 55%, #0077CC 100%)",
-        boxShadow: "0 4px 24px rgba(0,203,219,0.35)",
+        bottom: "calc(16px + env(safe-area-inset-bottom))",
+        left: "50%",
+        transform: "translateX(-50%)",
+        width: "max-content",
+        maxWidth: "calc(100vw - 32px)",
+        borderRadius: 9999,
+        background: "rgba(0, 18, 22, 0.55)",
+        backdropFilter: "blur(20px) saturate(1.8)",
+        WebkitBackdropFilter: "blur(20px) saturate(1.8)",
+        border: "1px solid rgba(0, 203, 219, 0.22)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.45), 0 0 0 0.5px rgba(0,203,219,0.1) inset",
       }}
     >
-      <div className="flex items-stretch">
-        {items.map((item) => (
-          <Link
-            key={item.label}
-            href={item.href}
-            className="flex-1 flex flex-col items-center justify-center gap-1 py-2 active:opacity-70 transition-opacity"
-          >
-            {item.icon}
-            <span className="text-white text-[9px] font-medium tracking-wide uppercase">
-              {item.label}
-            </span>
-          </Link>
-        ))}
+      <div className="flex items-center px-2">
+        {items.map((item) => {
+          const active = isActive(item.href);
+          return (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="flex flex-col items-center justify-center gap-[3px] px-4 py-3 transition-opacity active:opacity-60"
+              style={{ minWidth: 56 }}
+            >
+              <span
+                style={{
+                  opacity: active ? 1 : 0.55,
+                  filter: active ? "drop-shadow(0 0 6px rgba(0,203,219,0.8))" : "none",
+                  transition: "opacity 0.2s, filter 0.2s",
+                  display: "flex",
+                }}
+              >
+                {item.icon}
+              </span>
+              <span
+                style={{
+                  fontSize: 9,
+                  fontWeight: 600,
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  color: active ? "#00CBDB" : "rgba(255,255,255,0.45)",
+                  transition: "color 0.2s",
+                }}
+              >
+                {item.label}
+              </span>
+            </Link>
+          );
+        })}
       </div>
-      <div style={{ height: "env(safe-area-inset-bottom)" }} />
     </nav>
   );
 }
