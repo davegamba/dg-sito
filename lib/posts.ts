@@ -28,7 +28,11 @@ function isPublished(data: Record<string, unknown>): boolean {
   if (data.published === false) return false;
   if (data.date) {
     const postDate = new Date(String(data.date));
-    if (postDate > new Date()) return false;
+    const today = new Date();
+    // Compare dates only (strip time) so UTC offset doesn't block same-day articles
+    postDate.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+    if (postDate > today) return false;
   }
   return true;
 }
