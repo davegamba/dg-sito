@@ -233,15 +233,16 @@ export default async function PostPage({
 
             {/* Articoli correlati */}
             {related.length > 0 && (
-              <div className="border-t border-[#e8e0d4] pt-12 pb-16">
+              <div className="pt-10 pb-16">
                 <div className="max-w-2xl mx-auto px-4 sm:px-6">
-                  <h2 className="text-xl font-bold text-[#111] mb-6">Potrebbe interessarti</h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="bg-[#00CBDB] rounded-[24px] p-6 sm:p-8">
+                    <h2 className="text-xl font-bold text-white mb-6">Potrebbe interessarti</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {related.map((r) => (
                       <Link
                         key={r.slug}
                         href={`/blog/${r.slug}`}
-                        className="group flex flex-col bg-white border border-[#e8e0d4] rounded-[16px] overflow-hidden hover:border-[#00CBDB] transition-colors duration-200"
+                        className="group flex flex-col bg-white rounded-[16px] overflow-hidden hover:scale-[1.02] transition-transform duration-200"
                       >
                         {r.image && (
                           <div className="relative w-full aspect-[16/9] bg-[#f0f0f0]">
@@ -258,6 +259,7 @@ export default async function PostPage({
                       </Link>
                     ))}
                   </div>
+                  </div>{/* fine riquadro ciano */}
                 </div>
               </div>
             )}
