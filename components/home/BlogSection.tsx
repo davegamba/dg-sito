@@ -32,7 +32,8 @@ export default function BlogSection() {
           </div>
           <Link
             href="/blog"
-            className="text-[#00CBDB] text-sm font-medium hover:underline shrink-0"
+            className="text-[#00CBDB] text-sm font-semibold shrink-0 px-4 py-2 rounded-full border border-[#00CBDB] transition-all duration-200 hover:bg-[rgba(0,203,219,0.12)]"
+            style={{ background: "rgba(0,203,219,0.07)" }}
           >
             Tutti gli articoli →
           </Link>
@@ -69,7 +70,7 @@ export default function BlogSection() {
                 >
                   {a.category}
                 </span>
-                <h3 className="font-serif text-lg sm:text-xl text-[#0a0a12] leading-snug group-hover:text-[#00CBDB] transition-colors duration-200 line-clamp-2">
+                <h3 className="font-serif text-lg sm:text-xl text-[#0a0a12] leading-snug group-hover:text-[#00CBDB] transition-colors duration-200 line-clamp-2" style={{ fontWeight: 600 }}>
                   {a.title}
                 </h3>
               </div>
