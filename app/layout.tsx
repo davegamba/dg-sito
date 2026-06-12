@@ -25,14 +25,14 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Dave Gamba — Personal Trainer Online dal 2009",
+  title: "Dave Gamba — Personal Trainer Online da oltre 15 anni",
   description:
-    "Metodo BIM: 21 minuti, 3 volte a settimana. Risultati reali per uomini professionisti 35–50 anni. Oltre 3.000 clienti trasformati.",
+    "Tutto per costruire un fisico atletico, asciutto e scolpito con allenamenti da meno di 30 minuti. Oltre 3.000 clienti trasformati.",
   keywords: ["personal trainer online", "metodo BIM", "allenamento uomini", "Dave Gamba"],
   authors: [{ name: "Dave Gamba" }],
   openGraph: {
-    title: "Dave Gamba — Personal Trainer Online dal 2009",
-    description: "21 minuti, 3 volte a settimana. Il metodo BIM.",
+    title: "Dave Gamba — Personal Trainer Online da oltre 15 anni",
+    description: "Tutto per costruire un fisico atletico, asciutto e scolpito con allenamenti da meno di 30 minuti. Oltre 3.000 clienti trasformati.",
     url: "https://davegamba.com",
     siteName: "Dave Gamba",
     locale: "it_IT",
