@@ -93,6 +93,19 @@ export default defineConfig({
             name: "body",
             label: "Contenuto",
             isBody: true,
+            templates: [
+              {
+                name: "ArticleCta",
+                label: "CTA Protocollo",
+                fields: [
+                  { type: "string", name: "title", label: "Titolo protocollo", required: true },
+                  { type: "string", name: "description", label: "Descrizione breve", ui: { component: "textarea" } },
+                  { type: "string", name: "href", label: "Link", required: true },
+                  { type: "string", name: "cta", label: "Testo bottone (default: Scopri di più)" },
+                  { type: "image", name: "photo", label: "Foto di sfondo (opzionale)" },
+                ],
+              },
+            ],
           },
         ],
       },

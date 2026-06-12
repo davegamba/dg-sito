@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ReadingProgress from "@/components/ReadingProgress";
+import { ArticleCta } from "@/components/ArticleCta";
 import type { Metadata } from "next";
 
 // H2 bicolore: prima parte ciano, seconda parte nera
@@ -34,7 +35,7 @@ function CustomH2({ children }: { children: ReactNode }) {
   return <h2 className="font-serif">{children}</h2>;
 }
 
-const mdxComponents = { h2: CustomH2 };
+const mdxComponents = { h2: CustomH2, ArticleCta };
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
