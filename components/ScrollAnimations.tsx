@@ -6,10 +6,12 @@ export default function ScrollAnimations() {
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let ctx: any = null;
+    let mounted = true;
 
     const init = async () => {
       const { gsap } = await import("gsap");
       const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      if (!mounted) return;
       gsap.registerPlugin(ScrollTrigger);
 
       // Context GSAP — permette cleanup completo al unmount
@@ -85,6 +87,7 @@ export default function ScrollAnimations() {
 
     // Cleanup — distrugge tutte le istanze GSAP al unmount
     return () => {
+      mounted = false;
       ctx?.revert();
     };
   }, []);

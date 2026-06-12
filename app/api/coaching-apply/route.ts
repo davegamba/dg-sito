@@ -6,7 +6,7 @@ const DAVE_EMAIL = "davept.info@gmail.com";
 async function sendNotification(subject: string, html: string) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return;
-  await fetch("https://api.resend.com/emails", {
+  const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -19,6 +19,9 @@ async function sendNotification(subject: string, html: string) {
       html,
     }),
   });
+  if (!res.ok) {
+    console.error("Resend error:", res.status, await res.text());
+  }
 }
 
 export async function POST(req: NextRequest) {

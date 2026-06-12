@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Script from "next/script";
 
-const DEADLINE = new Date("2026-06-07T23:59:59").getTime();
+const DEADLINE = new Date("2026-06-15T23:59:59").getTime();
 const STRIPE_LINK = "https://buy.stripe.com/5kQdRa9BQc5EgQi2961Nu00";
 
 const TRASFORMAZIONI = [

@@ -231,10 +231,9 @@ export default function QuizFisicoPage() {
     } else {
       setScreen("email");
       // Pixel Lead event
-      if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).fbq) {
-        (window as unknown as Record<string, unknown>).fbq as (...args: unknown[]) => void;
+      if (typeof window !== "undefined") {
         // @ts-expect-error fbq global
-        window.fbq("track", "Lead");
+        window.fbq?.("track", "Lead");
       }
     }
     void currentAnswers;

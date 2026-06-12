@@ -312,22 +312,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
-        @font-face {
-          font-family: 'Flatline';
-          src: url('/fonts/Flatline-Regular.otf') format('opentype');
-          font-weight: 400;
-          font-style: normal;
-          font-display: swap;
-        }
-        @font-face {
-          font-family: 'Flatline';
-          src: url('/fonts/Flatline-SemiBold.otf') format('opentype');
-          font-weight: 500;
-          font-style: normal;
-          font-display: swap;
-        }
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         .bc-wrap {
           min-height: 100dvh;
