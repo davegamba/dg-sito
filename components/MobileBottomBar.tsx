@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 const STANDALONE_PAGES = ["/links"];
 const STANDALONE_PREFIXES = ["/club", "/login", "/auth", "/quiz", "/sfida-estiva"];
 
-const WA_NUMBER = "393331234567"; // ← sostituisci con il numero reale
+const WA_NUMBER = "393520433445";
 const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Ciao Dave, ho visto il tuo sito e volevo scriverti 👋")}`;
 
 const items = [
