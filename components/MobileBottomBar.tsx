@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const STANDALONE_PAGES = ["/links", "/quiz"];
-const STANDALONE_PREFIXES = ["/club", "/login", "/auth"];
+const STANDALONE_PAGES = ["/links"];
+const STANDALONE_PREFIXES = ["/club", "/login", "/auth", "/quiz", "/sfida-estiva"];
 
 const WA_NUMBER = "393331234567"; // ← sostituisci con il numero reale
 const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Ciao Dave, ho visto il tuo sito e volevo scriverti 👋")}`;
@@ -90,15 +90,14 @@ export default function MobileBottomBar() {
         boxShadow: "0 8px 32px rgba(0,0,0,0.45), 0 0 0 0.5px rgba(0,203,219,0.1) inset",
       }}
     >
-      <div className="flex items-center px-2">
+      <div className="flex items-center w-full">
         {items.map((item) => {
           const active = isActive(item.href);
           return (
             <Link
               key={item.label}
               href={item.href}
-              className="flex flex-col items-center justify-center gap-[3px] px-4 py-3 transition-opacity active:opacity-60"
-              style={{ minWidth: 56 }}
+              className="flex-1 flex flex-col items-center justify-center gap-[3px] py-3 transition-opacity active:opacity-60"
             >
               <span
                 style={{
