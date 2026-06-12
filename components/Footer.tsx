@@ -28,14 +28,13 @@ const footerLinks = {
     { href: "https://www.youtube.com/@DaveGambaFitness", label: "Canale YouTube", external: true },
   ],
   Prodotti: [
-    { href: "/coming-soon", label: "Quiz Profilo Fisico" },
-    { href: "/coming-soon", label: "Sfida Estiva 21gg" },
-    { href: "/coming-soon", label: "Coaching" },
+    { href: "/quiz-fisico", label: "Quiz Profilo Fisico" },
+    { href: "/sfida-estiva", label: "Sfida Estiva 21gg" },
+    { href: "/coaching", label: "Coaching" },
   ],
   Legale: [
     { href: "/privacy", label: "Privacy Policy" },
     { href: "/termini", label: "Termini e Condizioni" },
-    { href: "/coming-soon", label: "Cookie Policy" },
   ],
 };
 
