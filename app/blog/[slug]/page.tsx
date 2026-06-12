@@ -145,7 +145,7 @@ export default async function PostPage({
               )}
 
               {/* Titolo */}
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white leading-[1.1] mb-6">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.1] mb-6">
                 {post.title}
               </h1>
 
@@ -236,14 +236,14 @@ export default async function PostPage({
             {related.length > 0 && (
               <div className="pt-10 pb-16">
                 <div className="max-w-2xl mx-auto px-4 sm:px-6">
-                  <div className="bg-[#00CBDB] rounded-[24px] p-6 sm:p-8">
+                  <div className="bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] rounded-[24px] p-6 sm:p-8">
                     <h2 className="text-xl font-bold text-white mb-6">Potrebbe interessarti</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {related.map((r) => (
                       <Link
                         key={r.slug}
                         href={`/blog/${r.slug}`}
-                        className="group flex flex-col bg-white rounded-[16px] overflow-hidden hover:scale-[1.02] transition-transform duration-200"
+                        className="group flex flex-col bg-[#f5f0e8] rounded-[16px] overflow-hidden hover:scale-[1.02] transition-transform duration-200"
                       >
                         {r.image && (
                           <div className="relative w-full aspect-[16/9] bg-[#f0f0f0]">

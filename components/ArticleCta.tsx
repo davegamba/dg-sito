@@ -16,14 +16,14 @@ export function ArticleCta({
   photo = "/images/blog/cappello-arancione-davegamba.jpeg",
 }: ArticleCtaProps) {
   return (
-    <div className="my-10 rounded-[20px] overflow-hidden relative min-h-[180px] flex items-center not-prose">
+    <div className="article-cta my-10 rounded-[20px] overflow-hidden relative min-h-[180px] flex items-center not-prose">
       {/* Foto di sfondo */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${photo})` }}
       />
-      {/* Overlay: scuro a destra, trasparente a sinistra */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/60 to-black/90" />
+      {/* Overlay: trasparente a sinistra (foto visibile), scuro a destra (testo leggibile) */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/50 to-black/85" />
 
       {/* Contenuto — allineato a destra */}
       <div className="relative z-10 ml-auto w-[60%] sm:w-[55%] px-6 py-8">
