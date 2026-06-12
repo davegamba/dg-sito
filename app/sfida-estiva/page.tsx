@@ -177,7 +177,7 @@ export default function SfidaEstivaPage() {
         @keyframes sfMarqueeReverse{from{transform:translateX(-50%)}to{transform:translateX(0)}}
         .sf-phone-stack{display:flex;flex-direction:row;align-items:flex-start;justify-content:center;gap:24px}
         .sf-phone-block{display:flex;flex-direction:column;align-items:center;gap:28px;max-width:260px;flex:1;min-width:200px}
-        @media(max-width:700px){.sf-phone-stack{flex-direction:column;align-items:center}}
+        @media(max-width:700px){.sf-phone-stack{overflow-x:auto;justify-content:flex-start;padding:0 24px 16px;scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x mandatory}.sf-phone-stack::-webkit-scrollbar{display:none}.sf-phone-block{flex-shrink:0;width:260px;min-width:260px;scroll-snap-align:center}}
         .sf-phone-shell{width:280px;background:#0f0f0f;border-radius:36px;padding:10px 8px 18px;box-shadow:0 40px 90px rgba(0,0,0,0.22),0 0 0 1px rgba(255,255,255,0.07),inset 0 1px 0 rgba(255,255,255,0.06)}
         .sf-phone-notch{width:64px;height:18px;background:#0f0f0f;border-radius:0 0 14px 14px;margin:0 auto 6px}
         .sf-phone-screen{border-radius:28px;overflow:hidden;aspect-ratio:9/16;background:#111}
