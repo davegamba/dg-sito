@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "/club", label: "Protocolli" },
+  { href: "/allenamento", label: "Allenamento" },
   { href: "/blog", label: "Blog" },
   { href: "https://www.youtube.com/@DaveGambaFitness", label: "YouTube" },
 ];
