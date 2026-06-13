@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "/club", label: "Protocolli" },
   { href: "/allenamento", label: "Allenamento" },
   { href: "/blog", label: "Blog" },
   { href: "https://www.youtube.com/@DaveGambaFitness", label: "YouTube" },
@@ -63,6 +62,13 @@ export default function Header() {
                 {l.label}
               </Link>
             ))}
+            <Link
+              href="/club"
+              className="text-sm font-bold text-black px-4 py-1.5 rounded-full transition-all duration-200 hover:opacity-85"
+              style={{ background: "linear-gradient(135deg, #00CBDB, #00AECF)" }}
+            >
+              Club
+            </Link>
           </div>
 
           {/* Desktop CTA */}
@@ -106,11 +112,14 @@ export default function Header() {
             </Link>
           ))}
           <div className="flex flex-col gap-3 pt-2">
-            <Button variant="primary" size="md" className="w-full">
-              <Link href="https://www.davegamba.com/club" onClick={() => setOpen(false)}>
-                Allenati nel Club
-              </Link>
-            </Button>
+            <Link
+              href="/club"
+              onClick={() => setOpen(false)}
+              className="w-full text-center text-sm font-bold text-black py-3 rounded-full transition-all duration-200"
+              style={{ background: "linear-gradient(135deg, #00CBDB, #00AECF)" }}
+            >
+              Club
+            </Link>
           </div>
         </div>
       </div>
