@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
+  { href: "/quiz-fisico", label: "Quiz Fisico Gratuito", chip: true },
   { href: "/allenamento", label: "Allenamento" },
   { href: "/blog", label: "Blog" },
   { href: "https://www.youtube.com/@DaveGambaFitness", label: "YouTube" },
@@ -39,7 +39,7 @@ export default function Header() {
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center select-none" style={{
+          <Link href="/" className="flex items-center select-none shrink-0" style={{
             background: "linear-gradient(105deg, #fff 0%, #fff 38%, #e8f8ff 50%, #fff 62%, #fff 100%)",
             backgroundSize: "200% auto",
             WebkitBackgroundClip: "text",
@@ -52,33 +52,33 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="text-white hover:text-[#00CBDB] text-base font-semibold transition-colors duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
-              >
-                {l.label}
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((l) =>
+              l.chip ? (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="text-sm font-bold text-white rounded-xl px-4 py-1.5 transition-all duration-200 hover:bg-white/20 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
+                  style={{ border: "1.5px solid rgba(255,255,255,0.7)", background: "rgba(255,255,255,0.08)" }}
+                >
+                  {l.label}
+                </Link>
+              ) : (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="text-white hover:text-[#00CBDB] text-base font-semibold transition-colors duration-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
+                >
+                  {l.label}
+                </Link>
+              )
+            )}
             <Link
               href="/club"
-              className="text-sm font-bold text-black px-4 py-1.5 rounded-full transition-all duration-200 hover:opacity-85"
+              className="text-sm font-bold text-black px-5 py-1.5 rounded-full transition-all duration-200 hover:opacity-85 shrink-0"
               style={{ background: "linear-gradient(135deg, #00CBDB, #00AECF)" }}
             >
-              Club
-            </Link>
-          </div>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/quiz-fisico"
-              className="text-sm font-bold text-white rounded-xl px-5 py-2 transition-all duration-200 hover:bg-white/20"
-              style={{ border: "1.5px solid rgba(255,255,255,0.7)", background: "rgba(255,255,255,0.08)" }}
-            >
-              Scopri il tuo Profilo Fisico
+              Athletic Club
             </Link>
           </div>
 
@@ -97,28 +97,40 @@ export default function Header() {
       <div
         className={cn(
           "md:hidden bg-[#080810]/95 backdrop-blur-xl border-b border-[#1e1e2e] transition-all duration-300 overflow-hidden",
-          open ? "max-h-96" : "max-h-0"
+          open ? "max-h-[500px]" : "max-h-0"
         )}
       >
-        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-4">
-          {navLinks.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="text-[#F0F0F0] text-base font-semibold py-2 border-b border-[#1e1e2e]"
-              onClick={() => setOpen(false)}
-            >
-              {l.label}
-            </Link>
-          ))}
-          <div className="flex flex-col gap-3 pt-2">
+        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-1">
+          {navLinks.map((l) =>
+            l.chip ? (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="text-sm font-bold text-white py-2.5 px-4 rounded-xl border border-white/30 text-center mb-2"
+                style={{ background: "rgba(255,255,255,0.08)" }}
+                onClick={() => setOpen(false)}
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="text-[#F0F0F0] text-base font-semibold py-3 border-b border-[#1e1e2e]"
+                onClick={() => setOpen(false)}
+              >
+                {l.label}
+              </Link>
+            )
+          )}
+          <div className="pt-3">
             <Link
               href="/club"
               onClick={() => setOpen(false)}
-              className="w-full text-center text-sm font-bold text-black py-3 rounded-full transition-all duration-200"
+              className="w-full block text-center text-sm font-bold text-black py-3 rounded-full transition-all duration-200"
               style={{ background: "linear-gradient(135deg, #00CBDB, #00AECF)" }}
             >
-              Club
+              Athletic Club
             </Link>
           </div>
         </div>
