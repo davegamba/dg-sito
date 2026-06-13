@@ -60,14 +60,13 @@ export default function AllenamentoPage() {
           <div className="absolute inset-0 bg-black/65" />
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center">
             <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-5 block">
-              DaveGamba.com
+              ALLENATI CON DAVE
             </span>
             <h1 className="font-serif text-5xl sm:text-7xl text-white mb-6 tracking-tight">
               Area Allenamento
             </h1>
             <p className="text-[#888] text-lg max-w-xl mx-auto">
-              Guide complete per ogni zona muscolare. Tecnica, errori comuni e schema BIM —
-              dal livello base all'avanzato, per palestra e casa.
+              Guide complete per lo sviluppo di ogni zona muscolare. Per Casa e Palestra, da livello base ad avanzato.
             </p>
           </div>
         </section>
