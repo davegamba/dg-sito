@@ -27,10 +27,10 @@ export function ArticleCta({
 
       {/* Contenuto — allineato a destra */}
       <div className="relative z-10 ml-auto w-[60%] sm:w-[55%] px-6 py-8">
-        <p className="text-[10px] font-semibold tracking-widest uppercase text-[#00CBDB] mb-2">
+        <p className="text-[9px] font-semibold tracking-widest uppercase text-[#00CBDB] mb-1">
           Protocollo Dave Gamba
         </p>
-        <h3 className="text-white font-bold text-lg sm:text-xl leading-snug mb-2">
+        <h3 className="text-white font-bold text-2xl sm:text-3xl leading-snug mb-2">
           {title}
         </h3>
         <p className="text-white/75 text-sm leading-relaxed mb-5">
@@ -40,7 +40,7 @@ export function ArticleCta({
           href={href}
           className="inline-block bg-[#00CBDB] hover:bg-[#00b8c7] text-black font-bold text-sm px-5 py-2.5 rounded-[10px] transition-colors duration-200"
         >
-          {cta}
+          {cta} →
         </Link>
       </div>
     </div>

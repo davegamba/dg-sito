@@ -268,22 +268,22 @@ export default async function PostPage({
         </article>
 
         {/* CTA — Quiz Profilo Fisico */}
-        <section className="bg-[#0d0d0d] border-t border-[#1a1a1a] py-16">
+        <section className="py-16" style={{ background: "linear-gradient(135deg, #00CBDB 0%, #0099a8 100%)" }}>
           <div className="max-w-md mx-auto px-4 sm:px-6 text-center">
-            <div className="text-3xl mb-4">💪</div>
+            <div className="text-3xl mb-4">⚡</div>
             <h2 className="font-serif text-2xl sm:text-3xl text-white mb-3">
               Scopri il tuo Profilo Fisico
             </h2>
-            <p className="text-[#888] text-sm mb-8">
+            <p className="text-white/80 text-sm mb-8">
               7 domande per capire dove sei adesso e qual è il piano giusto per il tuo fisico. Gratuito.
             </p>
             <Link
               href="/quiz"
-              className="inline-flex items-center gap-2 bg-[#00CBDB] text-black font-semibold px-8 py-4 rounded-[12px] hover:bg-[#00b8c7] transition-colors duration-200 text-base"
+              className="inline-flex items-center gap-2 bg-[#F0C040] hover:bg-[#e0b030] text-black font-bold px-8 py-4 rounded-[12px] transition-colors duration-200 text-base"
             >
               Fai il quiz gratuito →
             </Link>
-            <p className="text-[#444] text-xs mt-4">2 minuti · Nessuno spam · Risultati personalizzati</p>
+            <p className="text-white/50 text-xs mt-4">2 minuti · Nessuno spam · Risultati personalizzati</p>
           </div>
         </section>
       </main>
