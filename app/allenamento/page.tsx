@@ -54,18 +54,10 @@ export default function AllenamentoPage() {
 
         {/* Hero */}
         <section className="relative py-24 sm:py-36 border-b border-[#1a1a1a] overflow-hidden">
-          <div className="absolute inset-0"
-            style={{
-              background: "linear-gradient(160deg, #0a0a0a 0%, #0d1a1a 40%, #091414 70%, #050505 100%)",
-            }}
+          <div className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/area-allenamento-davegamba.jpg')" }}
           />
-          {/* Subtle grid overlay */}
-          <div className="absolute inset-0 opacity-[0.04]"
-            style={{
-              backgroundImage: "linear-gradient(#00CBDB 1px, transparent 1px), linear-gradient(90deg, #00CBDB 1px, transparent 1px)",
-              backgroundSize: "60px 60px",
-            }}
-          />
+          <div className="absolute inset-0 bg-black/65" />
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center">
             <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-5 block">
               DaveGamba.com
