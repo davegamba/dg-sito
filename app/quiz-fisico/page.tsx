@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import "@/lib/analytics";
 
 /* ── TIPI ── */
 type StepType = "image-grid-2" | "image-grid-3" | "checkbox" | "buttons" | "numbered";
@@ -232,7 +233,6 @@ export default function QuizFisicoPage() {
       setScreen("email");
       // Pixel Lead event
       if (typeof window !== "undefined") {
-        // @ts-expect-error fbq global
         window.fbq?.("track", "Lead");
       }
     }
@@ -253,10 +253,8 @@ export default function QuizFisicoPage() {
     const pk = determineProfile(answers);
     setProfileKey(pk);
     setScreen("result");
-    // @ts-expect-error fbq global
-    if (typeof window !== "undefined" && window.fbq) window.fbq("track", "CompleteRegistration");
-    // @ts-expect-error gtag global
-    if (typeof window !== "undefined" && window.gtag) window.gtag("event", "quiz_complete", { profile: pk });
+    if (typeof window !== "undefined") window.fbq?.("track", "CompleteRegistration");
+    if (typeof window !== "undefined") window.gtag?.("event", "quiz_complete", { profile: pk });
     setSubmitting(false);
   }
 

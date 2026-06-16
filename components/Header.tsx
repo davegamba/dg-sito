@@ -84,7 +84,7 @@ export default function Header() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-white hover:text-[#00CBDB] transition-colors drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
+            className="md:hidden text-white hover:text-[#00CBDB] transition-colors drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >

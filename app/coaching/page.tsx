@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Script from "next/script";
 import Testimonials from "@/components/home/Testimonials";
+import { fbqTrack, gtagEvent } from "@/lib/analytics";
 
 const FAQ_LIST = [
   { q: "Quanto durano gli allenamenti?", a: "20-30 minuti per sessione. Il Metodo BIM — Breve, Intenso, Mirato — è progettato per chi ha poco tempo e vuole massimi risultati. Niente ore in palestra." },
@@ -72,8 +73,8 @@ export default function CoachingPage() {
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error();
-      (window as any).fbq?.("track", "Lead");
-      (window as any).gtag?.("event", "coaching_application", { event_category: "lead", event_label: "coaching-1-1" });
+      fbqTrack("Lead");
+      gtagEvent("coaching_application", { event_category: "lead", event_label: "coaching-1-1" });
       setSuccess(true);
     } catch {
       setError("Errore nell'invio. Riprova o scrivimi direttamente su Instagram.");

@@ -5,7 +5,7 @@ import { X, ArrowRight } from "lucide-react";
 
 const SUPABASE_URL = "https://nkojjrvndjyivsjvrqds.supabase.co";
 const SUPABASE_KEY = "sb_publishable_4WlxUEDHRnR0BGxCViP4NA_QVYLUwtg";
-const QUIZ_URL = "https://club.davegamba.com/club.html";
+const QUIZ_URL = "/quiz";
 const STORAGE_KEY = "dg_exit_popup_seen";
 const COOLDOWN_DAYS = 7;
 
@@ -104,7 +104,7 @@ export default function ExitPopup() {
     setDone(true);
     dismiss(true);
     setTimeout(() => {
-      window.location.href = `${QUIZ_URL}?email=${encodeURIComponent(val)}`;
+      window.location.href = `${QUIZ_URL}`;
     }, 800);
   };
 

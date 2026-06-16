@@ -1,6 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
+async function notifyDave(subject: string, text: string) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return;
+  await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
+    body: JSON.stringify({
+      from: "DaveGamba.com <onboarding@resend.dev>",
+      to: ["davept.info@gmail.com"],
+      subject,
+      text,
+    }),
+  });
+}
+
 export async function POST(req: NextRequest) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2026-04-22.dahlia" });
   const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -38,7 +53,12 @@ export async function POST(req: NextRequest) {
       });
       // Se Supabase fallisce, ritorna 500 così Stripe riprova automaticamente
       if (!res.ok) {
-        console.error(`Supabase insert failed: ${res.status}`, await res.text());
+        const detail = await res.text();
+        console.error(`Supabase insert failed: ${res.status}`, detail);
+        await notifyDave(
+          `⚠️ Acquisto non registrato — ${email}`,
+          `Stripe ha confermato l'acquisto di "${productId}" per ${email} ma l'insert su Supabase ha fallito.\n\nDettaglio: ${detail}\n\nAzione richiesta: aggiungi manualmente l'accesso.`
+        );
         return NextResponse.json({ error: "DB error" }, { status: 500 });
       }
     }

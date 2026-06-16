@@ -25,6 +25,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  manifest: "/manifest.json",
   title: "Dave Gamba — Personal Trainer Online da oltre 15 anni",
   description:
     "Tutto per costruire un fisico atletico, asciutto e scolpito con allenamenti da meno di 30 minuti. Oltre 3.000 clienti trasformati.",
@@ -37,6 +38,11 @@ export const metadata: Metadata = {
     siteName: "Dave Gamba",
     locale: "it_IT",
     type: "website",
+    images: [{ url: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/atletico-sbarra-spiaggia.jpg", width: 1200, height: 630, alt: "Dave Gamba — Personal Trainer Online" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/atletico-sbarra-spiaggia.jpg"],
   },
 };
 
@@ -50,6 +56,11 @@ export default function RootLayout({
       lang="it"
       className={`${dmSerif.variable} ${dmSans.variable}`}
     >
+      <head>
+        <meta name="apple-mobile-web-app-title" content="DG Club" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="application-name" content="DG Club" />
+      </head>
       <body className="min-h-dvh flex flex-col antialiased">
         {children}
         <ScrollAnimations />

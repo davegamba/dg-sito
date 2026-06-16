@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function esc(str: string): string {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
 const DAVE_EMAIL = "davept.info@gmail.com";
 
 async function sendNotification(subject: string, html: string) {
@@ -55,7 +59,10 @@ export async function POST(req: NextRequest) {
 
   // Notifica email a Dave
   const campi = Object.entries(rest)
-    .map(([k, v]) => `<tr><td style="padding:8px 12px;color:#9a9a94;font-size:13px;white-space:nowrap">${k}</td><td style="padding:8px 12px;color:#fafaf8;font-size:13px">${Array.isArray(v) ? (v as string[]).join(", ") : String(v ?? "—")}</td></tr>`)
+    .map(([k, v]) => {
+      const val = Array.isArray(v) ? (v as string[]).map(esc).join(", ") : esc(String(v ?? "—"));
+      return `<tr><td style="padding:8px 12px;color:#9a9a94;font-size:13px;white-space:nowrap">${esc(k)}</td><td style="padding:8px 12px;color:#fafaf8;font-size:13px">${val}</td></tr>`;
+    })
     .join("");
 
   await sendNotification(
@@ -64,8 +71,8 @@ export async function POST(req: NextRequest) {
       <h2 style="color:#fafaf8;font-size:22px;margin-bottom:4px">Nuova candidatura coaching</h2>
       <p style="color:#9a9a94;font-size:14px;margin-bottom:24px">Ricevuta da davegamba.com/coaching</p>
       <table style="width:100%;border-collapse:collapse;background:#161616;border-radius:12px;overflow:hidden">
-        <tr><td style="padding:8px 12px;color:#9a9a94;font-size:13px;white-space:nowrap">Nome</td><td style="padding:8px 12px;color:#fafaf8;font-size:14px;font-weight:600">${nome}</td></tr>
-        <tr style="background:#1c1c1c"><td style="padding:8px 12px;color:#9a9a94;font-size:13px">Email</td><td style="padding:8px 12px"><a href="mailto:${email}" style="color:#00CBDB;font-size:14px">${email}</a></td></tr>
+        <tr><td style="padding:8px 12px;color:#9a9a94;font-size:13px;white-space:nowrap">Nome</td><td style="padding:8px 12px;color:#fafaf8;font-size:14px;font-weight:600">${esc(nome)}</td></tr>
+        <tr style="background:#1c1c1c"><td style="padding:8px 12px;color:#9a9a94;font-size:13px">Email</td><td style="padding:8px 12px"><a href="mailto:${esc(email)}" style="color:#00CBDB;font-size:14px">${esc(email)}</a></td></tr>
         ${campi}
       </table>
       <p style="color:#5a5a55;font-size:12px;margin-top:24px">© DaveGamba.com</p>

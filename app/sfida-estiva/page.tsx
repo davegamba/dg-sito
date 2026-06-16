@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Script from "next/script";
+import { fbqTrack } from "@/lib/analytics";
 
 const DEADLINE = new Date("2026-06-15T23:59:59").getTime();
 const STRIPE_LINK = "https://buy.stripe.com/5kQdRa9BQc5EgQi2961Nu00";
@@ -213,7 +214,7 @@ export default function SfidaEstivaPage() {
             <span className="sf-countdown" style={countdownStyle}>⏳ Offerta scade tra: <b>{timer}</b></span>
           </div>
           <div className="sf-btn-row">
-            <a href={STRIPE_LINK} className="sf-btn-primary" onClick={() => (window as any).fbq?.("track", "InitiateCheckout", { value: 33, currency: "EUR", content_name: "Sfida Estiva 21 Giorni" })}>
+            <a href={STRIPE_LINK} className="sf-btn-primary" onClick={() => fbqTrack("InitiateCheckout", { value: 33, currency: "EUR", content_name: "Sfida Estiva 21 Giorni" })}>
               Inizia la Sfida Estiva →
             </a>
           </div>
@@ -354,7 +355,7 @@ export default function SfidaEstivaPage() {
               ))}
             </div>
             <div className="sf-btn-row" style={{ justifyContent: "center", marginBottom: 16 }}>
-              <a href={STRIPE_LINK} className="sf-btn-offer" onClick={() => (window as any).fbq?.("track", "InitiateCheckout", { value: 33, currency: "EUR", content_name: "Sfida Estiva 21 Giorni" })}>
+              <a href={STRIPE_LINK} className="sf-btn-offer" onClick={() => fbqTrack("InitiateCheckout", { value: 33, currency: "EUR", content_name: "Sfida Estiva 21 Giorni" })}>
                 Inizia la Sfida Estiva →
               </a>
             </div>
@@ -389,7 +390,7 @@ export default function SfidaEstivaPage() {
           <h2>L&apos;estate arriva.<br /><em>Inizia oggi.</em></h2>
           <p>33€ · Accesso immediato · A vita</p>
           <div className="sf-btn-row" style={{ justifyContent: "center" }}>
-            <a href={STRIPE_LINK} className="sf-btn-offer" onClick={() => (window as any).fbq?.("track", "InitiateCheckout", { value: 33, currency: "EUR", content_name: "Sfida Estiva 21 Giorni" })}>
+            <a href={STRIPE_LINK} className="sf-btn-offer" onClick={() => fbqTrack("InitiateCheckout", { value: 33, currency: "EUR", content_name: "Sfida Estiva 21 Giorni" })}>
               Inizia la Sfida Estiva →
             </a>
           </div>
@@ -405,7 +406,7 @@ export default function SfidaEstivaPage() {
       {/* Sticky bar */}
       <div className={`sf-sticky${showSticky ? " show" : ""}`}>
         <div className="sf-sticky-txt"><strong>Sfida Estiva 21 Giorni</strong> — 33€ una tantum</div>
-        <a href={STRIPE_LINK} className="sf-btn-sticky" onClick={() => (window as any).fbq?.("track", "InitiateCheckout", { value: 33, currency: "EUR", content_name: "Sfida Estiva 21 Giorni" })}>
+        <a href={STRIPE_LINK} className="sf-btn-sticky" onClick={() => fbqTrack("InitiateCheckout", { value: 33, currency: "EUR", content_name: "Sfida Estiva 21 Giorni" })}>
           Inizia la Sfida →
         </a>
       </div>
