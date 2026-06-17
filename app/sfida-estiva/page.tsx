@@ -5,7 +5,7 @@ import Script from "next/script";
 import { fbqTrack } from "@/lib/analytics";
 
 const DEADLINE = new Date("2026-06-15T23:59:59").getTime();
-const STRIPE_LINK = "https://buy.stripe.com/5kQdRa9BQc5EgQi2961Nu00";
+const STRIPE_LINK = "/checkout";
 
 const TRASFORMAZIONI = [
   { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/img_07.jpeg", alt: "Trasformazione" },
