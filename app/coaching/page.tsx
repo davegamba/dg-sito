@@ -266,7 +266,7 @@ export default function CoachingPage() {
               <div style={{ fontSize: 12, fontWeight: 300, color: "rgba(255,255,255,0.4)", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 10 }}>Coaching Online con Dave</div>
               <h1 className="ch-hero-title">Premium<br /><em>Coaching 1-1</em></h1>
               <p className="ch-hero-sub" style={{ margin: "0 0 28px" }}>Per chi vuole il massimo risultato fisico nel minor tempo possibile, con un percorso personalizzato e guidato da Dave.</p>
-              <a href="#candidati" className="ch-btn-gold">Compila il questionario →</a>
+              <a href="/coaching/candidati" target="_blank" rel="noopener noreferrer" className="ch-btn-gold">Compila il questionario →</a>
             </div>
             {/* Destra: spunte */}
             <div className="ch-hero-right">
