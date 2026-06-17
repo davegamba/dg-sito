@@ -108,7 +108,7 @@ export default function CoachingPage() {
         .ch-hero-check-text{font-size:14px;color:rgba(255,255,255,0.8);line-height:1.5}
         .ch-press-topbar{position:relative;z-index:10;background:#fff;border-bottom:1px solid #e8e2d8;padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
         .ch-press-topbar-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#aaa;margin-right:4px}
-        .ch-press-topbar img{height:16px;object-fit:contain;opacity:0.4;filter:brightness(0)}
+        .ch-press-topbar img{height:18px;object-fit:contain;opacity:0.7}
         @media(max-width:768px){.ch-hero-content{grid-template-columns:1fr;gap:0;padding:0 20px}.ch-hero-left{align-items:center;text-align:center}.ch-hero-right{display:flex;margin-top:24px;gap:10px}.ch-hero-check{padding:12px 14px}.ch-hero-check-text{font-size:13px}}
         .ch-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:18px}
         .ch-badge-gold{background:rgba(240,192,64,0.12);color:var(--gold);border:1px solid rgba(240,192,64,0.25)}
