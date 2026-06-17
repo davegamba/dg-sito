@@ -2,7 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements, PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import {
+  Elements,
+  PaymentElement,
+  LinkAuthenticationElement,
+  useStripe,
+  useElements,
+} from "@stripe/react-stripe-js";
 import Link from "next/link";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
@@ -52,22 +58,48 @@ const STYLES = `
   .ck-legal a { color: #aaa; text-decoration: underline; }
 `;
 
-function CheckoutForm({ bump, totale }: { bump: boolean; totale: number }) {
+function CheckoutForm({
+  bump,
+  totale,
+  paymentIntentId,
+}: {
+  bump: boolean;
+  totale: number;
+  paymentIntentId: string;
+}) {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!stripe || !elements) return;
+    if (!email) {
+      setError("Inserisci la tua email per ricevere l'accesso.");
+      return;
+    }
     setLoading(true);
     setError("");
+
+    // Aggancia l'email al PaymentIntent prima di confermare:
+    // così webhook + ricevuta sanno a chi dare accesso.
+    try {
+      await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ bump, email, paymentIntentId }),
+      });
+    } catch {
+      // Non bloccante: l'email è già nel form, riproviamo via metadata lato confirm
+    }
 
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${window.location.origin}/sfida-estiva/grazie`,
+        return_url: `${window.location.origin}/sfida-estiva/grazie${bump ? "?b=1" : ""}`,
+        receipt_email: email,
       },
     });
 
@@ -80,7 +112,11 @@ function CheckoutForm({ bump, totale }: { bump: boolean; totale: number }) {
   return (
     <form onSubmit={handleSubmit}>
       <div className="ck-payment-card">
-        <div className="ck-payment-title">💳 Dati di pagamento</div>
+        <div className="ck-payment-title">✉️ Email per l'accesso</div>
+        <LinkAuthenticationElement
+          onChange={(e) => setEmail(e.value.email)}
+        />
+        <div className="ck-payment-title" style={{ marginTop: 20 }}>💳 Dati di pagamento</div>
         <PaymentElement />
       </div>
       {error && <p className="ck-error">{error}</p>}
@@ -95,6 +131,7 @@ function CheckoutForm({ bump, totale }: { bump: boolean; totale: number }) {
 export default function CheckoutPage() {
   const [bump, setBump] = useState(false);
   const [clientSecret, setClientSecret] = useState("");
+  const [paymentIntentId, setPaymentIntentId] = useState("");
   const [loadingIntent, setLoadingIntent] = useState(false);
 
   const totale = bump ? PREZZO_BUNDLE : PREZZO_SFIDA;
@@ -108,8 +145,9 @@ export default function CheckoutPage() {
       body: JSON.stringify({ bump }),
     })
       .then((r) => r.json())
-      .then(({ clientSecret }) => {
+      .then(({ clientSecret, paymentIntentId }) => {
         setClientSecret(clientSecret);
+        setPaymentIntentId(paymentIntentId);
         setLoadingIntent(false);
       });
   }, [bump]);
@@ -169,10 +207,11 @@ export default function CheckoutPage() {
           {/* Form pagamento embedded */}
           {clientSecret && !loadingIntent ? (
             <Elements
+              key={clientSecret}
               stripe={stripePromise}
               options={{ clientSecret, locale: "it", appearance: { theme: "stripe" } }}
             >
-              <CheckoutForm bump={bump} totale={totale} />
+              <CheckoutForm bump={bump} totale={totale} paymentIntentId={paymentIntentId} />
             </Elements>
           ) : (
             <div style={{ textAlign: "center", padding: "32px 0", color: "#aaa", fontSize: 14 }}>
