@@ -133,21 +133,33 @@ export default function CheckoutPage() {
   const [clientSecret, setClientSecret] = useState("");
   const [paymentIntentId, setPaymentIntentId] = useState("");
   const [loadingIntent, setLoadingIntent] = useState(false);
+  const [intentError, setIntentError] = useState("");
 
   const totale = bump ? PREZZO_BUNDLE : PREZZO_SFIDA;
 
   // Crea/aggiorna il PaymentIntent quando cambia bump
   useEffect(() => {
     setLoadingIntent(true);
+    setIntentError("");
     fetch("/api/checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ bump }),
     })
-      .then((r) => r.json())
+      .then(async (r) => {
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok || !data.clientSecret) {
+          throw new Error(data.error || "Impossibile inizializzare il pagamento.");
+        }
+        return data;
+      })
       .then(({ clientSecret, paymentIntentId }) => {
         setClientSecret(clientSecret);
         setPaymentIntentId(paymentIntentId);
+        setLoadingIntent(false);
+      })
+      .catch((e) => {
+        setIntentError(e.message || "Errore di connessione.");
         setLoadingIntent(false);
       });
   }, [bump]);
@@ -205,7 +217,12 @@ export default function CheckoutPage() {
           </div>
 
           {/* Form pagamento embedded */}
-          {clientSecret && !loadingIntent ? (
+          {intentError ? (
+            <div style={{ textAlign: "center", padding: "24px", color: "#e05555", fontSize: 14, background: "#fff5f5", border: "1px solid #f3caca", borderRadius: 14 }}>
+              ⚠️ Pagamento momentaneamente non disponibile.<br />
+              Riprova tra poco o scrivi a info@davegamba.com.
+            </div>
+          ) : clientSecret && !loadingIntent ? (
             <Elements
               key={clientSecret}
               stripe={stripePromise}
