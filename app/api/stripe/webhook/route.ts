@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
-// TODO: sostituire con i link d'accesso reali quando Dave li fornisce
-const ACCESS_LINKS: Record<string, { nome: string; url: string }> = {
-  sfida: { nome: "Sfida Estiva 21 Giorni", url: "https://sfida.davegamba.com" },
-  addominali: { nome: "Corso Addominali Completo", url: "https://PLACEHOLDER-corso-addominali" },
+// Tutti i prodotti si sbloccano nella stessa area: davegamba.com/club.
+// Il cliente accede con l'email usata per pagare e vede sbloccato ciò che ha comprato.
+const CLUB_URL = "https://davegamba.com/club";
+const PRODUCT_NAMES: Record<string, string> = {
+  sfida: "Protocollo Estivo da 8 Settimane",
+  addominali: "Protocollo Addominali Scolpiti",
 };
 
 async function notifyDave(subject: string, text: string) {
@@ -29,16 +31,10 @@ async function sendAccessEmail(email: string, products: string[]) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return;
 
-  const items = products
-    .map((p) => ACCESS_LINKS[p])
+  const sbloccati = products
+    .map((p) => PRODUCT_NAMES[p])
     .filter(Boolean)
-    .map(
-      (l) =>
-        `<tr><td style="padding:14px 18px;background:#fff;border:1px solid #e8e2d8;border-radius:12px">
-           <div style="font-size:15px;font-weight:700;color:#0a0a0a;margin-bottom:6px">${l.nome}</div>
-           <a href="${l.url}" style="display:inline-block;background:#00CBDB;color:#000;font-weight:700;font-size:14px;padding:10px 18px;border-radius:10px;text-decoration:none">Accedi ora →</a>
-         </td></tr><tr><td style="height:12px"></td></tr>`
-    )
+    .map((nome) => `<li style="margin-bottom:6px;color:#0a0a0a;font-weight:600">✅ ${nome}</li>`)
     .join("");
 
   await fetch("https://api.resend.com/emails", {
@@ -50,9 +46,18 @@ async function sendAccessEmail(email: string, products: string[]) {
       subject: "✅ Il tuo accesso è pronto",
       html: `<div style="background:#f7f4ef;padding:40px 24px;font-family:sans-serif;max-width:560px;margin:0 auto">
         <h2 style="font-size:22px;color:#0a0a0a;margin-bottom:4px">Grazie per l'acquisto</h2>
-        <p style="font-size:14px;color:#666;margin-bottom:24px">Ecco i tuoi accessi. Salva questa email.</p>
-        <table style="width:100%;border-collapse:collapse">${items}</table>
-        <p style="font-size:13px;color:#888;margin-top:24px">Sali di livello,<br><strong>Dave</strong></p>
+        <p style="font-size:14px;color:#666;margin-bottom:20px">Hai sbloccato:</p>
+        <ul style="font-size:15px;line-height:1.6;padding-left:20px;margin:0 0 24px">${sbloccati}</ul>
+        <div style="background:#fff;border:1px solid #e8e2d8;border-radius:14px;padding:20px;margin-bottom:24px">
+          <p style="font-size:14px;color:#0a0a0a;margin:0 0 14px;font-weight:600">Come accedere:</p>
+          <ol style="font-size:14px;color:#444;line-height:1.7;padding-left:18px;margin:0 0 18px">
+            <li>Vai nella tua area personale</li>
+            <li>Inserisci <strong>questa stessa email</strong> (${email})</li>
+            <li>Apri il link che ti arriva e sei dentro — nessuna password</li>
+          </ol>
+          <a href="${CLUB_URL}" style="display:inline-block;background:#00CBDB;color:#000;font-weight:800;font-size:15px;padding:13px 26px;border-radius:12px;text-decoration:none">Entra nel Club →</a>
+        </div>
+        <p style="font-size:13px;color:#888;margin:0">Sali di livello,<br><strong>Dave</strong></p>
       </div>`,
     }),
   });

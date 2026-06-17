@@ -4,9 +4,9 @@ import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-// TODO: sostituire con i link d'accesso reali quando Dave li fornisce
-const ACCESS_SFIDA = "https://sfida.davegamba.com";
-const ACCESS_ADDOMINALI = "https://PLACEHOLDER-corso-addominali";
+// Tutti i prodotti si sbloccano nell'area Club: il cliente accede con
+// l'email usata per pagare e vede sbloccato ciò che ha comprato.
+const CLUB_URL = "https://davegamba.com/club";
 
 const STYLES = `
   .gz-body { font-family: 'DM Sans', sans-serif; background: #f7f4ef; min-height: 100vh; color: #0a0a0a; }
@@ -49,27 +49,29 @@ function GrazieContent() {
       <div className="gz-check">✓</div>
       <h1 className="gz-title">Benvenuto a bordo</h1>
       <p className="gz-sub">
-        Pagamento confermato. Trovi i tuoi accessi qui sotto —
-        e te li abbiamo inviati anche via email. Salvali.
+        Pagamento confermato. Hai sbloccato:
       </p>
 
       <div className="gz-card">
-        <h3>⚡ Sfida Estiva 21 Giorni</h3>
-        <p>Accesso immediato al programma completo.</p>
-        <a className="gz-btn" href={ACCESS_SFIDA}>Inizia la Sfida →</a>
+        <h3>✅ Protocollo Estivo da 8 Settimane</h3>
+        {hasBump && <h3 style={{ marginTop: 10 }}>✅ Protocollo Addominali Scolpiti</h3>}
+        <p style={{ marginTop: 12, marginBottom: 0 }}>
+          Trovi tutto nella tua area personale, già sbloccato.
+        </p>
       </div>
 
-      {hasBump && (
-        <div className="gz-card">
-          <h3>🔥 Corso Addominali Completo</h3>
-          <p>Tecnica, progressioni e il programma per addominali visibili.</p>
-          <a className="gz-btn" href={ACCESS_ADDOMINALI}>Apri il corso →</a>
-        </div>
-      )}
+      <div className="gz-card">
+        <h3>Come accedere</h3>
+        <p>
+          Entra nel Club e accedi con <strong>la stessa email</strong> che hai
+          usato per pagare. Ti arriva un link diretto — nessuna password.
+        </p>
+        <a className="gz-btn" href={CLUB_URL}>Entra nel Club →</a>
+      </div>
 
       <p className="gz-note">
-        Non trovi l'email? Controlla spam e promozioni.
-        Per qualsiasi problema scrivi a <a href="mailto:info@davegamba.com">info@davegamba.com</a>.
+        Ti abbiamo inviato anche un'email con le istruzioni. Non la trovi?
+        Controlla spam e promozioni, o scrivi a <a href="mailto:info@davegamba.com">info@davegamba.com</a>.
       </p>
       <Link className="gz-home" href="/">← Torna alla home</Link>
     </div>
