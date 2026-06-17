@@ -45,6 +45,24 @@ export default function CoachingPage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [step, setStep] = useState(1);
+  const TOTAL_STEPS = 3;
+  const [formData, setFormData] = useState<Record<string, string>>({});
+
+  function nextStep(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const entries: Record<string, string> = {};
+    data.forEach((v, k) => { entries[k] = v as string; });
+    setFormData((prev) => ({ ...prev, ...entries }));
+    setStep((s) => Math.min(s + 1, TOTAL_STEPS));
+    setTimeout(() => document.getElementById("candidati")?.scrollIntoView({ behavior: "smooth" }), 50);
+  }
+
+  function prevStep() {
+    setStep((s) => Math.max(s - 1, 1));
+    setTimeout(() => document.getElementById("candidati")?.scrollIntoView({ behavior: "smooth" }), 50);
+  }
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -60,11 +78,10 @@ export default function CoachingPage() {
     if (!scaleVal) { setError("Seleziona il tuo livello di impegno sulla scala 1-5."); return; }
     setError("");
     setLoading(true);
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    const payload: Record<string, unknown> = { impegno: scaleVal };
-    data.forEach((v, k) => { payload[k] = v; });
-    payload.impegno = scaleVal;
+    const lastStep = new FormData(e.currentTarget);
+    const lastEntries: Record<string, string> = {};
+    lastStep.forEach((v, k) => { lastEntries[k] = v as string; });
+    const payload: Record<string, unknown> = { ...formData, ...lastEntries, impegno: scaleVal };
 
     try {
       const res = await fetch("/api/coaching-apply", {
@@ -201,6 +218,18 @@ export default function CoachingPage() {
         .ch-btn-submit:hover{filter:brightness(1.06);transform:translateY(-1px)}
         .ch-btn-submit:disabled{opacity:0.6;cursor:default;transform:none}
         .ch-form-success{text-align:center;padding:48px 24px;background:rgba(0,203,219,0.04);border:1px solid rgba(0,203,219,0.2);border-radius:20px}
+        .ch-steps-header{margin-bottom:36px}
+        .ch-steps-labels{display:flex;justify-content:space-between;margin-bottom:10px}
+        .ch-step-label{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-6);transition:color 0.2s}
+        .ch-step-label.active{color:var(--accent)}
+        .ch-progress-track{height:3px;background:rgba(255,255,255,0.08);border-radius:100px;overflow:hidden}
+        .ch-progress-fill{height:100%;background:linear-gradient(to right,var(--accent),#00AECF);border-radius:100px;transition:width 0.4s ease}
+        .ch-step-counter{font-size:12px;color:var(--gray-6);text-align:right;margin-top:8px}
+        .ch-form-nav{display:flex;gap:12px;align-items:center;margin-top:8px}
+        .ch-btn-back{background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);font-family:'DM Sans',sans-serif;font-size:14px;padding:14px 24px;border-radius:12px;cursor:pointer;transition:all 0.2s}
+        .ch-btn-back:hover{border-color:rgba(255,255,255,0.3);color:var(--white)}
+        .ch-btn-next{flex:1;background:linear-gradient(to bottom,#F7E27A 0%,#F0C040 100%);color:#000;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;padding:16px;border-radius:12px;border:none;cursor:pointer;transition:all 0.2s}
+        .ch-btn-next:hover{filter:brightness(1.06);transform:translateY(-1px)}
         .ch-faq-list{display:flex;flex-direction:column;gap:8px;margin-top:48px}
         .ch-faq-item{background:#fff;border:1px solid #e0d9cc;border-radius:14px;overflow:hidden;transition:border-color 0.2s}
         .ch-faq-item.open{border-color:rgba(0,203,219,0.4)}
@@ -371,75 +400,112 @@ export default function CoachingPage() {
                 <p style={{ fontSize: 15, color: "var(--gray-4)", lineHeight: 1.7 }}>Grazie. Ho ricevuto la tua candidatura e ti contatterò entro 24-48 ore per la call conoscitiva gratuita.</p>
               </div>
             ) : (
-              <form className="ch-coaching-form" onSubmit={handleSubmit}>
-                <div className="ch-form-row">
-                  <div className="ch-form-field">
-                    <label className="ch-form-label">Nome e Cognome <span>*</span></label>
-                    <input className="ch-form-input" type="text" name="nome" placeholder="Marco Rossi" required />
-                  </div>
-                  <div className="ch-form-field">
-                    <label className="ch-form-label">Data di nascita <span>*</span></label>
-                    <input className="ch-form-input" type="date" name="data_nascita" required />
-                  </div>
-                </div>
-                <div className="ch-form-divider" />
-                <div className="ch-form-field">
-                  <label className="ch-form-label">Qual è la tua situazione fisica attuale e cosa ti sta frustrando di più? <span>*</span></label>
-                  <div className="ch-form-hint">Condizione di partenza, eventuali infortuni, patologie o intolleranze — e cosa non funziona oggi</div>
-                  <textarea className="ch-form-textarea" name="situazione_frustrazione" placeholder="Raccontami da dove parti e cosa ti blocca..." required />
-                </div>
-                <div className="ch-form-field">
-                  <label className="ch-form-label">Qual è la tua trasformazione desiderata? <span>*</span></label>
-                  <div className="ch-radio-group">
-                    {["Ricomposizione — perdere grasso e tonificare", "Sviluppare un fisico muscoloso e atletico", "Aumentare energia e testosterone", "Altro"].map((v) => (
-                      <label key={v} className="ch-radio-row"><input type="radio" name="obiettivo" value={v} required />{v}</label>
+              <>
+                {/* Progress bar */}
+                <div className="ch-steps-header">
+                  <div className="ch-steps-labels">
+                    {["Chi sei", "La tua situazione", "Il tuo impegno"].map((label, i) => (
+                      <span key={label} className={`ch-step-label${step === i + 1 ? " active" : ""}`}>{label}</span>
                     ))}
                   </div>
-                </div>
-                <div className="ch-form-field">
-                  <label className="ch-form-label">Perché pensi che non abbia funzionato? <span>*</span></label>
-                  <textarea className="ch-form-textarea" name="perche_no" placeholder="Cosa non ha funzionato e perché..." required />
-                </div>
-                <div className="ch-form-field">
-                  <label className="ch-form-label">Come cambierebbe la tua vita con il fisico che desideri? <span>*</span></label>
-                  <textarea className="ch-form-textarea" name="vita_con_fisico" placeholder="Immagina..." required />
-                </div>
-                <div className="ch-form-divider" />
-                <div className="ch-form-field">
-                  <label className="ch-form-label">Su una scala 1-5, quanto sei pronto a impegnarti ora? <span>*</span></label>
-                  <div className="ch-scale-group">
-                    {["1", "2", "3", "4", "5"].map((v) => (
-                      <button key={v} type="button" className={`ch-scale-btn${scaleVal === v ? " active" : ""}`} onClick={() => setScaleVal(v)}>{v}</button>
-                    ))}
+                  <div className="ch-progress-track">
+                    <div className="ch-progress-fill" style={{ width: `${(step / TOTAL_STEPS) * 100}%` }} />
                   </div>
+                  <div className="ch-step-counter">Step {step} di {TOTAL_STEPS}</div>
                 </div>
-                <div className="ch-form-field">
-                  <label className="ch-form-label">Dove preferisci fare la call con Dave?</label>
-                  <div className="ch-radio-group">
-                    <label className="ch-radio-row"><input type="radio" name="canale_call" value="Telefono" />📞 Telefono</label>
-                    <label className="ch-radio-row"><input type="radio" name="canale_call" value="WhatsApp" />💬 WhatsApp</label>
-                  </div>
-                </div>
-                <div className="ch-form-row">
-                  <div className="ch-form-field">
-                    <label className="ch-form-label">Numero di telefono</label>
-                    <input className="ch-form-input" type="tel" name="telefono" placeholder="+39 333 000 0000" />
-                  </div>
-                  <div className="ch-form-field">
-                    <label className="ch-form-label">La tua email <span>*</span></label>
-                    <input className="ch-form-input" type="email" name="email" placeholder="marco@email.com" required />
-                  </div>
-                </div>
-                <label className="ch-consent-row">
-                  <input type="checkbox" name="consenso" required />
-                  <span>Ho letto la <Link href="/privacy">Privacy Policy</Link> e acconsento al trattamento dei miei dati per essere ricontattato da Dave Gamba.</span>
-                </label>
-                {error && <p style={{ color: "#e05555", fontSize: 13 }}>{error}</p>}
-                <button type="submit" className="ch-btn-submit" disabled={loading}>
-                  {loading ? "Invio in corso…" : "Invia candidatura →"}
-                </button>
-                <p style={{ textAlign: "center", fontSize: 12, color: "var(--gray-6)" }}>✓ Gratuito e senza impegno — ti ricontatto entro 24-48h</p>
-              </form>
+
+                {/* Step 1 — Chi sei */}
+                {step === 1 && (
+                  <form className="ch-coaching-form" onSubmit={nextStep}>
+                    <div className="ch-form-row">
+                      <div className="ch-form-field">
+                        <label className="ch-form-label">Nome e Cognome <span>*</span></label>
+                        <input className="ch-form-input" type="text" name="nome" placeholder="Marco Rossi" required />
+                      </div>
+                      <div className="ch-form-field">
+                        <label className="ch-form-label">Data di nascita <span>*</span></label>
+                        <input className="ch-form-input" type="date" name="data_nascita" required />
+                      </div>
+                    </div>
+                    <div className="ch-form-row">
+                      <div className="ch-form-field">
+                        <label className="ch-form-label">La tua email <span>*</span></label>
+                        <input className="ch-form-input" type="email" name="email" placeholder="marco@email.com" required />
+                      </div>
+                      <div className="ch-form-field">
+                        <label className="ch-form-label">Numero di telefono</label>
+                        <input className="ch-form-input" type="tel" name="telefono" placeholder="+39 333 000 0000" />
+                      </div>
+                    </div>
+                    <button type="submit" className="ch-btn-next">Continua →</button>
+                    <p style={{ textAlign: "center", fontSize: 12, color: "var(--gray-6)", marginTop: 12 }}>✓ Gratuito e senza impegno</p>
+                  </form>
+                )}
+
+                {/* Step 2 — La tua situazione */}
+                {step === 2 && (
+                  <form className="ch-coaching-form" onSubmit={nextStep}>
+                    <div className="ch-form-field">
+                      <label className="ch-form-label">Qual è la tua situazione fisica attuale e cosa ti sta frustrando di più? <span>*</span></label>
+                      <div className="ch-form-hint">Condizione di partenza, eventuali infortuni, patologie o intolleranze — e cosa non funziona oggi</div>
+                      <textarea className="ch-form-textarea" name="situazione_frustrazione" placeholder="Raccontami da dove parti e cosa ti blocca..." required />
+                    </div>
+                    <div className="ch-form-field">
+                      <label className="ch-form-label">Qual è la tua trasformazione desiderata? <span>*</span></label>
+                      <div className="ch-radio-group">
+                        {["Ricomposizione — perdere grasso e tonificare", "Sviluppare un fisico muscoloso e atletico", "Aumentare energia e testosterone", "Altro"].map((v) => (
+                          <label key={v} className="ch-radio-row"><input type="radio" name="obiettivo" value={v} required />{v}</label>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="ch-form-field">
+                      <label className="ch-form-label">Perché pensi che non abbia funzionato finora? <span>*</span></label>
+                      <textarea className="ch-form-textarea" name="perche_no" placeholder="Cosa non ha funzionato e perché..." required />
+                    </div>
+                    <div className="ch-form-nav">
+                      <button type="button" className="ch-btn-back" onClick={prevStep}>← Indietro</button>
+                      <button type="submit" className="ch-btn-next">Continua →</button>
+                    </div>
+                  </form>
+                )}
+
+                {/* Step 3 — Il tuo impegno */}
+                {step === 3 && (
+                  <form className="ch-coaching-form" onSubmit={handleSubmit}>
+                    <div className="ch-form-field">
+                      <label className="ch-form-label">Come cambierebbe la tua vita con il fisico che desideri? <span>*</span></label>
+                      <textarea className="ch-form-textarea" name="vita_con_fisico" placeholder="Immagina..." required />
+                    </div>
+                    <div className="ch-form-field">
+                      <label className="ch-form-label">Su una scala 1-5, quanto sei pronto a impegnarti ora? <span>*</span></label>
+                      <div className="ch-scale-group">
+                        {["1", "2", "3", "4", "5"].map((v) => (
+                          <button key={v} type="button" className={`ch-scale-btn${scaleVal === v ? " active" : ""}`} onClick={() => setScaleVal(v)}>{v}</button>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="ch-form-field">
+                      <label className="ch-form-label">Dove preferisci fare la call con Dave?</label>
+                      <div className="ch-radio-group">
+                        <label className="ch-radio-row"><input type="radio" name="canale_call" value="Telefono" />📞 Telefono</label>
+                        <label className="ch-radio-row"><input type="radio" name="canale_call" value="WhatsApp" />💬 WhatsApp</label>
+                      </div>
+                    </div>
+                    <label className="ch-consent-row">
+                      <input type="checkbox" name="consenso" required />
+                      <span>Ho letto la <Link href="/privacy">Privacy Policy</Link> e acconsento al trattamento dei miei dati per essere ricontattato da Dave Gamba.</span>
+                    </label>
+                    {error && <p style={{ color: "#e05555", fontSize: 13 }}>{error}</p>}
+                    <div className="ch-form-nav">
+                      <button type="button" className="ch-btn-back" onClick={prevStep}>← Indietro</button>
+                      <button type="submit" className="ch-btn-submit" style={{ flex: 1 }} disabled={loading}>
+                        {loading ? "Invio in corso…" : "Invia candidatura →"}
+                      </button>
+                    </div>
+                    <p style={{ textAlign: "center", fontSize: 12, color: "var(--gray-6)" }}>✓ Gratuito e senza impegno — ti ricontatto entro 24-48h</p>
+                  </form>
+                )}
+              </>
             )}
           </div>
         </div>
