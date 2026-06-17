@@ -106,7 +106,10 @@ export default function CoachingPage() {
         .ch-hero-check{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(0,203,219,0.2);border-radius:14px;padding:16px 18px}
         .ch-hero-check-icon{width:26px;height:26px;border-radius:50%;background:rgba(0,203,219,0.12);border:1px solid rgba(0,203,219,0.3);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;margin-top:1px}
         .ch-hero-check-text{font-size:14px;color:rgba(255,255,255,0.8);line-height:1.5}
-        @media(max-width:768px){.ch-hero-content{grid-template-columns:1fr;gap:32px;padding:0 20px}.ch-hero-left{align-items:center;text-align:center}.ch-hero-right{display:none}}
+        .ch-press-topbar{position:relative;z-index:10;background:#fff;border-bottom:1px solid #e8e2d8;padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+        .ch-press-topbar-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#aaa;margin-right:4px}
+        .ch-press-topbar img{height:16px;object-fit:contain;opacity:0.4;filter:brightness(0)}
+        @media(max-width:768px){.ch-hero-content{grid-template-columns:1fr;gap:0;padding:0 20px}.ch-hero-left{align-items:center;text-align:center}.ch-hero-right{display:flex;margin-top:24px;gap:10px}.ch-hero-check{padding:12px 14px}.ch-hero-check-text{font-size:13px}}
         .ch-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:18px}
         .ch-badge-gold{background:rgba(240,192,64,0.12);color:var(--gold);border:1px solid rgba(240,192,64,0.25)}
         .ch-badge-dot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:chPulse 2s infinite}
@@ -219,6 +222,12 @@ export default function CoachingPage() {
       `}</style>
 
       <div className="ch-body">
+        {/* Press top bar */}
+        <div className="ch-press-topbar">
+          <span className="ch-press-topbar-label">Come visto su</span>
+          <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/loghi-press.png" alt="Vanity Fair, Corriere della Sera, la Repubblica, Rai Radio 2" style={{ height: 18 }} />
+        </div>
+
         {/* Hero */}
         <section className="ch-hero">
           <img className="bg" src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/foto-sfida-estiva.jpg" alt="Dave Gamba Premium Coaching" />
@@ -228,10 +237,7 @@ export default function CoachingPage() {
               <div style={{ fontSize: 12, fontWeight: 300, color: "rgba(255,255,255,0.4)", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 10 }}>Coaching Online con Dave</div>
               <h1 className="ch-hero-title">Premium<br /><em>Coaching 1-1</em></h1>
               <p className="ch-hero-sub" style={{ margin: "0 0 28px" }}>Per chi vuole il massimo risultato fisico nel minor tempo possibile, con un percorso personalizzato e guidato da Dave.</p>
-              <div className="ch-btn-row" style={{ justifyContent: "flex-start" }}>
-                <a href="#candidati" className="ch-btn-gold-outline">Candidati ora →</a>
-                <a href="#piani" className="ch-btn-gold-outline">Vedi i piani</a>
-              </div>
+              <a href="#candidati" className="ch-btn-gold">Compila il questionario →</a>
             </div>
             {/* Destra: spunte */}
             <div className="ch-hero-right">
@@ -252,19 +258,6 @@ export default function CoachingPage() {
           </div>
         </section>
 
-        {/* Press */}
-        <section className="w-full bg-white py-3 sm:py-4">
-          <div className="w-full px-4 sm:px-8 flex flex-col items-center gap-2">
-            <p className="text-[#999] text-[9px] font-semibold tracking-[0.2em] uppercase">
-              Come visto su
-            </p>
-            <img
-              src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/loghi-press.png"
-              alt="Vanity Fair, Corriere della Sera, la Repubblica, Rai Radio 2"
-              className="w-full max-w-2xl h-7 sm:h-9 object-contain"
-            />
-          </div>
-        </section>
 
         {/* Come funziona */}
         <div className="ch-bg-section ch-section-navy">
