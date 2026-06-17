@@ -100,7 +100,13 @@ export default function CoachingPage() {
         .ch-hero{position:relative;width:100%;height:100vh;max-height:860px;overflow:hidden;display:flex;align-items:center;justify-content:center}
         .ch-hero img.bg{position:absolute;inset:0;width:100%;height:115%;object-fit:cover;object-position:center top;display:block;transform:translateY(-3%)}
         .ch-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(10,10,10,0.78) 50%,rgba(10,10,10,0.15) 100%);pointer-events:none}
-        .ch-hero-content{position:relative;z-index:2;padding:0 24px;text-align:center;width:100%;animation:chFadeUp 0.7s ease 0.1s both}
+        .ch-hero-content{position:relative;z-index:2;padding:0 40px;width:100%;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;animation:chFadeUp 0.7s ease 0.1s both}
+        .ch-hero-left{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+        .ch-hero-right{display:flex;flex-direction:column;gap:14px}
+        .ch-hero-check{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(0,203,219,0.2);border-radius:14px;padding:16px 18px}
+        .ch-hero-check-icon{width:26px;height:26px;border-radius:50%;background:rgba(0,203,219,0.12);border:1px solid rgba(0,203,219,0.3);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;margin-top:1px}
+        .ch-hero-check-text{font-size:14px;color:rgba(255,255,255,0.8);line-height:1.5}
+        @media(max-width:768px){.ch-hero-content{grid-template-columns:1fr;gap:32px;padding:0 20px}.ch-hero-left{align-items:center;text-align:center}.ch-hero-right{display:none}}
         .ch-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:18px}
         .ch-badge-gold{background:rgba(240,192,64,0.12);color:var(--gold);border:1px solid rgba(240,192,64,0.25)}
         .ch-badge-dot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:chPulse 2s infinite}
@@ -217,12 +223,31 @@ export default function CoachingPage() {
         <section className="ch-hero">
           <img className="bg" src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/foto-sfida-estiva.jpg" alt="Dave Gamba Premium Coaching" />
           <div className="ch-hero-content">
-            <div style={{ fontSize: 12, fontWeight: 300, color: "rgba(255,255,255,0.4)", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 10 }}>Coaching Online con Dave</div>
-            <h1 className="ch-hero-title">Premium<br /><em>Coaching 1-1</em></h1>
-            <p className="ch-hero-sub">Per chi vuole il massimo risultato fisico nel minor tempo possibile, con un percorso personalizzato e guidato da Dave.</p>
-            <div className="ch-btn-row">
-              <a href="#candidati" className="ch-btn-gold-outline">Candidati ora →</a>
-              <a href="#piani" className="ch-btn-gold-outline">Vedi i piani</a>
+            {/* Sinistra: testo */}
+            <div className="ch-hero-left">
+              <div style={{ fontSize: 12, fontWeight: 300, color: "rgba(255,255,255,0.4)", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 10 }}>Coaching Online con Dave</div>
+              <h1 className="ch-hero-title">Premium<br /><em>Coaching 1-1</em></h1>
+              <p className="ch-hero-sub" style={{ margin: "0 0 28px" }}>Per chi vuole il massimo risultato fisico nel minor tempo possibile, con un percorso personalizzato e guidato da Dave.</p>
+              <div className="ch-btn-row" style={{ justifyContent: "flex-start" }}>
+                <a href="#candidati" className="ch-btn-gold-outline">Candidati ora →</a>
+                <a href="#piani" className="ch-btn-gold-outline">Vedi i piani</a>
+              </div>
+            </div>
+            {/* Destra: spunte */}
+            <div className="ch-hero-right">
+              {[
+                { icon: "✓", t: "La tua migliore forma fisica di sempre — atletica, attraente, e soprattutto definitiva, non temporanea." },
+                { icon: "✓", t: "Allenamenti brevi e mirati che ti danno più risultati in meno tempo" },
+                { icon: "✓", t: "Un'alimentazione su misura — flessibile, senza rinunce inutili" },
+                { icon: "✓", t: "L'energia e la lucidità che credevi di aver perso con gli anni" },
+                { icon: "✓", t: "La certezza, finalmente, di essere sulla strada giusta" },
+                { icon: "▸", t: "Qualcuno che ti tiene in rotta quando la motivazione cala" },
+              ].map(({ icon, t }) => (
+                <div key={t} className="ch-hero-check">
+                  <div className="ch-hero-check-icon">{icon}</div>
+                  <p className="ch-hero-check-text">{t}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
