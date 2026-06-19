@@ -5,7 +5,7 @@ import Script from "next/script";
 import { fbqTrack } from "@/lib/analytics";
 
 const DEADLINE = new Date("2026-06-15T23:59:59").getTime();
-const STRIPE_LINK = "/checkout";
+const STRIPE_LINK = "/checkout/sfida-estiva";
 
 const TRASFORMAZIONI = [
   { src: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/img_07.jpeg", alt: "Trasformazione" },
@@ -106,11 +106,11 @@ export default function SfidaEstivaPage() {
         .sf-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.45) 50%,rgba(0,0,0,0.1) 100%)}
         .sf-hero-content{position:relative;z-index:2;padding:40px 24px 60px;width:100%;max-width:960px;margin:0 auto;text-align:center}
         .sf-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:100px;padding:7px 18px;font-size:0.72rem;color:#fff;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px}
-        .sf-hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.4rem,6vw,4rem);line-height:1.05;color:#fff;margin-bottom:20px}
+        .sf-hero h1{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(2.4rem,6vw,4rem);line-height:1.05;color:#fff;margin-bottom:20px}
         .sf-hero h1 em{font-style:italic;color:var(--cyan)}
         .sf-hero-sub{font-size:1rem;font-weight:400;color:rgba(255,255,255,0.92);line-height:1.7;margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto}
         .sf-hero-stats{display:flex;justify-content:center;gap:40px;margin-bottom:36px}
-        .sf-stat-n{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--cyan);line-height:1}
+        .sf-stat-n{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:2rem;color:var(--cyan);line-height:1}
         .sf-stat-l{font-size:0.7rem;color:rgba(255,255,255,0.45);letter-spacing:0.1em;text-transform:uppercase;margin-top:3px}
         .sf-btn-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
         .sf-btn-primary{display:inline-flex;align-items:center;background:linear-gradient(180deg,#FFE566 0%,#F5B800 100%);box-shadow:0 2px 0 rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.28);color:var(--black);font-weight:600;font-size:0.95rem;padding:16px 28px;border-radius:100px;text-decoration:none;transition:all 0.2s}
@@ -122,7 +122,7 @@ export default function SfidaEstivaPage() {
         .sf-press img{height:24px;width:100%;object-fit:contain;opacity:0.55;display:block}
         .sf-section{padding:80px 0}
         .sf-label{display:block;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
-        .sf-section h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.15;margin-bottom:20px}
+        .sf-section h2{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.15;margin-bottom:20px}
         .sf-section h2 em{font-style:italic;color:var(--cyan)}
         .sf-body{font-size:1rem;line-height:1.8;color:var(--muted)}
         .sf-section--img{position:relative;overflow:hidden;color:#fff}
@@ -133,9 +133,9 @@ export default function SfidaEstivaPage() {
         .sf-offer-box::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(0,203,219,0.15) 0%,transparent 65%);pointer-events:none}
         .sf-offer-box>*{position:relative;z-index:1}
         .sf-offer-tag{display:inline-block;background:rgba(0,203,219,0.1);border:1px solid rgba(0,203,219,0.25);color:var(--cyan);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:20px}
-        .sf-offer-title{font-family:'DM Serif Display',serif;font-size:1.8rem;color:#fff;margin-bottom:4px}
+        .sf-offer-title{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:1.8rem;color:#fff;margin-bottom:4px}
         .sf-offer-sub{font-size:0.85rem;color:rgba(255,255,255,0.35);margin-bottom:0}
-        .sf-offer-price{font-family:'DM Serif Display',serif;font-size:4.5rem;color:var(--cyan);line-height:1;margin:20px 0 6px}
+        .sf-offer-price{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:4.5rem;color:var(--cyan);line-height:1;margin:20px 0 6px}
         .sf-offer-price-note{font-size:0.82rem;color:rgba(255,255,255,0.3);margin-bottom:28px}
         .sf-offer-list{display:flex;flex-direction:column;gap:9px;max-width:380px;margin:0 auto 36px;text-align:left}
         .sf-offer-item{display:flex;align-items:center;gap:10px;font-size:0.9rem;color:rgba(255,255,255,0.7)}
@@ -150,14 +150,14 @@ export default function SfidaEstivaPage() {
         .sf-countdown-offer b{color:var(--cyan);font-variant-numeric:tabular-nums;font-weight:800}
         .sf-faq{margin-top:44px}
         .sf-faq-item{border-bottom:1px solid var(--sand2);padding:22px 0}
-        .sf-faq-q{font-family:'DM Serif Display',serif;font-size:1.03rem;cursor:pointer;display:flex;justify-content:space-between;gap:16px;user-select:none;background:none;border:none;width:100%;text-align:left;color:var(--text);padding:0}
+        .sf-faq-q{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:1.03rem;cursor:pointer;display:flex;justify-content:space-between;gap:16px;user-select:none;background:none;border:none;width:100%;text-align:left;color:var(--text);padding:0}
         .sf-faq-icon{font-size:1.2rem;color:var(--cyan);flex-shrink:0;font-family:sans-serif;font-weight:300}
         .sf-faq-a{font-size:0.92rem;color:var(--muted);line-height:1.7;margin-top:12px}
         .sf-footer-cta{position:relative;min-height:480px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
         .sf-footer-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-image:url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/spiaggiaBg.jpeg')}
         .sf-footer-bg::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.55)}
         .sf-footer-content{position:relative;z-index:1;padding:80px 24px}
-        .sf-footer-content h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,5vw,3rem);color:#fff;margin-bottom:12px;line-height:1.1}
+        .sf-footer-content h2{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(2rem,5vw,3rem);color:#fff;margin-bottom:12px;line-height:1.1}
         .sf-footer-content h2 em{font-style:italic;color:var(--cyan)}
         .sf-footer-content p{color:rgba(255,255,255,0.55);margin-bottom:36px;font-size:0.95rem}
         .sf-footer-note{background:var(--black);padding:28px 24px;text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.2)}

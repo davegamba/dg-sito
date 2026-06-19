@@ -1,11 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-
-const PRICE_SFIDA = "price_1TbEFWIyNONJea71jucLKRSE";
-const PRICE_BUNDLE = "price_1TjOmSIyNONJea71Fi7KSrBl";
-
-const AMOUNT_SFIDA = 3300;   // €33 in centesimi
-const AMOUNT_BUNDLE = 4200;  // €42 in centesimi
+import { getOfferta } from "@/lib/offerte";
 
 export async function POST(req: NextRequest) {
   const secretKey = process.env.STRIPE_SECRET_KEY;
@@ -19,15 +14,23 @@ export async function POST(req: NextRequest) {
 
   try {
     const stripe = new Stripe(secretKey, { apiVersion: "2026-04-22.dahlia" });
-    const { bump, email, paymentIntentId } = await req.json();
+    const { prodotto, bump, email, paymentIntentId } = await req.json();
 
-    const amount = bump ? AMOUNT_BUNDLE : AMOUNT_SFIDA;
-    const product_id = bump ? "sfida+addominali" : "sfida";
-    const price_id = bump ? PRICE_BUNDLE : PRICE_SFIDA;
+    // Retrocompatibilità: se non arriva "prodotto", usa la Sfida Estiva
+    const slug = typeof prodotto === "string" && prodotto ? prodotto : "sfida-estiva";
+    const offerta = getOfferta(slug);
+    if (!offerta) {
+      return NextResponse.json({ error: `Offerta sconosciuta: ${slug}` }, { status: 400 });
+    }
 
-    const cleanEmail = typeof email === "string" && email.trim() ? email.trim().toLowerCase() : null;
+    const useBump = Boolean(bump) && Boolean(offerta.bump);
+    const amount = useBump ? offerta.bump!.amountBundle : offerta.amount;
+    const product_id = useBump ? offerta.bump!.productIdBundle : offerta.productId;
 
-    const metadata: Record<string, string> = { product_id, price_id };
+    const cleanEmail =
+      typeof email === "string" && email.trim() ? email.trim().toLowerCase() : null;
+
+    const metadata: Record<string, string> = { product_id, offerta: slug };
     if (cleanEmail) metadata.email = cleanEmail;
 
     // Aggiorna un intent già esistente — usato al submit per agganciare l'email
