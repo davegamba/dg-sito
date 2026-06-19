@@ -101,12 +101,12 @@ export default function SfidaEstivaPage() {
         .sf-container{max-width:960px;margin:0 auto;padding:0 24px}
         .sf-topbar{background:linear-gradient(90deg,#FFE566 0%,#F5B800 100%);color:#1A1A1A;text-align:center;padding:10px 16px;font-size:clamp(0.78rem,2.2vw,0.95rem);font-weight:600;line-height:1.5}
         .sf-hero{position:relative;min-height:60vh;display:flex;align-items:flex-end;overflow:hidden}
-        .sf-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center 30%;background-image:url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/heroBg.jpeg')}
-        @media(min-width:768px){.sf-hero{min-height:80vh}.sf-hero-bg{background-position:center 65%}}
+        .sf-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center 30%;background-image:url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/dave-piscina.jpg')}
+        @media(min-width:768px){.sf-hero{min-height:80vh}.sf-hero-bg{background-position:center 20%}}
         .sf-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.45) 50%,rgba(0,0,0,0.1) 100%)}
         .sf-hero-content{position:relative;z-index:2;padding:40px 24px 60px;width:100%;max-width:960px;margin:0 auto;text-align:center}
         .sf-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:100px;padding:7px 18px;font-size:0.72rem;color:#fff;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px}
-        .sf-hero h1{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(2.4rem,6vw,4rem);line-height:1.05;color:#fff;margin-bottom:20px}
+        .sf-hero h1{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(2.4rem,6vw,4rem);line-height:1.05;color:#fff;margin-bottom:20px;font-weight:800}
         .sf-hero h1 em{font-style:italic;color:var(--cyan)}
         .sf-hero-sub{font-size:1rem;font-weight:400;color:rgba(255,255,255,0.92);line-height:1.7;margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto}
         .sf-hero-stats{display:flex;justify-content:center;gap:40px;margin-bottom:36px}
@@ -117,12 +117,12 @@ export default function SfidaEstivaPage() {
         .sf-btn-primary:hover{background:linear-gradient(180deg,#FFED80 0%,#F5C400 100%);transform:translateY(-2px);box-shadow:0 8px 28px rgba(240,192,64,0.4)}
         .sf-hero-note{margin-top:14px;font-size:0.75rem;color:rgba(255,255,255,0.3)}
         .sf-hero-note strong{color:rgba(255,255,255,0.6)}
-        .sf-press{background:var(--white);padding:20px 24px;border-bottom:1px solid var(--sand2);text-align:center}
-        .sf-press-label{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+        .sf-press{background:var(--white);padding:12px 6px;border-bottom:1px solid var(--sand2);text-align:center}
+        .sf-press-label{font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
         .sf-press img{height:24px;width:100%;object-fit:contain;opacity:0.55;display:block}
         .sf-section{padding:80px 0}
         .sf-label{display:block;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
-        .sf-section h2{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.15;margin-bottom:20px}
+        .sf-section h2{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.15;margin-bottom:20px;font-weight:800}
         .sf-section h2 em{font-style:italic;color:var(--cyan)}
         .sf-body{font-size:1rem;line-height:1.8;color:var(--muted)}
         .sf-section--img{position:relative;overflow:hidden;color:#fff}
@@ -150,7 +150,7 @@ export default function SfidaEstivaPage() {
         .sf-countdown-offer b{color:var(--cyan);font-variant-numeric:tabular-nums;font-weight:800}
         .sf-faq{margin-top:44px}
         .sf-faq-item{border-bottom:1px solid var(--sand2);padding:22px 0}
-        .sf-faq-q{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:1.03rem;cursor:pointer;display:flex;justify-content:space-between;gap:16px;user-select:none;background:none;border:none;width:100%;text-align:left;color:var(--text);padding:0}
+        .sf-faq-q{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:1.03rem;font-weight:800;cursor:pointer;display:flex;justify-content:space-between;gap:16px;user-select:none;background:none;border:none;width:100%;text-align:left;color:var(--text);padding:0}
         .sf-faq-icon{font-size:1.2rem;color:var(--cyan);flex-shrink:0;font-family:sans-serif;font-weight:300}
         .sf-faq-a{font-size:0.92rem;color:var(--muted);line-height:1.7;margin-top:12px}
         .sf-footer-cta{position:relative;min-height:480px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
@@ -186,6 +186,10 @@ export default function SfidaEstivaPage() {
         .sf-phone-bar{width:60px;height:3px;background:rgba(255,255,255,0.12);border-radius:2px;margin:10px auto 0}
         .sf-phone-desc{text-align:center;font-size:0.87rem;color:rgba(255,255,255,0.85);line-height:1.65;background:var(--cyan);border-radius:20px;padding:18px 16px}
         .sf-phone-desc strong{display:block;color:#fff;font-size:0.97rem;margin-bottom:4px}
+        .sf-carousel{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 4px 24px}
+        .sf-carousel::-webkit-scrollbar{display:none}
+        .sf-carousel-slide{flex-shrink:0;width:260px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:20px}
+        .sf-mockup-img{width:100%;border-radius:8px;display:block}
         .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
         .reveal.in{opacity:1;transform:translateY(0)}
       `}</style>
@@ -204,19 +208,19 @@ export default function SfidaEstivaPage() {
         <div className="sf-hero-content">
           <div className="sf-hero-badge">🌴 Il metodo di Dave Gamba per l&apos;estate</div>
           <h1>L&apos;estate arriva.<br /><em>Il tuo corpo</em><br />è pronto?</h1>
-          <p className="sf-hero-sub">21 allenamenti da 21 minuti.<br /><strong>Versione Casa e versione Palestra incluse.</strong><br /><br />Il sistema Breve-Intenso-Mirato applicato all&apos;Estate 🌴</p>
+          <p className="sf-hero-sub">21 allenamenti da 21 minuti.<br /><strong>Versione Casa e versione Palestra incluse.</strong><br />Il sistema Breve-Intenso-Mirato applicato all&apos;Estate 🌴</p>
           <div className="sf-hero-stats">
             <div><div className="sf-stat-n">1.000+</div><div className="sf-stat-l">iscritti soddisfatti</div></div>
             <div><div className="sf-stat-n">21 min</div><div className="sf-stat-l">al giorno, non di più</div></div>
             <div><div className="sf-stat-n">33€</div><div className="sf-stat-l">pagamento unico</div></div>
           </div>
-          <div style={{ marginBottom: 16 }}>
-            <span className="sf-countdown" style={countdownStyle}>⏳ Offerta scade tra: <b>{timer}</b></span>
-          </div>
           <div className="sf-btn-row">
             <a href={STRIPE_LINK} className="sf-btn-primary" onClick={() => fbqTrack("InitiateCheckout", { value: 33, currency: "EUR", content_name: "Sfida Estiva 21 Giorni" })}>
               Inizia la Sfida Estiva →
             </a>
+          </div>
+          <div style={{ marginTop: 16 }}>
+            <span className="sf-countdown" style={countdownStyle}>⏳ Offerta scade tra: <b>{timer}</b></span>
           </div>
           <p className="sf-hero-note"><strong>33€ una tantum</strong> · Include versione casa + palestra · Accesso immediato e a vita</p>
         </div>
@@ -248,19 +252,23 @@ export default function SfidaEstivaPage() {
         </div>
       </section>
 
-      {/* I 3 pilastri */}
+      {/* I 3 pilastri — carousel */}
       <section className="sf-section reveal" style={{ padding: "48px 0 64px", background: "#fff" }}>
         <div className="sf-container">
-          <div style={{ textAlign: "center", marginBottom: 36 }}>
-            <p style={{ fontFamily: "'DM Serif Display',serif", fontSize: "1.35rem", color: "#1A1A1A", marginBottom: 4 }}>La soluzione è semplice:</p>
-            <p style={{ fontFamily: "'DM Serif Display',serif", fontSize: "1.6rem", color: "var(--cyan)" }}>avere un percorso studiato e progressivo.</p>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16 }}>
-            {[{ n: "21", t: "Allenamenti", d: "Progressivi. Versione casa e palestra — scegli tu ogni giorno." }, { n: "21", t: "Tips", d: "Le mie routine per restare in forma d'estate. Applicabili subito." }, { n: "21", t: "Minuti", d: "Breve-Intenso-Mirato. Per chi ha poco tempo e vuole il massimo." }].map(({ n, t, d }) => (
-              <div key={t} style={{ padding: "24px 16px", background: "var(--cyan)", borderRadius: 20, textAlign: "center" }}>
-                <div style={{ fontFamily: "'DM Serif Display',serif", fontSize: "3rem", lineHeight: 1, background: "linear-gradient(160deg,#FFE566 0%,#F5B800 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{n}</div>
-                <div style={{ fontFamily: "'DM Serif Display',serif", fontSize: "1.05rem", margin: "8px 0 6px", color: "#fff" }}>{t}</div>
-                <div style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.85)", lineHeight: 1.5 }}>{d}</div>
+          <p style={{ fontFamily: "'DM Serif Display',serif", fontSize: "clamp(1.8rem,4vw,2.6rem)", color: "var(--cyan)", textAlign: "center", marginBottom: 36 }}>Avere un percorso studiato e progressivo.</p>
+          <div className="sf-carousel">
+            {[
+              { img: "mockup-estate-1.jpg", alt: "Sfida Estiva Gym", t: "Allenamenti", d: "Progressivi. Versione casa e palestra — scegli tu ogni giorno." },
+              { img: "mockup-estate-2.jpg", alt: "Sfida Estiva Home", t: "Tips", d: "Le mie routine per restare in forma d'estate. Applicabili subito." },
+              { img: "mockup-estate-3.jpg", alt: "Sfida Estiva Dashboard", t: "Minuti", d: "Breve-Intenso-Mirato. Per chi ha poco tempo e vuole il massimo." },
+            ].map(({ img, alt, t, d }) => (
+              <div key={t} className="sf-carousel-slide">
+                <img className="sf-mockup-img" src={`https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/${img}`} alt={alt} />
+                <div style={{ padding: "24px 16px", background: "var(--cyan)", borderRadius: 20, textAlign: "center", width: "100%" }}>
+                  <div style={{ fontFamily: "'DM Serif Display',serif", fontSize: "3rem", lineHeight: 1, background: "linear-gradient(160deg,#FFE566 0%,#F5B800 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>21</div>
+                  <div style={{ fontFamily: "'DM Serif Display',serif", fontSize: "1.05rem", margin: "8px 0 6px", color: "#fff" }}>{t}</div>
+                  <div style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.85)", lineHeight: 1.5 }}>{d}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -339,10 +347,12 @@ export default function SfidaEstivaPage() {
       </section>
 
       {/* Offerta */}
-      <section className="sf-section reveal" style={{ padding: "80px 0", background: "radial-gradient(ellipse at 50% 0%, rgba(0,203,219,0.08) 0%, transparent 60%), #F5EFE4" }}>
+      <section className="sf-section sf-section--img reveal" style={{ padding: "80px 0" }}>
+        <div className="sf-section-bg" style={{ backgroundImage: "url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/heroBg.jpeg')" }} />
+        <div className="sf-section-inner">
         <div className="sf-container">
-          <span className="sf-label">L&apos;offerta</span>
-          <h2>Tutto quello che ti serve<br />per arrivare all&apos;estate <em>in forma.</em></h2>
+          <span className="sf-label" style={{ color: "rgba(0,203,219,0.8)" }}>L&apos;offerta</span>
+          <h2 style={{ color: "#fff" }}>Tutto quello che ti serve<br />per arrivare all&apos;estate <em>in forma.</em></h2>
           <div className="sf-offer-box">
             <div className="sf-countdown-offer" style={countdownStyle}>⏳ Offerta scade il 7 giugno — rimane: <b>{timer}</b></div>
             <div className="sf-offer-title">Sfida Estiva 21 Giorni</div>
@@ -361,6 +371,7 @@ export default function SfidaEstivaPage() {
             </div>
             <p className="sf-offer-secure">🔐 Pagamento sicuro con <span>Stripe</span> e <span>PayPal</span> · Accesso immediato</p>
           </div>
+        </div>
         </div>
       </section>
 
