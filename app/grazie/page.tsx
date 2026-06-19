@@ -27,13 +27,33 @@ const STYLES = `
 function GrazieContent() {
   const params = useSearchParams();
   const status = params.get("redirect_status");
+  const paymentIntent = params.get("payment_intent");
   const slug = params.get("p") ?? "sfida-estiva";
   const hasBump = params.get("b") === "1";
-  const success = status === "succeeded" || status === null;
 
   const offerta = getOfferta(slug);
 
-  if (!success) {
+  // È un vero ritorno da Stripe? (Stripe aggiunge sempre questi parametri)
+  const daStripe = Boolean(status) || Boolean(paymentIntent);
+  // "succeeded" = ok subito · "processing" = ok ma in conferma (es. alcuni metodi)
+  const pagato = status === "succeeded" || status === "processing";
+
+  // Visita diretta alla pagina senza un ordine reale → nessuna finta conferma
+  if (!daStripe) {
+    return (
+      <div className="gz-wrap">
+        <h1 className="gz-fail-title">Nessun ordine da mostrare</h1>
+        <p className="gz-sub">
+          Questa pagina compare dopo un acquisto. Se hai appena comprato e non
+          la vedi correttamente, controlla la mail di conferma.
+        </p>
+        <Link className="gz-btn" href="/sfida-estiva">Scopri la Sfida Estiva →</Link>
+        <Link className="gz-home" href="/">← Torna alla home</Link>
+      </div>
+    );
+  }
+
+  if (!pagato) {
     return (
       <div className="gz-wrap">
         <div className="gz-check" style={{ background: "#e05555" }}>!</div>

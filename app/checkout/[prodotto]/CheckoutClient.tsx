@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
@@ -135,16 +135,25 @@ export default function CheckoutClient({ offerta }: { offerta: Offerta }) {
   const [loadingIntent, setLoadingIntent] = useState(false);
   const [intentError, setIntentError] = useState("");
 
+  // Tiene l'id del PaymentIntent già creato: al cambio bump lo AGGIORNIamo
+  // invece di crearne uno nuovo (così niente pagamenti "fantasma" su Stripe).
+  const intentIdRef = useRef("");
+
   const totale = bump && offerta.bump ? offerta.prezzo + offerta.bump.prezzo : offerta.prezzo;
 
-  // Crea/aggiorna il PaymentIntent quando cambia bump
+  // Crea il PaymentIntent al primo caricamento; ai cambi di bump lo aggiorna.
   useEffect(() => {
-    setLoadingIntent(true);
+    const giaCreato = Boolean(intentIdRef.current);
+    if (!giaCreato) setLoadingIntent(true); // niente "caricamento" durante un aggiornamento
     setIntentError("");
     fetch("/api/checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prodotto: slug, bump }),
+      body: JSON.stringify({
+        prodotto: slug,
+        bump,
+        ...(intentIdRef.current ? { paymentIntentId: intentIdRef.current } : {}),
+      }),
     })
       .then(async (r) => {
         const data = await r.json().catch(() => ({}));
@@ -154,6 +163,7 @@ export default function CheckoutClient({ offerta }: { offerta: Offerta }) {
         return data;
       })
       .then(({ clientSecret, paymentIntentId }) => {
+        intentIdRef.current = paymentIntentId;
         setClientSecret(clientSecret);
         setPaymentIntentId(paymentIntentId);
         setLoadingIntent(false);
