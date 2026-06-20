@@ -126,7 +126,7 @@ export async function POST(req: NextRequest) {
   else if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
     email = session.customer_email ?? session.customer_details?.email;
-    productId = session.metadata?.product_id;
+    productId = session.metadata?.product_id ?? "";
 
     // Fallback: Payment Link non imposta metadata → recupera line items e mappa dal Price ID
     if (!productId) {
