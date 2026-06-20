@@ -7,7 +7,7 @@ import { getOfferta } from "@/lib/offerte";
 
 // Tutti i prodotti si sbloccano nell'area Club: il cliente accede con
 // l'email usata per pagare e vede sbloccato ciò che ha comprato.
-const CLUB_URL = "https://davegamba.com/club";
+const CLUB_URL = "https://club.davegamba.com";
 
 const STYLES = `
   .gz-body { font-family: 'DM Sans', sans-serif; background: #f7f4ef; min-height: 100vh; color: #0a0a0a; }

@@ -18,7 +18,7 @@ export default function LoginPage() {
     const { error: err } = await supabase.auth.signInWithOtp({
       email: email.trim().toLowerCase(),
       options: {
-        emailRedirectTo: "https://davegamba.com/club",
+        emailRedirectTo: "https://club.davegamba.com",
       },
     });
 
@@ -256,7 +256,7 @@ export default function LoginPage() {
           {!sent && (
             <div className="lg-footer">
               Non hai ancora un account?{" "}
-              <a href="/club">Scopri il Club</a>
+              <a href="https://club.davegamba.com">Scopri il Club</a>
             </div>
           )}
         </div>

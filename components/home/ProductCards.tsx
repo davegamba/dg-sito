@@ -80,18 +80,27 @@ export default function ProductCards() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-end justify-between mb-8 gap-4">
           <div>
-            <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
-              Entra nel DG Athletic Club
+            <span className="text-[#00C8DB] text-xs font-semibold tracking-widest uppercase mb-3 block">
+              DG Athletic Club
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-white">
+            <h2 className="font-serif text-3xl sm:text-4xl text-white mb-4">
               Gli strumenti per te
             </h2>
+            <a
+              href="https://club.davegamba.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-black px-5 py-2 rounded-full transition-all duration-200 hover:opacity-85"
+              style={{ background: "linear-gradient(135deg, #00C8DB, #00AECF)" }}
+            >
+              Entra nel Club →
+            </a>
           </div>
           <div className="flex gap-2 shrink-0">
-            <button onClick={() => scroll("left")} className="w-10 h-10 rounded-full border border-[#222] flex items-center justify-center text-[#666] hover:text-white hover:border-[#00CBDB] transition-all duration-200" aria-label="Precedente">
+            <button onClick={() => scroll("left")} className="w-10 h-10 rounded-full border border-[#222] flex items-center justify-center text-[#666] hover:text-white hover:border-[#00C8DB] transition-all duration-200" aria-label="Precedente">
               <ChevronLeft size={18} />
             </button>
-            <button onClick={() => scroll("right")} className="w-10 h-10 rounded-full border border-[#222] flex items-center justify-center text-[#666] hover:text-white hover:border-[#00CBDB] transition-all duration-200" aria-label="Successivo">
+            <button onClick={() => scroll("right")} className="w-10 h-10 rounded-full border border-[#222] flex items-center justify-center text-[#666] hover:text-white hover:border-[#00C8DB] transition-all duration-200" aria-label="Successivo">
               <ChevronRight size={18} />
             </button>
           </div>

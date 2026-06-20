@@ -3,7 +3,7 @@ import Stripe from "stripe";
 
 // Tutti i prodotti si sbloccano nella stessa area: davegamba.com/club.
 // Il cliente accede con l'email usata per pagare e vede sbloccato ciò che ha comprato.
-const CLUB_URL = "https://davegamba.com/club";
+const CLUB_URL = "https://club.davegamba.com";
 const PRODUCT_NAMES: Record<string, string> = {
   sfida: "Protocollo Estivo da 8 Settimane",
   addominali: "Protocollo Addominali Scolpiti",
