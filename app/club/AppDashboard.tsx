@@ -90,7 +90,7 @@ const PRODUCTS_DEFAULT: Product[] = [
     stripeLink: "",
     tag: "🔒 Sblocca",
     tagColor: "#C8963E",
-    href: "",
+    href: "https://club.davegamba.com/corso-core.html",
     image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/davegamba-estate-cover3.jpg",
     imagePosition: "center 20%",
   },
