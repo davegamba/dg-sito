@@ -33,6 +33,17 @@ export interface Offerta {
 }
 
 export const OFFERTE: Record<string, Offerta> = {
+  "addominali": {
+    slug: "addominali",
+    nome: "Pancia Piatta & Core",
+    emoji: "🔥",
+    descrizione: "Accesso immediato · 12 sessioni · 4 settimane",
+    prezzo: 21,
+    amount: 2100,
+    productId: "addominali",
+    // Price ID Stripe: price_1TjOl3IyNONJea717l3NmgVG
+    // Payment Link:   https://buy.stripe.com/3cI8wQ7tI8TscA21521Nu05
+  },
   "sfida-estiva": {
     slug: "sfida-estiva",
     nome: "Sfida Estiva 21 Giorni",

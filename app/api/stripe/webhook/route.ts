@@ -81,6 +81,13 @@ async function recordPurchases(email: string, products: string[]) {
   return res;
 }
 
+// Price ID Stripe → product_id (fallback per Payment Link, che non ha metadata)
+const PRICE_TO_PRODUCT: Record<string, string> = {
+  "price_1TbEFWIyNONJea71jucLKRSE": "sfida",
+  "price_1TjOmSIyNONJea71Fi7KSrBl": "sfida+addominali",
+  "price_1TjOl3IyNONJea717l3NmgVG": "addominali",
+};
+
 // product_id metadata → lista prodotti da sbloccare
 function productsFrom(productId: string): string[] {
   if (productId === "sfida+addominali") return ["sfida", "addominali"];
@@ -115,11 +122,24 @@ export async function POST(req: NextRequest) {
     productId = pi.metadata?.product_id ?? "sfida";
   }
 
-  // Stripe Checkout hosted (Session) — retrocompatibilità
+  // Stripe Checkout hosted / Payment Link
   else if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
     email = session.customer_email ?? session.customer_details?.email;
-    productId = session.metadata?.product_id ?? "sfida";
+    productId = session.metadata?.product_id;
+
+    // Fallback: Payment Link non imposta metadata → recupera line items e mappa dal Price ID
+    if (!productId) {
+      try {
+        const full = await stripe.checkout.sessions.retrieve(session.id, {
+          expand: ["line_items"],
+        });
+        const priceId = full.line_items?.data[0]?.price?.id ?? "";
+        productId = PRICE_TO_PRODUCT[priceId] ?? "sfida";
+      } catch {
+        productId = "sfida";
+      }
+    }
   }
 
   // Evento non rilevante

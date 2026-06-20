@@ -12,6 +12,7 @@ const dmSerif = localFont({
   src: [
     { path: "../public/fonts/Flatline-Regular.otf", weight: "400", style: "normal" },
     { path: "../public/fonts/Flatline-SemiBold.otf", weight: "600", style: "normal" },
+    { path: "../public/fonts/Flatline-Bold.otf", weight: "700", style: "normal" },
   ],
   variable: "--font-dm-serif",
   display: "swap",
