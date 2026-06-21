@@ -1,12 +1,28 @@
-# *
+# All crawlers
 User-agent: *
 Allow: /
 Disallow: /studio
 Disallow: /hub
 Disallow: /api
 
+# AI search crawlers (explicit allow for AI Overviews, ChatGPT, Perplexity, Claude)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
 # Host
-Host: https://davegamba.com
+Host: https://www.davegamba.com
 
 # Sitemaps
-Sitemap: https://davegamba.com/sitemap.xml
+Sitemap: https://www.davegamba.com/sitemap.xml

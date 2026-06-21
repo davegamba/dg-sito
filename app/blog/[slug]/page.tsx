@@ -49,16 +49,24 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return {};
+  const pageUrl = `https://www.davegamba.com/blog/${slug}`;
+  const absoluteImage = post.image
+    ? post.image.startsWith("http")
+      ? post.image
+      : `https://www.davegamba.com${post.image}`
+    : undefined;
   return {
     title: `${post.title} — Dave Gamba`,
     description: post.excerpt.slice(0, 155),
+    alternates: { canonical: pageUrl },
     openGraph: {
       title: post.title,
       description: post.excerpt.slice(0, 155),
+      url: pageUrl,
       type: "article",
-      publishedTime: post.date,
+      publishedTime: new Date(post.date).toISOString(),
       authors: ["Dave Gamba"],
-      images: post.image ? [{ url: post.image, width: 1200, height: 630 }] : [],
+      images: absoluteImage ? [{ url: absoluteImage, width: 1200, height: 630 }] : [],
     },
   };
 }
@@ -74,34 +82,60 @@ export default async function PostPage({
 
   const related = getRelatedPosts(slug, post.category);
   const { succo, body } = splitContent(post.content);
-  const pageUrl = `https://davegamba.com/blog/${slug}`;
+  const pageUrl = `https://www.davegamba.com/blog/${slug}`;
   const titleEncoded = encodeURIComponent(post.title);
+  const absoluteImage = post.image
+    ? post.image.startsWith("http")
+      ? post.image
+      : `https://www.davegamba.com${post.image}`
+    : undefined;
+  const dateIso = new Date(post.date).toISOString();
+  const wordCount = post.content.split(/\s+/).length;
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    headline: post.title,
-    description: post.excerpt.slice(0, 155),
-    author: {
-      "@type": "Person",
-      name: "Dave Gamba",
-      url: "https://davegamba.com",
-      sameAs: [
-        "https://www.instagram.com/davegamba_fit/",
-        "https://www.youtube.com/@DaveGamba",
-        "https://davegamba.com",
-      ],
-      jobTitle: "Personal Trainer Online",
-      description: "Personal trainer online dal 2009, fondatore del Metodo BIM — Breve, Intenso, Mirato. Oltre 3.000 clienti seguiti.",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "DaveGamba.com",
-      logo: { "@type": "ImageObject", url: "https://davegamba.com/logo.png" },
-    },
-    datePublished: post.date,
-    image: post.image ?? undefined,
-    mainEntityOfPage: pageUrl,
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${pageUrl}#article`,
+        headline: post.title,
+        description: post.excerpt.slice(0, 155),
+        author: {
+          "@type": "Person",
+          name: "Dave Gamba",
+          url: "https://www.davegamba.com",
+          image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/atletico-sbarra-spiaggia.jpg",
+          sameAs: [
+            "https://www.instagram.com/davegamba_fit/",
+            "https://www.youtube.com/@DaveGambaFitness",
+          ],
+          jobTitle: "Personal Trainer Online",
+          description: "Personal trainer online dal 2009, fondatore del Metodo BIM — Breve, Intenso, Mirato. Oltre 3.000 clienti seguiti.",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "DaveGamba.com",
+          url: "https://www.davegamba.com",
+          logo: { "@type": "ImageObject", url: "https://www.davegamba.com/images/logo.png" },
+        },
+        datePublished: dateIso,
+        dateModified: dateIso,
+        ...(absoluteImage ? { image: absoluteImage } : {}),
+        mainEntityOfPage: pageUrl,
+        inLanguage: "it-IT",
+        wordCount,
+        breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.davegamba.com" },
+          { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.davegamba.com/blog" },
+          { "@type": "ListItem", position: 3, name: post.title, item: pageUrl },
+        ],
+      },
+    ],
   };
 
   return (
