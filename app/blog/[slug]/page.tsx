@@ -92,6 +92,18 @@ export default async function PostPage({
   const dateIso = new Date(post.date).toISOString();
   const wordCount = post.content.split(/\s+/).length;
 
+  const faqJsonLd = post.faq.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: post.faq.map(({ question, answer }) => ({
+          "@type": "Question",
+          name: question,
+          acceptedAnswer: { "@type": "Answer", text: answer },
+        })),
+      }
+    : null;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -147,6 +159,12 @@ export default async function PostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
 
       <main className="flex-1 pt-16 bg-black">
         <article>

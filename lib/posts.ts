@@ -4,6 +4,8 @@ import matter from "gray-matter";
 
 const POSTS_DIR = path.join(process.cwd(), "content/blog");
 
+export type FaqItem = { question: string; answer: string };
+
 export type Post = {
   slug: string;
   title: string;
@@ -15,9 +17,10 @@ export type Post = {
   content: string;
   readingTime: number;
   toc: { id: string; text: string }[];
+  faq: FaqItem[];
 };
 
-export type PostMeta = Omit<Post, "content" | "toc">;
+export type PostMeta = Omit<Post, "content" | "toc" | "faq">;
 
 function getFiles(): string[] {
   if (!fs.existsSync(POSTS_DIR)) return [];
@@ -102,7 +105,25 @@ export function getPostBySlug(slug: string): Post | null {
     content,
     readingTime: calcReadingTime(content),
     toc: extractToc(content),
+    faq: extractFaq(content),
   };
+}
+
+/** Estrae coppie domanda/risposta dalla sezione FAQ dell'articolo.
+ *  Cerca un H2 contenente "FAQ" o "Domande Frequenti", poi raccoglie ### titolo + paragrafo. */
+export function extractFaq(content: string): FaqItem[] {
+  const faqMatch = content.match(/^## .*(FAQ|Domande Frequenti).*/im);
+  if (!faqMatch || faqMatch.index === undefined) return [];
+  const faqSection = content.slice(faqMatch.index);
+  const items: FaqItem[] = [];
+  const regex = /^### (.+)\n+([\s\S]+?)(?=\n###|\n##|$)/gm;
+  let match;
+  while ((match = regex.exec(faqSection)) !== null) {
+    const question = match[1].trim();
+    const answer = match[2].trim().replace(/\*\*/g, "").replace(/\n+/g, " ");
+    if (question && answer) items.push({ question, answer });
+  }
+  return items;
 }
 
 /** Divide il contenuto in succo (prima parte) e corpo (resto).
