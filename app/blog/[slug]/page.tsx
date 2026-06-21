@@ -115,7 +115,7 @@ export default async function PostPage({
         author: {
           "@type": "Person",
           name: "Dave Gamba",
-          url: "https://www.davegamba.com",
+          url: "https://www.davegamba.com/autore/dave-gamba",
           image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/atletico-sbarra-spiaggia.jpg",
           sameAs: [
             "https://www.instagram.com/davegamba_fit/",

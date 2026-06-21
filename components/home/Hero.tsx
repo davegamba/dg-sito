@@ -74,7 +74,7 @@ export default function Hero() {
         <div className="inline-flex items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-[#00CBDB] animate-pulse" />
           <span className="text-[#00CBDB] text-[11px] font-semibold tracking-[0.2em] uppercase">
-            Tutto per la tua Trasformazione Fisica
+            Personal Trainer Online dal 2009
           </span>
         </div>
 
