@@ -25,28 +25,19 @@ const SOCIAL = [
   },
 ];
 
-const LINKS = [
-  {
-    href: "/quiz-fisico",
-    img: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg",
-    title: "Quiz Profilo Fisico",
-    sub: <>Scopri il tuo Profilo in 2 minuti <span style={{ color: "#F0C040" }}>[Gratuito]</span></>,
-    imgPosition: "center",
-  },
-  {
-    href: "https://sfidaestiva.davegamba.com",
-    img: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_25-03-2026-09-35-25.jpg",
-    title: "Sfida Estiva 21 Giorni",
-    sub: <>Mettiti in forma per l&apos;Estate</>,
-    imgPosition: "center 65%",
-  },
-  {
-    href: "/coaching#candidati",
-    img: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
-    title: "Premium Coaching 1-1",
-    sub: <>Percorso personalizzato con Dave</>,
-    imgPosition: "center top",
-  },
+const SFIDA_FEATURES = [
+  "21 allenamenti da 21 minuti",
+  "21 tips su alimentazione e stile di vita",
+  "Video guida per ogni esercizio",
+  "Accesso immediato su tutti i dispositivi",
+];
+
+const COACHING_FEATURES = [
+  "Call conoscitiva con Dave senza impegno",
+  "Piano d'allenamento su misura",
+  "Piano alimentare con biologa nutrizionista",
+  "Check settimanale",
+  "Affiancamento WhatsApp con Dave fino all'obiettivo",
 ];
 
 const YT_VIDEOS = [
@@ -75,19 +66,33 @@ export default function LinksPage() {
         .social-icon:hover{background:rgba(255,255,255,0.15)!important;border-color:rgba(255,255,255,0.6)!important;color:#fff!important;}
         .link-card:hover{border-color:rgba(255,255,255,0.5);}
         .yt-card:hover .yt-play{background:rgba(0,0,0,0.15)!important;}
+        .card{background:rgba(0,18,22,0.55);border:1.5px solid rgba(0,203,219,0.35);border-radius:20px;overflow:hidden;backdrop-filter:blur(20px) saturate(1.8);-webkit-backdrop-filter:blur(20px) saturate(1.8);box-shadow:0 8px 32px rgba(0,0,0,0.5);margin-bottom:13px;}
+        .card-top{display:flex;gap:14px;padding:16px 16px 12px;}
+        .card-img{flex-shrink:0;width:80px;height:80px;border-radius:12px;overflow:hidden;}
+        .card-img img{width:100%;height:100%;object-fit:cover;}
+        .card-info{flex:1;display:flex;flex-direction:column;justify-content:center;}
+        .card-title{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:1.35rem;font-weight:700;color:#fff;letter-spacing:0.03em;line-height:1.2;margin-bottom:5px;}
+        .card-desc{font-size:0.72rem;color:rgba(255,255,255,0.5);line-height:1.45;}
+        .card-price{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:1.4rem;color:#fff;font-weight:600;margin-top:6px;}
+        .card-price span{font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:300;color:rgba(255,255,255,0.4);margin-left:4px;}
+        .card-features{display:flex;flex-direction:column;gap:7px;border-top:1px solid rgba(255,255,255,0.06);margin:0 16px;padding:12px 0 14px;}
+        .card-feature{display:flex;align-items:center;gap:9px;font-size:0.75rem;color:rgba(255,255,255,0.7);}
+        .card-feature .dot{width:22px;height:22px;border-radius:50%;background:#00CBDB;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.6rem;color:#000;font-weight:700;}
+        .card-btn{display:block;margin:14px 16px 16px;background:linear-gradient(135deg,#00CBDB,#00AECF);color:#000;font-weight:700;font-size:0.9rem;letter-spacing:0.04em;text-transform:uppercase;text-align:center;padding:14px;border-radius:12px;text-decoration:none;transition:filter 0.2s,transform 0.2s;}
+        .card-btn:hover{filter:brightness(1.08);transform:translateY(-1px);}
       `}</style>
 
       <div className="links-page" style={{ position: "relative", zIndex: 1, paddingBottom: 60, fontFamily: "var(--font-dm-sans, 'DM Sans', sans-serif)" }}>
 
         {/* Barra "Come visto su" */}
-        <div style={{ background: "#fff", padding: "10px 20px" }}>
-          <div style={{ fontSize: "0.55rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", textAlign: "center", marginBottom: 6 }}>Come visto su</div>
+        <div style={{ background: "#fff", padding: "5px 20px 4px" }}>
+          <div style={{ fontSize: "0.45rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "#bbb", textAlign: "center", marginBottom: 2 }}>Come visto su</div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/loghi-press.png" alt="Come visto su" style={{ width: "100%", height: "auto", display: "block", maxWidth: 360, margin: "0 auto" }} />
+          <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/loghi-press.png" alt="Come visto su" style={{ width: "100%", height: "auto", display: "block", maxWidth: 260, margin: "0 auto" }} />
         </div>
 
         {/* HERO */}
-        <div style={{ position: "relative", width: "100%", height: "100vh", maxHeight: 780, overflow: "hidden" }}>
+        <div style={{ position: "relative", width: "100%", height: "52vh", maxHeight: 420, overflow: "hidden" }}>
           <Image
             src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg"
             alt="Dave Gamba"
@@ -96,22 +101,15 @@ export default function LinksPage() {
             priority
             unoptimized
           />
-          {/* Gradient overlay */}
           <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "75%", background: "linear-gradient(to top, rgba(8,12,15,0.97) 0%, rgba(8,12,15,0.88) 40%, rgba(8,12,15,0.5) 65%, transparent 100%)", pointerEvents: "none" }} />
-
-          {/* Content overlay */}
-          <div className="hero-content" style={{ position: "absolute", bottom: 24, left: 0, right: 0, zIndex: 2, padding: "0 20px", display: "flex", flexDirection: "column" }}>
-
-            {/* Nome */}
-            <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "2.2rem", lineHeight: 1, color: "#fff", letterSpacing: "0.02em", marginBottom: 4, textAlign: "center" }}>
+          <div className="hero-content" style={{ position: "absolute", bottom: 24, left: 0, right: 0, zIndex: 2, padding: "0 20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "2.2rem", lineHeight: 1, color: "#fff", letterSpacing: "0.02em", marginBottom: 4 }}>
               DAVE<span style={{ color: "#00CBDB" }}>GAMBA</span>
             </div>
             <div style={{ fontSize: "0.72rem", fontWeight: 300, color: "#fff", letterSpacing: "0.18em", textTransform: "uppercase", textAlign: "center", marginBottom: 14 }}>
               Sistema Breve. Intenso. Mirato.<br />Per un fisico atletico, asciutto e scolpito.
             </div>
-
-            {/* Social */}
-            <div style={{ display: "flex", justifyContent: "center", gap: 16, marginBottom: 20 }}>
+            <div style={{ display: "flex", gap: 16 }}>
               {SOCIAL.map(({ href, label, svg }) => (
                 <a key={label} href={href} aria-label={label} className="social-icon"
                   style={{ width: 38, height: 38, borderRadius: "50%", border: "1.5px solid rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.07)", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(255,255,255,0.7)", textDecoration: "none", transition: "all 0.2s" }}>
@@ -119,29 +117,66 @@ export default function LinksPage() {
                 </a>
               ))}
             </div>
-
-            {/* Link cards */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 13, marginBottom: 16 }}>
-              {LINKS.map(({ href, img, title, sub, imgPosition }) => (
-                <a key={href} href={href} className="link-card"
-                  style={{ display: "flex", alignItems: "center", background: "rgba(0,18,22,0.38)", border: "1.5px solid rgba(0,203,219,0.45)", borderRadius: 9999, overflow: "hidden", textDecoration: "none", color: "#fff", backdropFilter: "blur(20px) saturate(1.8)", WebkitBackdropFilter: "blur(20px) saturate(1.8)", boxShadow: "0 8px 32px rgba(0,0,0,0.45), 0 0 0 0.5px rgba(0,203,219,0.08) inset", transition: "border-color 0.2s" }}>
-                  <div style={{ flexShrink: 0, width: 90, height: 92, overflow: "hidden" }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={img} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: imgPosition }} />
-                  </div>
-                  <div style={{ flex: 1, padding: "0 16px", textAlign: "center" }}>
-                    <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "1.15rem", color: "#fff", marginBottom: 4, letterSpacing: "0.04em" }}>{title}</div>
-                    <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.55)", letterSpacing: "0.02em" }}>{sub}</div>
-                  </div>
-                  <span style={{ paddingRight: 16, color: "#00CBDB", fontSize: "1.6rem" }}>›</span>
-                </a>
-              ))}
-            </div>
           </div>
         </div>
 
-        {/* BELOW HERO */}
-        <div style={{ padding: "0 20px", background: "#080C0F", marginTop: -20, position: "relative", zIndex: 3 }}>
+        {/* CARDS */}
+        <div style={{ padding: "28px 20px 0", background: "#080C0F", marginTop: -20, position: "relative", zIndex: 3 }}>
+
+          {/* Quiz Profilo Fisico */}
+          <a href="/quiz-fisico" className="link-card"
+            style={{ display: "flex", alignItems: "center", background: "rgba(0,18,22,0.55)", border: "1.5px solid rgba(0,203,219,0.45)", borderRadius: 20, overflow: "hidden", textDecoration: "none", color: "#fff", backdropFilter: "blur(20px) saturate(1.8)", WebkitBackdropFilter: "blur(20px) saturate(1.8)", boxShadow: "0 8px 32px rgba(0,0,0,0.45)", marginBottom: 13 }}>
+            <div style={{ flexShrink: 0, width: 90, height: 92, overflow: "hidden" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg" alt="Quiz Profilo Fisico" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            </div>
+            <div style={{ flex: 1, padding: "0 16px", textAlign: "center" }}>
+              <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "1.15rem", color: "#fff", marginBottom: 4, letterSpacing: "0.04em" }}>Quiz Profilo Fisico</div>
+              <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.55)" }}>Scopri il tuo Profilo in 2 minuti <span style={{ color: "#F0C040" }}>[Gratuito]</span></div>
+            </div>
+            <span style={{ paddingRight: 16, color: "#00CBDB", fontSize: "1.6rem" }}>›</span>
+          </a>
+
+          {/* Sfida Estiva */}
+          <div className="card">
+            <div className="card-top">
+              <div className="card-img">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_25-03-2026-09-35-25.jpg" alt="Sfida Estiva 21 Giorni" style={{ objectPosition: "center 65%" }} />
+              </div>
+              <div className="card-info">
+                <div className="card-title">Sfida Estiva 21 Giorni</div>
+                <div className="card-desc">Il programma intensivo per rimetterti in forma prima dell&apos;estate.</div>
+                <div className="card-price">€33 <span>/ una tantum</span></div>
+              </div>
+            </div>
+            <div className="card-features">
+              {SFIDA_FEATURES.map((f) => (
+                <div key={f} className="card-feature"><span className="dot">▶</span>{f}</div>
+              ))}
+            </div>
+            <a href="https://sfidaestiva.davegamba.com" className="card-btn">Inizia la Sfida →</a>
+          </div>
+
+          {/* Premium Coaching */}
+          <div className="card">
+            <div className="card-top">
+              <div className="card-img">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg" alt="Premium Coaching 1-1" style={{ objectPosition: "center top" }} />
+              </div>
+              <div className="card-info">
+                <div className="card-title">Premium Coaching 1-1</div>
+                <div className="card-desc">Percorso completamente personalizzato con Dave. Pochi posti disponibili.</div>
+              </div>
+            </div>
+            <div className="card-features">
+              {COACHING_FEATURES.map((f) => (
+                <div key={f} className="card-feature"><span className="dot">▶</span>{f}</div>
+              ))}
+            </div>
+            <a href="https://www.davegamba.com/coaching/" target="_blank" rel="noopener noreferrer" className="card-btn">Compila il Questionario →</a>
+          </div>
 
           {/* YouTube */}
           <div style={{ margin: "28px 0 48px" }}>

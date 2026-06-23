@@ -68,14 +68,14 @@ export default function CandidatiPage() {
         body{background:#06080f}
         .cq-page{min-height:100vh;background:#06080f;color:#fafaf8;font-family:'DM Sans',sans-serif;display:flex;flex-direction:column}
         .cq-topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid rgba(255,255,255,0.06)}
-        .cq-logo{font-family:serif;font-size:18px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#fafaf8;text-decoration:none}
+        .cq-logo{font-family:var(--font-serif,serif);font-size:18px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#fafaf8;text-decoration:none}
         .cq-close{font-size:13px;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s}
         .cq-close:hover{color:rgba(255,255,255,0.7)}
         .cq-progress-wrap{height:3px;background:rgba(255,255,255,0.07)}
         .cq-progress-fill{height:100%;background:linear-gradient(to right,#00CBDB,#00AECF);transition:width 0.4s ease}
         .cq-main{flex:1;max-width:680px;width:100%;margin:0 auto;padding:48px 24px 80px}
         .cq-step-label{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#00CBDB;margin-bottom:12px}
-        .cq-title{font-family:serif;font-size:clamp(26px,5vw,40px);line-height:1.15;color:#fafaf8;margin-bottom:8px}
+        .cq-title{font-family:var(--font-serif,serif);font-size:clamp(26px,5vw,40px);line-height:1.15;color:#fafaf8;margin-bottom:8px}
         .cq-sub{font-size:15px;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:36px}
         .cq-form{display:flex;flex-direction:column;gap:20px}
         .cq-field{display:flex;flex-direction:column;gap:8px}
@@ -108,7 +108,7 @@ export default function CandidatiPage() {
         .cq-error{color:#e05555;font-size:13px;text-align:center}
         .cq-note{text-align:center;font-size:12px;color:rgba(255,255,255,0.25);margin-top:12px}
         .cq-success{text-align:center;padding:60px 24px}
-        .cq-success h2{font-family:serif;font-size:36px;color:#fafaf8;margin:16px 0 12px}
+        .cq-success h2{font-family:var(--font-serif,serif);font-size:36px;color:#fafaf8;margin:16px 0 12px}
         .cq-success p{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;max-width:440px;margin:0 auto}
         @media(max-width:600px){.cq-row{grid-template-columns:1fr}.cq-main{padding:32px 20px 60px}}
       `}</style>
@@ -140,31 +140,20 @@ export default function CandidatiPage() {
                 <form className="cq-form" onSubmit={nextStep}>
                   <div>
                     <div className="cq-step-label">{STEP_LABELS[0]} · Step 1 di {TOTAL_STEPS}</div>
-                    <h1 className="cq-title">Prima di tutto,<br />chi sei?</h1>
-                    <p className="cq-sub">Pochi dati per poter fissare la call con te.</p>
+                    <h1 className="cq-title">Iniziamo</h1>
+                    <p className="cq-sub">✓ Questionario gratuito e senza impegno</p>
                   </div>
                   <div className="cq-row">
                     <div className="cq-field">
-                      <label className="cq-label">Nome e Cognome <span>*</span></label>
-                      <input className="cq-input" type="text" name="nome" placeholder="Marco Rossi" required defaultValue={formData.nome} />
+                      <label className="cq-label">Nome <span>*</span></label>
+                      <input className="cq-input" type="text" name="nome" placeholder="Marco" required defaultValue={formData.nome} />
                     </div>
                     <div className="cq-field">
                       <label className="cq-label">Data di nascita <span>*</span></label>
                       <input className="cq-input" type="date" name="data_nascita" required defaultValue={formData.data_nascita} />
                     </div>
                   </div>
-                  <div className="cq-row">
-                    <div className="cq-field">
-                      <label className="cq-label">La tua email <span>*</span></label>
-                      <input className="cq-input" type="email" name="email" placeholder="marco@email.com" required defaultValue={formData.email} />
-                    </div>
-                    <div className="cq-field">
-                      <label className="cq-label">Numero di telefono</label>
-                      <input className="cq-input" type="tel" name="telefono" placeholder="+39 333 000 0000" defaultValue={formData.telefono} />
-                    </div>
-                  </div>
                   <button type="submit" className="cq-btn-next">Continua →</button>
-                  <p className="cq-note">✓ Gratuito e senza impegno</p>
                 </form>
               )}
 
@@ -173,7 +162,7 @@ export default function CandidatiPage() {
                 <form className="cq-form" onSubmit={nextStep}>
                   <div>
                     <div className="cq-step-label">{STEP_LABELS[1]} · Step 2 di {TOTAL_STEPS}</div>
-                    <h1 className="cq-title">Dove sei adesso<br />e dove vuoi arrivare?</h1>
+                    <h1 className="cq-title">Dove sei e dove vuoi arrivare?</h1>
                     <p className="cq-sub">Più sei specifico, più la call sarà utile per te.</p>
                   </div>
                   <div className="cq-field">
@@ -207,7 +196,7 @@ export default function CandidatiPage() {
                 <form className="cq-form" onSubmit={handleSubmit}>
                   <div>
                     <div className="cq-step-label">{STEP_LABELS[2]} · Step 3 di {TOTAL_STEPS}</div>
-                    <h1 className="cq-title">Ultima cosa —<br />quanto ci tieni davvero?</h1>
+                    <h1 className="cq-title">Ultimo step</h1>
                     <p className="cq-sub">Queste domande mi aiutano a capire se posso aiutarti.</p>
                   </div>
                   <div className="cq-field">
@@ -227,6 +216,16 @@ export default function CandidatiPage() {
                     <div className="cq-radio-group">
                       <label className="cq-radio-row"><input type="radio" name="canale_call" value="Telefono" />📞 Telefono</label>
                       <label className="cq-radio-row"><input type="radio" name="canale_call" value="WhatsApp" />💬 WhatsApp</label>
+                    </div>
+                  </div>
+                  <div className="cq-row">
+                    <div className="cq-field">
+                      <label className="cq-label">Numero di telefono</label>
+                      <input className="cq-input" type="tel" name="telefono" placeholder="+39 333 000 0000" defaultValue={formData.telefono} />
+                    </div>
+                    <div className="cq-field">
+                      <label className="cq-label">La tua email <span>*</span></label>
+                      <input className="cq-input" type="email" name="email" placeholder="marco@email.com" required defaultValue={formData.email} />
                     </div>
                   </div>
                   <label className="cq-consent-row">

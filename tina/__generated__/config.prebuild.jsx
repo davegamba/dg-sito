@@ -80,7 +80,20 @@ var config_default = defineConfig({
             type: "rich-text",
             name: "body",
             label: "Contenuto",
-            isBody: true
+            isBody: true,
+            templates: [
+              {
+                name: "ArticleCta",
+                label: "CTA Protocollo",
+                fields: [
+                  { type: "string", name: "title", label: "Titolo protocollo", required: true },
+                  { type: "string", name: "description", label: "Descrizione breve", ui: { component: "textarea" } },
+                  { type: "string", name: "href", label: "Link", required: true },
+                  { type: "string", name: "cta", label: "Testo bottone (default: Scopri di pi\xF9)" },
+                  { type: "image", name: "photo", label: "Foto di sfondo (opzionale)" }
+                ]
+              }
+            ]
           }
         ]
       }

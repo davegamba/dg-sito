@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import "@/lib/analytics";
+import { determineProfile } from "@/lib/quiz";
 
 /* ── TIPI ── */
 type StepType = "image-grid-2" | "image-grid-3" | "checkbox" | "buttons" | "numbered";
@@ -168,14 +169,97 @@ const PROFILES: Record<string, Profile> = {
   },
 };
 
-function determineProfile(answers: Record<string, string | string[]>): string {
-  const livello = answers["livello"] as string;
+/* ── PERSONALIZZAZIONE: etichette leggibili delle risposte ── */
+const OBIETTIVO_LABEL: Record<string, string> = {
+  peso: "perdere peso",
+  atletico: "costruire un fisico atletico e definito",
+  massa: "mettere massa muscolare",
+};
+const LUOGO_LABEL: Record<string, string> = {
+  casa: "a casa con i manubri",
+  palestra: "in palestra",
+  misto: "tra casa e palestra",
+};
+const SESSIONI_LABEL: Record<string, string> = {
+  "2": "2 volte a settimana",
+  "3": "3 volte a settimana",
+  "4": "4 volte a settimana",
+  "5": "5+ volte a settimana",
+};
+const BLOCCO_LABEL: Record<string, string> = {
+  tempo: "il tempo",
+  risultati: "la mancanza di risultati",
+  alimentazione: "l'alimentazione",
+  costanza: "la costanza",
+};
+
+function buildPersonalLine(answers: Record<string, string | string[]>): string {
+  const obiettivo = OBIETTIVO_LABEL[answers["obiettivo"] as string];
+  const luogo = LUOGO_LABEL[answers["luogo"] as string];
+  const sessioni = SESSIONI_LABEL[answers["sessioni"] as string];
   const blocchi = (answers["blocchi"] as string[]) || [];
-  if (livello === "avanzato") return "salto";
-  if (blocchi.includes("tempo")) return "tempo";
-  if (livello === "principiante") return "zero";
-  return "stallo";
+  const bloccoMain = BLOCCO_LABEL[blocchi[0]];
+
+  const parts: string[] = [];
+  if (obiettivo) parts.push(`vuoi <strong>${obiettivo}</strong>`);
+  if (luogo && sessioni) parts.push(`allenandoti <strong>${luogo}</strong>, <strong>${sessioni}</strong>`);
+  else if (sessioni) parts.push(`allenandoti <strong>${sessioni}</strong>`);
+  else if (luogo) parts.push(`allenandoti <strong>${luogo}</strong>`);
+
+  let line = parts.length ? `Hai detto che ${parts.join(", ")}.` : "";
+  if (bloccoMain) line += ` Quello che ti blocca di più adesso è <strong>${bloccoMain}</strong>.`;
+  return line.trim();
 }
+
+/* ── PERSONALIZZAZIONE: CTA finali per profilo ── */
+interface CtaCard {
+  badge: string;
+  badgeColor: string;
+  title: string;
+  price?: string;
+  href: string;
+  img: string;
+  cta: string;
+  accent: string; // colore bordo/bottone
+}
+const CTA_CATALOG: Record<string, CtaCard> = {
+  sfida: {
+    badge: "Offerta a tempo limitato",
+    badgeColor: "#00CBDB",
+    title: "Sfida Estiva<br />21 Giorni",
+    price: "€33",
+    href: "https://sfidaestiva.davegamba.com/",
+    img: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/foto-sfida-estiva.jpg",
+    cta: "Inizia subito →",
+    accent: "#00CBDB",
+  },
+  club: {
+    badge: "Tutti gli strumenti",
+    badgeColor: "#00CBDB",
+    title: "DG Athletic<br />Club",
+    price: "€17/mese",
+    href: "https://club.davegamba.com/",
+    img: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
+    cta: "Entra nel Club →",
+    accent: "#00CBDB",
+  },
+  coaching: {
+    badge: "Servizio Premium",
+    badgeColor: "#f5c842",
+    title: "Coaching<br />Personale 1:1",
+    href: "https://davegamba.com/coaching#candidati",
+    img: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
+    cta: "Prenota una call →",
+    accent: "#f5c842",
+  },
+};
+// Coppia di offerte [primaria, secondaria] in base al profilo
+const PROFILE_CTA: Record<string, [string, string]> = {
+  zero: ["sfida", "club"],
+  tempo: ["sfida", "club"],
+  stallo: ["club", "sfida"],
+  salto: ["coaching", "club"],
+};
 
 /* ── SCHERMO ── */
 type Screen = "hero" | "quiz" | "email" | "result";
@@ -188,27 +272,11 @@ export default function QuizFisicoPage() {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [profileKey, setProfileKey] = useState<string>("stallo");
-  const [countdown, setCountdown] = useState(15 * 60);
-  const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const topRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     topRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [screen, step]);
-
-  // Countdown sui risultati
-  useEffect(() => {
-    if (screen !== "result") return;
-    if (countdownRef.current) clearInterval(countdownRef.current);
-    setCountdown(15 * 60);
-    countdownRef.current = setInterval(() => {
-      setCountdown(c => {
-        if (c <= 1) { clearInterval(countdownRef.current!); return 0; }
-        return c - 1;
-      });
-    }, 1000);
-    return () => { if (countdownRef.current) clearInterval(countdownRef.current); };
-  }, [screen]);
 
   const pct = Math.round(((step - 1) / STEPS.length) * 100);
   const currentStepData = STEPS[step - 1];
@@ -267,8 +335,8 @@ export default function QuizFisicoPage() {
   }
 
   const profile = PROFILES[profileKey];
-  const mm = String(Math.floor(countdown / 60)).padStart(2, "0");
-  const ss = String(countdown % 60).padStart(2, "0");
+  const personalLine = buildPersonalLine(answers);
+  const ctaPair = (PROFILE_CTA[profileKey] || PROFILE_CTA.stallo).map(k => CTA_CATALOG[k]);
 
   const checkboxAnswers = (answers[currentStepData?.key] as string[]) || [];
   const hasCheckboxSelection = checkboxAnswers.length > 0;
@@ -476,10 +544,10 @@ export default function QuizFisicoPage() {
             <div style={{ paddingTop: 40 }}>
               <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#00CBDB", marginBottom: 14, display: "block" }}>Step Finale</span>
               <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(28px,6vw,40px)", lineHeight: 1.1, marginBottom: 10 }}>
-                Il Piano del tuo profilo<br />è pronto 🔥
+                Il tuo profilo è pronto.<br />Più la scheda START 🔥
               </h2>
               <p style={{ fontSize: 15, color: "#9a9a94", fontWeight: 300, lineHeight: 1.6, marginBottom: 36 }}>
-                Inserisci nome e email per ricevere il tuo piano di partenza:
+                Vedi subito il tuo profilo qui. E ti mando via email la mia <strong style={{ color: "#fafaf8" }}>scheda START gratuita</strong>: il primo allenamento per provare ad allenarti con me.
               </p>
               <form onSubmit={submitEmail} style={{ display: "grid", gap: 12 }}>
                 {/* Honeypot */}
@@ -490,7 +558,7 @@ export default function QuizFisicoPage() {
                   style={{ width: "100%", height: 52, padding: "0 18px", background: "rgba(255,255,255,0.05)", border: "1px solid #222220", borderRadius: 12, color: "#fafaf8", fontFamily: "inherit", fontSize: 16, outline: "none" }} />
                 <button type="submit" disabled={submitting}
                   style={{ width: "100%", background: "#00CBDB", color: "#0a0a0a", fontFamily: "inherit", fontSize: 16, fontWeight: 700, padding: 18, borderRadius: 12, border: "none", cursor: "pointer", marginTop: 6, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, opacity: submitting ? 0.7 : 1 }}>
-                  {submitting ? "Un momento..." : "Ottieni il tuo piano gratuito →"}
+                  {submitting ? "Un momento..." : "Mostrami il profilo + scheda START →"}
                 </button>
               </form>
               <div style={{ display: "flex", justifyContent: "center", gap: 20, marginTop: 16, flexWrap: "wrap" }}>
@@ -512,6 +580,12 @@ export default function QuizFisicoPage() {
               <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(34px,7vw,52px)", lineHeight: 1.05, marginBottom: 16, fontWeight: 800 }}>{profile.name}</h2>
               <p style={{ fontSize: 16, color: "#9a9a94", fontWeight: 300, lineHeight: 1.65, maxWidth: 400, margin: "0 auto" }}>{profile.tagline}</p>
             </div>
+
+            {/* Riga personalizzata sulle risposte */}
+            {personalLine && (
+              <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid #222220", borderRadius: 12, padding: "16px 20px", marginBottom: 14, fontSize: 14, color: "#c8c8c4", lineHeight: 1.6, textAlign: "center" }}
+                dangerouslySetInnerHTML={{ __html: personalLine }} />
+            )}
 
             {/* Card analisi */}
             <div style={{ background: "linear-gradient(135deg,rgba(255,80,80,0.08) 0%,rgba(255,80,80,0.02) 100%)", border: "1px solid rgba(255,80,80,0.25)", borderRadius: 16, padding: 28, marginBottom: 14 }}>
@@ -541,41 +615,21 @@ export default function QuizFisicoPage() {
                 In base alle tue risposte la strada più rapida per il fisico che vuoi sono i Protocolli:
               </p>
 
-              {/* Countdown */}
-              <div style={{ background: "rgba(0,203,219,0.06)", border: "1px solid rgba(0,203,219,0.2)", borderRadius: 12, padding: "14px 18px", display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
-                <div style={{ fontSize: 20 }}>⏳</div>
-                <div style={{ flex: 1, fontSize: 13, color: "#9a9a94", lineHeight: 1.4 }}>
-                  <strong style={{ color: "#fafaf8", display: "block", fontSize: 12, marginBottom: 2 }}>Offerta a tempo limitato</strong>
-                  Questo prezzo speciale scade tra
-                </div>
-                <div style={{ fontFamily: "inherit", fontSize: 22, fontWeight: 700, color: countdown <= 60 ? "#ff6b6b" : "#00CBDB", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>
-                  {mm}:{ss}
-                </div>
-              </div>
-
-              {/* CTA cards */}
+              {/* CTA cards — dinamiche per profilo */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 24 }}>
-                <a href="https://sfidaestiva.davegamba.com/" target="_blank" rel="noopener noreferrer"
-                  style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "2px solid rgba(0,203,219,0.5)", minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none", transition: "border-color 0.2s" }}>
-                  <div style={{ position: "absolute", inset: 0, backgroundImage: "url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/foto-sfida-estiva.jpg')", backgroundSize: "cover", backgroundPosition: "center top" }} />
-                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.4) 50%,rgba(0,0,0,0.1) 100%)" }} />
-                  <div style={{ position: "relative", zIndex: 1, padding: 16, display: "flex", flexDirection: "column", gap: 8 }}>
-                    <div style={{ display: "inline-block", background: "#00CBDB", color: "#0a0a0a", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "3px 8px", borderRadius: 100, alignSelf: "flex-start" }}>Offerta a tempo limitato</div>
-                    <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 18, lineHeight: 1.2, color: "#fafaf8" }}>Sfida Estiva<br />21 Giorni</h3>
-                    <div style={{ fontSize: 20, fontWeight: 700, color: "#fafaf8" }}>€33</div>
-                    <div style={{ display: "block", background: "#00CBDB", color: "#0a0a0a", fontSize: 13, fontWeight: 700, padding: 11, borderRadius: 8, textAlign: "center" }}>Inizia subito →</div>
-                  </div>
-                </a>
-                <a href="https://davegamba.com/coaching#candidati" target="_blank" rel="noopener noreferrer"
-                  style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "2px solid rgba(245,200,66,0.5)", minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none" }}>
-                  <div style={{ position: "absolute", inset: 0, backgroundImage: "url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg')", backgroundSize: "cover", backgroundPosition: "center top" }} />
-                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.4) 50%,rgba(0,0,0,0.1) 100%)" }} />
-                  <div style={{ position: "relative", zIndex: 1, padding: 16, display: "flex", flexDirection: "column", gap: 8 }}>
-                    <div style={{ display: "inline-block", background: "#f5c842", color: "#0a0a0a", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "3px 8px", borderRadius: 100, alignSelf: "flex-start" }}>Servizio Premium</div>
-                    <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 18, lineHeight: 1.2, color: "#fafaf8" }}>Coaching<br />Personale 1:1</h3>
-                    <div style={{ display: "block", background: "#f5c842", color: "#0a0a0a", fontSize: 13, fontWeight: 700, padding: 11, borderRadius: 8, textAlign: "center" }}>Prenota una call →</div>
-                  </div>
-                </a>
+                {ctaPair.map((c, i) => (
+                  <a key={i} href={c.href} target="_blank" rel="noopener noreferrer"
+                    style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: `2px solid ${c.accent}80`, minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none", transition: "border-color 0.2s" }}>
+                    <div style={{ position: "absolute", inset: 0, backgroundImage: `url('${c.img}')`, backgroundSize: "cover", backgroundPosition: "center top" }} />
+                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.4) 50%,rgba(0,0,0,0.1) 100%)" }} />
+                    <div style={{ position: "relative", zIndex: 1, padding: 16, display: "flex", flexDirection: "column", gap: 8 }}>
+                      <div style={{ display: "inline-block", background: c.badgeColor, color: "#0a0a0a", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "3px 8px", borderRadius: 100, alignSelf: "flex-start" }}>{c.badge}</div>
+                      <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 18, lineHeight: 1.2, color: "#fafaf8" }} dangerouslySetInnerHTML={{ __html: c.title }} />
+                      {c.price && <div style={{ fontSize: 20, fontWeight: 700, color: "#fafaf8" }}>{c.price}</div>}
+                      <div style={{ display: "block", background: c.accent, color: "#0a0a0a", fontSize: 13, fontWeight: 700, padding: 11, borderRadius: 8, textAlign: "center" }}>{c.cta}</div>
+                    </div>
+                  </a>
+                ))}
               </div>
 
               <button onClick={restart}

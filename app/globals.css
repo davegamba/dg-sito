@@ -10,8 +10,8 @@
   --color-border:      #1e1e2e;
   --color-border-hover:#2a2a3e;
 
-  --color-accent:      #00CBDB;
-  --color-accent-dim:  #00cbdb22;
+  --color-accent:      #00C8DB;
+  --color-accent-dim:  #00c8db22;
   --color-gold:        #F0C040;
   --color-gold-dim:    #f0c04018;
 
@@ -112,13 +112,13 @@ h3.font-serif { font-weight: 500; letter-spacing: 0.025em; }
 .wp-content h4         { font-size: 1.1rem; color: #ffffff; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; }
 .wp-content ul         { list-style: none; margin-bottom: 1.25rem; padding: 0; }
 .wp-content ul li      { display: flex; align-items: flex-start; gap: 0.5rem; color: #cccccc; margin-bottom: 0.5rem; }
-.wp-content ul li::before { content: "▸"; color: #00CBDB; flex-shrink: 0; margin-top: 2px; }
+.wp-content ul li::before { content: "▸"; color: #00C8DB; flex-shrink: 0; margin-top: 2px; }
 .wp-content ol         { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.25rem; color: #cccccc; }
 .wp-content ol li      { margin-bottom: 0.5rem; }
-.wp-content blockquote { border-left: 4px solid #00CBDB; padding-left: 1.25rem; margin: 1.5rem 0; color: #888; font-style: italic; }
+.wp-content blockquote { border-left: 4px solid #00C8DB; padding-left: 1.25rem; margin: 1.5rem 0; color: #888; font-style: italic; }
 .wp-content strong     { color: #ffffff; font-weight: 600; }
-.wp-content em         { color: #00CBDB; font-style: normal; }
-.wp-content a          { color: #00CBDB; text-decoration: underline; text-underline-offset: 2px; }
+.wp-content em         { color: #00C8DB; font-style: normal; }
+.wp-content a          { color: #00C8DB; text-decoration: underline; text-underline-offset: 2px; }
 .wp-content a:hover    { color: #ffffff; }
 .wp-content img        { border-radius: 14px; width: 100%; height: auto; margin: 2rem 0; }
 .wp-content figure     { margin: 2rem 0; }
@@ -140,7 +140,7 @@ h3.font-serif { font-weight: 500; letter-spacing: 0.025em; }
   margin-bottom: 1.25rem;
   padding-top: 1rem;
   border-top: 1px solid #e8e0d4;
-  color: #00CBDB;
+  color: #00C8DB;
 }
 
 /* H3 — scuro */
@@ -159,13 +159,13 @@ h3.font-serif { font-weight: 500; letter-spacing: 0.025em; }
 /* Liste */
 .mdx-content ul         { list-style: none; margin-bottom: 1.4rem; padding: 0; }
 .mdx-content ul li      { position: relative; padding-left: 1.4rem; color: #222; margin-bottom: 0.7rem; line-height: 1.65; }
-.mdx-content ul li::before { content: "▸"; color: #00CBDB; position: absolute; left: 0; top: 0.15em; font-size: 0.85rem; }
+.mdx-content ul li::before { content: "▸"; color: #00C8DB; position: absolute; left: 0; top: 0.15em; font-size: 0.85rem; }
 .mdx-content ol         { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.4rem; color: #222; }
 .mdx-content ol li      { margin-bottom: 0.6rem; line-height: 1.65; }
 
 /* Blockquote / box evidenziato */
 .mdx-content blockquote {
-  border-left: 4px solid #00CBDB;
+  border-left: 4px solid #00C8DB;
   background: #f0fdfe;
   padding: 1rem 1.25rem;
   margin: 2rem 0;
@@ -178,7 +178,7 @@ h3.font-serif { font-weight: 500; letter-spacing: 0.025em; }
 /* Bold, link */
 .mdx-content strong     { color: #000; font-weight: 700; }
 .mdx-content em         { color: #0099a8; font-style: normal; font-weight: 600; }
-.mdx-content a          { color: #00CBDB; text-decoration: underline; text-underline-offset: 3px; }
+.mdx-content a          { color: #00C8DB; text-decoration: underline; text-underline-offset: 3px; }
 .mdx-content a:hover    { color: #0099a8; }
 
 /* Immagini */
@@ -191,7 +191,7 @@ h3.font-serif { font-weight: 500; letter-spacing: 0.025em; }
 
 /* Tabelle */
 .mdx-content table      { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; border-radius: 12px; overflow: hidden; border: 1px solid #e8e8e8; }
-.mdx-content th         { color: #fff; background: #00CBDB; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.75rem 1rem; text-align: left; font-weight: 700; }
+.mdx-content th         { color: #fff; background: #00C8DB; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.75rem 1rem; text-align: left; font-weight: 700; }
 .mdx-content td         { color: #222; padding: 0.75rem 1rem; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem; }
 .mdx-content tr:last-child td { border-bottom: none; }
 .mdx-content tr:nth-child(even) td { background: #fafafa; }
@@ -199,12 +199,12 @@ h3.font-serif { font-weight: 500; letter-spacing: 0.025em; }
 /* Code */
 .mdx-content code       { background: #f0fdfe; color: #0099a8; padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.9em; border: 1px solid #cdf3f7; }
 .mdx-content pre        { background: #1a1a1a; border-radius: 12px; padding: 1.25rem; overflow-x: auto; margin-bottom: 1.5rem; }
-.mdx-content pre code   { background: none; border: none; color: #00CBDB; }
+.mdx-content pre code   { background: none; border: none; color: #00C8DB; }
 
 /* ─── BOX SUCCO DELLA GUIDA ─────────────────────────────────────────── */
 
 .mdx-content .succo-box {
-  background: #00CBDB;
+  background: #00C8DB;
   border-radius: 18px;
   padding: 1.5rem 1.5rem 1.25rem 1.5rem;
   margin: 0 0 2.5rem;
@@ -251,14 +251,14 @@ h3.font-serif { font-weight: 500; letter-spacing: 0.025em; }
 .mdx-content h2 + p + table {
   background: #f0fdfe;
   border: none;
-  border-left: 4px solid #00CBDB;
+  border-left: 4px solid #00C8DB;
   border-radius: 0 12px 12px 0;
   overflow: hidden;
 }
 .mdx-content h2 + table th,
 .mdx-content h2 + p + table th {
   background: transparent;
-  color: #00CBDB;
+  color: #00C8DB;
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   padding-bottom: 0.5rem;

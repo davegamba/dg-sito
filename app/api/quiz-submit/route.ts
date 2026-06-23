@@ -39,20 +39,61 @@ export async function POST(req: NextRequest) {
 
   const errors: string[] = [];
 
-  /* ── 1. SYSTEME.IO ── */
-  try {
-    const formData = new URLSearchParams();
-    formData.append("email", email);
-    formData.append("fields[first_name]", name);
+  /* ── 1. SYSTEME.IO (API ufficiale: crea contatto + assegna tag) ── */
+  // Tag: profilo-fisico (lead quiz) + nurture-attivo (accende il funnel di benvenuto)
+  const SYSTEME_TAG_IDS = [2064441, 2064505];
+  const systemeKey = process.env.SYSTEME_API_KEY;
 
-    await fetch("https://4957-info.systeme.io/dc3ae16e", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: formData.toString(),
-    });
-  } catch (e) {
+  if (systemeKey) {
+    const sysHeaders = {
+      "X-API-Key": systemeKey,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    };
+    try {
+      // 1a. Crea il contatto (409 = esiste già, va bene)
+      let contactId: number | null = null;
+      const createRes = await fetch("https://api.systeme.io/api/contacts", {
+        method: "POST",
+        headers: sysHeaders,
+        body: JSON.stringify({ email, firstName: name }),
+      });
+      const createText = await createRes.text();
+      if (createRes.ok) {
+        try { contactId = JSON.parse(createText).id; } catch {}
+      } else {
+        // 422/409 = contatto già esistente: non è un errore, lo cerchiamo sotto.
+        console.log(`Systeme.io create ${createRes.status} (probabile contatto esistente)`);
+      }
+
+      // 1b. Recupera l'ID se il contatto esisteva già
+      if (!contactId) {
+        const findRes = await fetch(
+          `https://api.systeme.io/api/contacts?email=${encodeURIComponent(email)}`,
+          { headers: sysHeaders },
+        );
+        if (findRes.ok) {
+          const data = await findRes.json();
+          contactId = (data.items || [])[0]?.id ?? null;
+        }
+      }
+      if (!contactId) throw new Error("contactId non trovato");
+
+      // 1c. Assegna i tag per ID
+      for (const tagId of SYSTEME_TAG_IDS) {
+        await fetch(`https://api.systeme.io/api/contacts/${contactId}/tags`, {
+          method: "POST",
+          headers: sysHeaders,
+          body: JSON.stringify({ tagId }),
+        });
+      }
+    } catch (e) {
+      errors.push("systeme");
+      console.error("Systeme.io error:", e);
+    }
+  } else {
     errors.push("systeme");
-    console.error("Systeme.io error:", e);
+    console.error("Systeme.io error: SYSTEME_API_KEY mancante");
   }
 
   /* ── 2. SUPABASE — salva lead + crea utente Auth ── */
@@ -82,27 +123,6 @@ export async function POST(req: NextRequest) {
     } catch (e) {
       errors.push("supabase");
       console.error("Supabase error:", e);
-    }
-
-    // 2b. Crea utente Auth (se non esiste già) e invia magic link per l'app
-    try {
-      // inviteUserByEmail crea l'utente se non esiste e manda il magic link
-      await fetch(`${supabaseUrl}/auth/v1/invite`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          apikey: supabaseKey,
-          Authorization: `Bearer ${supabaseKey}`,
-        },
-        body: JSON.stringify({
-          email,
-          data: { name },
-          redirect_to: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://davegamba.com"}/auth/callback`,
-        }),
-      });
-      // Non blocchiamo se fallisce — l'utente può sempre fare login manuale da /login
-    } catch (e) {
-      console.error("Supabase invite error:", e);
     }
   }
 

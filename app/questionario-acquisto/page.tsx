@@ -39,12 +39,12 @@ export default function QuestionarioAcquisto() {
         body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif}
         .qa-wrap{min-height:100dvh;background:var(--bg)}
         .qa-header{background:var(--bg-1);border-bottom:1px solid var(--border);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-        .qa-logo{font-family:'DM Serif Display',serif;font-size:20px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--white);text-decoration:none}
+        .qa-logo{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:20px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--white);text-decoration:none}
         .qa-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,203,219,0.08);border:1px solid rgba(0,203,219,0.25);border-radius:100px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--accent)}
         .qa-inner{max-width:760px;margin:0 auto;padding:48px 24px 80px}
         .qa-hero{margin-bottom:48px}
         .qa-status{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:block}
-        .qa-title{font-family:'DM Serif Display',serif;font-size:clamp(32px,5vw,48px);line-height:1.1;margin-bottom:14px}
+        .qa-title{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(32px,5vw,48px);line-height:1.1;margin-bottom:14px}
         .qa-sub{font-size:15px;color:var(--gray-4);line-height:1.7;max-width:560px}
         .qa-section{background:var(--bg-1);border:1px solid var(--border);border-radius:20px;padding:32px;margin-bottom:20px}
         .qa-section-title{font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:8px}
@@ -72,7 +72,7 @@ export default function QuestionarioAcquisto() {
         .qa-btn:disabled{opacity:0.6;cursor:default;transform:none}
         .qa-success{text-align:center;padding:80px 24px}
         .qa-success-icon{font-size:64px;margin-bottom:24px;display:block}
-        .qa-success-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,5vw,40px);margin-bottom:16px}
+        .qa-success-title{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(28px,5vw,40px);margin-bottom:16px}
         .qa-success-text{font-size:15px;color:var(--gray-4);line-height:1.7;max-width:480px;margin:0 auto}
         .qa-footer{text-align:center;padding:32px 24px;font-size:12px;color:var(--gray-6);border-top:1px solid var(--border)}
         @media(max-width:600px){.qa-row,.qa-row-3{grid-template-columns:1fr}.qa-section{padding:24px 20px}}
