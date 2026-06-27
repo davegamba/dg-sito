@@ -36,7 +36,6 @@ const COACHING_FEATURES = [
   "Call conoscitiva con Dave senza impegno",
   "Piano d'allenamento su misura",
   "Piano alimentare con biologa nutrizionista",
-  "Check settimanale",
   "Affiancamento WhatsApp con Dave fino all'obiettivo",
 ];
 
@@ -66,7 +65,7 @@ export default function LinksPage() {
         .social-icon:hover{background:rgba(255,255,255,0.15)!important;border-color:rgba(255,255,255,0.6)!important;color:#fff!important;}
         .link-card:hover{border-color:rgba(255,255,255,0.5);}
         .yt-card:hover .yt-play{background:rgba(0,0,0,0.15)!important;}
-        .card{background:rgba(0,18,22,0.55);border:1.5px solid rgba(0,203,219,0.35);border-radius:20px;overflow:hidden;backdrop-filter:blur(20px) saturate(1.8);-webkit-backdrop-filter:blur(20px) saturate(1.8);box-shadow:0 8px 32px rgba(0,0,0,0.5);margin-bottom:13px;}
+        .card{background:rgba(0,18,22,0.55);border:2.5px solid rgba(0,203,219,0.7);border-radius:20px;overflow:hidden;backdrop-filter:blur(20px) saturate(1.8);-webkit-backdrop-filter:blur(20px) saturate(1.8);box-shadow:0 8px 32px rgba(0,0,0,0.5);margin-bottom:13px;}
         .card-top{display:flex;gap:14px;padding:16px 16px 12px;}
         .card-img{flex-shrink:0;width:80px;height:80px;border-radius:12px;overflow:hidden;}
         .card-img img{width:100%;height:100%;object-fit:cover;}
@@ -77,8 +76,9 @@ export default function LinksPage() {
         .card-price span{font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:300;color:rgba(255,255,255,0.4);margin-left:4px;}
         .card-features{display:flex;flex-direction:column;gap:7px;border-top:1px solid rgba(255,255,255,0.06);margin:0 16px;padding:12px 0 14px;}
         .card-feature{display:flex;align-items:center;gap:9px;font-size:0.75rem;color:rgba(255,255,255,0.7);}
-        .card-feature .dot{width:22px;height:22px;border-radius:50%;background:#00CBDB;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.6rem;color:#000;font-weight:700;}
-        .card-btn{display:block;margin:14px 16px 16px;background:linear-gradient(135deg,#00CBDB,#00AECF);color:#000;font-weight:700;font-size:0.9rem;letter-spacing:0.04em;text-transform:uppercase;text-align:center;padding:14px;border-radius:12px;text-decoration:none;transition:filter 0.2s,transform 0.2s;}
+        .card-feature .dot{width:22px;height:22px;border-radius:50%;background:#00CBDB;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+        .dot-tri{width:0;height:0;border-style:solid;border-width:4px 0 4px 7px;border-color:transparent transparent transparent #000;margin-left:1px;}
+        .card-btn{display:block;margin:14px 16px 16px;background:linear-gradient(180deg,#1AD8E8 0%,#00CBDB 32%,#0072CE 100%);color:#fff;font-weight:700;font-size:0.9rem;letter-spacing:0.04em;text-transform:uppercase;text-align:center;padding:14px;border-radius:12px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,0.45);transition:filter 0.2s,transform 0.2s;}
         .card-btn:hover{filter:brightness(1.08);transform:translateY(-1px);}
       `}</style>
 
@@ -123,20 +123,6 @@ export default function LinksPage() {
         {/* CARDS */}
         <div style={{ padding: "28px 20px 0", background: "#080C0F", marginTop: -20, position: "relative", zIndex: 3 }}>
 
-          {/* Quiz Profilo Fisico */}
-          <a href="/quiz-fisico" className="link-card"
-            style={{ display: "flex", alignItems: "center", background: "rgba(0,18,22,0.55)", border: "1.5px solid rgba(0,203,219,0.45)", borderRadius: 20, overflow: "hidden", textDecoration: "none", color: "#fff", backdropFilter: "blur(20px) saturate(1.8)", WebkitBackdropFilter: "blur(20px) saturate(1.8)", boxShadow: "0 8px 32px rgba(0,0,0,0.45)", marginBottom: 13 }}>
-            <div style={{ flexShrink: 0, width: 90, height: 92, overflow: "hidden" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg" alt="Quiz Profilo Fisico" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-            </div>
-            <div style={{ flex: 1, padding: "0 16px", textAlign: "center" }}>
-              <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "1.15rem", color: "#fff", marginBottom: 4, letterSpacing: "0.04em" }}>Quiz Profilo Fisico</div>
-              <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.55)" }}>Scopri il tuo Profilo in 2 minuti <span style={{ color: "#F0C040" }}>[Gratuito]</span></div>
-            </div>
-            <span style={{ paddingRight: 16, color: "#00CBDB", fontSize: "1.6rem" }}>›</span>
-          </a>
-
           {/* DG Athletic Club */}
           <div className="card">
             <div className="card-top">
@@ -148,15 +134,15 @@ export default function LinksPage() {
                 <span style={{ alignSelf: "flex-start", background: "#00CBDB", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Prova il Club · 14 giorni gratis</span>
                 <div className="card-title">DG Athletic Club</div>
                 <div className="card-desc">Tutto ciò che serve per un fisico atletico, asciutto e scolpito. Schede progressive, meno di mezz&apos;ora al giorno.</div>
-                <div className="card-price">Gratis 14 giorni <span>poi €19/mese</span></div>
+                <div style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.9)", marginTop: 7, fontWeight: 500 }}><span style={{ color: "#00CBDB", fontWeight: 700 }}>€19/mese</span> · provalo gratis 14 giorni</div>
               </div>
             </div>
             <div className="card-features">
               {CLUB_FEATURES.map((f) => (
-                <div key={f} className="card-feature"><span className="dot">▶</span>{f}</div>
+                <div key={f} className="card-feature"><span className="dot"><span className="dot-tri" /></span>{f}</div>
               ))}
             </div>
-            <a href="https://club.davegamba.com/entra-nel-club" className="card-btn">Prova gratis 14 giorni →</a>
+            <a href="https://club.davegamba.com/entra-nel-club" className="card-btn">Entra gratis per 14 giorni →</a>
           </div>
 
           {/* Premium Coaching */}
@@ -173,11 +159,25 @@ export default function LinksPage() {
             </div>
             <div className="card-features">
               {COACHING_FEATURES.map((f) => (
-                <div key={f} className="card-feature"><span className="dot">▶</span>{f}</div>
+                <div key={f} className="card-feature"><span className="dot"><span className="dot-tri" /></span>{f}</div>
               ))}
             </div>
             <a href="https://www.davegamba.com/coaching/" target="_blank" rel="noopener noreferrer" className="card-btn">Compila il Questionario →</a>
           </div>
+
+          {/* Quiz Profilo Fisico — grosso bottone ciano (sotto i prodotti) */}
+          <a href="/quiz-fisico"
+            style={{ display: "flex", alignItems: "center", gap: 14, background: "linear-gradient(180deg,#1AD8E8 0%,#00CBDB 40%,#0089C7 100%)", borderRadius: 18, padding: "13px 16px", textDecoration: "none", marginBottom: 13, boxShadow: "0 10px 30px rgba(0,203,219,0.35), inset 0 1px 0 rgba(255,255,255,0.5)" }}>
+            <div style={{ flexShrink: 0, width: 58, height: 58, borderRadius: 12, overflow: "hidden", boxShadow: "0 2px 8px rgba(0,0,0,0.25)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg" alt="Quiz Profilo Fisico" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 700, fontSize: "1.35rem", color: "#06303D", letterSpacing: "0.02em", lineHeight: 1.1 }}>Quiz Profilo Fisico</div>
+              <div style={{ fontSize: "0.76rem", color: "#06303D", opacity: 0.85, marginTop: 2 }}>Scopri il tuo Profilo in 2 minuti · <strong>Gratuito</strong></div>
+            </div>
+            <span style={{ color: "#06303D", fontSize: "1.7rem", fontWeight: 700 }}>›</span>
+          </a>
 
           {/* YouTube */}
           <div style={{ margin: "28px 0 48px" }}>

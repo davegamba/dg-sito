@@ -3,9 +3,6 @@
 import { useEffect, useState } from "react";
 import { X, ArrowRight } from "lucide-react";
 
-const SUPABASE_URL = "https://nkojjrvndjyivsjvrqds.supabase.co";
-const SUPABASE_KEY = "sb_publishable_4WlxUEDHRnR0BGxCViP4NA_QVYLUwtg";
-const QUIZ_URL = "/quiz";
 const STORAGE_KEY = "dg_exit_popup_seen";
 const COOLDOWN_DAYS = 7;
 
@@ -16,8 +13,9 @@ export default function ExitPopup() {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    // Non mostrare nella pagina club
-    if (window.location.pathname.startsWith("/club")) return;
+    // Non mostrare nella pagina club né nella pagina links (è già un hub di CTA)
+    const path = window.location.pathname;
+    if (path.startsWith("/club") || path.startsWith("/links")) return;
 
     // Forza popup se ?popup=1 nell'URL
     const force = new URLSearchParams(window.location.search).get("popup") === "1";
@@ -90,22 +88,16 @@ export default function ExitPopup() {
     if (!val || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) return;
     setLoading(true);
     try {
-      await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+      await fetch("/api/exit-lead", {
         method: "POST",
-        headers: {
-          apikey: SUPABASE_KEY,
-          Authorization: `Bearer ${SUPABASE_KEY}`,
-          "Content-Type": "application/json",
-          Prefer: "resolution=ignore-duplicates",
-        },
-        body: JSON.stringify({ name: "", email: val, source: "exit-popup" }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: val }),
       });
     } catch {}
+    setLoading(false);
     setDone(true);
-    dismiss(true);
-    setTimeout(() => {
-      window.location.href = `${QUIZ_URL}`;
-    }, 800);
+    // Segna come convertito (non riapparirà) ma resta visibile la conferma.
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ ts: Date.now(), converted: true }));
   };
 
   if (!visible) return null;
@@ -138,7 +130,7 @@ export default function ExitPopup() {
         <div className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-[#F0C040] animate-pulse" />
           <span className="text-[#F0C040] text-[10px] font-semibold tracking-[0.2em] uppercase">
-            Gratis per te
+            Allenamento gratis
           </span>
         </div>
 
@@ -148,8 +140,8 @@ export default function ExitPopup() {
             Prima di andare —
           </h2>
           <p className="text-white/60 text-sm leading-relaxed">
-            <strong>Scopri il tuo Tipo Metabolico in <span style={{ color: "#F0C040" }}>2 minuti</span>.</strong><br />
-            Un quiz gratuito per capire perché non riesci a dimagrire — e cosa fare davvero.
+            <strong>Ti regalo un <span style={{ color: "#F0C040" }}>allenamento completo</span> di Dave.</strong><br />
+            21 minuti, da fare a casa o in palestra. Più consigli pratici nella mail, ogni settimana.
           </p>
         </div>
 
@@ -172,23 +164,25 @@ export default function ExitPopup() {
             >
               {loading ? "..." : (
                 <>
-                  <span style={{ filter: "sepia(1) saturate(5) hue-rotate(5deg)" }}>⚡</span> Fai il quiz gratis
+                  <span style={{ filter: "sepia(1) saturate(5) hue-rotate(5deg)" }}>⚡</span> Inviamelo gratis
                   <ArrowRight size={16} />
                 </>
               )}
             </button>
           </form>
         ) : (
-          <p className="text-[#00CBDB] text-sm text-center">Perfetto — ti porto al quiz...</p>
+          <p className="text-[#00CBDB] text-sm text-center">Fatto — controlla la mail, ti ho mandato l&apos;allenamento.</p>
         )}
 
         {/* No grazie */}
-        <button
-          onClick={() => dismiss()}
-          className="text-white/25 hover:text-white/50 text-xs text-center transition-colors"
-        >
-          No grazie, non mi interessa sapere perché non miglioro
-        </button>
+        {!done && (
+          <button
+            onClick={() => dismiss()}
+            className="text-white/25 hover:text-white/50 text-xs text-center transition-colors"
+          >
+            No grazie, magari un&apos;altra volta
+          </button>
+        )}
       </div>
       </div>
     </div>
