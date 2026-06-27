@@ -127,10 +127,16 @@ input BooleanFilter {
   exists: Boolean
 }
 
-input RichTextFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
+input BlogBodyArticleCtaFilter {
+  title: StringFilter
+  description: StringFilter
+  href: StringFilter
+  cta: StringFilter
+  photo: ImageFilter
+}
+
+input BlogBodyFilter {
+  ArticleCta: BlogBodyArticleCtaFilter
 }
 
 input BlogFilter {
@@ -140,7 +146,7 @@ input BlogFilter {
   excerpt: StringFilter
   image: ImageFilter
   published: BooleanFilter
-  body: RichTextFilter
+  body: BlogBodyFilter
 }
 
 type BlogConnectionEdges {

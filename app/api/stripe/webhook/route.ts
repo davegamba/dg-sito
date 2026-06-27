@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
-// Tutti i prodotti si sbloccano nella stessa area: davegamba.com/club.
-// Il cliente accede con l'email usata per pagare e vede sbloccato ciò che ha comprato.
 const CLUB_URL = "https://club.davegamba.com";
 const PRODUCT_NAMES: Record<string, string> = {
   sfida: "Protocollo Estivo da 8 Settimane",
   addominali: "Protocollo Addominali Scolpiti",
+  club: "DG Athletic Club",
 };
 
 async function notifyDave(subject: string, text: string) {
@@ -63,6 +62,21 @@ async function sendAccessEmail(email: string, products: string[]) {
   });
 }
 
+async function revokeAccess(email: string, product: string) {
+  const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+  const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+  return fetch(
+    `${SUPABASE_URL}/rest/v1/purchases?email=eq.${encodeURIComponent(email.toLowerCase())}&product=eq.${encodeURIComponent(product)}`,
+    {
+      method: "DELETE",
+      headers: {
+        apikey: SUPABASE_KEY,
+        Authorization: `Bearer ${SUPABASE_KEY}`,
+      },
+    }
+  );
+}
+
 async function recordPurchases(email: string, products: string[]) {
   const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
@@ -81,11 +95,12 @@ async function recordPurchases(email: string, products: string[]) {
   return res;
 }
 
-// Price ID Stripe → product_id (fallback per Payment Link, che non ha metadata)
 const PRICE_TO_PRODUCT: Record<string, string> = {
   "price_1TbEFWIyNONJea71jucLKRSE": "sfida",
   "price_1TjOmSIyNONJea71Fi7KSrBl": "sfida+addominali",
   "price_1TjOl3IyNONJea717l3NmgVG": "addominali",
+  "price_1Tlsa1IyNONJea71nFkbb0rQ": "club",
+  "price_1Tlsa1IyNONJea71lCG65MZZ": "club",
 };
 
 // product_id metadata → lista prodotti da sbloccare
@@ -140,6 +155,67 @@ export async function POST(req: NextRequest) {
         productId = "sfida";
       }
     }
+  }
+
+  // Abbonamento — prima fattura e rinnovi
+  else if (event.type === "invoice.paid") {
+    const invoice = event.data.object as Stripe.Invoice;
+    const sub = invoice.parent?.subscription_details?.subscription;
+    if (!sub) return NextResponse.json({ received: true });
+
+    email = invoice.customer_email ?? undefined;
+    if (!email) {
+      // Recupera email dal customer
+      try {
+        const customerId = typeof invoice.customer === "string" ? invoice.customer : invoice.customer?.id;
+        if (customerId) {
+          const customer = await stripe.customers.retrieve(customerId) as Stripe.Customer;
+          email = customer.email ?? undefined;
+        }
+      } catch { /* non bloccante */ }
+    }
+
+    if (!email) {
+      await notifyDave("⚠️ Invoice abbonamento senza email", `Invoice ${invoice.id} pagata ma manca l'email cliente. Controlla Stripe.`);
+      return NextResponse.json({ received: true });
+    }
+
+    // Leggi il product_id dai metadata dell'abbonamento
+    try {
+      const subId = typeof sub === "string" ? sub : (sub as Stripe.Subscription).id;
+      const fullSub = await stripe.subscriptions.retrieve(subId);
+      productId = fullSub.metadata?.product_id ?? "club";
+    } catch {
+      productId = "club";
+    }
+
+    const products = productsFrom(productId);
+    await recordPurchases(email, products);
+    // Manda l'email solo al primo pagamento (invoice.billing_reason === "subscription_create")
+    if (invoice.billing_reason === "subscription_create") {
+      try { await sendAccessEmail(email, products); } catch { /* best effort */ }
+    }
+    return NextResponse.json({ received: true });
+  }
+
+  // Abbonamento cancellato → revoca accesso
+  else if (event.type === "customer.subscription.deleted") {
+    const sub = event.data.object as Stripe.Subscription;
+    productId = sub.metadata?.product_id ?? "club";
+    try {
+      const customerId = typeof sub.customer === "string" ? sub.customer : sub.customer.id;
+      const customer = await stripe.customers.retrieve(customerId) as Stripe.Customer;
+      email = customer.email ?? undefined;
+    } catch { /* non bloccante */ }
+
+    if (email) {
+      await revokeAccess(email, productId);
+      await notifyDave(
+        `ℹ️ Abbonamento cancellato — ${email}`,
+        `L'abbonamento "${productId}" di ${email} è stato cancellato. Accesso revocato su Supabase.`
+      );
+    }
+    return NextResponse.json({ received: true });
   }
 
   // Evento non rilevante

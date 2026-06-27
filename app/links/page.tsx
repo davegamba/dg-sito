@@ -25,11 +25,11 @@ const SOCIAL = [
   },
 ];
 
-const SFIDA_FEATURES = [
-  "21 allenamenti da 21 minuti",
-  "21 tips su alimentazione e stile di vita",
-  "Video guida per ogni esercizio",
-  "Accesso immediato su tutti i dispositivi",
+const CLUB_FEATURES = [
+  "Schede progressive nuove ogni mese",
+  "Corsi focus mirati",
+  "I pasti flessibili di Dave",
+  "Per casa e palestra",
 ];
 
 const COACHING_FEATURES = [
@@ -137,25 +137,26 @@ export default function LinksPage() {
             <span style={{ paddingRight: 16, color: "#00CBDB", fontSize: "1.6rem" }}>›</span>
           </a>
 
-          {/* Sfida Estiva */}
+          {/* DG Athletic Club */}
           <div className="card">
             <div className="card-top">
               <div className="card-img">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/Facetune_25-03-2026-09-35-25.jpg" alt="Sfida Estiva 21 Giorni" style={{ objectPosition: "center 65%" }} />
+                <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg" alt="DG Athletic Club" style={{ objectPosition: "center top" }} />
               </div>
               <div className="card-info">
-                <div className="card-title">Sfida Estiva 21 Giorni</div>
-                <div className="card-desc">Il programma intensivo per rimetterti in forma prima dell&apos;estate.</div>
-                <div className="card-price">€33 <span>/ una tantum</span></div>
+                <span style={{ alignSelf: "flex-start", background: "#00CBDB", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Prova il Club · 14 giorni gratis</span>
+                <div className="card-title">DG Athletic Club</div>
+                <div className="card-desc">Tutto ciò che serve per un fisico atletico, asciutto e scolpito. Schede progressive, meno di mezz&apos;ora al giorno.</div>
+                <div className="card-price">Gratis 14 giorni <span>poi €19/mese</span></div>
               </div>
             </div>
             <div className="card-features">
-              {SFIDA_FEATURES.map((f) => (
+              {CLUB_FEATURES.map((f) => (
                 <div key={f} className="card-feature"><span className="dot">▶</span>{f}</div>
               ))}
             </div>
-            <a href="https://sfidaestiva.davegamba.com" className="card-btn">Inizia la Sfida →</a>
+            <a href="https://club.davegamba.com/entra-nel-club" className="card-btn">Prova gratis 14 giorni →</a>
           </div>
 
           {/* Premium Coaching */}

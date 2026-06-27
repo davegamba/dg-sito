@@ -206,10 +206,16 @@ export type BooleanFilter = {
   exists?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type RichTextFilter = {
-  startsWith?: InputMaybe<Scalars['String']['input']>;
-  eq?: InputMaybe<Scalars['String']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
+export type BlogBodyArticleCtaFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+  cta?: InputMaybe<StringFilter>;
+  photo?: InputMaybe<ImageFilter>;
+};
+
+export type BlogBodyFilter = {
+  ArticleCta?: InputMaybe<BlogBodyArticleCtaFilter>;
 };
 
 export type BlogFilter = {
@@ -219,7 +225,7 @@ export type BlogFilter = {
   excerpt?: InputMaybe<StringFilter>;
   image?: InputMaybe<ImageFilter>;
   published?: InputMaybe<BooleanFilter>;
-  body?: InputMaybe<RichTextFilter>;
+  body?: InputMaybe<BlogBodyFilter>;
 };
 
 export type BlogConnectionEdges = {
@@ -456,7 +462,7 @@ export const ExperimentalGetTinaClient = () =>
   getSdk(
     generateRequester(
       createClient({
-        url: "https://content.tinajs.io/2.4/content/00b54f91-a68f-4dd5-a45b-511c499a40d6/github/main",
+        url: "http://localhost:4001/graphql",
         queries,
       })
     )
