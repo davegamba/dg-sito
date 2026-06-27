@@ -95,7 +95,7 @@ export default function CoachingPage() {
         .ch-badge-gold{background:rgba(240,192,64,0.12);color:var(--gold);border:1px solid rgba(240,192,64,0.25)}
         .ch-badge-dot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:chPulse 2s infinite}
         .ch-hero-eyebrow{font-size:12px;font-weight:300;color:rgba(255,255,255,0.4);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px}
-        .ch-hero-title{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(48px,8vw,86px);line-height:1.0;letter-spacing:-0.02em;color:var(--white);margin-bottom:18px;font-weight:700}
+        .ch-hero-title{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(36px,4.5vw,64px);line-height:1.05;letter-spacing:-0.02em;color:var(--white);margin-bottom:18px;font-weight:700}
         .ch-hero-title em{font-style:italic;color:var(--accent)}
         .ch-hero-sub{font-size:clamp(15px,1.8vw,18px);color:rgba(255,255,255,0.7);font-weight:300;max-width:520px;margin:0 0 28px;line-height:1.65}
         .ch-btn-gold{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(to bottom,#F7E27A 0%,#F0C040 100%);color:#000;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;padding:18px 40px;border-radius:14px;border:none;cursor:pointer;text-decoration:none;transition:all 0.2s;letter-spacing:0.04em;text-transform:uppercase}
@@ -223,9 +223,6 @@ export default function CoachingPage() {
                     : <li key={i}><span className="ck">✓</span>{f.text}<span className="hl">{f.hl}</span></li>
                 )}
               </ul>
-              <a href="/coaching/candidati" className="ch-btn-gold" style={{ justifyContent: "center", whiteSpace: "nowrap" }}>
-                Compila il questionario →
-              </a>
             </div>
           </div>
         </section>
