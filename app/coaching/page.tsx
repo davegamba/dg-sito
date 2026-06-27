@@ -132,12 +132,12 @@ export default function CoachingPage() {
         .ch-scarcity-inner{max-width:640px;margin:0 auto}
         .ch-scarcity-inner p{font-size:16px;color:var(--gray-4);line-height:1.7;margin:12px 0 0}
         .ch-faq-list{display:flex;flex-direction:column;gap:8px;margin-top:48px}
-        .ch-faq-item{background:#fff;border:1px solid #e0d9cc;border-radius:14px;overflow:hidden;transition:border-color 0.2s}
-        .ch-faq-item.open{border-color:rgba(0,203,219,0.4)}
-        .ch-faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:none;border:none;color:#0A1A20;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;text-align:left;cursor:pointer}
-        .ch-faq-icon{width:22px;height:22px;border-radius:50%;border:1px solid #d0c9be;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#888;font-size:14px;transition:all 0.2s}
+        .ch-faq-item{background:#f8f8f8;border:1px solid #e8e8e8;border-radius:14px;overflow:hidden;transition:border-color 0.2s}
+        .ch-faq-item.open{border-color:rgba(0,203,219,0.4);background:#fff}
+        .ch-faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:none;border:none;color:#0A1A20;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;text-align:left;cursor:pointer}
+        .ch-faq-icon{width:22px;height:22px;border-radius:50%;border:1px solid #ccc;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#666;font-size:14px;transition:all 0.2s}
         .ch-faq-item.open .ch-faq-icon{border-color:var(--accent);color:var(--accent);transform:rotate(45deg)}
-        .ch-faq-answer{display:none;padding:0 24px 20px;font-size:14px;color:#666;line-height:1.7}
+        .ch-faq-answer{display:none;padding:0 24px 20px;font-size:14px;color:#555;line-height:1.75}
         .ch-faq-item.open .ch-faq-answer{display:block}
         .ch-cta-block{position:relative;z-index:1;text-align:center;max-width:660px;margin:0 auto;padding:100px 24px}
         .ch-cta-block p{font-size:16px;color:var(--gray-4);line-height:1.7;margin:20px 0 36px}
@@ -356,7 +356,7 @@ export default function CoachingPage() {
         </div>
 
         {/* FAQ */}
-        <div className="ch-bg-section">
+        <div style={{ position: "relative", zIndex: 1, background: "#ffffff", borderTop: "1px solid #e8e8e8", borderBottom: "1px solid #e8e8e8" }}>
           <div className="ch-section reveal">
             <div style={{ textAlign: "center", marginBottom: 8 }}>
               <div className="ch-badge ch-badge-gold" style={{ display: "inline-flex" }}>
@@ -364,8 +364,8 @@ export default function CoachingPage() {
                 FAQ
               </div>
             </div>
-            <h2 className="ch-section-title">Domande e <em>risposte</em></h2>
-            <p className="ch-section-sub">Quelle che mi fanno sempre. Rispondo qui, senza giri di parole.</p>
+            <h2 className="ch-section-title" style={{ color: "#0A1A20" }}>Domande e <em>risposte</em></h2>
+            <p className="ch-section-sub" style={{ color: "#6a6a64" }}>Quelle che mi fanno sempre. Rispondo qui, senza giri di parole.</p>
             <div className="ch-faq-list" style={{ background: "transparent" }}>
               {FAQ.map((f) => (
                 <div key={f.q} className="ch-faq-item">
