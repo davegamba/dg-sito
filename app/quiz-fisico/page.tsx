@@ -80,7 +80,6 @@ const STEPS: Step[] = [
     hint: "Sii onesto — adatteremo il piano al tuo reale disponibile",
     key: "tempo",
     options: [
-      { value: "20", label: "Meno di 20 minuti" },
       { value: "30", label: "20–30 minuti" },
       { value: "45", label: "30–45 minuti" },
       { value: "60", label: "1 ora o più" },
@@ -237,8 +236,8 @@ const CTA_CATALOG: Record<string, CtaCard> = {
     badge: "Tutti gli strumenti",
     badgeColor: "#00CBDB",
     title: "DG Athletic<br />Club",
-    price: "€17/mese",
-    href: "https://club.davegamba.com/",
+    price: "In arrivo",
+    href: "/club-presto",
     img: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
     cta: "Entra nel Club →",
     accent: "#00CBDB",
@@ -364,7 +363,7 @@ export default function QuizFisicoPage() {
               <div style={{ display: "inline-block", background: "rgba(0,203,219,0.1)", color: "#00CBDB", fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", padding: "6px 16px", borderRadius: 100, border: "1px solid rgba(0,203,219,0.2)", marginBottom: 28 }}>
                 Quiz Gratuito · 2 Minuti
               </div>
-              <h1 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(38px,8vw,62px)", lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: 20 }}>
+              <h1 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(38px,8vw,62px)", lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: 20, fontWeight: 800 }}>
                 Scopri il tuo<br /><em style={{ fontStyle: "italic", color: "#00CBDB" }}>Profilo Fisico</em>
               </h1>
               <p style={{ fontSize: 16, color: "#9a9a94", fontWeight: 300, lineHeight: 1.65, marginBottom: 40 }}>
@@ -415,7 +414,7 @@ export default function QuizFisicoPage() {
 
             {/* Step content */}
             <div key={step} className="step-anim" style={{ padding: "0 24px" }}>
-              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(22px,5vw,30px)", lineHeight: 1.2, marginBottom: 8 }}>{currentStepData.question}</h2>
+              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(22px,5vw,30px)", lineHeight: 1.2, marginBottom: 8, fontWeight: 800 }}>{currentStepData.question}</h2>
               <p style={{ fontSize: 14, color: "#9a9a94", fontWeight: 300, marginBottom: 28 }}>{currentStepData.hint}</p>
 
               {/* image-grid-2 */}
@@ -452,7 +451,7 @@ export default function QuizFisicoPage() {
                           </div>
                         )}
                         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.2) 55%,transparent 100%)" }} />
-                        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "24px 10px 12px", fontSize: 13, fontWeight: 600, color: sel ? "#00CBDB" : "#fafaf8", lineHeight: 1.3, textAlign: "center" }}>
+                        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "24px 10px 12px", fontSize: 15, fontWeight: 600, color: sel ? "#00CBDB" : "#fafaf8", lineHeight: 1.3, textAlign: "center" }}>
                           {opt.label}
                         </div>
                         {sel && (
@@ -543,7 +542,7 @@ export default function QuizFisicoPage() {
             </div>
             <div style={{ paddingTop: 40 }}>
               <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#00CBDB", marginBottom: 14, display: "block" }}>Step Finale</span>
-              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(28px,6vw,40px)", lineHeight: 1.1, marginBottom: 10 }}>
+              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(28px,6vw,40px)", lineHeight: 1.1, marginBottom: 10, fontWeight: 800 }}>
                 Il tuo profilo è pronto.<br />Più la scheda START 🔥
               </h2>
               <p style={{ fontSize: 15, color: "#9a9a94", fontWeight: 300, lineHeight: 1.6, marginBottom: 36 }}>
@@ -577,7 +576,7 @@ export default function QuizFisicoPage() {
             <div style={{ textAlign: "center", padding: "48px 0 40px" }}>
               <span style={{ fontSize: 64, marginBottom: 16, display: "block" }}>{profile.icon}</span>
               <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#00CBDB", marginBottom: 12, display: "block" }}>Il tuo Profilo Fisico</span>
-              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(34px,7vw,52px)", lineHeight: 1.05, marginBottom: 16, fontWeight: 800 }}>{profile.name}</h2>
+              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(34px,7vw,52px)", lineHeight: 1.05, marginBottom: 16, fontWeight: 900 }}>{profile.name}</h2>
               <p style={{ fontSize: 16, color: "#9a9a94", fontWeight: 300, lineHeight: 1.65, maxWidth: 400, margin: "0 auto" }}>{profile.tagline}</p>
             </div>
 
@@ -588,14 +587,14 @@ export default function QuizFisicoPage() {
             )}
 
             {/* Card analisi */}
-            <div style={{ background: "linear-gradient(135deg,rgba(255,80,80,0.08) 0%,rgba(255,80,80,0.02) 100%)", border: "1px solid rgba(255,80,80,0.25)", borderRadius: 16, padding: 28, marginBottom: 14 }}>
-              <h4 style={{ fontSize: 15, fontWeight: 700, fontStyle: "italic", color: "#ff6b6b", marginBottom: 14, display: "block" }}>Cosa sta succedendo davvero</h4>
+            <div style={{ background: "linear-gradient(135deg,rgba(245,200,66,0.08) 0%,rgba(245,200,66,0.02) 100%)", border: "1px solid rgba(245,200,66,0.25)", borderRadius: 16, padding: 28, marginBottom: 14 }}>
+              <h4 style={{ fontSize: 15, fontWeight: 800, fontStyle: "italic", color: "#f5c842", marginBottom: 14, display: "block" }}>Cosa sta succedendo davvero</h4>
               <p style={{ fontSize: 15, color: "#e4e4e0", lineHeight: 1.75 }} dangerouslySetInnerHTML={{ __html: profile.analysis }} />
             </div>
 
             {/* Card tips */}
             <div style={{ background: "linear-gradient(135deg,rgba(0,203,219,0.07) 0%,rgba(0,203,219,0.02) 100%)", border: "1px solid rgba(0,203,219,0.2)", borderRadius: 16, padding: 28, marginBottom: 14 }}>
-              <h3 style={{ fontSize: 18, fontWeight: 700, color: "#00CBDB", marginBottom: 14, display: "block" }}>3 mosse da applicare subito</h3>
+              <h3 style={{ fontSize: 18, fontWeight: 800, color: "#00CBDB", marginBottom: 14, display: "block" }}>✅ 3 mosse da applicare subito</h3>
               <ul style={{ listStyle: "none", display: "grid", gap: 14 }}>
                 {profile.tips.map((tip, i) => (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 14, fontSize: 15, color: "#e4e4e0", lineHeight: 1.6 }}>
@@ -608,29 +607,42 @@ export default function QuizFisicoPage() {
 
             {/* CTA section */}
             <div style={{ marginTop: 40 }}>
-              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(26px,5.5vw,36px)", textAlign: "center", lineHeight: 1.15, marginBottom: 10, fontWeight: 800 }}>
+              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(26px,5.5vw,36px)", textAlign: "center", lineHeight: 1.15, marginBottom: 10, fontWeight: 900 }}>
                 Sei a <span style={{ color: "#f5c842" }}>1 passo</span> dal trasformare<br />definitivamente il tuo fisico
               </h2>
               <p style={{ fontSize: 15, color: "#9a9a94", textAlign: "center", fontWeight: 300, lineHeight: 1.6, marginBottom: 28 }}>
                 In base alle tue risposte la strada più rapida per il fisico che vuoi sono i Protocolli:
               </p>
 
-              {/* CTA cards — dinamiche per profilo */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 24 }}>
-                {ctaPair.map((c, i) => (
-                  <a key={i} href={c.href} target="_blank" rel="noopener noreferrer"
-                    style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: `2px solid ${c.accent}80`, minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none", transition: "border-color 0.2s" }}>
-                    <div style={{ position: "absolute", inset: 0, backgroundImage: `url('${c.img}')`, backgroundSize: "cover", backgroundPosition: "center top" }} />
-                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.4) 50%,rgba(0,0,0,0.1) 100%)" }} />
-                    <div style={{ position: "relative", zIndex: 1, padding: 16, display: "flex", flexDirection: "column", gap: 8 }}>
-                      <div style={{ display: "inline-block", background: c.badgeColor, color: "#0a0a0a", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "3px 8px", borderRadius: 100, alignSelf: "flex-start" }}>{c.badge}</div>
-                      <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 18, lineHeight: 1.2, color: "#fafaf8" }} dangerouslySetInnerHTML={{ __html: c.title }} />
-                      {c.price && <div style={{ fontSize: 20, fontWeight: 700, color: "#fafaf8" }}>{c.price}</div>}
-                      <div style={{ display: "block", background: c.accent, color: "#0a0a0a", fontSize: 13, fontWeight: 700, padding: 11, borderRadius: 8, textAlign: "center" }}>{c.cta}</div>
-                    </div>
-                  </a>
-                ))}
-              </div>
+              {/* CTA card Sfida Estiva */}
+              <p style={{ fontSize: 14, color: "#c8c8c4", lineHeight: 1.65, marginBottom: 14 }}>
+                Per avere un percorso di allenamenti brevi e intensi per metterti in forma durante questa estate, scopri la Sfida:
+              </p>
+              <a href="https://sfidaestiva.davegamba.com/" target="_blank" rel="noopener noreferrer"
+                style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "2px solid rgba(0,203,219,0.5)", minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none", marginBottom: 32 }}>
+                <div style={{ position: "absolute", inset: 0, backgroundImage: `url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/foto-sfida-estiva.jpg')`, backgroundSize: "cover", backgroundPosition: "center top" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.4) 50%,rgba(0,0,0,0.1) 100%)" }} />
+                <div style={{ position: "relative", zIndex: 1, padding: 20, display: "flex", flexDirection: "column", gap: 8 }}>
+                  <div style={{ display: "inline-block", background: "#00CBDB", color: "#0a0a0a", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "3px 8px", borderRadius: 100, alignSelf: "flex-start" }}>Offerta a tempo limitato</div>
+                  <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 22, fontWeight: 900, lineHeight: 1.2, color: "#fafaf8" }}>Sfida Estiva<br />21 Giorni</h3>
+                  <div style={{ display: "block", background: "#00CBDB", color: "#0a0a0a", fontSize: 14, fontWeight: 700, padding: 13, borderRadius: 8, textAlign: "center" }}>Vai alla Sfida →</div>
+                </div>
+              </a>
+
+              {/* CTA card Coaching */}
+              <p style={{ fontSize: 14, color: "#c8c8c4", lineHeight: 1.65, marginBottom: 14 }}>
+                Se vuoi il massimo ed essere seguito personalmente da Dave nella tua trasformazione fisica, scopri il Coaching:
+              </p>
+              <a href="https://davegamba.com/coaching#candidati" target="_blank" rel="noopener noreferrer"
+                style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "2px solid rgba(245,200,66,0.5)", minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none", marginBottom: 24 }}>
+                <div style={{ position: "absolute", inset: 0, backgroundImage: `url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg')`, backgroundSize: "cover", backgroundPosition: "center top" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.4) 50%,rgba(0,0,0,0.1) 100%)" }} />
+                <div style={{ position: "relative", zIndex: 1, padding: 20, display: "flex", flexDirection: "column", gap: 8 }}>
+                  <div style={{ display: "inline-block", background: "#f5c842", color: "#0a0a0a", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "3px 8px", borderRadius: 100, alignSelf: "flex-start" }}>Servizio Premium</div>
+                  <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 22, fontWeight: 900, lineHeight: 1.2, color: "#fafaf8" }}>Coaching<br />Personale 1:1</h3>
+                  <div style={{ display: "block", background: "#f5c842", color: "#0a0a0a", fontSize: 14, fontWeight: 700, padding: 13, borderRadius: 8, textAlign: "center" }}>Vai al Coaching →</div>
+                </div>
+              </a>
 
               <button onClick={restart}
                 style={{ display: "block", textAlign: "center", fontSize: 13, color: "#5a5a55", cursor: "pointer", marginTop: 8, background: "none", border: "none", fontFamily: "inherit", width: "100%", transition: "color 0.2s" }}>
@@ -643,7 +655,7 @@ export default function QuizFisicoPage() {
               <style>{`
                 @keyframes marqueeQuiz { from { transform: translateX(0); } to { transform: translateX(-50%); } }
               `}</style>
-              <p style={{ textAlign: "center", fontSize: 11, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "#5a5a55", marginBottom: 16 }}>Risultati reali dei clienti</p>
+              <p style={{ textAlign: "center", fontSize: 11, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "#5a5a55", marginBottom: 16 }}>Risultati reali da clienti reali</p>
               <div style={{ display: "flex", gap: 12, width: "max-content", animation: "marqueeQuiz 40s linear infinite" }}>
                 {[...TESTIMONIAL_PHOTOS, ...TESTIMONIAL_PHOTOS].map((src, i) => (
                   <img key={i} src={src} alt="Risultato" loading="lazy"

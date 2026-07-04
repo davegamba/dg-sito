@@ -153,9 +153,7 @@ export default function ProductCards() {
               Gli strumenti per te
             </h2>
             <a
-              href="https://club.davegamba.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/club-presto"
               className="inline-flex items-center gap-1.5 text-sm font-bold text-black px-5 py-2 rounded-full transition-all duration-200 hover:opacity-85"
               style={{ background: "linear-gradient(135deg, #00C8DB, #00AECF)" }}
             >

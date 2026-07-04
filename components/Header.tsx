@@ -63,9 +63,7 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="https://club.davegamba.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/club-presto"
               className="text-sm font-bold text-black px-5 py-1.5 rounded-full transition-all duration-200 hover:opacity-85 shrink-0"
               style={{ background: "linear-gradient(135deg, #00C8DB, #00AECF)" }}
             >
@@ -104,9 +102,7 @@ export default function Header() {
           ))}
           <div className="pt-3">
             <Link
-              href="https://club.davegamba.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/club-presto"
               onClick={() => setOpen(false)}
               className="w-full block text-center text-sm font-bold text-black py-3 rounded-full transition-all duration-200"
               style={{ background: "linear-gradient(135deg, #00C8DB, #00AECF)" }}
