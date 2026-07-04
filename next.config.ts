@@ -53,6 +53,25 @@ const nextConfig: NextConfig = {
       { source: "/blog/quante-uova-a-settimana", destination: "/blog/quante-uova-al-giorno", permanent: true },
       { source: "/blog/benefici-camminata-quanti-passi", destination: "/blog/quanti-passi-al-giorno", permanent: true },
       { source: "/blog/stretching-benefici-mobilita", destination: "/blog/stretching-benefici", permanent: true },
+      // Redirect da vecchi URL flat Podia (senza prefisso /blog) → struttura attuale
+      { source: "/stare-seduti-fa-male", destination: "/blog/stare-seduti-fa-male", permanent: true },
+      { source: "/latte-fa-male", destination: "/blog/latte-fa-male", permanent: true },
+      { source: "/allenamento-a-casa", destination: "/blog/allenamento-a-casa", permanent: true },
+      { source: "/cardio-per-dimagrire", destination: "/blog/cardio-o-pesi-per-dimagrire", permanent: true },
+      // Altri slug Podia con varianti diverse, trovati nel drilldown Search Console del 2026-07-04
+      { source: "/blog/osteoporosi-osteopenia-cose-cure-rimedi", destination: "/blog/osteoporosi-sintomi", permanent: true },
+      { source: "/blog/creatina-cosa-e-benefici-effetti-collaterali", destination: "/blog/creatina-a-cosa-serve", permanent: true },
+      { source: "/blog/dimagrimento-deficit-calorico", destination: "/blog/deficit-calorico", permanent: true },
+      { source: "/blog/digiuno-contro-deficit-calorico", destination: "/blog/deficit-calorico", permanent: true },
+      // Pagine Podia sostituite da equivalenti nel nuovo sito
+      { source: "/coaching-personal-trainer-online", destination: "/coaching", permanent: true },
+      { source: "/cookie-policy", destination: "/privacy", permanent: true },
+      { source: "/Instagram", destination: "https://www.instagram.com/davegamba_fit/", permanent: true },
+      // Locale EN/ES mai esistite nel nuovo sito → homepage
+      { source: "/en", destination: "/", permanent: true },
+      { source: "/en/:path*", destination: "/", permanent: true },
+      { source: "/es", destination: "/", permanent: true },
+      { source: "/es/:path*", destination: "/", permanent: true },
     ];
   },
   images: {
