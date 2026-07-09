@@ -276,8 +276,6 @@ h3.font-serif { font-weight: 500; letter-spacing: 0.025em; }
 
 /* ─── ARTICLE CTA BANNER ────────────────────────────────────────────── */
 
-.mdx-content .article-cta p   { color: rgba(255,255,255,0.8) !important; }
-.mdx-content .article-cta h3  { color: #fff !important; }
 .mdx-content .article-cta a   { color: #111 !important; text-decoration: none !important; }
 
 @keyframes shimmer {
