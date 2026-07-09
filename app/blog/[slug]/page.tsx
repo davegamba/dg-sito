@@ -9,33 +9,23 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ReadingProgress from "@/components/ReadingProgress";
 import { ArticleCta } from "@/components/ArticleCta";
+import { ClubCta } from "@/components/ClubCta";
 import type { Metadata } from "next";
 
-// H2 bicolore: prima parte ciano, seconda parte nera
-// Eccezione: "Riferimenti Scientifici" → h3 nero con emoji 🔬
+// H2 tutti scuri e in grassetto (colore/peso da .mdx-content h2 in globals.css)
+// Eccezione: "Riferimenti Scientifici" → h3 scuro con emoji 🔬
 function CustomH2({ children }: { children: ReactNode }) {
-  if (typeof children !== "string") return <h2 className="font-serif">{children}</h2>;
-  if (children.trim().toLowerCase().includes("riferimenti")) {
+  if (typeof children === "string" && children.trim().toLowerCase().includes("riferimenti")) {
     return (
-      <h3 style={{ fontSize: "1.1rem", color: "#111", fontWeight: 700, borderTop: "1px solid #e8e0d4", paddingTop: "1.5rem", marginTop: "2.5rem", marginBottom: "0.75rem" }}>
+      <h3 style={{ fontSize: "1.1rem", color: "#14181a", fontWeight: 700, borderTop: "1px solid #e8e0d4", paddingTop: "1.5rem", marginTop: "2.5rem", marginBottom: "0.75rem" }}>
         🔬 {children}
       </h3>
-    );
-  }
-  const match = children.match(/^(.+?)\s*(—|:)\s*(.+)$/);
-  if (match) {
-    const sep = match[2] === "—" ? " — " : ": ";
-    return (
-      <h2 className="font-serif">
-        <span style={{ color: "#00CBDB" }}>{match[1]}</span>
-        <span style={{ color: "#1a1a1a" }}>{sep}{match[3]}</span>
-      </h2>
     );
   }
   return <h2 className="font-serif">{children}</h2>;
 }
 
-const mdxComponents = { h2: CustomH2, ArticleCta };
+const mdxComponents = { h2: CustomH2, ArticleCta, ClubCta };
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
