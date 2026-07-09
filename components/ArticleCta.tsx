@@ -13,7 +13,7 @@ interface ArticleCtaProps {
 // Layer ciano: quasi pieno sulla destra (sfondo per il testo), sfuma solo
 // nell'ultimo tratto a sinistra per lasciar vedere il soggetto della foto.
 const CYAN =
-  "linear-gradient(to right, rgba(0,203,219,0) 0%, rgba(0,203,219,0.72) 24%, rgba(0,203,219,0.97) 46%, #00CBDB 100%)";
+  "linear-gradient(to right, rgba(0,203,219,0) 0%, rgba(0,203,219,0.12) 22%, rgba(0,203,219,0.8) 44%, #00CBDB 60%)";
 
 export function ArticleCta({
   title,
@@ -33,7 +33,11 @@ export function ArticleCta({
       {/* Foto di sfondo, soggetto verso sinistra */}
       <div
         className="absolute inset-0 bg-cover"
-        style={{ backgroundImage: `url(${photo})`, backgroundPosition: "right center" }}
+        style={{
+          backgroundImage: `url(${photo})`,
+          backgroundPosition: "center",
+          transform: "scaleX(-1)",
+        }}
       />
       {/* Layer ciano */}
       <div className="absolute inset-0" style={{ background: CYAN }} />
