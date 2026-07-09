@@ -60,7 +60,7 @@ export function ArticleCta({
           <h3
             className="font-serif"
             style={{
-              color: "#0c1618",
+              color: "#ffffff",
               fontSize: compact ? "1.15rem" : "1.55rem",
               fontWeight: 800,
               lineHeight: 1.12,
