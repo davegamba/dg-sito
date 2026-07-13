@@ -44,9 +44,9 @@ const FAQ = [
 ];
 
 const FORMULE = [
-  { dur: "3 mesi", price: "420€", mese: "140€/mese" },
-  { dur: "6 mesi", price: "650€", mese: "108€/mese", best: true },
-  { dur: "12 mesi", price: "1.100€", mese: "92€/mese" },
+  { dur: "3 mesi", price: "420€", mese: "140€/mese", hl: "3 mesi" },
+  { dur: "6 mesi", price: "650€", mese: "108€/mese", hl: "6 mesi", best: true },
+  { dur: "12 mesi", price: "1.100€", mese: "92€/mese", hl: "12 mesi" },
 ];
 
 export default function CoachingPage() {
@@ -134,23 +134,27 @@ export default function CoachingPage() {
         .ch-non-item.yes{color:var(--gray-3)}
         .ch-non-item.no{color:#e05555}
         .ch-non-icon{flex-shrink:0;margin-top:1px;font-size:15px}
-        .ch-scarcity{position:relative;z-index:1;background:var(--bg-1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:56px 24px;text-align:center}
-        .ch-scarcity-inner{max-width:640px;margin:0 auto}
-        .ch-scarcity-inner p{font-size:16px;color:var(--gray-4);line-height:1.7;margin:12px 0 0}
         .ch-invest-lead{font-size:16px;color:var(--gray-3);line-height:1.7;max-width:620px;text-align:center;margin:0 auto 8px}
-        .ch-invest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:760px;margin:40px auto 32px}
-        .ch-invest-card{background:var(--cyan-card);border:1px solid rgba(0,203,219,0.22);border-radius:18px;padding:28px 20px;text-align:center;position:relative}
+        .ch-invest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:40px auto 32px;align-items:stretch}
+        .ch-invest-card{background:var(--cyan-card);border:1px solid rgba(0,203,219,0.22);border-radius:18px;padding:32px 24px 28px;text-align:center;position:relative;display:flex;flex-direction:column}
         .ch-invest-card.best{background:var(--cyan-card-ft);border-color:rgba(0,203,219,0.45)}
         .ch-invest-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#000;background:var(--accent);border-radius:100px;padding:4px 12px;white-space:nowrap}
         .ch-invest-dur{font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
         .ch-invest-price{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:34px;color:var(--white);line-height:1}
         .ch-invest-mese{font-size:13px;color:var(--gray-4);margin-top:6px}
-        .ch-invest-cta{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+        .ch-invest-divider{height:1px;background:rgba(255,255,255,0.08);margin:22px 0 18px}
+        .ch-invest-features{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;text-align:left;flex:1}
+        .ch-invest-features li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--gray-3);line-height:1.45}
+        .ch-invest-features li .ck{color:var(--accent);flex-shrink:0;margin-top:1px}
+        .ch-invest-features li .hl{color:var(--gold);font-weight:600}
+        .ch-invest-cta{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:8px}
         .ch-invest-link{font-size:14px;color:var(--gray-4);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s}
         .ch-invest-link:hover{color:var(--accent)}
+        .ch-invest-scarcity{font-size:14px;color:var(--gray-4);line-height:1.7;max-width:560px;text-align:center;margin:8px auto 32px}
+        .ch-invest-scarcity strong{color:var(--gold)}
         .ch-faq-list{display:flex;flex-direction:column;gap:8px;margin-top:48px}
-        .ch-faq-item{background:var(--bg-3);border:1px solid var(--border-2);border-radius:14px;overflow:hidden;transition:border-color 0.2s}
-        .ch-faq-item.open{border-color:rgba(0,203,219,0.4);background:#212121}
+        .ch-faq-item{background:var(--bg);border:1px solid var(--border-2);border-radius:14px;overflow:hidden;transition:border-color 0.2s}
+        .ch-faq-item.open{border-color:rgba(0,203,219,0.4);background:#000}
         .ch-faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:none;border:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;text-align:left;cursor:pointer}
         .ch-faq-icon{width:22px;height:22px;border-radius:50%;border:1px solid var(--border-2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gray-4);font-size:14px;transition:all 0.2s}
         .ch-faq-item.open .ch-faq-icon{border-color:var(--accent);color:var(--accent);transform:rotate(45deg)}
@@ -190,7 +194,8 @@ export default function CoachingPage() {
           .ch-check-item:nth-last-child(-n+3){border-bottom:1px solid var(--border)}
           .ch-check-item:last-child{border-bottom:none}
         }
-        @media(max-width:600px){.ch-section{padding:56px 20px}.ch-invest-grid{grid-template-columns:1fr;max-width:340px}}
+        @media(max-width:900px){.ch-invest-grid{grid-template-columns:1fr;max-width:400px}}
+        @media(max-width:600px){.ch-section{padding:56px 20px}}
       `}</style>
 
       <div className="ch-body">
@@ -354,23 +359,7 @@ export default function CoachingPage() {
         <div className="ch-divider" />
 
         {/* TESTIMONIANZE — strip dinamica dalla home */}
-        <Testimonials />
-
-        {/* SCARSITÀ */}
-        <div className="ch-scarcity reveal">
-          <div className="ch-scarcity-inner">
-            <div className="ch-badge ch-badge-gold" style={{ display: "inline-flex", margin: "0 auto 12px" }}>
-              <span className="ch-badge-dot" />
-              Posti limitati
-            </div>
-            <h2 className="ch-section-title" style={{ margin: 0 }}>
-              Seguo solo <em>due persone nuove</em> al mese.
-            </h2>
-            <p>
-              È 1-1, lo faccio io, e le ore in un giorno sono quelle. Per questo si entra su candidatura: se c&apos;è posto e siamo in linea, partiamo. Se non c&apos;è posto ti metto in lista e ti avviso io.
-            </p>
-          </div>
-        </div>
+        <Testimonials variant="dark" />
 
         {/* INVESTIMENTO & TRASPARENZA */}
         <div className="ch-section reveal">
@@ -382,7 +371,7 @@ export default function CoachingPage() {
           </div>
           <h2 className="ch-section-title">Quanto costa? <em>Te lo dico subito.</em></h2>
           <p className="ch-invest-lead">
-            Niente prezzo nascosto, niente sorprese in call. Non è un&apos;app da 9€ né una scheda da 30€: è affiancamento 1-1 diretto con me. Tre formule, a partire da <strong style={{ color: "var(--accent)" }}>92€ al mese</strong>.
+            Non ti faccio aspettare la call per saperlo. Tre formule, stesso percorso completo, a partire da <strong style={{ color: "var(--accent)" }}>92€ al mese</strong>.
           </p>
           <div className="ch-invest-grid">
             {FORMULE.map((f) => (
@@ -391,9 +380,20 @@ export default function CoachingPage() {
                 <div className="ch-invest-dur">{f.dur}</div>
                 <div className="ch-invest-price">{f.price}</div>
                 <div className="ch-invest-mese">≈ {f.mese}</div>
+                <div className="ch-invest-divider" />
+                <ul className="ch-invest-features">
+                  {HERO_FEATURES.map((feat, i) =>
+                    typeof feat === "string"
+                      ? <li key={i}><span className="ck">✓</span>{feat}</li>
+                      : <li key={i}><span className="ck">✓</span>{feat.text}<span className="hl">{f.hl}</span></li>
+                  )}
+                </ul>
               </div>
             ))}
           </div>
+          <p className="ch-invest-scarcity">
+            <strong>Posti limitati</strong> — seguo solo due persone nuove al mese. È 1-1, lo faccio io, e le ore in un giorno sono quelle. Se non c&apos;è posto ti metto in lista e ti avviso io.
+          </p>
           <div className="ch-invest-cta">
             <a href="/coaching/candidati" className="ch-btn-gold">
               Candidati al coaching →
@@ -438,12 +438,8 @@ export default function CoachingPage() {
             Il prossimo passo
           </div>
           <h2 className="ch-section-title">
-            Se fa per te,<br /><em>lo capiamo subito.</em>
+            Compila il <em>questionario</em>
           </h2>
-          <p>
-            Compila il questionario. Lo leggo io. Se siamo in linea, ti scrivo per la call.<br />
-            Se ti alleni, sei un atleta. Inizia da qui.
-          </p>
           <a href="/coaching/candidati" className="ch-btn-gold" style={{ fontSize: 16, padding: "18px 44px" }}>
             Candidati al coaching →
           </a>

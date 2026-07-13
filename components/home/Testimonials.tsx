@@ -112,16 +112,17 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
   );
 }
 
-export default function Testimonials() {
+export default function Testimonials({ variant = "light" }: { variant?: "light" | "dark" }) {
   const doubled = [...testimonials, ...testimonials];
+  const dark = variant === "dark";
 
   return (
-    <section className="py-12 sm:py-16 overflow-hidden gsap-fade" style={{ background: "#F5F1EB" }}>
+    <section className="py-12 sm:py-16 overflow-hidden gsap-fade" style={{ background: dark ? "#161616" : "#F5F1EB" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8">
-        <span className="text-[#0098A8] text-xs font-semibold tracking-widest uppercase mb-3 block">
+        <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
           Risultati reali
         </span>
-        <h2 className="font-serif text-3xl sm:text-4xl text-[#0A1A20]">
+        <h2 className={`font-serif text-3xl sm:text-4xl ${dark ? "text-white" : "text-[#0A1A20]"}`}>
           Cosa dicono i clienti
         </h2>
       </div>
