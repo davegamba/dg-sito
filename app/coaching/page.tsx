@@ -149,23 +149,23 @@ export default function CoachingPage() {
         .ch-invest-link{font-size:14px;color:var(--gray-4);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s}
         .ch-invest-link:hover{color:var(--accent)}
         .ch-faq-list{display:flex;flex-direction:column;gap:8px;margin-top:48px}
-        .ch-faq-item{background:#f8f8f8;border:1px solid #e8e8e8;border-radius:14px;overflow:hidden;transition:border-color 0.2s}
-        .ch-faq-item.open{border-color:rgba(0,203,219,0.4);background:#fff}
-        .ch-faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:none;border:none;color:#0A1A20;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;text-align:left;cursor:pointer}
-        .ch-faq-icon{width:22px;height:22px;border-radius:50%;border:1px solid #ccc;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#666;font-size:14px;transition:all 0.2s}
+        .ch-faq-item{background:var(--bg-3);border:1px solid var(--border-2);border-radius:14px;overflow:hidden;transition:border-color 0.2s}
+        .ch-faq-item.open{border-color:rgba(0,203,219,0.4);background:#212121}
+        .ch-faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:none;border:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;text-align:left;cursor:pointer}
+        .ch-faq-icon{width:22px;height:22px;border-radius:50%;border:1px solid var(--border-2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gray-4);font-size:14px;transition:all 0.2s}
         .ch-faq-item.open .ch-faq-icon{border-color:var(--accent);color:var(--accent);transform:rotate(45deg)}
-        .ch-faq-answer{display:none;padding:0 24px 20px;font-size:14px;color:#555;line-height:1.75}
+        .ch-faq-answer{display:none;padding:0 24px 20px;font-size:14px;color:var(--gray-4);line-height:1.75}
         .ch-faq-item.open .ch-faq-answer{display:block}
         .ch-cta-block{position:relative;z-index:1;text-align:center;max-width:660px;margin:0 auto;padding:100px 24px}
         .ch-cta-block p{font-size:16px;color:var(--gray-4);line-height:1.7;margin:20px 0 36px}
         .ch-cta-firma{font-size:14px;color:var(--gray-6);margin-top:20px}
         .ch-footer{position:relative;z-index:1;text-align:center;padding:28px 24px;border-top:1px solid var(--border);font-size:11px;color:var(--gray-6)}
         .ch-footer a{color:var(--gray-4);text-decoration:none;margin:0 8px}
-        .ch-dave-block{position:relative;z-index:1;background:#F5F1EB;border-top:1px solid #e5ddd0;border-bottom:1px solid #e5ddd0}
+        .ch-dave-block{position:relative;z-index:1;background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
         .ch-dave-inner{max-width:1100px;margin:0 auto;padding:80px 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
         .ch-dave-text{display:flex;flex-direction:column;gap:16px}
-        .ch-dave-text p{font-size:16px;color:#4a4540;line-height:1.75}
-        .ch-dave-text strong{color:#0A1A20}
+        .ch-dave-text p{font-size:16px;color:var(--gray-3);line-height:1.75}
+        .ch-dave-text strong{color:var(--white)}
         .ch-dave-img{border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:var(--bg-2)}
         .ch-dave-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
         .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
@@ -273,7 +273,7 @@ export default function CoachingPage() {
                 <span className="ch-badge-dot" />
                 Chi ti segue
               </div>
-              <h2 className="ch-section-title" style={{ textAlign: "left", margin: 0, color: "#0A1A20" }}>
+              <h2 className="ch-section-title" style={{ textAlign: "left", margin: 0, color: "var(--white)" }}>
                 Non sono un&apos;app.<br /><em>Sono io.</em>
               </h2>
               <p>
@@ -407,7 +407,7 @@ export default function CoachingPage() {
         <div className="ch-divider" />
 
         {/* FAQ */}
-        <div style={{ position: "relative", zIndex: 1, background: "#ffffff", borderTop: "1px solid #e8e8e8", borderBottom: "1px solid #e8e8e8" }}>
+        <div style={{ position: "relative", zIndex: 1, background: "var(--bg-3)", borderTop: "1px solid var(--border-2)", borderBottom: "1px solid var(--border-2)" }}>
           <div className="ch-section reveal">
             <div style={{ textAlign: "center", marginBottom: 8 }}>
               <div className="ch-badge ch-badge-gold" style={{ display: "inline-flex" }}>
@@ -415,8 +415,8 @@ export default function CoachingPage() {
                 FAQ
               </div>
             </div>
-            <h2 className="ch-section-title" style={{ color: "#0A1A20" }}>Domande e <em>risposte</em></h2>
-            <p className="ch-section-sub" style={{ color: "#6a6a64" }}>Quelle che mi fanno sempre. Rispondo qui, senza giri di parole.</p>
+            <h2 className="ch-section-title" style={{ color: "var(--white)" }}>Domande e <em>risposte</em></h2>
+            <p className="ch-section-sub" style={{ color: "var(--gray-4)" }}>Quelle che mi fanno sempre. Rispondo qui, senza giri di parole.</p>
             <div className="ch-faq-list" style={{ background: "transparent" }}>
               {FAQ.map((f) => (
                 <div key={f.q} className="ch-faq-item">
