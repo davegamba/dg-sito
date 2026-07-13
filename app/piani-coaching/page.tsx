@@ -5,19 +5,19 @@ const PIANI = [
     badge: "Per iniziare", badgeFeatured: false,
     duration: "Coaching da 3 mesi", name: "Starter",
     features: ["Consulenza personale con Dave", "Analisi completa: blocchi, obiettivi, stile di vita", "Piano Strategico su misura", "Piano d'Allenamento BIM stilato da Dave", "Piano Alimentare con biologa nutrizionista", "Video esecuzione per ogni esercizio", "Check settimanale con Dave", { text: "Supporto WhatsApp per ", hl: "3 mesi" }, "Affiancamento fino all'obiettivo"],
-    price: "290€", priceSub: "/ 3 mesi", monthly: "≈ 97€/mese", rate: "", stripe: "https://buy.stripe.com/8x200k6pE4Dc0RkaFC1Nu01",
+    price: "420€", priceSub: "/ 3 mesi", monthly: "≈ 140€/mese", rate: "oppure 3 rate da 140€ con Stripe 🔒", stripe: "https://buy.stripe.com/8x200k6pE4Dc0RkaFC1Nu01",
   },
   {
     badge: "Più scelto", badgeFeatured: true,
     duration: "Coaching da 6 mesi", name: "Accelerator",
     features: ["Consulenza personale con Dave", "Analisi completa: blocchi, obiettivi, stile di vita", "Piano Strategico su misura", "Piano d'Allenamento BIM stilato da Dave", "Piano Alimentare con biologa nutrizionista", "Video esecuzione per ogni esercizio", "Check settimanale con Dave", { text: "Supporto WhatsApp per ", hl: "6 mesi" }, "Affiancamento fino all'obiettivo"],
-    price: "530€", priceSub: "/ 6 mesi", monthly: "≈ 88€/mese", rate: "oppure 2 rate da 265€ con Stripe 🔒", stripe: "https://buy.stripe.com/aFa7sM15kedM1Vo2961Nu02",
+    price: "650€", priceSub: "/ 6 mesi", monthly: "≈ 108€/mese", rate: "oppure 5 rate da 130€ con Stripe 🔒", stripe: "https://buy.stripe.com/aFa7sM15kedM1Vo2961Nu02",
   },
   {
     badge: "Il definitivo", badgeFeatured: false,
     duration: "Coaching da 12 mesi", name: "Exclusive",
     features: ["Consulenza personale con Dave", "Analisi completa: blocchi, obiettivi, stile di vita", "Piano Strategico su misura", "Piano d'Allenamento BIM stilato da Dave", "Piano Alimentare con biologa nutrizionista", "Video esecuzione per ogni esercizio", "Check settimanale con Dave", { text: "Supporto WhatsApp per ", hl: "12 mesi" }, "Affiancamento fino all'obiettivo"],
-    price: "960€", priceSub: "/ 12 mesi", monthly: "≈ 80€/mese", rate: "oppure 3 rate da 330€ con Stripe 🔒", stripe: "https://buy.stripe.com/8x228scO27Po0Rk5li1Nu03",
+    price: "1.100€", priceSub: "/ 12 mesi", monthly: "≈ 92€/mese", rate: "oppure 10 rate da 110€ con Stripe 🔒", stripe: "https://buy.stripe.com/8x228scO27Po0Rk5li1Nu03",
   },
 ];
 

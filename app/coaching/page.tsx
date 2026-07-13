@@ -33,7 +33,7 @@ const STEPS = [
 ];
 
 const FAQ = [
-  { q: "Quanto costa?", a: "Te lo dico in call, dopo aver capito il tuo caso. È un investimento importante e personalizzato: non avrebbe senso un prezzo 'da listino' prima di sapere cosa ti serve. La candidatura è gratuita e senza impegno." },
+  { q: "Quanto costa?", a: "Nessun mistero: tre formule — 3, 6 o 12 mesi — a partire da circa 92€ al mese. Non è un'app da 9€ né una scheda da 30€: è affiancamento 1-1 diretto con me. In call non ti vendo niente a sorpresa, capiamo solo se il tuo caso è adatto. La candidatura è gratuita e senza impegno." },
   { q: "Bastano davvero 21 minuti?", a: "Sì, se fatti nell'ordine giusto. Non conta quanto ti alleni, conta come. È la costanza che ti cambia, non le ore in palestra." },
   { q: "Funziona se sono fermo da anni?", a: "È fatto apposta per chi riparte. Si parte dal tuo livello e si sale un gradino alla volta. Nella mia esperienza, chi riparte motivato ottiene risultati più rapidi di chi non si è mai fermato." },
   { q: "È tutto online?", a: "Sì. Piano, video di ogni esercizio, check e affiancamento su WhatsApp. Ti alleni dove vuoi, quando vuoi, ma non sei mai solo." },
@@ -41,6 +41,12 @@ const FAQ = [
   { q: "E l'alimentazione?", a: "La costruiamo con una biologa nutrizionista. Flessibile, reale, niente diete da fame. L'obiettivo è che tu mangi bene per sempre, non per un mese." },
   { q: "Non ho tempo.", a: "È esattamente il motivo per cui esiste questo metodo. 21 minuti, 3 volte a settimana. Se non hai questo, non hai tempo per stare in salute — e dobbiamo parlarne." },
   { q: "Quanto dura il percorso?", a: "L'affiancamento è di 6 mesi. Il tempo che serve per costruire qualcosa che poi resta tuo." },
+];
+
+const FORMULE = [
+  { dur: "3 mesi", price: "420€", mese: "140€/mese" },
+  { dur: "6 mesi", price: "650€", mese: "108€/mese", best: true },
+  { dur: "12 mesi", price: "1.100€", mese: "92€/mese" },
 ];
 
 export default function CoachingPage() {
@@ -131,6 +137,17 @@ export default function CoachingPage() {
         .ch-scarcity{position:relative;z-index:1;background:var(--bg-1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:56px 24px;text-align:center}
         .ch-scarcity-inner{max-width:640px;margin:0 auto}
         .ch-scarcity-inner p{font-size:16px;color:var(--gray-4);line-height:1.7;margin:12px 0 0}
+        .ch-invest-lead{font-size:16px;color:var(--gray-3);line-height:1.7;max-width:620px;text-align:center;margin:0 auto 8px}
+        .ch-invest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:760px;margin:40px auto 32px}
+        .ch-invest-card{background:var(--cyan-card);border:1px solid rgba(0,203,219,0.22);border-radius:18px;padding:28px 20px;text-align:center;position:relative}
+        .ch-invest-card.best{background:var(--cyan-card-ft);border-color:rgba(0,203,219,0.45)}
+        .ch-invest-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#000;background:var(--accent);border-radius:100px;padding:4px 12px;white-space:nowrap}
+        .ch-invest-dur{font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+        .ch-invest-price{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:34px;color:var(--white);line-height:1}
+        .ch-invest-mese{font-size:13px;color:var(--gray-4);margin-top:6px}
+        .ch-invest-cta{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+        .ch-invest-link{font-size:14px;color:var(--gray-4);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s}
+        .ch-invest-link:hover{color:var(--accent)}
         .ch-faq-list{display:flex;flex-direction:column;gap:8px;margin-top:48px}
         .ch-faq-item{background:#f8f8f8;border:1px solid #e8e8e8;border-radius:14px;overflow:hidden;transition:border-color 0.2s}
         .ch-faq-item.open{border-color:rgba(0,203,219,0.4);background:#fff}
@@ -173,7 +190,7 @@ export default function CoachingPage() {
           .ch-check-item:nth-last-child(-n+3){border-bottom:1px solid var(--border)}
           .ch-check-item:last-child{border-bottom:none}
         }
-        @media(max-width:600px){.ch-section{padding:56px 20px}}
+        @media(max-width:600px){.ch-section{padding:56px 20px}.ch-invest-grid{grid-template-columns:1fr;max-width:340px}}
       `}</style>
 
       <div className="ch-body">
@@ -354,6 +371,40 @@ export default function CoachingPage() {
             </p>
           </div>
         </div>
+
+        {/* INVESTIMENTO & TRASPARENZA */}
+        <div className="ch-section reveal">
+          <div style={{ textAlign: "center", marginBottom: 8 }}>
+            <div className="ch-badge ch-badge-gold" style={{ display: "inline-flex" }}>
+              <span className="ch-badge-dot" />
+              Investimento
+            </div>
+          </div>
+          <h2 className="ch-section-title">Quanto costa? <em>Te lo dico subito.</em></h2>
+          <p className="ch-invest-lead">
+            Niente prezzo nascosto, niente sorprese in call. Non è un&apos;app da 9€ né una scheda da 30€: è affiancamento 1-1 diretto con me. Tre formule, a partire da <strong style={{ color: "var(--accent)" }}>92€ al mese</strong>.
+          </p>
+          <div className="ch-invest-grid">
+            {FORMULE.map((f) => (
+              <div key={f.dur} className={`ch-invest-card${f.best ? " best" : ""}`}>
+                {f.best && <span className="ch-invest-badge">Più scelto</span>}
+                <div className="ch-invest-dur">{f.dur}</div>
+                <div className="ch-invest-price">{f.price}</div>
+                <div className="ch-invest-mese">≈ {f.mese}</div>
+              </div>
+            ))}
+          </div>
+          <div className="ch-invest-cta">
+            <a href="/coaching/candidati" className="ch-btn-gold">
+              Candidati al coaching →
+            </a>
+            <Link href="/piani-coaching" className="ch-invest-link">
+              Vedi i piani nel dettaglio →
+            </Link>
+          </div>
+        </div>
+
+        <div className="ch-divider" />
 
         {/* FAQ */}
         <div style={{ position: "relative", zIndex: 1, background: "#ffffff", borderTop: "1px solid #e8e8e8", borderBottom: "1px solid #e8e8e8" }}>
