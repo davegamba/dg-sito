@@ -113,8 +113,8 @@ export default function QuestionarioAcquisto() {
                       <input className="qa-input" type="text" name="nome" placeholder="Marco Rossi" required />
                     </div>
                     <div className="qa-field">
-                      <label className="qa-label">Data di nascita <span className="req">*</span></label>
-                      <input className="qa-input" type="date" name="data_nascita" required />
+                      <label className="qa-label">Data di nascita</label>
+                      <input className="qa-input" type="date" name="data_nascita" />
                     </div>
                   </div>
                   <div className="qa-row">
@@ -123,9 +123,9 @@ export default function QuestionarioAcquisto() {
                       <input className="qa-input" type="email" name="email" placeholder="marco@email.com" required />
                     </div>
                     <div className="qa-field">
-                      <label className="qa-label">Numero WhatsApp <span className="req">*</span></label>
+                      <label className="qa-label">Numero WhatsApp</label>
                       <div className="qa-hint" style={{ marginBottom: 4 }}>Con prefisso internazionale (es. +39 333 1234567)</div>
-                      <input className="qa-input" type="tel" name="whatsapp" placeholder="+39 333 1234567" required />
+                      <input className="qa-input" type="tel" name="whatsapp" placeholder="+39 333 1234567" />
                     </div>
                   </div>
                 </div>
@@ -135,12 +135,12 @@ export default function QuestionarioAcquisto() {
                   <div className="qa-section-title"><span>02</span> Misure fisiche</div>
                   <div className="qa-row">
                     <div className="qa-field">
-                      <label className="qa-label">Peso (kg) <span className="req">*</span></label>
-                      <input className="qa-input" type="number" name="peso" placeholder="75" min="30" max="300" required />
+                      <label className="qa-label">Peso (kg)</label>
+                      <input className="qa-input" type="number" name="peso" placeholder="75" min="30" max="300" />
                     </div>
                     <div className="qa-field">
-                      <label className="qa-label">Altezza (cm) <span className="req">*</span></label>
-                      <input className="qa-input" type="number" name="altezza" placeholder="178" min="100" max="250" required />
+                      <label className="qa-label">Altezza (cm)</label>
+                      <input className="qa-input" type="number" name="altezza" placeholder="178" min="100" max="250" />
                     </div>
                   </div>
                   <div className="qa-field">
@@ -184,27 +184,27 @@ export default function QuestionarioAcquisto() {
                 <div className="qa-section">
                   <div className="qa-section-title"><span>05</span> Obiettivo e allenamento</div>
                   <div className="qa-field">
-                    <label className="qa-label">Il tuo obiettivo fisico <span className="req">*</span></label>
+                    <label className="qa-label">Il tuo obiettivo fisico</label>
                     <div className="qa-hint">Sii specifico: non solo &ldquo;dimagrire&rdquo; ma quanto, entro quando, per quale motivo</div>
-                    <textarea className="qa-textarea" name="obiettivo" rows={4} required placeholder="Es. Voglio perdere 8 kg entro settembre, tornare al peso che avevo a 30 anni, e ritrovare energia per il lavoro..." />
+                    <textarea className="qa-textarea" name="obiettivo" rows={4} placeholder="Es. Voglio perdere 8 kg entro settembre, tornare al peso che avevo a 30 anni, e ritrovare energia per il lavoro..." />
                   </div>
                   <div className="qa-field">
-                    <label className="qa-label">Quante volte puoi allenarti a settimana? <span className="req">*</span></label>
+                    <label className="qa-label">Quante volte puoi allenarti a settimana?</label>
                     <div className="qa-radio-group">
                       {["1-2 volte a settimana", "3 volte a settimana", "4-5 volte a settimana"].map(v => (
                         <label key={v} className="qa-radio-row">
-                          <input type="radio" name="frequenza" value={v} required />
+                          <input type="radio" name="frequenza" value={v} />
                           {v}
                         </label>
                       ))}
                     </div>
                   </div>
                   <div className="qa-field">
-                    <label className="qa-label">Dove ti alleni? <span className="req">*</span></label>
+                    <label className="qa-label">Dove ti alleni?</label>
                     <div className="qa-radio-group">
                       {["Solo palestra", "Solo casa", "Palestra + casa (entrambe)"].map(v => (
                         <label key={v} className="qa-radio-row">
-                          <input type="radio" name="luogo" value={v} required />
+                          <input type="radio" name="luogo" value={v} />
                           {v}
                         </label>
                       ))}
@@ -221,9 +221,9 @@ export default function QuestionarioAcquisto() {
                 <div className="qa-section">
                   <div className="qa-section-title"><span>06</span> Alimentazione</div>
                   <div className="qa-field">
-                    <label className="qa-label">La tua giornata alimentare tipo <span className="req">*</span></label>
+                    <label className="qa-label">La tua giornata alimentare tipo</label>
                     <div className="qa-hint">Descrivi colazione, pranzo, cena e spuntini di un giorno normale — più sei preciso, più il piano sarà su misura</div>
-                    <textarea className="qa-textarea" name="alimentazione" rows={5} required placeholder="Colazione: caffè e cornetto&#10;Pranzo: pasta o secondo con verdure&#10;Cena: ..." />
+                    <textarea className="qa-textarea" name="alimentazione" rows={5} placeholder="Colazione: caffè e cornetto&#10;Pranzo: pasta o secondo con verdure&#10;Cena: ..." />
                   </div>
                   <div className="qa-field">
                     <label className="qa-label">Cibi di cui fai fatica a fare a meno</label>
