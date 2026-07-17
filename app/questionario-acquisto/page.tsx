@@ -46,25 +46,25 @@ export default function QuestionarioAcquisto() {
         .qa-status{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:block}
         .qa-title{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(32px,5vw,48px);line-height:1.1;margin-bottom:14px}
         .qa-sub{font-size:15px;color:var(--gray-4);line-height:1.7;max-width:560px}
-        .qa-section{background:var(--bg-1);border:1px solid var(--border);border-radius:20px;padding:32px;margin-bottom:20px}
+        .qa-section{background:#F5EFE0;border:1px solid #E6DCC5;border-radius:20px;padding:32px;margin-bottom:20px;color:#1a1a17}
         .qa-section-title{font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:8px}
         .qa-section-title span{background:var(--accent);color:#000;border-radius:100px;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0}
         .qa-field{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
         .qa-field:last-child{margin-bottom:0}
-        .qa-label{font-size:13px;font-weight:600;color:var(--white);letter-spacing:0.02em}
+        .qa-label{font-size:13px;font-weight:600;color:#1a1a17;letter-spacing:0.02em}
         .qa-label .req{color:var(--accent);margin-left:2px}
-        .qa-hint{font-size:12px;color:var(--gray-6);line-height:1.5}
-        .qa-input,.qa-textarea{background:var(--bg-3);border:1px solid var(--border-2);border-radius:12px;padding:14px 16px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border-color 0.2s;width:100%}
-        .qa-input:focus,.qa-textarea:focus{border-color:rgba(0,203,219,0.5)}
-        .qa-input::placeholder,.qa-textarea::placeholder{color:rgba(255,255,255,0.2)}
+        .qa-hint{font-size:12px;color:#7a7365;line-height:1.5}
+        .qa-input,.qa-textarea{background:#ffffff;border:1px solid #D8CFB8;border-radius:12px;padding:14px 16px;color:#1a1a17;font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border-color 0.2s;width:100%}
+        .qa-input:focus,.qa-textarea:focus{border-color:rgba(0,203,219,0.6)}
+        .qa-input::placeholder,.qa-textarea::placeholder{color:#9a9488}
         .qa-textarea{resize:vertical;min-height:110px;line-height:1.6}
         .qa-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
         .qa-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
         .qa-radio-group{display:flex;flex-direction:column;gap:10px}
-        .qa-radio-row{display:flex;align-items:center;gap:12px;background:var(--bg-3);border:1px solid var(--border-2);border-radius:10px;padding:12px 16px;cursor:pointer;transition:border-color 0.15s;font-size:14px;color:var(--gray-3);user-select:none}
-        .qa-radio-row:has(input:checked){border-color:rgba(0,203,219,0.5);background:rgba(0,203,219,0.06);color:var(--white)}
+        .qa-radio-row{display:flex;align-items:center;gap:12px;background:#ffffff;border:1px solid #D8CFB8;border-radius:10px;padding:12px 16px;cursor:pointer;transition:border-color 0.15s;font-size:14px;color:#4a463d;user-select:none}
+        .qa-radio-row:has(input:checked){border-color:rgba(0,203,219,0.6);background:rgba(0,203,219,0.08);color:#1a1a17}
         .qa-radio-row input{accent-color:var(--accent);width:16px;height:16px;flex-shrink:0}
-        .qa-file-input{background:var(--bg-3);border:1px dashed var(--border-2);border-radius:12px;padding:20px;color:var(--gray-4);font-family:'DM Sans',sans-serif;font-size:14px;width:100%;cursor:pointer;transition:border-color 0.2s}
+        .qa-file-input{background:#ffffff;border:1px dashed #C9BE9F;border-radius:12px;padding:20px;color:#7a7365;font-family:'DM Sans',sans-serif;font-size:14px;width:100%;cursor:pointer;transition:border-color 0.2s}
         .qa-file-input:hover{border-color:rgba(0,203,219,0.4)}
         .qa-error{background:rgba(224,85,85,0.08);border:1px solid rgba(224,85,85,0.3);border-radius:12px;padding:14px 18px;font-size:14px;color:#e05555;margin-bottom:20px}
         .qa-btn{width:100%;background:linear-gradient(to bottom,#F7E27A 0%,#F0C040 100%);color:#000;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;padding:18px;border-radius:14px;border:none;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:10px;letter-spacing:0.02em;margin-top:32px}
@@ -248,7 +248,7 @@ export default function QuestionarioAcquisto() {
                 {error && <div className="qa-error">{error}</div>}
 
                 <button type="submit" className="qa-btn" disabled={loading}>
-                  {loading ? "Invio in corso..." : "Invia il questionario →"}
+                  {loading ? "Invio in corso..." : "Invia per prepararti i Piani →"}
                 </button>
               </form>
             </>
