@@ -82,16 +82,24 @@ async function recordPurchases(email: string, products: string[]) {
   const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
   const rows = products.map((product) => ({ email: email.toLowerCase(), product }));
 
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/purchases`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      apikey: SUPABASE_KEY,
-      Authorization: `Bearer ${SUPABASE_KEY}`,
-      Prefer: "resolution=ignore-duplicates",
-    },
-    body: JSON.stringify(rows),
-  });
+  // `on_conflict=email,product` è obbligatorio: senza, PostgREST applica
+  // resolution=ignore-duplicates solo alla PRIMARY KEY e il vincolo
+  // purchases_email_product_unique esplode con un 23505 (→ 500 → Stripe
+  // ritenta per giorni). Con il conflict target esplicito, riacquistare lo
+  // stesso prodotto è idempotente.
+  const res = await fetch(
+    `${SUPABASE_URL}/rest/v1/purchases?on_conflict=email,product`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: SUPABASE_KEY,
+        Authorization: `Bearer ${SUPABASE_KEY}`,
+        Prefer: "resolution=ignore-duplicates",
+      },
+      body: JSON.stringify(rows),
+    }
+  );
   return res;
 }
 
@@ -103,10 +111,12 @@ const PRICE_TO_PRODUCT: Record<string, string> = {
   "price_1Tlsa1IyNONJea71lCG65MZZ": "club",
 };
 
-// product_id metadata → lista prodotti da sbloccare
+// product_id metadata → lista prodotti da sbloccare in `purchases`.
+// Lista vuota = prodotto non gestito da questo webhook (vedi CLUB sotto).
 function productsFrom(productId: string): string[] {
   if (productId === "sfida+addominali") return ["sfida", "addominali"];
   if (productId === "addominali") return ["addominali"];
+  if (productId === "club") return [];
   return ["sfida"];
 }
 
@@ -190,6 +200,17 @@ export async function POST(req: NextRequest) {
     }
 
     const products = productsFrom(productId);
+
+    // Club → gestito interamente dal webhook dedicato di dgclub (utente auth +
+    // mship_members + mail "crea la password"). Qui non va registrato nulla:
+    // prima "club" cadeva nel fallback "sfida" e a ogni nuovo abbonato veniva
+    // scritto un acquisto Sfida Estiva fasullo + spedita la mail con i link
+    // della Sfida al posto di quelli del Club.
+    if (products.length === 0) {
+      console.log(`Abbonamento "${productId}" gestito da un altro webhook — ignorato qui (${email})`);
+      return NextResponse.json({ received: true, skipped: productId });
+    }
+
     await recordPurchases(email, products);
     // Manda l'email solo al primo pagamento (invoice.billing_reason === "subscription_create")
     if (invoice.billing_reason === "subscription_create") {
@@ -208,7 +229,10 @@ export async function POST(req: NextRequest) {
       email = customer.email ?? undefined;
     } catch { /* non bloccante */ }
 
-    if (email) {
+    // Come sopra: la revoca del Club avviene su mship_members nel webhook di
+    // dgclub. Qui `purchases` non contiene righe "club", quindi la DELETE non
+    // troverebbe nulla — meglio non fingere di aver revocato qualcosa.
+    if (email && productsFrom(productId).length > 0) {
       await revokeAccess(email, productId);
       await notifyDave(
         `ℹ️ Abbonamento cancellato — ${email}`,
@@ -232,6 +256,17 @@ export async function POST(req: NextRequest) {
   }
 
   const products = productsFrom(productId);
+
+  // Il Club ha il suo webhook dedicato (dgclub/netlify/functions/stripe-webhook.js)
+  // che crea l'utente auth + la riga mship_members: l'accesso arriva da lì.
+  // Qui non c'è nulla da fare — prima invece "club" cadeva nel fallback di
+  // productsFrom() e veniva registrato come acquisto "sfida", mandando al socio
+  // la mail con i link della Sfida Estiva che non aveva comprato.
+  if (products.length === 0) {
+    console.log(`Prodotto "${productId}" gestito da un altro webhook — ignorato qui (${email})`);
+    return NextResponse.json({ received: true, skipped: productId });
+  }
+
   const res = await recordPurchases(email, products);
 
   // Se Supabase fallisce, ritorna 500 così Stripe riprova automaticamente

@@ -1,7 +1,7 @@
 
 export default function ChiSono() {
   return (
-    <section className="py-10 sm:py-14 gsap-fade" style={{ background: "#0a0a12" }}>
+    <section className="py-10 sm:py-14 gsap-fade" style={{ background: "radial-gradient(120% 80% at 12% 0%, rgba(0,203,219,0.18) 0%, rgba(0,203,219,0.05) 35%, transparent 65%), #0b1216", borderTop: "1px solid rgba(0,203,219,0.15)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px" }}>
 
         {/* Titolo sopra tutto */}

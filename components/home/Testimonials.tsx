@@ -90,22 +90,29 @@ const testimonials = [
   },
 ];
 
-function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
+function TestimonialCard({ t, dark }: { t: typeof testimonials[0]; dark?: boolean }) {
   return (
-    <div className="flex-none w-[290px] sm:w-[320px] flex flex-col gap-4 p-6 bg-white border border-[#e5ddd0] rounded-[20px]">
-      <span className="inline-flex items-center w-fit px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wide uppercase bg-[#00cbdb0f] border border-[#00cbdb33] text-[#0098A8]">
+    <div
+      className="flex-none w-[290px] sm:w-[320px] flex flex-col gap-4 p-6 rounded-[20px]"
+      style={
+        dark
+          ? { background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }
+          : { background: "#fff", border: "1px solid #e5ddd0" }
+      }
+    >
+      <span className="inline-flex items-center w-fit px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wide uppercase bg-[#00cbdb0f] border border-[#00cbdb33] text-[#00CBDB]">
         {t.result}
       </span>
-      <p className="text-[#5a5248] text-sm leading-relaxed flex-1">
+      <p className={`text-sm leading-relaxed flex-1 ${dark ? "text-white/70" : "text-[#5a5248]"}`}>
         &ldquo;{t.text}&rdquo;
       </p>
-      <div className="flex items-center gap-3 pt-3 border-t border-[#e5ddd0]">
-        <div className="w-9 h-9 rounded-full bg-[#00cbdb18] flex items-center justify-center text-[#0098A8] text-sm font-bold shrink-0">
+      <div className={`flex items-center gap-3 pt-3 border-t ${dark ? "border-white/10" : "border-[#e5ddd0]"}`}>
+        <div className="w-9 h-9 rounded-full bg-[#00cbdb18] flex items-center justify-center text-[#00CBDB] text-sm font-bold shrink-0">
           {t.name[0]}
         </div>
         <div>
-          <div className="text-[#0A1A20] text-xs font-semibold">{t.name}, {t.age} anni</div>
-          <div className="text-[#9a9184] text-xs">{t.job}</div>
+          <div className={`text-xs font-semibold ${dark ? "text-white" : "text-[#0A1A20]"}`}>{t.name}, {t.age} anni</div>
+          <div className={`text-xs ${dark ? "text-white/40" : "text-[#9a9184]"}`}>{t.job}</div>
         </div>
       </div>
     </div>
@@ -117,7 +124,7 @@ export default function Testimonials({ variant = "light" }: { variant?: "light" 
   const dark = variant === "dark";
 
   return (
-    <section className="py-12 sm:py-16 overflow-hidden gsap-fade" style={{ background: dark ? "#161616" : "#F5F1EB" }}>
+    <section className="py-12 sm:py-16 overflow-hidden gsap-fade" style={dark ? { background: "#101013", borderTop: "1px solid rgba(255,255,255,0.05)" } : { background: "#F5F1EB" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8">
         <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
           Risultati reali
@@ -140,7 +147,7 @@ export default function Testimonials({ variant = "light" }: { variant?: "light" 
           }}
         >
           {doubled.map((t, i) => (
-            <TestimonialCard key={i} t={t} />
+            <TestimonialCard key={i} t={t} dark={dark} />
           ))}
         </div>
         <style>{`

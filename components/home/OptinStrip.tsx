@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function OptinStrip() {
   return (
-    <section className="py-12 sm:py-16" style={{ background: "#F5F1EB" }}>
+    <section className="py-12 sm:py-16" style={{ background: "radial-gradient(120% 90% at 88% 100%, rgba(0,203,219,0.22) 0%, rgba(0,203,219,0.06) 38%, transparent 68%), #0b1216", borderTop: "1px solid rgba(0,203,219,0.15)" }}>
       <style>{`
         @keyframes shimmer-sweep-optin {
           0% { transform: translateX(-150%) skewX(-15deg); }
@@ -49,16 +49,16 @@ export default function OptinStrip() {
       `}</style>
       <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
 
-        <span className="text-[#0098A8] text-xs font-semibold tracking-widest uppercase mb-4 block">
+        <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-4 block">
           Smetti di aspettare<br />Inizia dal tuo piano gratuito basato sulle tue caratteristiche
         </span>
 
-        <h2 className="font-serif text-3xl sm:text-4xl text-[#0A1A20] mb-4">
+        <h2 className="font-serif text-3xl sm:text-4xl text-white mb-4">
           Scopri il tuo{" "}
           <em className="not-italic text-[#00CBDB]">Profilo Fisico</em>
         </h2>
 
-        <p className="text-[#5a5248] text-base mb-8 max-w-md mx-auto">
+        <p className="text-white/60 text-base mb-8 max-w-md mx-auto">
           Un quiz gratuito in 2 minuti per capire qual è il piano giusto per il tuo fisico.
         </p>
 
@@ -66,7 +66,7 @@ export default function OptinStrip() {
           <ArrowRight size={16} /> Fai il quiz
         </Link>
 
-        <p className="text-[#9a9184] text-xs mt-4">
+        <p className="text-white/40 text-xs mt-4">
           Gratuito · 2 minuti · Risultati personalizzati
         </p>
       </div>
