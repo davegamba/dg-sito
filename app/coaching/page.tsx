@@ -44,9 +44,9 @@ const FAQ = [
 ];
 
 const FORMULE = [
-  { dur: "3 mesi", price: "420€", mese: "140€/mese", hl: "3 mesi" },
-  { dur: "6 mesi", price: "650€", mese: "108€/mese", hl: "6 mesi", best: true },
-  { dur: "12 mesi", price: "1.100€", mese: "92€/mese", hl: "12 mesi" },
+  { dur: "3 mesi", price: "420€", mese: "140€/mese", hl: "3 mesi", stripe: "https://buy.stripe.com/fZu3cw01gc5E1Vo6pm1Nu09" },
+  { dur: "6 mesi", price: "650€", mese: "108€/mese", hl: "6 mesi", best: true, stripe: "https://buy.stripe.com/3cI8wQdS6c5EarU6pm1Nu0a" },
+  { dur: "12 mesi", price: "1.100€", mese: "92€/mese", hl: "12 mesi", stripe: "https://buy.stripe.com/14AbJ29BQedMdE62961Nu0b" },
 ];
 
 export default function CoachingPage() {
@@ -147,6 +147,8 @@ export default function CoachingPage() {
         .ch-invest-features li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--gray-3);line-height:1.45}
         .ch-invest-features li .ck{color:var(--accent);flex-shrink:0;margin-top:1px}
         .ch-invest-features li .hl{color:var(--gold);font-weight:600}
+        .ch-invest-buy{display:block;margin-top:22px;text-align:center;background:linear-gradient(to bottom,#4ADE80 0%,#16A34A 100%);color:#06210f;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:800;padding:14px;border-radius:12px;text-decoration:none;letter-spacing:0.02em;transition:filter 0.2s,transform 0.2s}
+        .ch-invest-buy:hover{filter:brightness(1.08);transform:translateY(-1px)}
         .ch-invest-cta{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:8px}
         .ch-invest-link{font-size:14px;color:var(--gray-4);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s}
         .ch-invest-link:hover{color:var(--accent)}
@@ -388,6 +390,9 @@ export default function CoachingPage() {
                       : <li key={i}><span className="ck">✓</span>{feat.text}<span className="hl">{f.hl}</span></li>
                   )}
                 </ul>
+                <a href={f.stripe} target="_blank" rel="noopener noreferrer" className="ch-invest-buy">
+                  Acquista ora →
+                </a>
               </div>
             ))}
           </div>

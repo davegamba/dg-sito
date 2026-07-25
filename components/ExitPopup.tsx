@@ -10,9 +10,9 @@ export default function ExitPopup() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Non mostrare nella pagina club né nella pagina links (è già un hub di CTA)
+    // Non mostrare nella pagina club, links, coaching (funnel proprio) né nel questionario acquisto
     const path = window.location.pathname;
-    if (path.startsWith("/club") || path.startsWith("/links") || path.startsWith("/questionario-acquisto")) return;
+    if (path.startsWith("/club") || path.startsWith("/links") || path.startsWith("/coaching") || path.startsWith("/questionario-acquisto")) return;
 
     // Forza popup se ?popup=1 nell'URL
     const force = new URLSearchParams(window.location.search).get("popup") === "1";
