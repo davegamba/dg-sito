@@ -368,12 +368,12 @@ export default function CoachingPage() {
           <div style={{ textAlign: "center", marginBottom: 8 }}>
             <div className="ch-badge ch-badge-gold" style={{ display: "inline-flex" }}>
               <span className="ch-badge-dot" />
-              Investimento
+              Per iniziare subito
             </div>
           </div>
-          <h2 className="ch-section-title">Quanto costa? <em>Te lo dico subito.</em></h2>
+          <h2 className="ch-section-title">Scegli il <em>piano per te</em></h2>
           <p className="ch-invest-lead">
-            Non ti faccio aspettare la call per saperlo. Tre formule, stesso percorso completo, a partire da <strong style={{ color: "var(--accent)" }}>92€ al mese</strong>.
+            Per iniziare subito scegli il piano ideale per te.
           </p>
           <div className="ch-invest-grid">
             {FORMULE.map((f) => (
@@ -397,15 +397,12 @@ export default function CoachingPage() {
             ))}
           </div>
           <p className="ch-invest-scarcity">
-            <strong>Posti limitati</strong> — seguo solo due persone nuove al mese. È 1-1, lo faccio io, e le ore in un giorno sono quelle. Se non c&apos;è posto ti metto in lista e ti avviso io.
+            <strong>Posti limitati</strong> — seguo solo 2 persone nuove al mese perché seguo ogni persona personalmente.
           </p>
           <div className="ch-invest-cta">
             <a href="/coaching/candidati" className="ch-btn-gold">
               Candidati al coaching →
             </a>
-            <Link href="/piani-coaching" className="ch-invest-link">
-              Vedi i piani nel dettaglio →
-            </Link>
           </div>
         </div>
 
