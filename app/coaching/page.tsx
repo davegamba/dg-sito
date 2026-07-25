@@ -33,8 +33,6 @@ const STEPS = [
 ];
 
 const FAQ = [
-  { q: "Quanto costa?", a: "Nessun mistero: tre formule — 3, 6 o 12 mesi — a partire da circa 92€ al mese. Non è un'app da 9€ né una scheda da 30€: è affiancamento 1-1 diretto con me. In call non ti vendo niente a sorpresa, capiamo solo se il tuo caso è adatto. La candidatura è gratuita e senza impegno." },
-  { q: "Bastano davvero 21 minuti?", a: "Sì, se fatti nell'ordine giusto. Non conta quanto ti alleni, conta come. È la costanza che ti cambia, non le ore in palestra." },
   { q: "Funziona se sono fermo da anni?", a: "È fatto apposta per chi riparte. Si parte dal tuo livello e si sale un gradino alla volta. Nella mia esperienza, chi riparte motivato ottiene risultati più rapidi di chi non si è mai fermato." },
   { q: "È tutto online?", a: "Sì. Piano, video di ogni esercizio, check e affiancamento su WhatsApp. Ti alleni dove vuoi, quando vuoi, ma non sei mai solo." },
   { q: "Devo andare in palestra?", a: "Come preferisci. Adatto il piano a casa o palestra. Lavoro con entrambi da 15 anni: i risultati non cambiano." },
@@ -147,7 +145,7 @@ export default function CoachingPage() {
         .ch-invest-features li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--gray-3);line-height:1.45}
         .ch-invest-features li .ck{color:var(--accent);flex-shrink:0;margin-top:1px}
         .ch-invest-features li .hl{color:var(--gold);font-weight:600}
-        .ch-invest-buy{display:block;margin-top:22px;text-align:center;background:linear-gradient(to bottom,#4ADE80 0%,#16A34A 100%);color:#06210f;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:800;padding:14px;border-radius:12px;text-decoration:none;letter-spacing:0.02em;transition:filter 0.2s,transform 0.2s}
+        .ch-invest-buy{display:block;margin-top:22px;text-align:center;background:linear-gradient(to bottom,#4ADE80 0%,#16A34A 100%);color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:800;padding:14px;border-radius:12px;text-decoration:none;letter-spacing:0.02em;transition:filter 0.2s,transform 0.2s}
         .ch-invest-buy:hover{filter:brightness(1.08);transform:translateY(-1px)}
         .ch-invest-cta{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:8px}
         .ch-invest-link{font-size:14px;color:var(--gray-4);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s}
@@ -167,13 +165,6 @@ export default function CoachingPage() {
         .ch-cta-firma{font-size:14px;color:var(--gray-6);margin-top:20px}
         .ch-footer{position:relative;z-index:1;text-align:center;padding:28px 24px;border-top:1px solid var(--border);font-size:11px;color:var(--gray-6)}
         .ch-footer a{color:var(--gray-4);text-decoration:none;margin:0 8px}
-        .ch-dave-block{position:relative;z-index:1;background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-        .ch-dave-inner{max-width:1100px;margin:0 auto;padding:80px 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-        .ch-dave-text{display:flex;flex-direction:column;gap:16px}
-        .ch-dave-text p{font-size:16px;color:var(--gray-3);line-height:1.75}
-        .ch-dave-text strong{color:var(--white)}
-        .ch-dave-img{border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:var(--bg-2)}
-        .ch-dave-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
         .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
         .reveal.in{opacity:1;transform:translateY(0)}
         @keyframes chFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
@@ -181,8 +172,6 @@ export default function CoachingPage() {
         @media(max-width:960px){
           .ch-funziona-grid{grid-template-columns:1fr}
           .ch-funziona-foto{max-width:360px}
-          .ch-dave-inner{grid-template-columns:1fr}
-          .ch-dave-img{max-width:360px}
           .ch-non-cols{grid-template-columns:1fr}
         }
         @media(max-width:768px){
@@ -217,7 +206,7 @@ export default function CoachingPage() {
         <section className="ch-hero">
           <img
             className="bg"
-            src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/foto-sfida-estiva.jpg"
+            src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg"
             alt="Dave Gamba Premium Coaching"
             width={1920}
             height={1080}
@@ -269,45 +258,6 @@ export default function CoachingPage() {
                 <p className="ch-check-text">{t}</p>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* CHI È DAVE */}
-        <div className="ch-dave-block">
-          <div className="ch-dave-inner reveal">
-            <div className="ch-dave-text">
-              <div className="ch-badge ch-badge-gold">
-                <span className="ch-badge-dot" />
-                Chi ti segue
-              </div>
-              <h2 className="ch-section-title" style={{ textAlign: "left", margin: 0, color: "var(--white)" }}>
-                Non sono un&apos;app.<br /><em>Sono io.</em>
-              </h2>
-              <p>
-                Alleno online dal 2009. <strong>Primo personal trainer online in Italia.</strong> Oltre <strong>3.000 persone seguite</strong>, 15 anni a fare solo questo.
-              </p>
-              <p>
-                Vanity Fair, Corriere della Sera, la Repubblica, Rai Radio 2 hanno parlato di me e del Metodo BIM. Ma i nomi che contano sono gli altri 3.000. Quelli che si sono rimessi in forma quando pensavano fosse troppo tardi.
-              </p>
-              <p>
-                Nel coaching 1-1 non deleghi a un assistente. <strong>Parli con me.</strong> Leggo io il tuo questionario. Ti rispondo io su WhatsApp. Costruisco io il tuo piano.
-              </p>
-              <p>
-                Se ti alleni, sei un atleta. E ogni atleta merita un coach vero.
-              </p>
-              <a href="/coaching/candidati" className="ch-btn-gold" style={{ width: "fit-content", marginTop: 8 }}>
-                Candidati al coaching →
-              </a>
-            </div>
-            <div className="ch-dave-img">
-              <img
-                src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg"
-                alt="Dave Gamba personal trainer"
-                width={600}
-                height={750}
-                loading="lazy"
-              />
-            </div>
           </div>
         </div>
 
@@ -391,7 +341,7 @@ export default function CoachingPage() {
                   )}
                 </ul>
                 <a href={f.stripe} target="_blank" rel="noopener noreferrer" className="ch-invest-buy">
-                  Acquista ora →
+                  Acquista ora {f.dur} →
                 </a>
               </div>
             ))}
