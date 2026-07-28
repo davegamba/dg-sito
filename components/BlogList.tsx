@@ -86,7 +86,7 @@ export default function BlogList({ posts }: { posts: PostMeta[] }) {
                     {post.category}
                   </span>
                 )}
-                <h2 className="font-serif text-lg text-[#0a0a12] leading-snug group-hover:text-[#00CBDB] transition-colors duration-200 flex-1">
+                <h2 className="font-serif font-semibold text-lg text-[#0a0a12] leading-snug group-hover:text-[#00CBDB] transition-colors duration-200 flex-1">
                   {post.title}
                 </h2>
                 {post.excerpt && (
