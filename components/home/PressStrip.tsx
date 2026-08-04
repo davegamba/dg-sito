@@ -6,10 +6,10 @@ export default function PressStrip() {
           Come visto su
         </p>
         <img
-          src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/loghi-press.png"
+          src="/images/loghi-press-white.png"
           alt="Vanity Fair, Corriere della Sera, la Repubblica, Rai Radio 2"
           className="w-full max-w-2xl h-7 sm:h-9 object-contain"
-          style={{ filter: "brightness(0) invert(0.7)" }}
+          style={{ opacity: 0.75 }}
         />
       </div>
     </section>

@@ -142,7 +142,7 @@ export default function LinksPage() {
                 <div key={f} className="card-feature"><span className="dot"><span className="dot-tri" /></span>{f}</div>
               ))}
             </div>
-            <a href="/club-presto" className="card-btn">Sta per aprire — avvisami →</a>
+            <a href="https://club.davegamba.com/entra-nel-club" className="card-btn">Entra nel Club →</a>
           </div>
 
           {/* Premium Coaching */}

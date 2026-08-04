@@ -4,9 +4,9 @@ import AuthHashRedirect from "@/components/AuthHashRedirect";
 import Hero from "@/components/home/Hero";
 import PressStrip from "@/components/home/PressStrip";
 import ChiSono from "@/components/home/ChiSono";
-import Stats from "@/components/home/Stats";
 import BlogSection from "@/components/home/BlogSection";
 import Testimonials from "@/components/home/Testimonials";
+import ClubBlock from "@/components/home/ClubBlock";
 import YoutubeScroll from "@/components/home/YoutubeScroll";
 import OptinStrip from "@/components/home/OptinStrip";
 
@@ -98,8 +98,9 @@ export default function HomePage() {
       <main className="flex-1">
         <Hero />
         <PressStrip />
-        <Testimonials variant="dark" />
         <ChiSono />
+        <Testimonials variant="dark" />
+        <ClubBlock />
         <BlogSection />
         <YoutubeScroll />
         <OptinStrip />

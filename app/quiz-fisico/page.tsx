@@ -236,8 +236,8 @@ const CTA_CATALOG: Record<string, CtaCard> = {
     badge: "Tutti gli strumenti",
     badgeColor: "#00CBDB",
     title: "DG Athletic<br />Club",
-    price: "In arrivo",
-    href: "/club-presto",
+    price: "€19/mese",
+    href: "https://club.davegamba.com/entra-nel-club",
     img: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
     cta: "Entra nel Club →",
     accent: "#00CBDB",
@@ -543,10 +543,10 @@ export default function QuizFisicoPage() {
             <div style={{ paddingTop: 40 }}>
               <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#00CBDB", marginBottom: 14, display: "block" }}>Step Finale</span>
               <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(28px,6vw,40px)", lineHeight: 1.1, marginBottom: 10, fontWeight: 800 }}>
-                Il tuo profilo è pronto.<br />Più la scheda START 🔥
+                Il tuo profilo è pronto 🔥
               </h2>
               <p style={{ fontSize: 15, color: "#9a9a94", fontWeight: 300, lineHeight: 1.6, marginBottom: 36 }}>
-                Vedi subito il tuo profilo qui. E ti mando via email la mia <strong style={{ color: "#fafaf8" }}>scheda START gratuita</strong>: il primo allenamento per provare ad allenarti con me.
+                Vedi subito il tuo <strong style={{ color: "#fafaf8" }}>profilo fisico completo</strong> qui sotto: analisi, cosa sta succedendo davvero e le mosse da applicare da subito.
               </p>
               <form onSubmit={submitEmail} style={{ display: "grid", gap: 12 }}>
                 {/* Honeypot */}
@@ -557,7 +557,7 @@ export default function QuizFisicoPage() {
                   style={{ width: "100%", height: 52, padding: "0 18px", background: "rgba(255,255,255,0.05)", border: "1px solid #222220", borderRadius: 12, color: "#fafaf8", fontFamily: "inherit", fontSize: 16, outline: "none" }} />
                 <button type="submit" disabled={submitting}
                   style={{ width: "100%", background: "#00CBDB", color: "#0a0a0a", fontFamily: "inherit", fontSize: 16, fontWeight: 700, padding: 18, borderRadius: 12, border: "none", cursor: "pointer", marginTop: 6, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, opacity: submitting ? 0.7 : 1 }}>
-                  {submitting ? "Un momento..." : "Mostrami il profilo + scheda START →"}
+                  {submitting ? "Un momento..." : "Mostrami il mio profilo →"}
                 </button>
               </form>
               <div style={{ display: "flex", justifyContent: "center", gap: 20, marginTop: 16, flexWrap: "wrap" }}>
@@ -614,18 +614,18 @@ export default function QuizFisicoPage() {
                 In base alle tue risposte la strada più rapida per il fisico che vuoi sono i Protocolli:
               </p>
 
-              {/* CTA card Sfida Estiva */}
+              {/* CTA card DG Athletic Club */}
               <p style={{ fontSize: 14, color: "#c8c8c4", lineHeight: 1.65, marginBottom: 14 }}>
-                Per avere un percorso di allenamenti brevi e intensi per metterti in forma durante questa estate, scopri la Sfida:
+                Per avere un percorso progressivo, Corsi Focus e una community che ti segue ogni settimana, scopri il Club:
               </p>
-              <a href="https://sfidaestiva.davegamba.com/" target="_blank" rel="noopener noreferrer"
+              <a href="https://club.davegamba.com/entra-nel-club" target="_blank" rel="noopener noreferrer"
                 style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "2px solid rgba(0,203,219,0.5)", minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none", marginBottom: 32 }}>
-                <div style={{ position: "absolute", inset: 0, backgroundImage: `url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/foto-sfida-estiva.jpg')`, backgroundSize: "cover", backgroundPosition: "center top" }} />
+                <div style={{ position: "absolute", inset: 0, backgroundImage: `url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg')`, backgroundSize: "cover", backgroundPosition: "center top" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.4) 50%,rgba(0,0,0,0.1) 100%)" }} />
                 <div style={{ position: "relative", zIndex: 1, padding: 20, display: "flex", flexDirection: "column", gap: 8 }}>
-                  <div style={{ display: "inline-block", background: "#00CBDB", color: "#0a0a0a", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "3px 8px", borderRadius: 100, alignSelf: "flex-start" }}>Offerta a tempo limitato</div>
-                  <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 22, fontWeight: 900, lineHeight: 1.2, color: "#fafaf8" }}>Sfida Estiva<br />21 Giorni</h3>
-                  <div style={{ display: "block", background: "#00CBDB", color: "#0a0a0a", fontSize: 14, fontWeight: 700, padding: 13, borderRadius: 8, textAlign: "center" }}>Vai alla Sfida →</div>
+                  <div style={{ display: "inline-block", background: "#00CBDB", color: "#0a0a0a", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "3px 8px", borderRadius: 100, alignSelf: "flex-start" }}>Membership</div>
+                  <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 22, fontWeight: 900, lineHeight: 1.2, color: "#fafaf8" }}>DG Athletic<br />Club</h3>
+                  <div style={{ display: "block", background: "#00CBDB", color: "#0a0a0a", fontSize: 14, fontWeight: 700, padding: 13, borderRadius: 8, textAlign: "center" }}>Entra nel Club →</div>
                 </div>
               </a>
 

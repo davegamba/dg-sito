@@ -256,7 +256,7 @@ export default function LoginPage() {
           {!sent && (
             <div className="lg-footer">
               Non hai ancora un account?{" "}
-              <a href="/club-presto">Scopri il Club</a>
+              <a href="https://club.davegamba.com/entra-nel-club">Scopri il Club</a>
             </div>
           )}
         </div>
