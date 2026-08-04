@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit, DIECI_MINUTI } from "@/lib/rate-limit";
 import { promises as dns } from "dns";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -10,6 +11,8 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const NURTURE_TAG_ID = 2064505; // nurture-attivo
 
 export async function POST(req: NextRequest) {
+  const limite = rateLimit(req, "exit-lead", 10, DIECI_MINUTI);
+  if (limite) return limite;
   const { email, website } = await req.json();
 
   // Honeypot: campo invisibile, compilato solo dai bot

@@ -225,9 +225,13 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
     // iOS detection
     const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) && !(window.navigator as Navigator & { standalone?: boolean }).standalone;
     if (ios) {
-      setIsIos(true);
-      setShowInstall(true);
-      return;
+      // rAF: settare lo stato sincrono dentro l'effect fa un render a cascata
+      // prima del paint, e il banner "installa" sfarfalla.
+      const id = requestAnimationFrame(() => {
+        setIsIos(true);
+        setShowInstall(true);
+      });
+      return () => cancelAnimationFrame(id);
     }
 
     // Android/Chrome: intercetta beforeinstallprompt
@@ -260,8 +264,12 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
     setShowIosHint(false);
   };
 
+  // L'ordine personalizzato delle card sta in localStorage, che sul server non
+  // esiste: si parte da PRODUCTS_DEFAULT e si applica l'ordine salvato al primo
+  // frame client, senza setState sincrono dentro l'effect.
   useEffect(() => {
-    setProducts(getOrderedProducts());
+    const id = requestAnimationFrame(() => setProducts(getOrderedProducts()));
+    return () => cancelAnimationFrame(id);
   }, []);
 
   const isUnlocked = useCallback((productId: string) => {
@@ -762,7 +770,7 @@ export default function AppDashboard({ userEmail, unlockedProducts }: Props) {
                     textAlign: "left",
                     position: "relative",
                   }}>
-                    Tocca <strong>□↑</strong> in basso nel browser, poi <strong>"Aggiungi a schermata Home"</strong>
+                    Tocca <strong>□↑</strong> in basso nel browser, poi <strong>&ldquo;Aggiungi a schermata Home&rdquo;</strong>
                     <button onClick={dismissInstall} style={{ position: "absolute", top: "6px", right: "8px", background: "none", border: "none", cursor: "pointer", fontSize: "14px", color: "rgba(10,26,32,0.4)" }}>✕</button>
                   </div>
                 )}

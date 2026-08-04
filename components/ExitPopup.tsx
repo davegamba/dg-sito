@@ -18,8 +18,10 @@ export default function ExitPopup() {
     const force = new URLSearchParams(window.location.search).get("popup") === "1";
 
     if (force) {
-      setVisible(true);
-      return;
+      // rAF e non setVisible() diretto: settare lo stato in modo sincrono
+      // dentro l'effect fa partire un secondo render a cascata prima del paint.
+      const id = requestAnimationFrame(() => setVisible(true));
+      return () => cancelAnimationFrame(id);
     }
 
     const stored = localStorage.getItem(STORAGE_KEY);

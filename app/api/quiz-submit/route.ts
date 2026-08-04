@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit, DIECI_MINUTI } from "@/lib/rate-limit";
 import { promises as dns } from "dns";
 import { determineProfile } from "@/lib/quiz";
 
@@ -6,6 +7,8 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const VALID_KEYS = new Set(["obiettivo", "blocchi", "fisico", "tempo", "sessioni", "livello", "luogo"]);
 
 export async function POST(req: NextRequest) {
+  const limite = rateLimit(req, "quiz-submit", 8, DIECI_MINUTI);
+  if (limite) return limite;
   const { name, email, answers, website } = await req.json();
 
   // Honeypot: campo invisibile agli utenti, compilato solo dai bot

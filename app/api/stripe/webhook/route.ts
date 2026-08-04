@@ -15,7 +15,7 @@ async function notifyDave(subject: string, text: string) {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
     body: JSON.stringify({
-      from: "DaveGamba.com <onboarding@resend.dev>",
+      from: "DaveGamba.com <info@davegamba.com>",
       to: ["davept.info@gmail.com"],
       subject,
       text,
@@ -116,8 +116,12 @@ const PRICE_TO_PRODUCT: Record<string, string> = {
 function productsFrom(productId: string): string[] {
   if (productId === "sfida+addominali") return ["sfida", "addominali"];
   if (productId === "addominali") return ["addominali"];
-  if (productId === "club") return [];
-  return ["sfida"];
+  if (productId === "sfida") return ["sfida"];
+  // "club" e qualsiasi altro id: non gestito qui.
+  // Prima il default era ["sfida"], quindi un prodotto sconosciuto sbloccava
+  // la Sfida Estiva e spediva la mail sbagliata. Ora che l'offerta è chiusa
+  // sarebbe anche peggio: meglio non sbloccare nulla e farsi avvisare.
+  return [];
 }
 
 export async function POST(req: NextRequest) {
@@ -138,13 +142,15 @@ export async function POST(req: NextRequest) {
   }
 
   let email: string | null | undefined;
-  let productId = "sfida";
+  // Stringa vuota e non "sfida": un prodotto non identificato non deve
+  // sbloccare niente per default, tanto più ora che la Sfida Estiva è chiusa.
+  let productId = "";
 
   // Checkout embedded (PaymentIntent) — flusso /checkout attuale
   if (event.type === "payment_intent.succeeded") {
     const pi = event.data.object as Stripe.PaymentIntent;
     email = pi.receipt_email ?? pi.metadata?.email;
-    productId = pi.metadata?.product_id ?? "sfida";
+    productId = pi.metadata?.product_id ?? "";
   }
 
   // Stripe Checkout hosted / Payment Link
@@ -160,9 +166,9 @@ export async function POST(req: NextRequest) {
           expand: ["line_items"],
         });
         const priceId = full.line_items?.data[0]?.price?.id ?? "";
-        productId = PRICE_TO_PRODUCT[priceId] ?? "sfida";
+        productId = PRICE_TO_PRODUCT[priceId] ?? "";
       } catch {
-        productId = "sfida";
+        productId = "";
       }
     }
   }
@@ -263,7 +269,17 @@ export async function POST(req: NextRequest) {
   // productsFrom() e veniva registrato come acquisto "sfida", mandando al socio
   // la mail con i link della Sfida Estiva che non aveva comprato.
   if (products.length === 0) {
-    console.log(`Prodotto "${productId}" gestito da un altro webhook — ignorato qui (${email})`);
+    if (productId === "club") {
+      console.log(`Prodotto "club" gestito dal webhook di dgclub — ignorato qui (${email})`);
+    } else {
+      // Prodotto che questo webhook non sa mappare: prima finiva nel default
+      // "sfida" e sbloccava il prodotto sbagliato in silenzio. Ora è un caso
+      // che va visto da un umano.
+      await notifyDave(
+        `⚠️ Prodotto non riconosciuto — ${email}`,
+        `Stripe ha confermato un acquisto ma il product_id "${productId}" non è mappato in productsFrom() né in PRICE_TO_PRODUCT.\n\nEvento: ${event.type}\nCliente: ${email}\n\nNessun accesso è stato sbloccato: assegnalo a mano e aggiungi la mappatura.`
+      );
+    }
     return NextResponse.json({ received: true, skipped: productId });
   }
 

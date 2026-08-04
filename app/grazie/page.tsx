@@ -28,7 +28,7 @@ function GrazieContent() {
   const params = useSearchParams();
   const status = params.get("redirect_status");
   const paymentIntent = params.get("payment_intent");
-  const slug = params.get("p") ?? "sfida-estiva";
+  const slug = params.get("p") ?? "";
   const hasBump = params.get("b") === "1";
 
   const offerta = getOfferta(slug);
@@ -47,7 +47,7 @@ function GrazieContent() {
           Questa pagina compare dopo un acquisto. Se hai appena comprato e non
           la vedi correttamente, controlla la mail di conferma.
         </p>
-        <Link className="gz-btn" href="/sfida-estiva">Scopri la Sfida Estiva →</Link>
+        <Link className="gz-btn" href="/coaching">Scopri il Coaching →</Link>
         <Link className="gz-home" href="/">← Torna alla home</Link>
       </div>
     );
@@ -59,7 +59,7 @@ function GrazieContent() {
         <div className="gz-check" style={{ background: "#e05555" }}>!</div>
         <h1 className="gz-fail-title">Pagamento non completato</h1>
         <p className="gz-sub">
-          Qualcosa è andato storto e l'addebito non è andato a buon fine.
+          Qualcosa è andato storto e l&apos;addebito non è andato a buon fine.
           Nessun importo è stato prelevato. Puoi riprovare in sicurezza.
         </p>
         <Link className="gz-btn" href={`/checkout/${slug}`}>Riprova il pagamento →</Link>
@@ -92,7 +92,7 @@ function GrazieContent() {
       </div>
 
       <p className="gz-note">
-        Ti abbiamo inviato anche un'email con le istruzioni. Non la trovi?
+        Ti abbiamo inviato anche un&apos;email con le istruzioni. Non la trovi?
         Controlla spam e promozioni, o scrivi a <a href="mailto:info@davegamba.com">info@davegamba.com</a>.
       </p>
       <Link className="gz-home" href="/">← Torna alla home</Link>

@@ -6,6 +6,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import MobileBottomBar from "@/components/MobileBottomBar";
 import ScrollAnimations from "@/components/ScrollAnimations";
 import CookieBanner from "@/components/CookieBanner";
+import { BASE_URL } from "@/lib/site";
 import "./globals.css";
 
 const dmSerif = localFont({
@@ -26,6 +27,10 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  // metadataBase mancava: senza, Next non sa risolvere gli URL relativi nei
+  // metadata e lo segnala a ogni build.
+  metadataBase: new URL(BASE_URL),
+  alternates: { canonical: "/" },
   manifest: "/manifest.json",
   title: "Dave Gamba — Personal Trainer Online da oltre 15 anni",
   description:
@@ -35,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Dave Gamba — Personal Trainer Online da oltre 15 anni",
     description: "Tutto per costruire un fisico atletico, asciutto e scolpito con allenamenti da meno di 30 minuti. Oltre 3.000 clienti trasformati.",
-    url: "https://davegamba.com",
+    url: BASE_URL,
     siteName: "Dave Gamba",
     locale: "it_IT",
     type: "website",

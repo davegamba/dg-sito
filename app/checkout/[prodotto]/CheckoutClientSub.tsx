@@ -225,7 +225,7 @@ export default function CheckoutClientSub({ offerta }: { offerta: Offerta }) {
 
           <p className="sub-legal">
             Abbonandoti accetti i nostri <Link href="/termini">Termini e Condizioni</Link> e la <Link href="/privacy">Privacy Policy</Link>.<br />
-            L'abbonamento si rinnova automaticamente. Puoi disdire in qualsiasi momento.
+            L&apos;abbonamento si rinnova automaticamente. Puoi disdire in qualsiasi momento.
           </p>
 
         </div>

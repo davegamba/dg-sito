@@ -1,7 +1,8 @@
 import { redirect } from "next/navigation";
 
 // Il vecchio /checkout è ora gestito dal sistema dinamico /checkout/[prodotto].
-// Reindirizza alla Sfida Estiva per non rompere eventuali link esistenti.
+// Puntava a /checkout/sfida-estiva, offerta chiusa: manda al Club, che è il
+// prodotto attivo.
 export default function CheckoutRedirect() {
-  redirect("/checkout/sfida-estiva");
+  redirect("/checkout/club-mensile");
 }

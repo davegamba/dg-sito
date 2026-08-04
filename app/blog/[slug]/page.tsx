@@ -11,6 +11,7 @@ import ReadingProgress from "@/components/ReadingProgress";
 import { ArticleCta } from "@/components/ArticleCta";
 import { ClubCta } from "@/components/ClubCta";
 import type { Metadata } from "next";
+import { BASE_URL } from "@/lib/site";
 
 // H2 tutti scuri e in grassetto (colore/peso da .mdx-content h2 in globals.css)
 // Eccezione: "Riferimenti Scientifici" → h3 scuro con emoji 🔬
@@ -39,11 +40,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return {};
-  const pageUrl = `https://www.davegamba.com/blog/${slug}`;
+  const pageUrl = `${BASE_URL}/blog/${slug}`;
   const absoluteImage = post.image
     ? post.image.startsWith("http")
       ? post.image
-      : `https://www.davegamba.com${post.image}`
+      : `${BASE_URL}${post.image}`
     : undefined;
   return {
     title: `${post.title} — Dave Gamba`,
@@ -72,12 +73,12 @@ export default async function PostPage({
 
   const related = getRelatedPosts(slug, post.category);
   const { succo, body } = splitContent(post.content);
-  const pageUrl = `https://www.davegamba.com/blog/${slug}`;
+  const pageUrl = `${BASE_URL}/blog/${slug}`;
   const titleEncoded = encodeURIComponent(post.title);
   const absoluteImage = post.image
     ? post.image.startsWith("http")
       ? post.image
-      : `https://www.davegamba.com${post.image}`
+      : `${BASE_URL}${post.image}`
     : undefined;
   const dateIso = new Date(post.date).toISOString();
   const wordCount = post.content.split(/\s+/).length;
@@ -105,7 +106,7 @@ export default async function PostPage({
         author: {
           "@type": "Person",
           name: "Dave Gamba",
-          url: "https://www.davegamba.com/autore/dave-gamba",
+          url: `${BASE_URL}/autore/dave-gamba`,
           image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/atletico-sbarra-spiaggia.jpg",
           sameAs: [
             "https://www.instagram.com/davegamba_fit/",
@@ -117,8 +118,8 @@ export default async function PostPage({
         publisher: {
           "@type": "Organization",
           name: "DaveGamba.com",
-          url: "https://www.davegamba.com",
-          logo: { "@type": "ImageObject", url: "https://www.davegamba.com/images/logo.png" },
+          url: BASE_URL,
+          logo: { "@type": "ImageObject", url: `${BASE_URL}/images/logo.png` },
         },
         datePublished: dateIso,
         dateModified: dateIso,
@@ -132,8 +133,8 @@ export default async function PostPage({
         "@type": "BreadcrumbList",
         "@id": `${pageUrl}#breadcrumb`,
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.davegamba.com" },
-          { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.davegamba.com/blog" },
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
           { "@type": "ListItem", position: 3, name: post.title, item: pageUrl },
         ],
       },

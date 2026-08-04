@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit, DIECI_MINUTI } from "@/lib/rate-limit";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -17,7 +18,7 @@ async function sendNotification(subject: string, html: string) {
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      from: "DaveGamba.com <onboarding@resend.dev>",
+      from: "DaveGamba.com <info@davegamba.com>",
       to: [DAVE_EMAIL],
       subject,
       html,
@@ -28,12 +29,41 @@ async function sendNotification(subject: string, html: string) {
   }
 }
 
+// Solo i campi del form di /coaching/candidati. Senza whitelist si puo'
+// scrivere un JSON arbitrariamente grande dentro la colonna `answers`.
+const VALID_KEYS = new Set([
+  "data_nascita",
+  "situazione_frustrazione",
+  "obiettivo",
+  "perche_no",
+  "vita_con_fisico",
+  "canale_call",
+  "telefono",
+  "consenso",
+  "impegno",
+]);
+const MAX_LEN = 4000;
+
 export async function POST(req: NextRequest) {
+  const limite = rateLimit(req, "coaching-apply", 5, DIECI_MINUTI);
+  if (limite) return limite;
   const body = await req.json();
-  const { nome, email, ...rest } = body;
+  const { nome, email, website, ...rest } = body;
+
+  // Honeypot: campo invisibile, compilato solo dai bot. Era gia' su
+  // /api/quiz-submit e /api/exit-lead, qui mancava.
+  if (website) return NextResponse.json({ ok: true });
 
   if (!nome || !email || !EMAIL_RE.test(email)) {
     return NextResponse.json({ ok: false, error: "Nome e email obbligatori" }, { status: 400 });
+  }
+
+  const answers: Record<string, unknown> = {};
+  for (const key of VALID_KEYS) {
+    if (key in rest) {
+      const v = rest[key];
+      answers[key] = typeof v === "string" ? v.slice(0, MAX_LEN) : v;
+    }
   }
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -49,7 +79,7 @@ export async function POST(req: NextRequest) {
           Authorization: `Bearer ${supabaseKey}`,
           Prefer: "return=minimal",
         },
-        body: JSON.stringify({ name: nome, email, source: "coaching-application", answers: rest }),
+        body: JSON.stringify({ name: nome, email, source: "coaching-application", answers }),
       });
       if (!res.ok) throw new Error(`Supabase ${res.status}`);
     } catch (e) {
@@ -58,7 +88,7 @@ export async function POST(req: NextRequest) {
   }
 
   // Notifica email a Dave
-  const campi = Object.entries(rest)
+  const campi = Object.entries(answers)
     .map(([k, v]) => {
       const val = Array.isArray(v) ? (v as string[]).map(esc).join(", ") : esc(String(v ?? "—"));
       return `<tr><td style="padding:8px 12px;color:#9a9a94;font-size:13px;white-space:nowrap">${esc(k)}</td><td style="padding:8px 12px;color:#fafaf8;font-size:13px">${val}</td></tr>`;

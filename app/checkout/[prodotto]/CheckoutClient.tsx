@@ -111,7 +111,7 @@ function CheckoutForm({
   return (
     <form onSubmit={handleSubmit}>
       <div className="ck-payment-card">
-        <div className="ck-payment-title">✉️ Email per l'accesso</div>
+        <div className="ck-payment-title">✉️ Email per l&apos;accesso</div>
         <LinkAuthenticationElement onChange={(e) => setEmail(e.value.email)} />
         <div className="ck-payment-title" style={{ marginTop: 20 }}>💳 Dati di pagamento</div>
         <PaymentElement />
@@ -144,8 +144,13 @@ export default function CheckoutClient({ offerta }: { offerta: Offerta }) {
   // Crea il PaymentIntent al primo caricamento; ai cambi di bump lo aggiorna.
   useEffect(() => {
     const giaCreato = Boolean(intentIdRef.current);
-    if (!giaCreato) setLoadingIntent(true); // niente "caricamento" durante un aggiornamento
-    setIntentError("");
+    // queueMicrotask: settare lo stato sincrono dentro l'effect fa partire un
+    // render a cascata prima che la fetch sia nemmeno iniziata.
+    // Nessun cambio visibile: il form è comunque nascosto finché `clientSecret`
+    // è vuoto (vedi il ternario nel JSX), e `loadingIntent` viene alzato solo
+    // alla prima creazione, quando `clientSecret` è ancora vuoto per definizione.
+    if (!giaCreato) queueMicrotask(() => setLoadingIntent(true));
+    queueMicrotask(() => setIntentError(""));
     fetch("/api/checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

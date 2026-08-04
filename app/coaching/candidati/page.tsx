@@ -194,6 +194,16 @@ export default function CandidatiPage() {
               {/* Step 3 */}
               {step === 3 && (
                 <form className="cq-form" onSubmit={handleSubmit}>
+                  {/* Honeypot: invisibile agli utenti, i bot lo compilano.
+                      Lato server /api/coaching-apply scarta la richiesta. */}
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+                  />
                   <div>
                     <div className="cq-step-label">{STEP_LABELS[2]} · Step 3 di {TOTAL_STEPS}</div>
                     <h1 className="cq-title">Ultimo step</h1>

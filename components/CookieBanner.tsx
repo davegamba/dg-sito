@@ -1,15 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { CONSENT_KEY, CONSENT_EVENT, GA_ID, PIXEL_ID } from "@/lib/consent";
 
-const CONSENT_KEY = "dg_cookie_consent";
+let caricato = false;
 
 function loadTracking() {
+  // Guardia: il banner puo' montarsi piu' volte durante la navigazione
+  // client-side, e caricare il Pixel due volte raddoppia i PageView.
+  if (caricato) return;
+  caricato = true;
+
   // Google Analytics
   const gaScript = document.createElement("script");
-  gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-13K7EH5XM3";
+  gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
   gaScript.async = true;
   document.head.appendChild(gaScript);
 
@@ -18,7 +24,7 @@ function loadTracking() {
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-13K7EH5XM3');
+    gtag('config', '${GA_ID}');
   `;
   document.head.appendChild(gaInit);
 
@@ -33,39 +39,58 @@ function loadTracking() {
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1727789690815942');
+    fbq('init', '${PIXEL_ID}');
     fbq('track', 'PageView');
   `;
   document.head.appendChild(pixelScript);
+
+  // Sveglia le pagine che aspettano il consenso per mandare i loro eventi
+  // (ViewContent su /coaching, ecc.)
+  window.dispatchEvent(new Event(CONSENT_EVENT));
 }
 
 const STANDALONE_PAGES = ["/links"];
 
+// Il consenso vive in localStorage, che sul server non esiste. useSyncExternalStore
+// legge il valore reale al primo render client e "" durante l'SSR, senza il
+// setState-dentro-effect che causava un render a cascata (e il lampo del banner).
+function subscribe(cb: () => void) {
+  window.addEventListener("storage", cb);
+  window.addEventListener(CONSENT_EVENT, cb);
+  return () => {
+    window.removeEventListener("storage", cb);
+    window.removeEventListener(CONSENT_EVENT, cb);
+  };
+}
+
 export default function CookieBanner() {
   const pathname = usePathname();
-  const [visible, setVisible] = useState(false);
+  const [scelto, setScelto] = useState(false);
+
+  const consent = useSyncExternalStore(
+    subscribe,
+    () => localStorage.getItem(CONSENT_KEY) ?? "",
+    () => "" // snapshot server: nessun consenso noto
+  );
 
   useEffect(() => {
-    if (STANDALONE_PAGES.includes(pathname)) return;
-    const consent = localStorage.getItem(CONSENT_KEY);
-    if (consent === "accepted") {
-      loadTracking();
-    } else if (!consent) {
-      setVisible(true);
-    }
-    // se "rejected" non fa nulla — nessun tracking
-  }, []);
+    if (consent === "accepted") loadTracking();
+  }, [consent]);
 
   function accept() {
     localStorage.setItem(CONSENT_KEY, "accepted");
-    setVisible(false);
+    setScelto(true);
     loadTracking();
   }
 
   function reject() {
     localStorage.setItem(CONSENT_KEY, "rejected");
-    setVisible(false);
+    setScelto(true);
   }
+
+  // Il banner si vede solo se non c'è ancora una scelta e non siamo su una
+  // pagina standalone (/links, che è un funnel a sé e non traccia).
+  const visible = !scelto && consent === "" && !STANDALONE_PAGES.includes(pathname);
 
   if (!visible) return null;
 

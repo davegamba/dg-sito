@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Sfida Estiva chiusa il 04/08/2026 — la landing non esiste più.
+      // 302 e non 301: se un domani riapri l'offerta stagionale non vuoi che
+      // Google si sia già mangiato l'URL come permanente.
+      { source: "/sfida-estiva", destination: "/", permanent: false },
+      { source: "/sfida-estiva/:path*", destination: "/", permanent: false },
+      { source: "/checkout/sfida-estiva", destination: "/", permanent: false },
       // /quiz → /quiz-fisico
       {
         source: "/quiz",
@@ -79,9 +85,10 @@ const nextConfig: NextConfig = {
       // Immagini Podia (legacy durante migrazione)
       { protocol: "https", hostname: "**.podia.com" },
       { protocol: "https", hostname: "**.podiausercontent.com" },
-      // Cloudflare R2
-      { protocol: "https", hostname: "**.r2.dev" },
-      { protocol: "https", hostname: "pub-**.r2.dev" },
+      // Cloudflare R2 — solo il NOSTRO bucket. Con "**.r2.dev" l'ottimizzatore
+      // immagini di Next accettava qualsiasi bucket R2 pubblico del mondo,
+      // diventando un proxy aperto a nostre spese di banda.
+      { protocol: "https", hostname: "pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev" },
     ],
   },
 };

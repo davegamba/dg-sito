@@ -66,27 +66,14 @@ export const OFFERTE: Record<string, Offerta> = {
     // Price ID Stripe: price_1TjOl3IyNONJea717l3NmgVG
     // Payment Link:   https://buy.stripe.com/3cI8wQ7tI8TscA21521Nu05
   },
-  "sfida-estiva": {
-    slug: "sfida-estiva",
-    nome: "Sfida Estiva 21 Giorni",
-    emoji: "⚡",
-    descrizione: "Accesso immediato · Programma completo",
-    prezzo: 33,
-    amount: 3300,
-    productId: "sfida",
-    bump: {
-      nome: "Corso Addominali Completo",
-      descrizione:
-        "Tecnica corretta, progressioni e il programma definitivo per addominali visibili — senza distruggere la schiena.",
-      prezzo: 9,
-      prezzoOld: 21,
-      risparmio: 12,
-      amountBundle: 4200,
-      productIdBundle: "sfida+addominali",
-    },
-  },
+  // "sfida-estiva" rimossa il 04/08/2026 — offerta chiusa.
+  // Chi l'ha comprata mantiene l'accesso: la chiave di sblocco "sfida" resta
+  // gestita dal webhook Stripe e dalla card in app/club/AppDashboard.tsx.
 };
 
 export function getOfferta(slug: string): Offerta | null {
-  return OFFERTE[slug] ?? null;
+  // `Object.hasOwn` e non `OFFERTE[slug] ?? null`: senza, getOfferta("constructor")
+  // restituisce un valore truthy che non è un'offerta e fa esplodere
+  // /api/checkout con un 500 invece di un 400 pulito.
+  return Object.hasOwn(OFFERTE, slug) ? OFFERTE[slug] : null;
 }

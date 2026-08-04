@@ -1,14 +1,15 @@
 import { getAllPosts } from "@/lib/posts";
 import { MetadataRoute } from "next";
-
-const BASE_URL = "https://www.davegamba.com";
+import { BASE_URL } from "@/lib/site";
 
 const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
   { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
   { url: `${BASE_URL}/coaching`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
   { url: `${BASE_URL}/quiz-fisico`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
-  { url: `${BASE_URL}/sfida-estiva`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+  { url: `${BASE_URL}/piani-coaching`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+  { url: `${BASE_URL}/addominali`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+  { url: `${BASE_URL}/autore/dave-gamba`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.4 },
   { url: `${BASE_URL}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.2 },
   { url: `${BASE_URL}/termini`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.2 },
 ];

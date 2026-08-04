@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
   const supabase = createServerClient(
@@ -31,8 +31,12 @@ export async function middleware(request: NextRequest) {
   return supabaseResponse;
 }
 
+// Solo le route che hanno davvero bisogno della sessione Supabase.
+//
+// Prima il matcher prendeva tutto tranne gli asset statici: ogni pageview del
+// blog, ogni landing e perfino il webhook Stripe facevano una chiamata di rete
+// a Supabase prima di rispondere, e le pagine statiche non potevano essere
+// servite dalla CDN.
 export const config = {
-  matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
-  ],
+  matcher: ["/club/:path*", "/login", "/auth/:path*"],
 };

@@ -29,7 +29,6 @@ const footerLinks = {
   ],
   Prodotti: [
     { href: "/quiz-fisico", label: "Quiz Profilo Fisico" },
-    { href: "/sfida-estiva", label: "Sfida Estiva 21gg" },
     { href: "/coaching", label: "Coaching" },
   ],
   Legale: [

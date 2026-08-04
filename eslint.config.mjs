@@ -12,6 +12,13 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Senza questi, `eslint .` prova ad analizzare i 10 MB di bundle TinaCMS
+    // compilato in public/admin/assets e va in heap out of memory: il lint
+    // di fatto non girava mai.
+    "node_modules/**",
+    "public/**",
+    "tina/__generated__/**",
+    ".sanity/**",
   ]),
 ]);
 

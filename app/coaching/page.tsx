@@ -1,8 +1,9 @@
 "use client";
 import { useEffect } from "react";
 import Link from "next/link";
-import Script from "next/script";
 import Testimonials from "@/components/home/Testimonials";
+import { fbqTrack } from "@/lib/analytics";
+import { onConsent } from "@/lib/consent";
 
 const HERO_FEATURES = [
   "Consulenza personale con Dave",
@@ -48,6 +49,16 @@ const FORMULE = [
 ];
 
 export default function CoachingPage() {
+  // ViewContent solo dopo il consenso: il Pixel lo carica il CookieBanner,
+  // che e' anche l'unico a mandare il PageView.
+  useEffect(
+    () =>
+      onConsent(() =>
+        fbqTrack("ViewContent", { content_name: "Coaching 1-1", content_category: "coaching" })
+      ),
+    []
+  );
+
   useEffect(() => {
     const obs = new IntersectionObserver(
       (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in"); }),
@@ -64,12 +75,6 @@ export default function CoachingPage() {
 
   return (
     <>
-      <Script id="fb-pixel-coaching" strategy="afterInteractive">{`
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init','1727789690815942');
-        fbq('track','PageView');
-        fbq('track','ViewContent',{content_name:'Coaching 1-1',content_category:'coaching'});
-      `}</Script>
       <style>{`
         .ch-body{font-family:'DM Sans',sans-serif;background:#0a0a0a;color:#fafaf8;overflow-x:hidden}
         .ch-body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.032) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:0}

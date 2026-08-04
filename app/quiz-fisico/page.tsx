@@ -222,16 +222,7 @@ interface CtaCard {
   accent: string; // colore bordo/bottone
 }
 const CTA_CATALOG: Record<string, CtaCard> = {
-  sfida: {
-    badge: "Offerta a tempo limitato",
-    badgeColor: "#00CBDB",
-    title: "Sfida Estiva<br />21 Giorni",
-    price: "€33",
-    href: "https://sfidaestiva.davegamba.com/",
-    img: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/foto-sfida-estiva.jpg",
-    cta: "Inizia subito →",
-    accent: "#00CBDB",
-  },
+  // Card "sfida" rimossa il 04/08/2026 — Sfida Estiva chiusa.
   club: {
     badge: "Tutti gli strumenti",
     badgeColor: "#00CBDB",
@@ -254,9 +245,9 @@ const CTA_CATALOG: Record<string, CtaCard> = {
 };
 // Coppia di offerte [primaria, secondaria] in base al profilo
 const PROFILE_CTA: Record<string, [string, string]> = {
-  zero: ["sfida", "club"],
-  tempo: ["sfida", "club"],
-  stallo: ["club", "sfida"],
+  zero: ["club", "coaching"],
+  tempo: ["club", "coaching"],
+  stallo: ["club", "coaching"],
   salto: ["coaching", "club"],
 };
 

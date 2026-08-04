@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit, DIECI_MINUTI } from "@/lib/rate-limit";
 import Stripe from "stripe";
 import { getOfferta } from "@/lib/offerte";
 
 export async function POST(req: NextRequest) {
+  const limite = rateLimit(req, "checkout", 30, DIECI_MINUTI);
+  if (limite) return limite;
   const secretKey = process.env.STRIPE_SECRET_KEY;
   if (!secretKey) {
     console.error("STRIPE_SECRET_KEY mancante nelle variabili d'ambiente");
@@ -16,8 +19,12 @@ export async function POST(req: NextRequest) {
     const stripe = new Stripe(secretKey, { apiVersion: "2026-04-22.dahlia" });
     const { prodotto, bump, email, paymentIntentId } = await req.json();
 
-    // Retrocompatibilità: se non arriva "prodotto", usa la Sfida Estiva
-    const slug = typeof prodotto === "string" && prodotto ? prodotto : "sfida-estiva";
+    // Prima, senza "prodotto", si ricadeva sulla Sfida Estiva: offerta chiusa,
+    // quindi ora è un errore esplicito invece di un checkout fantasma.
+    if (typeof prodotto !== "string" || !prodotto) {
+      return NextResponse.json({ error: "Prodotto mancante." }, { status: 400 });
+    }
+    const slug = prodotto;
     const offerta = getOfferta(slug);
     if (!offerta) {
       return NextResponse.json({ error: `Offerta sconosciuta: ${slug}` }, { status: 400 });
@@ -77,6 +84,21 @@ export async function POST(req: NextRequest) {
 
     // Aggiorna un intent già esistente — usato al submit per agganciare l'email
     if (paymentIntentId) {
+      // L'ID arriva dal client: senza questi due controlli si può passare
+      // l'intent di qualcun altro e cambiargli importo, metadata e
+      // receipt_email. Accettiamo solo intent non ancora pagati e creati da
+      // questa stessa offerta.
+      if (typeof paymentIntentId !== "string" || !paymentIntentId.startsWith("pi_")) {
+        return NextResponse.json({ error: "PaymentIntent non valido." }, { status: 400 });
+      }
+      const esistente = await stripe.paymentIntents.retrieve(paymentIntentId);
+      const modificabile =
+        esistente.status === "requires_payment_method" ||
+        esistente.status === "requires_confirmation";
+      if (!modificabile || esistente.metadata?.offerta !== slug) {
+        return NextResponse.json({ error: "PaymentIntent non modificabile." }, { status: 409 });
+      }
+
       const pi = await stripe.paymentIntents.update(paymentIntentId, {
         amount,
         metadata,
