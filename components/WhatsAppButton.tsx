@@ -8,7 +8,7 @@ import { X } from "lucide-react";
 const WA_NUMBER = "39XXXXXXXXXX"; // ← inserisci il numero senza + (es. 393331234567)
 const WA_PHOTO  = "https://via.placeholder.com/80"; // ← sostituisci con URL foto di Dave
 const WA_MESSAGE = encodeURIComponent(
-  "Ciao Dave 👋 Ho visto il tuo sito e vorrei saperne di più sul Metodo BIM."
+  "Ciao Dave 👋 Ho visto il tuo sito e vorrei saperne di più sul Metodo Breve-Intenso-Mirato."
 );
 // ──────────────────────────────────────────────────────────────────
 

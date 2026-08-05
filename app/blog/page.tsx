@@ -5,7 +5,7 @@ import BlogList from "@/components/BlogList";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog — Dave Gamba | Allenamento, Nutrizione, Metodo BIM",
+  title: "Blog — Dave Gamba | Allenamento, Nutrizione, Breve-Intenso-Mirato",
   description: "Articoli scientifici su allenamento, nutrizione e longevità. Dati reali, niente fuffa.",
 };
 

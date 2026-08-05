@@ -105,7 +105,7 @@ export default function AllenamentoPage() {
         <section className="py-16 bg-[#050505] border-t border-[#1a1a1a]">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
             <p className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-4">
-              ⚡ Metodo BIM
+              ⚡ Metodo Breve-Intenso-Mirato
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl text-white mb-4">
               21 minuti. 3 volte a settimana.

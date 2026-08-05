@@ -9,7 +9,7 @@ const HERO_FEATURES = [
   "Consulenza personale con Dave",
   "Analisi completa: blocchi, obiettivi, stile di vita",
   "Piano Strategico su misura",
-  "Piano d'Allenamento BIM stilato da Dave",
+  "Piano d'Allenamento Breve-Intenso-Mirato stilato da Dave",
   "Piano Alimentare con biologa nutrizionista",
   "Video esecuzione per ogni esercizio",
   "Check settimanale con Dave",
@@ -29,7 +29,7 @@ const CAMBI = [
 const STEPS = [
   { n: "1", title: "Candidatura", text: "Compili il questionario. Mi racconti dove sei e dove vuoi arrivare. Lo leggo io, personalmente." },
   { n: "2", title: "La call", text: "Ci sentiamo. Capisco i tuoi blocchi, il tuo tempo, la tua vita reale. Se non sei adatto te lo dico." },
-  { n: "3", title: "Il tuo piano", text: "Costruisco allenamento BIM + alimentazione su misura. Niente schede copia-incolla. Niente diete da fame." },
+  { n: "3", title: "Il tuo piano", text: "Costruisco allenamento Breve-Intenso-Mirato + alimentazione su misura. Niente schede copia-incolla. Niente diete da fame." },
   { n: "4", title: "Affiancamento", text: "Ti seguo fino all'obiettivo. WhatsApp diretto, check ogni settimana, correzioni in corsa. Non molli perché non sei solo." },
 ];
 

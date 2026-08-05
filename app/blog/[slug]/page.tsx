@@ -113,7 +113,7 @@ export default async function PostPage({
             "https://www.youtube.com/@DaveGambaFitness",
           ],
           jobTitle: "Personal Trainer Online",
-          description: "Personal trainer online dal 2009, fondatore del Metodo BIM — Breve, Intenso, Mirato. Oltre 3.000 clienti seguiti.",
+          description: "Personal trainer online dal 2009, fondatore del Metodo Breve-Intenso-Mirato. Oltre 3.000 clienti seguiti.",
         },
         publisher: {
           "@type": "Organization",

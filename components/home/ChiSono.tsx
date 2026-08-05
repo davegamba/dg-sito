@@ -51,7 +51,7 @@ export default function ChiSono() {
           <span style={{ color: "#00CBDB" }}>meno ore, più intensità, zero esercizi inutili.</span>
         </p>
 
-        {/* Card BIM */}
+        {/* Card Breve-Intenso-Mirato */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "12px", marginTop: "28px" }}>
           {[
             { title: "BREVE", body: "Allenamenti condensati nel minor tempo." },

@@ -19,7 +19,7 @@ const homepageJsonLd = {
       "@id": "https://www.davegamba.com/#website",
       name: "Dave Gamba",
       url: "https://www.davegamba.com",
-      description: "Personal trainer online dal 2009. Metodo BIM — Breve, Intenso, Mirato. Oltre 3.000 clienti trasformati.",
+      description: "Personal trainer online dal 2009. Metodo Breve-Intenso-Mirato. Oltre 3.000 clienti trasformati.",
       inLanguage: "it-IT",
       potentialAction: {
         "@type": "SearchAction",
@@ -48,7 +48,7 @@ const homepageJsonLd = {
       ],
       founder: { "@type": "Person", name: "Dave Gamba" },
       foundingDate: "2009",
-      description: "Metodo BIM — Breve, Intenso, Mirato. Allenamento in 21 minuti, 3 volte a settimana.",
+      description: "Metodo Breve-Intenso-Mirato. Allenamento in 21 minuti, 3 volte a settimana.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Milano",
@@ -62,7 +62,7 @@ const homepageJsonLd = {
       url: "https://www.davegamba.com",
       image: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/atletico-sbarra-spiaggia.jpg",
       jobTitle: "Personal Trainer Online",
-      description: "Personal trainer online dal 2009, fondatore del Metodo BIM. Oltre 3.000 clienti seguiti in 15+ anni di attività.",
+      description: "Personal trainer online dal 2009, fondatore del Metodo Breve-Intenso-Mirato. Oltre 3.000 clienti seguiti in 15+ anni di attività.",
       birthDate: "1984-11-23",
       nationality: "IT",
       address: {

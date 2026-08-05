@@ -8,12 +8,12 @@ import { getAllPosts } from "@/lib/posts";
 export const metadata: Metadata = {
   title: "Dave Gamba — Personal Trainer Online dal 2009 | Chi Sono",
   description:
-    "Dave Gamba è il primo personal trainer online italiano, attivo dal 2009. Fondatore del Metodo BIM, oltre 3.000 clienti seguiti. ISSA certificato. Milano, Italia.",
+    "Dave Gamba è il primo personal trainer online italiano, attivo dal 2009. Fondatore del Metodo Breve-Intenso-Mirato, oltre 3.000 clienti seguiti. ISSA certificato. Milano, Italia.",
   alternates: { canonical: "https://www.davegamba.com/autore/dave-gamba" },
   openGraph: {
     title: "Dave Gamba — Personal Trainer Online dal 2009",
     description:
-      "Primo personal trainer online italiano. Fondatore del Metodo BIM — Breve, Intenso, Mirato. Oltre 3.000 clienti trasformati in 15+ anni.",
+      "Primo personal trainer online italiano. Fondatore del Metodo Breve-Intenso-Mirato. Oltre 3.000 clienti trasformati in 15+ anni.",
     url: "https://www.davegamba.com/autore/dave-gamba",
     type: "profile",
     images: [
@@ -36,7 +36,7 @@ const authorJsonLd = {
     "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/atletico-sbarra-spiaggia.jpg",
   jobTitle: "Personal Trainer Online",
   description:
-    "Personal trainer online dal 2009, fondatore del Metodo BIM — Breve, Intenso, Mirato. Oltre 3.000 clienti seguiti in 15+ anni di attività. Certificazione ISSA.",
+    "Personal trainer online dal 2009, fondatore del Metodo Breve-Intenso-Mirato. Oltre 3.000 clienti seguiti in 15+ anni di attività. Certificazione ISSA.",
   birthDate: "1984-11-23",
   nationality: "IT",
   address: {
@@ -54,7 +54,7 @@ const authorJsonLd = {
     "Ipertrofia muscolare",
     "Longevità e anti-aging",
     "Personal training online",
-    "Metodo BIM",
+    "Metodo Breve-Intenso-Mirato",
     "Allenamento uomo over 40",
   ],
   hasCredential: {
@@ -115,8 +115,7 @@ export default function AutorePage() {
               </p>
               <h1 className="font-serif text-4xl sm:text-5xl font-bold mb-3">Dave Gamba</h1>
               <p className="text-white/70 text-base leading-relaxed max-w-lg">
-                Primo personal trainer online italiano. Fondatore del Metodo BIM —
-                Breve, Intenso, Mirato. Certificazione ISSA. Milano.
+                Primo personal trainer online italiano. Fondatore del Metodo Breve-Intenso-Mirato. Certificazione ISSA. Milano.
               </p>
               <div className="flex gap-4 mt-5">
                 <a
@@ -162,7 +161,7 @@ export default function AutorePage() {
               In oltre 15 anni ha seguito più di 3.000 clienti, prevalentemente uomini professionisti tra i 35 e i 50 anni: manager, imprenditori, medici, avvocati.
             </p>
             <p className="text-[#444] leading-relaxed mt-4">
-              Ha sviluppato il <strong>Metodo BIM — Breve, Intenso, Mirato</strong>: allenamento in 21 minuti, 3 volte a settimana,
+              Ha sviluppato il <strong>Metodo Breve-Intenso-Mirato</strong>: allenamento in 21 minuti, 3 volte a settimana,
               basato su evidenza scientifica e progettato per chi non può permettersi di sprecare tempo. Il mantra è semplice:
               semplicità + continuità = risultati.
             </p>
@@ -173,9 +172,9 @@ export default function AutorePage() {
             </p>
           </section>
 
-          {/* Metodo BIM */}
+          {/* Metodo Breve-Intenso-Mirato */}
           <section className="bg-black text-white rounded-[24px] p-8">
-            <h2 className="font-serif text-2xl font-bold mb-3">Il Metodo BIM</h2>
+            <h2 className="font-serif text-2xl font-bold mb-3">Il Metodo Breve-Intenso-Mirato</h2>
             <p className="text-white/70 leading-relaxed mb-6">
               Breve, Intenso, Mirato. Tre aggettivi che definiscono ogni sessione di allenamento:
               21 minuti di lavoro ad alta intensità, 3 volte a settimana, con esercizi scelti per massimizzare

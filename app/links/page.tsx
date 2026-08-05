@@ -5,7 +5,7 @@ import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Dave Gamba — Link",
-  description: "Personal trainer online dal 2009. Metodo BIM: Breve, Intenso, Mirato.",
+  description: "Personal trainer online dal 2009. Metodo Breve-Intenso-Mirato.",
 };
 
 const SOCIAL = [

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   title: "Dave Gamba — Personal Trainer Online da oltre 15 anni",
   description:
     "Tutto per costruire un fisico atletico, asciutto e scolpito con allenamenti da meno di 30 minuti. Oltre 3.000 clienti trasformati.",
-  keywords: ["personal trainer online", "metodo BIM", "allenamento uomini", "Dave Gamba"],
+  keywords: ["personal trainer online", "metodo Breve-Intenso-Mirato", "allenamento uomini", "Dave Gamba"],
   authors: [{ name: "Dave Gamba" }],
   openGraph: {
     title: "Dave Gamba — Personal Trainer Online da oltre 15 anni",
