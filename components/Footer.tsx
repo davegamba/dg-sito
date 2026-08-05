@@ -144,6 +144,9 @@ export default function Footer() {
             <Link href="/termini" className="text-[#555555] text-xs hover:text-[#888888] transition-colors">
               Termini
             </Link>
+            <Link href="/termini#immagini-ia" className="text-[#555555] text-xs hover:text-[#888888] transition-colors">
+              Immagini generate con IA
+            </Link>
           </div>
         </div>
 

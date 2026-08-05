@@ -95,6 +95,29 @@ const sections = [
       <p>Ci riserviamo il diritto di modificare i presenti Termini e Condizioni in qualsiasi momento. Le modifiche sostanziali saranno comunicate con congruo preavviso. L&apos;uso continuato del servizio dopo la notifica delle modifiche costituisce accettazione dei nuovi termini.</p>
     ),
   },
+  {
+    id: "immagini-ia",
+    title: "10. Immagini generate con intelligenza artificiale",
+    content: (
+      <>
+        <p>Alcune immagini di copertina degli articoli del blog sono <strong className="text-[#F0F0F0]">generate con strumenti di intelligenza artificiale</strong>. Lo dichiariamo per scelta di trasparenza.</p>
+        <p>Due precisazioni importanti:</p>
+        <ul className="space-y-2 mt-1">
+          {[
+            "Le persone raffigurate in queste immagini non esistono: sono soggetti creati artificialmente. Non ritraggono Dave Gamba, né clienti, né alcuna persona reale.",
+            "Le immagini hanno funzione puramente illustrativa. Non documentano risultati, trasformazioni fisiche o casi reali.",
+          ].map((item, i) => (
+            <li key={i} className="flex gap-2 text-sm text-[#888888]">
+              <span className="text-[#00CBDB] mt-0.5 flex-shrink-0">▸</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3">Quando un&apos;immagine ritrae Dave Gamba o persone reali si tratta di fotografie autentiche, non generate né alterate artificialmente.</p>
+        <p>Per quanto riguarda i testi, l&apos;intelligenza artificiale può essere impiegata come supporto nella stesura, ma ogni articolo è sottoposto a revisione umana e pubblicato sotto la responsabilità editoriale di Dave Gamba, che ne verifica contenuti e fonti scientifiche.</p>
+      </>
+    ),
+  },
 ];
 
 export default function TerminiPage() {
@@ -119,7 +142,7 @@ export default function TerminiPage() {
           {/* Sections */}
           <div className="space-y-6">
             {sections.map((s) => (
-              <div key={s.title} className="p-6 rounded-2xl border border-[#1e1e2e] bg-[#0d0d14]">
+              <div key={s.title} id={s.id} className="p-6 rounded-2xl border border-[#1e1e2e] bg-[#0d0d14] scroll-mt-28">
                 <h2 className="text-[#00CBDB] text-xs font-semibold uppercase tracking-wider mb-4">{s.title}</h2>
                 <div className="text-sm text-[#888888] leading-relaxed space-y-3">
                   {s.content}
