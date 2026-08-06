@@ -26,7 +26,17 @@ function CustomH2({ children }: { children: ReactNode }) {
   return <h2 className="font-serif">{children}</h2>;
 }
 
-const mdxComponents = { h2: CustomH2, ArticleCta, ClubCta };
+// Le tabelle comparative non si restringono sotto la larghezza minima del contenuto:
+// senza wrapper spingono l'intera pagina di lato su mobile. Qui scorrono da sole.
+function ScrollableTable({ children }: { children: ReactNode }) {
+  return (
+    <div className="mdx-table-scroll">
+      <table>{children}</table>
+    </div>
+  );
+}
+
+const mdxComponents = { h2: CustomH2, table: ScrollableTable, ArticleCta, ClubCta };
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));

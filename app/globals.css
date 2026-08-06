@@ -190,7 +190,10 @@ h3.font-serif { font-weight: 500; letter-spacing: 0.025em; }
 .mdx-content hr         { display: none; }
 
 /* Tabelle */
-.mdx-content table      { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; border-radius: 12px; overflow: hidden; border: 1px solid #e8e8e8; }
+/* Le tabelle scorrono dentro il proprio contenitore: senza questo wrapper una
+   tabella larga spinge di lato l'intera pagina su mobile. */
+.mdx-content .mdx-table-scroll { max-width: 100%; overflow-x: auto; margin-bottom: 1.75rem; -webkit-overflow-scrolling: touch; }
+.mdx-content table      { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; border: 1px solid #e8e8e8; }
 .mdx-content th         { color: #fff; background: #00C8DB; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.75rem 1rem; text-align: left; font-weight: 700; }
 .mdx-content td         { color: #222; padding: 0.75rem 1rem; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem; }
 .mdx-content tr:last-child td { border-bottom: none; }

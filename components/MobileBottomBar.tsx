@@ -21,8 +21,8 @@ const items = [
     ),
   },
   {
-    label: "Protocolli",
-    href: "/club",
+    label: "Club",
+    href: "https://club.davegamba.com/entra-nel-club",
     color: "white",
     icon: (
       <svg viewBox="0 0 24 24" fill="white" width="22" height="22">
