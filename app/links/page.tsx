@@ -33,13 +33,6 @@ const CLUB_FEATURES = [
   "Per casa e palestra",
 ];
 
-const COACHING_FEATURES = [
-  "Call conoscitiva con Dave senza impegno",
-  "Piano d'allenamento su misura",
-  "Piano alimentare con biologa nutrizionista",
-  "Affiancamento WhatsApp con Dave fino all'obiettivo",
-];
-
 const YT_VIDEOS = [
   "hGA0z6hRihk",
   "Dv8NRpmSXE0",
@@ -124,6 +117,20 @@ export default function LinksPage() {
         {/* CARDS */}
         <div style={{ padding: "28px 20px 0", background: "#080C0F", marginTop: -20, position: "relative", zIndex: 3 }}>
 
+          {/* Quiz Profilo Fisico — primo: cattura email, l'asset che serve al webinar di settembre */}
+          <a href="/quiz-fisico"
+            style={{ display: "flex", alignItems: "center", gap: 16, background: "linear-gradient(180deg,#1AD8E8 0%,#00CBDB 40%,#0089C7 100%)", borderRadius: 20, padding: "18px 20px", textDecoration: "none", marginBottom: 13, boxShadow: "0 10px 30px rgba(0,203,219,0.35), inset 0 1px 0 rgba(255,255,255,0.5)" }}>
+            <div style={{ flexShrink: 0, width: 72, height: 72, borderRadius: 14, overflow: "hidden", boxShadow: "0 2px 8px rgba(0,0,0,0.25)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg" alt="Quiz Profilo Fisico" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 700, fontSize: "1.4rem", color: "#06303D", letterSpacing: "0.02em", lineHeight: 1.1 }}>Quiz Profilo Fisico</div>
+              <div style={{ fontSize: "0.82rem", color: "#06303D", opacity: 0.85, marginTop: 4 }}>Scopri il tuo Profilo in 2 minuti · <strong>Gratuito</strong></div>
+            </div>
+            <span style={{ color: "#06303D", fontSize: "1.9rem", fontWeight: 700 }}>›</span>
+          </a>
+
           {/* DG Athletic Club */}
           <div className="card">
             <div className="card-top">
@@ -145,40 +152,6 @@ export default function LinksPage() {
             </div>
             <a href="https://club.davegamba.com/entra-nel-club" className="card-btn">Entra nel Club →</a>
           </div>
-
-          {/* Premium Coaching */}
-          <div className="card">
-            <div className="card-top">
-              <div className="card-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg" alt="Premium Coaching 1-1" style={{ objectPosition: "center top" }} />
-              </div>
-              <div className="card-info">
-                <div className="card-title">Premium Coaching 1-1</div>
-                <div className="card-desc">Percorso completamente personalizzato con Dave. Pochi posti disponibili.</div>
-              </div>
-            </div>
-            <div className="card-features">
-              {COACHING_FEATURES.map((f) => (
-                <div key={f} className="card-feature"><span className="dot"><span className="dot-tri" /></span>{f}</div>
-              ))}
-            </div>
-            <a href="https://www.davegamba.com/coaching/" target="_blank" rel="noopener noreferrer" className="card-btn">Compila il Questionario →</a>
-          </div>
-
-          {/* Quiz Profilo Fisico — grosso bottone ciano (sotto i prodotti) */}
-          <a href="/quiz-fisico"
-            style={{ display: "flex", alignItems: "center", gap: 14, background: "linear-gradient(180deg,#1AD8E8 0%,#00CBDB 40%,#0089C7 100%)", borderRadius: 18, padding: "13px 16px", textDecoration: "none", marginBottom: 13, boxShadow: "0 10px 30px rgba(0,203,219,0.35), inset 0 1px 0 rgba(255,255,255,0.5)" }}>
-            <div style={{ flexShrink: 0, width: 58, height: 58, borderRadius: 12, overflow: "hidden", boxShadow: "0 2px 8px rgba(0,0,0,0.25)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg" alt="Quiz Profilo Fisico" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-            </div>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 700, fontSize: "1.35rem", color: "#06303D", letterSpacing: "0.02em", lineHeight: 1.1 }}>Quiz Profilo Fisico</div>
-              <div style={{ fontSize: "0.76rem", color: "#06303D", opacity: 0.85, marginTop: 2 }}>Scopri il tuo Profilo in 2 minuti · <strong>Gratuito</strong></div>
-            </div>
-            <span style={{ color: "#06303D", fontSize: "1.7rem", fontWeight: 700 }}>›</span>
-          </a>
 
           {/* YouTube */}
           <div style={{ margin: "28px 0 48px" }}>
