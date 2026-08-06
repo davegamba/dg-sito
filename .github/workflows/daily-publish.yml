@@ -1,10 +1,13 @@
 name: Daily Publish — Articoli Programmati
 
 on:
-  schedule:
-    # Ogni notte a mezzanotte (ora italiana = 23:00 UTC in estate, 22:00 in inverno)
-    - cron: '0 22 * * *'
-  workflow_dispatch: # permette anche esecuzione manuale da GitHub
+  # Cron disattivata il 2026-08-06: nessun articolo con data futura in coda,
+  # e il redeploy notturno rischiava di sovrascrivere modifiche pushate a mano
+  # ma non ancora deployate. Riattivare aggiungendo di nuovo il blocco:
+  #   schedule:
+  #     - cron: '0 22 * * *'
+  # quando torna a servire la pubblicazione programmata.
+  workflow_dispatch: # esecuzione manuale da GitHub (tab Actions → Run workflow)
 
 jobs:
   trigger-redeploy:
