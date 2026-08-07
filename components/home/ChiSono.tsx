@@ -44,15 +44,8 @@ export default function ChiSono() {
           </div>
         </div>
 
-        {/* Frase metodo */}
-        <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginTop: "24px", marginBottom: "4px", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "24px" }}>
-          La maggior parte delle persone si allena tanto, senza struttura reale, e si chiede perché non vede risultati.{" "}
-          <strong style={{ color: "#fff" }}>Il Metodo Breve Intenso Mirato funziona al contrario:</strong>{" "}
-          <span style={{ color: "#00CBDB" }}>meno ore, più intensità, zero esercizi inutili.</span>
-        </p>
-
         {/* Card Breve-Intenso-Mirato */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "12px", marginTop: "28px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "12px", marginTop: "24px" }}>
           {[
             { title: "BREVE", body: "Allenamenti condensati nel minor tempo." },
             { title: "INTENSO", body: "Nel fitness, l'intensità batte la quantità." },
