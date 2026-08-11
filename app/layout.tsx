@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import ExitPopup from "@/components/ExitPopup";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -19,10 +18,15 @@ const dmSerif = localFont({
   display: "swap",
 });
 
-const dmSans = DM_Sans({
+// DM Sans self-hostato invece che via next/font/google: il download da
+// fonts.gstatic.com al momento del build ha fatto fallire un deploy Vercel
+// (404 sui .woff2 con la build cache stale, 2026-08-11). Con il file locale
+// il build non dipende più da un server esterno.
+// È un font variabile: un solo file copre tutto il range di pesi.
+const dmSans = localFont({
+  src: "../public/fonts/DMSans-Variable.woff2",
   variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: "100 1000",
   display: "swap",
 });
 
