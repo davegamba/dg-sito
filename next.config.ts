@@ -41,6 +41,10 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       // Redirect da slug rinominati nel tempo (trovati in Search Console come 404)
+      // protocollo-integratori → quali-integratori-prendere: rinominato il 2026-08-19
+      // per intercettare la query reale ("quali integratori prendere"), che il vecchio
+      // titolo brandizzato non copriva.
+      { source: "/blog/protocollo-integratori", destination: "/blog/quali-integratori-prendere", permanent: true },
       { source: "/blog/cortisolo-alto-grasso-addominale", destination: "/blog/cortisolo-alto", permanent: true },
       { source: "/blog/cortisolo-e-grasso-addominale", destination: "/blog/cortisolo-alto", permanent: true },
       { source: "/blog/creatina-guida-scientifica", destination: "/blog/creatina-a-cosa-serve", permanent: true },
