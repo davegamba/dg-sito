@@ -77,6 +77,58 @@ const nextConfig: NextConfig = {
       { source: "/coaching-personal-trainer-online", destination: "/coaching", permanent: true },
       { source: "/cookie-policy", destination: "/privacy", permanent: true },
       { source: "/Instagram", destination: "https://www.instagram.com/davegamba_fit/", permanent: true },
+      // === RECUPERO URL PODIA MORTI (2026-08-25) ===
+      // Diagnosi via Search Console API: 41 vecchi URL Podia rispondevano 404
+      // pur ricevendo ancora 3.429 impressioni nel periodo 1 apr - 22 ago.
+      // Ogni 404 disperde i link esterni accumulati negli anni e peggiora i
+      // segnali di qualità del dominio. Destinazione = articolo attuale più
+      // vicino per intento di ricerca; dove non esiste un equivalente si manda
+      // all'indice del blog (redirect di categoria, non soft-404 sulla home).
+      { source: "/blog/latte-sonno", destination: "/blog/come-dormire-meglio", permanent: true },
+      { source: "/blog/pistole-massaggianti-recupero-muscolare", destination: "/blog/stretching-benefici", permanent: true },
+      { source: "/blog/miochine-tumore-allenamento", destination: "/blog/quante-volte-allenarsi-a-settimana", permanent: true },
+      { source: "/blog/dimagrimento-hit-pesi", destination: "/blog/cardio-o-pesi-per-dimagrire", permanent: true },
+      { source: "/blog/benefici-sole-mattino", destination: "/blog/crema-solare-fa-male", permanent: true },
+      { source: "/blog/fegato-grasso-arancia", destination: "/blog/dieta-detox", permanent: true },
+      { source: "/blog/magnesio-post-allenamento", destination: "/blog/quali-integratori-prendere", permanent: true },
+      { source: "/blog/creatina-alzheimer", destination: "/blog/creatina-a-cosa-serve", permanent: true },
+      { source: "/blog/bruciare-calorie-camminando", destination: "/blog/quanti-passi-al-giorno", permanent: true },
+      { source: "/blog/variare-esercizi-allenamento-massa", destination: "/blog/quante-volte-allenarsi-a-settimana", permanent: true },
+      { source: "/blog/creatina-donne", destination: "/blog/creatina-a-cosa-serve", permanent: true },
+      { source: "/blog/benefici-nicotinammide-nad-nr-nmn", destination: "/blog/quali-integratori-prendere", permanent: true },
+      { source: "/blog/camminata-dimagrire-perdere-grasso", destination: "/blog/quanti-passi-al-giorno", permanent: true },
+      { source: "/blog/maggiore-di-zero", destination: "/blog/stato-di-flow", permanent: true },
+      { source: "/blog/allenamento-breveintenso-un-minuto", destination: "/blog/allenarsi-20-minuti", permanent: true },
+      { source: "/blog/power-nap-riposo-pomeridiano", destination: "/blog/come-dormire-meglio", permanent: true },
+      { source: "/blog/sistema-immunitario-emozioni", destination: "/blog/cortisolo-alto", permanent: true },
+      { source: "/blog/allenamento-corpo-giovane", destination: "/blog/sarcopenia-perdita-massa-muscolare", permanent: true },
+      { source: "/blog/2-min-camminata", destination: "/blog/quanti-passi-al-giorno", permanent: true },
+      { source: "/blog/ansia-staticita", destination: "/blog/stare-seduti-fa-male", permanent: true },
+      { source: "/blog/dimagrimento-sonno", destination: "/blog/come-dormire-meglio", permanent: true },
+      { source: "/blog/rallentare-invecchiamento-dna", destination: "/blog/quante-volte-allenarsi-a-settimana", permanent: true },
+      { source: "/blog/dimagrimento-proteine", destination: "/blog/deficit-calorico", permanent: true },
+      { source: "/blog/allenamento-forza-per-corsa", destination: "/blog/quante-volte-allenarsi-a-settimana", permanent: true },
+      { source: "/blog/magnetismo-miglioramento", destination: "/blog/stato-di-flow", permanent: true },
+      { source: "/blog/flessibilita-longevita", destination: "/blog/stretching-benefici", permanent: true },
+      { source: "/blog/la-mente-tiene-il-punteggio", destination: "/blog/stato-di-flow", permanent: true },
+      { source: "/blog/dormire-meglio-insonnia-allenamento", destination: "/blog/come-dormire-meglio", permanent: true },
+      { source: "/blog/gonfiore-stanchezza-estate-caldo-soluzioni", destination: "/blog/gonfiore-addominale-estate", permanent: true },
+      { source: "/blog/mindfulness-dimagrimento", destination: "/blog/stato-di-flow", permanent: true },
+      { source: "/blog/segreto-longevita-forza", destination: "/blog/sarcopenia-perdita-massa-muscolare", permanent: true },
+      { source: "/blog/stile-di-dieta-dimagrimento", destination: "/blog/deficit-calorico", permanent: true },
+      // Senza equivalente nel nuovo blog → indice blog
+      { source: "/blog/dolore-articolazioni-cannabis", destination: "/blog", permanent: true },
+      { source: "/blog/attacchi-fame-ciclo-preciclo", destination: "/blog", permanent: true },
+      { source: "/blog/danni-benefici-cipolla", destination: "/blog", permanent: true },
+      { source: "/blog/esercizi-kegel-benefici", destination: "/blog", permanent: true },
+      { source: "/blog/allenamento-in-gravidanza", destination: "/blog", permanent: true },
+      { source: "/blog/cibo-intelligenza-mirtilli", destination: "/blog", permanent: true },
+      { source: "/blog/maldischiena-gambe", destination: "/blog", permanent: true },
+      { source: "/blog/olio-oliva-salute-longevita", destination: "/blog", permanent: true },
+      { source: "/blog/calze-maniche-compressione-recupero", destination: "/blog", permanent: true },
+      // Endpoint di sistema Podia ancora indicizzati
+      { source: "/posts/:id*", destination: "/blog", permanent: true },
+      { source: "/registration/new", destination: "/", permanent: true },
       // Locale EN/ES mai esistite nel nuovo sito → homepage
       { source: "/en", destination: "/", permanent: true },
       { source: "/en/:path*", destination: "/", permanent: true },
