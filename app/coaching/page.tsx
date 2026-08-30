@@ -17,13 +17,16 @@ const HERO_FEATURES = [
   "Affiancamento fino all'obiettivo",
 ];
 
-const CAMBI = [
-  "La tua migliore forma fisica di sempre — atletica, attraente, e soprattutto definitiva, non temporanea.",
-  "Allenamenti brevi e mirati che ti danno più risultati in meno tempo.",
-  "Un'alimentazione su misura — flessibile, senza rinunce inutili.",
-  "L'energia e la lucidità che credevi di aver perso con gli anni.",
-  "La certezza, finalmente, di essere sulla strada giusta.",
-  "Qualcuno che ti tiene in rotta quando la motivazione cala.",
+const PER_CHI = [
+  "Chi si allena da tempo con risultati altalenanti, ma vuole fare il salto di qualità definitivo.",
+  "Chi si impegna ma rimane in stallo, senza vedere una vera differenza.",
+  "Chi vuole un riferimento accanto per mantenere la rotta e la costanza nel tempo.",
+  "Chi non vuole più perdere tempo e vuole arrivare al risultato migliore nel tempo più breve.",
+  "Chi vuole raggiungere la propria migliore forma fisica di sempre, definitiva, non temporanea.",
+  "Chi vuole un metodo di allenamento breve e mirato, che dà più risultati in meno tempo.",
+  "Chi vuole un'alimentazione su misura — flessibile, senza rinunce inutili.",
+  "Chi vuole ritrovare l'energia e la lucidità che credeva di aver perso con gli anni.",
+  "Chi vuole, finalmente, la certezza di essere sulla strada giusta.",
 ];
 
 const STEPS = [
@@ -82,65 +85,40 @@ export default function CoachingPage() {
         .ch-hero{position:relative;width:100%;height:100vh;max-height:860px;overflow:hidden;display:flex;align-items:center;justify-content:center}
         .ch-hero img.bg{position:absolute;inset:0;width:100%;height:115%;object-fit:cover;object-position:center top;display:block;transform:translateY(-3%)}
         .ch-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(10,10,10,0.78) 50%,rgba(10,10,10,0.15) 100%);pointer-events:none}
-        .ch-hero-content{position:relative;z-index:2;padding:0 40px;width:100%;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;animation:chFadeUp 0.7s ease 0.1s both}
+        .ch-hero-content{position:relative;z-index:2;padding:0 40px;width:100%;max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr;align-items:center;animation:chFadeUp 0.7s ease 0.1s both}
         .ch-hero-left{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
-        .ch-hero-card{background:rgba(13,26,30,0.60);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(0,203,219,0.4);border-radius:24px;padding:32px 28px;display:flex;flex-direction:column;position:relative}
-        .ch-hero-card-badge{position:absolute;top:-16px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#000;background:var(--accent);border-radius:100px;padding:7px 20px;white-space:nowrap}
-        .ch-hero-card-features{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
-        .ch-hero-card-features li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--gray-3);line-height:1.45}
-        .ch-hero-card-features li .ck{color:var(--accent);flex-shrink:0;margin-top:1px}
-        .ch-hero-card-features li .hl{color:var(--gold);font-weight:600}
-        .ch-checks-block{position:relative;z-index:1;background:#0d0d0d;border-top:1px solid var(--border)}
-        .ch-checks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:1100px;margin:0 auto}
-        .ch-check-item{display:flex;align-items:flex-start;gap:14px;padding:24px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
-        .ch-check-item:nth-child(3n){border-right:none}
-        .ch-check-item:nth-last-child(-n+3){border-bottom:none}
-        .ch-check-icon{width:24px;height:24px;border-radius:50%;background:rgba(0,203,219,0.1);border:1px solid rgba(0,203,219,0.25);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;margin-top:1px}
-        .ch-check-text{font-size:13px;color:var(--gray-3);line-height:1.55}
+        .ch-perchi-block{position:relative;z-index:1;background:#0d0d0d;border-bottom:1px solid var(--border);padding:64px 24px}
+        .ch-perchi-inner{max-width:720px;margin:0 auto}
+        .ch-perchi-list{display:flex;flex-direction:column;gap:14px;margin-top:36px}
+        .ch-perchi-item{display:flex;align-items:flex-start;gap:14px;background:var(--cyan-card);border:1px solid rgba(0,203,219,0.15);border-radius:16px;padding:22px 20px}
+        .ch-perchi-text{font-size:15px;color:var(--gray-3);line-height:1.6}
         .ch-press-topbar{position:relative;z-index:10;background:#fff;border-bottom:1px solid #e8e2d8;padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
-        .ch-press-topbar-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#aaa;margin-right:4px}
+        .ch-press-topbar-label{font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:#aaa;margin-right:4px}
         .ch-press-topbar img{height:18px;object-fit:contain;opacity:0.7}
         .ch-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:18px}
         .ch-badge-gold{background:rgba(240,192,64,0.12);color:var(--gold);border:1px solid rgba(240,192,64,0.25)}
         .ch-badge-dot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:chPulse 2s infinite}
-        .ch-hero-eyebrow{font-size:12px;font-weight:300;color:rgba(255,255,255,0.4);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px}
+        .ch-hero-eyebrow{font-size:12px;font-weight:800;color:var(--gold);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px}
         .ch-hero-title{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(36px,4.5vw,64px);line-height:1.05;letter-spacing:-0.02em;color:var(--white);margin-bottom:18px;font-weight:700}
         .ch-hero-title em{font-style:italic;color:var(--accent)}
-        .ch-hero-sub{font-size:clamp(15px,1.8vw,18px);color:rgba(255,255,255,0.7);font-weight:300;max-width:520px;margin:0 0 28px;line-height:1.65}
+        .ch-hero-sub{font-size:clamp(15px,1.8vw,18px);color:rgba(255,255,255,0.85);font-weight:600;max-width:520px;margin:0 0 28px;line-height:1.65}
         .ch-btn-gold{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(to bottom,#F7E27A 0%,#F0C040 100%);color:#000;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;padding:18px 40px;border-radius:14px;border:none;cursor:pointer;text-decoration:none;transition:all 0.2s;letter-spacing:0.04em;text-transform:uppercase}
         .ch-btn-gold:hover{filter:brightness(1.06);transform:translateY(-1px)}
-        .ch-btn-gold-outline{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--gold);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;padding:18px 40px;border-radius:14px;border:1.5px solid var(--gold);cursor:pointer;text-decoration:none;transition:all 0.2s;letter-spacing:0.04em;text-transform:uppercase}
-        .ch-btn-gold-outline:hover{background:rgba(240,192,64,0.1);transform:translateY(-1px)}
         .ch-section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:80px 24px}
-        .ch-bg-section{position:relative;z-index:1;background:var(--bg-1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
         .ch-divider{height:1px;background:var(--border);position:relative;z-index:1}
         .ch-section-title{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(30px,4vw,50px);line-height:1.1;letter-spacing:-0.02em;margin-bottom:14px;text-align:center}
         .ch-section-title em{font-style:italic;color:var(--accent)}
         .ch-section-sub{font-size:16px;color:var(--gray-4);font-weight:300;line-height:1.7;max-width:580px;text-align:center;margin-left:auto;margin-right:auto}
-        .ch-funziona-grid{display:grid;grid-template-columns:380px 1fr;gap:60px;align-items:center;margin-top:48px}
-        .ch-funziona-foto{border-radius:20px;overflow:hidden;aspect-ratio:3/4;background:var(--bg-2);position:relative}
-        .ch-funziona-foto img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
         .ch-steps{display:flex;flex-direction:column;gap:16px}
         .ch-step{background:var(--cyan-card);border:1px solid rgba(0,203,219,0.25);border-radius:20px;padding:28px;display:flex;gap:20px;align-items:flex-start}
         .ch-step-num{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:42px;color:var(--accent);line-height:1;flex-shrink:0;width:48px}
         .ch-step-title{font-size:16px;font-weight:600;margin-bottom:6px}
         .ch-step-text{font-size:14px;color:var(--gray-4);line-height:1.6}
-        .ch-cambio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:40px}
-        .ch-cambio-item{display:flex;align-items:flex-start;gap:14px;background:var(--cyan-card);border:1px solid rgba(0,203,219,0.15);border-radius:16px;padding:20px}
         .ch-cambio-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(0,203,219,0.1);border:1px solid rgba(0,203,219,0.25);color:var(--accent)}
-        .ch-cambio-item p{font-size:14px;color:var(--gray-3);line-height:1.55;margin:0}
-        .ch-non-box{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 24px 80px}
-        .ch-non-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-        .ch-non-inner{background:var(--bg-2);border:1px solid var(--border);border-radius:20px;padding:32px 36px;display:flex;flex-direction:column;gap:12px}
-        .ch-non-title{font-size:13px;font-weight:600;color:var(--gray-6);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:4px}
-        .ch-non-item{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.5}
-        .ch-non-item.yes{color:var(--gray-3)}
-        .ch-non-item.no{color:#e05555}
-        .ch-non-icon{flex-shrink:0;margin-top:1px;font-size:15px}
         .ch-invest-lead{font-size:16px;color:var(--gray-3);line-height:1.7;max-width:620px;text-align:center;margin:0 auto 8px}
         .ch-invest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:40px auto 32px;align-items:stretch}
-        .ch-invest-card{background:var(--cyan-card);border:1px solid rgba(0,203,219,0.22);border-radius:18px;padding:32px 24px 28px;text-align:center;position:relative;display:flex;flex-direction:column}
-        .ch-invest-card.best{background:var(--cyan-card-ft);border-color:rgba(0,203,219,0.45)}
+        .ch-invest-card{background:var(--cyan-card);border:2px solid rgba(0,203,219,0.4);border-radius:18px;padding:32px 24px 28px;text-align:center;position:relative;display:flex;flex-direction:column}
+        .ch-invest-card.best{background:var(--cyan-card-ft);border-color:rgba(0,203,219,0.7)}
         .ch-invest-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#000;background:var(--accent);border-radius:100px;padding:4px 12px;white-space:nowrap}
         .ch-invest-dur{font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
         .ch-invest-price{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:34px;color:var(--white);line-height:1}
@@ -153,8 +131,6 @@ export default function CoachingPage() {
         .ch-invest-buy{display:block;margin-top:22px;text-align:center;background:linear-gradient(to bottom,#4ADE80 0%,#16A34A 100%);color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:800;padding:14px;border-radius:12px;text-decoration:none;letter-spacing:0.02em;transition:filter 0.2s,transform 0.2s}
         .ch-invest-buy:hover{filter:brightness(1.08);transform:translateY(-1px)}
         .ch-invest-cta{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:8px}
-        .ch-invest-link{font-size:14px;color:var(--gray-4);text-decoration:underline;text-underline-offset:3px;transition:color 0.2s}
-        .ch-invest-link:hover{color:var(--accent)}
         .ch-invest-scarcity{font-size:14px;color:var(--gray-4);line-height:1.7;max-width:560px;text-align:center;margin:8px auto 32px}
         .ch-invest-scarcity strong{color:var(--gold)}
         .ch-faq-list{display:flex;flex-direction:column;gap:8px;margin-top:48px}
@@ -174,21 +150,10 @@ export default function CoachingPage() {
         .reveal.in{opacity:1;transform:translateY(0)}
         @keyframes chFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
         @keyframes chPulse{0%,100%{opacity:1}50%{opacity:0.4}}
-        @media(max-width:960px){
-          .ch-funziona-grid{grid-template-columns:1fr}
-          .ch-funziona-foto{max-width:360px}
-          .ch-non-cols{grid-template-columns:1fr}
-        }
         @media(max-width:768px){
           .ch-hero{height:auto;min-height:100vh;max-height:none;padding:0 0 40px}
-          .ch-hero-content{grid-template-columns:1fr;gap:0;padding:32px 16px 0}
+          .ch-hero-content{grid-template-columns:1fr;gap:0;padding:26vh 16px 0}
           .ch-hero-left{align-items:center;text-align:center}
-          .ch-hero-card{margin-top:48px;padding:40px 20px 24px}
-          .ch-hero-card-badge{font-size:11px;padding:6px 16px}
-          .ch-checks-grid{grid-template-columns:1fr}
-          .ch-check-item{border-right:none;padding:18px 16px}
-          .ch-check-item:nth-last-child(-n+3){border-bottom:1px solid var(--border)}
-          .ch-check-item:last-child{border-bottom:none}
         }
         @media(max-width:900px){.ch-invest-grid{grid-template-columns:1fr;max-width:400px}}
         @media(max-width:600px){.ch-section{padding:56px 20px}}
@@ -197,7 +162,7 @@ export default function CoachingPage() {
       <div className="ch-body">
         {/* Press top bar */}
         <div className="ch-press-topbar">
-          <span className="ch-press-topbar-label">Come visto su</span>
+          <span className="ch-press-topbar-label">Visto su</span>
           <img
             src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/loghi-press.png"
             alt="Vanity Fair, Corriere della Sera, la Repubblica, Rai Radio 2"
@@ -221,48 +186,38 @@ export default function CoachingPage() {
             <div className="ch-hero-left">
               <div className="ch-hero-eyebrow">Coaching Online 1-1 con Dave</div>
               <h1 className="ch-hero-title">
-                Il salto di qualità definitivo<br />
-                <em>al tuo miglior fisico.</em>
+                Il servizio personale per il tuo salto di qualità fisico, definitivo.
               </h1>
               <p className="ch-hero-sub">
-                Ti seguo io, personalmente. Un percorso costruito su di te — allenamento, alimentazione, testa — per arrivare a un corpo atletico e tenertelo. Per sempre, non per un&apos;estate.
+                Il percorso costruito su misura su di te per scolpire un fisico atletico asciutto e scolpito, seguito personalmente da Dave.
               </p>
               <a href="/coaching/candidati" className="ch-btn-gold">
                 Candidati al coaching →
               </a>
             </div>
-
-            <div className="ch-hero-card">
-              <div className="ch-hero-card-badge">COSA OTTIENI</div>
-              <ul className="ch-hero-card-features">
-                {HERO_FEATURES.map((f, i) =>
-                  typeof f === "string"
-                    ? <li key={i}><span className="ck">✓</span>{f}</li>
-                    : <li key={i}><span className="ck">✓</span>{f.text}<span className="hl">{f.hl}</span></li>
-                )}
-              </ul>
-            </div>
           </div>
         </section>
 
-        {/* 6 spunte benefits */}
-        <div className="ch-checks-block">
-          <div className="ch-checks-grid">
-            {[
-              "La tua migliore forma fisica di sempre — atletica, attraente, e soprattutto definitiva, non temporanea.",
-              "Allenamenti brevi e mirati che ti danno più risultati in meno tempo",
-              "Un'alimentazione su misura — flessibile, senza rinunce inutili",
-              "L'energia e la lucidità che credevi di aver perso con gli anni",
-              "La certezza, finalmente, di essere sulla strada giusta",
-              "Qualcuno che ti tiene in rotta quando la motivazione cala",
-            ].map((t) => (
-              <div key={t} className="ch-check-item">
-                <div className="ch-check-icon">
-                  <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7L10 1" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                </div>
-                <p className="ch-check-text">{t}</p>
+        {/* IL COACHING È PER CHI */}
+        <div className="ch-perchi-block">
+          <div className="ch-perchi-inner reveal">
+            <div style={{ textAlign: "center", marginBottom: 8 }}>
+              <div className="ch-badge ch-badge-gold" style={{ display: "inline-flex" }}>
+                <span className="ch-badge-dot" />
+                La trasformazione
               </div>
-            ))}
+            </div>
+            <h2 className="ch-section-title">Il coaching è <em>per chi</em></h2>
+            <div className="ch-perchi-list">
+              {PER_CHI.map((t) => (
+                <div key={t} className="ch-perchi-item">
+                  <div className="ch-cambio-icon">
+                    <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7L10 1" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  <p className="ch-perchi-text">{t}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -284,30 +239,6 @@ export default function CoachingPage() {
                   <div className="ch-step-title">{s.title}</div>
                   <div className="ch-step-text">{s.text}</div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="ch-divider" />
-
-        {/* COSA CAMBIA PER TE */}
-        <div className="ch-section reveal">
-          <div style={{ textAlign: "center", marginBottom: 8 }}>
-            <div className="ch-badge ch-badge-gold" style={{ display: "inline-flex" }}>
-              <span className="ch-badge-dot" />
-              La trasformazione
-            </div>
-          </div>
-          <h2 className="ch-section-title">Cosa <em>cambia</em> per te</h2>
-          <p className="ch-section-sub">Non solo il fisico. Il modo in cui vivi il tuo corpo.</p>
-          <div className="ch-cambio-grid">
-            {CAMBI.map((c) => (
-              <div key={c} className="ch-cambio-item">
-                <div className="ch-cambio-icon">
-                  <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7L10 1" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                </div>
-                <p>{c}</p>
               </div>
             ))}
           </div>
