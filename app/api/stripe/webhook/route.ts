@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { notificaDave } from "@/lib/notify";
 
 const CLUB_URL = "https://club.davegamba.com";
 const PRODUCT_NAMES: Record<string, string> = {
@@ -9,26 +10,18 @@ const PRODUCT_NAMES: Record<string, string> = {
 };
 
 async function notifyDave(subject: string, text: string) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return;
-  await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
-    body: JSON.stringify({
-      from: "DaveGamba.com <info@davegamba.com>",
-      to: ["davept.info@gmail.com"],
-      subject,
-      text,
-    }),
-  });
+  await notificaDave(subject, { text });
 }
 
 // Email di accesso al cliente.
 // NOTA: il mittente deve essere su un dominio VERIFICATO in Resend (es. davegamba.com),
-// altrimenti Resend rifiuta l'invio verso email diverse dalla tua.
+// altrimenti Resend rifiuta l'invio verso email diverse dalla tua. Qui NON si
+// puo' usare il mittente di test come fallback: quello scrive solo a Dave.
+// Se il dominio non e' verificato questa mail non parte, punto — l'unica cosa
+// che possiamo fare e' accorgercene e avvisare Dave (vedi il chiamante).
 async function sendAccessEmail(email: string, products: string[]) {
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return;
+  if (!apiKey) throw new Error("RESEND_API_KEY mancante");
 
   const sbloccati = products
     .map((p) => PRODUCT_NAMES[p])
@@ -36,7 +29,11 @@ async function sendAccessEmail(email: string, products: string[]) {
     .map((nome) => `<li style="margin-bottom:6px;color:#0a0a0a;font-weight:600">✅ ${nome}</li>`)
     .join("");
 
-  await fetch("https://api.resend.com/emails", {
+  // Il controllo su res.ok e' il punto chiave: Resend risponde 403 quando il
+  // dominio non e' verificato, e una fetch che riceve 403 NON lancia. Senza
+  // questo controllo il catch del chiamante non scattava mai e Dave non veniva
+  // avvisato: e' successo per tutti gli acquisti dal 4 agosto 2026.
+  const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
     body: JSON.stringify({
@@ -60,6 +57,8 @@ async function sendAccessEmail(email: string, products: string[]) {
       </div>`,
     }),
   });
+
+  if (!res.ok) throw new Error(`Resend ${res.status}: ${await res.text()}`);
 }
 
 async function revokeAccess(email: string, product: string) {

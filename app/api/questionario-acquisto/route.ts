@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { rateLimit, DIECI_MINUTI } from "@/lib/rate-limit";
+import { notificaDave } from "@/lib/notify";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const DAVE_EMAIL = "davept.info@gmail.com";
 
 // Ogni campo arriva da un form pubblico e finisce dentro l'HTML di una mail
 // che legge Dave: senza escape chiunque ci infila un <a href> verso un sito
@@ -28,21 +28,7 @@ const FOTO_TIPI: Record<string, string> = {
 const FOTO_MAX_BYTE = 8 * 1024 * 1024;
 
 async function sendNotification(subject: string, html: string) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return;
-  await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      from: "DaveGamba.com <info@davegamba.com>",
-      to: [DAVE_EMAIL],
-      subject,
-      html,
-    }),
-  });
+  await notificaDave(subject, { html });
 }
 
 function row(label: string, value: string | null | undefined, dark = false) {
