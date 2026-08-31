@@ -48,12 +48,16 @@ export default function CandidatiPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error();
+      // Il server risponde ok:false quando la candidatura non è stata né
+      // salvata né notificata: in quel caso non va mostrato "ricevuta".
+      const esito = await res.json().catch(() => null);
+      if (!res.ok || !esito?.ok) throw new Error(esito?.error);
       fbqTrack("Lead");
       gtagEvent("coaching_application", { event_category: "lead", event_label: "coaching-1-1" });
       setSuccess(true);
-    } catch {
-      setError("Errore nell'invio. Riprova o scrivimi su Instagram.");
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : "";
+      setError(msg || "Errore nell'invio. Riprova o scrivimi su Instagram.");
     } finally {
       setLoading(false);
     }
@@ -195,10 +199,13 @@ export default function CandidatiPage() {
               {step === 3 && (
                 <form className="cq-form" onSubmit={handleSubmit}>
                   {/* Honeypot: invisibile agli utenti, i bot lo compilano.
-                      Lato server /api/coaching-apply scarta la richiesta. */}
+                      Lato server /api/coaching-apply scarta la richiesta.
+                      Il nome non deve somigliare a un campo reale: si chiamava
+                      `website` e l'autofill del browser poteva riempirlo da
+                      solo, facendo scartare candidature vere in silenzio. */}
                   <input
                     type="text"
-                    name="website"
+                    name="hp_riferimento"
                     tabIndex={-1}
                     autoComplete="off"
                     aria-hidden="true"
