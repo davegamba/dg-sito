@@ -12,7 +12,7 @@ export default function ExitPopup() {
   useEffect(() => {
     // Non mostrare nella pagina club, links, coaching (funnel proprio) né nel questionario acquisto
     const path = window.location.pathname;
-    if (path.startsWith("/club") || path.startsWith("/links") || path.startsWith("/coaching") || path.startsWith("/questionario-acquisto") || path.startsWith("/start-coaching")) return;
+    if (path.startsWith("/club") || path.startsWith("/links") || path.startsWith("/coaching") || path.startsWith("/piani-coaching") || path.startsWith("/questionario-acquisto") || path.startsWith("/start-coaching")) return;
 
     // Forza popup se ?popup=1 nell'URL
     const force = new URLSearchParams(window.location.search).get("popup") === "1";
