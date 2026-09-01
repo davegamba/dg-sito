@@ -124,7 +124,7 @@ export default function Testimonials({ variant = "light" }: { variant?: "light" 
   const dark = variant === "dark";
 
   return (
-    <section className="py-12 sm:py-16 overflow-hidden gsap-fade" style={dark ? { background: "#101013", borderTop: "1px solid rgba(255,255,255,0.05)" } : { background: "#F5F1EB" }}>
+    <section className="py-12 sm:py-16 overflow-hidden gsap-fade" style={dark ? { background: "#141414", borderTop: "1px solid #252525", borderBottom: "1px solid #252525" } : { background: "#F5F1EB" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8">
         <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
           Risultati reali

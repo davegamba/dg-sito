@@ -134,7 +134,7 @@ export default function CandidatiPage() {
             <div className="cq-success">
               <div style={{ fontSize: 52 }}>✅</div>
               <h2>Candidatura ricevuta!</h2>
-              <p>Grazie. Ho ricevuto la tua candidatura e ti contatterò entro 24-48 ore per la call conoscitiva gratuita e senza impegno.</p>
+              <p>Grazie. Ho ricevuto la tua candidatura e ti contatterò entro 24-48 ore.</p>
               <p style={{ marginTop: 24, fontSize: 14, color: "rgba(255,255,255,0.3)" }}>Sali di livello, Dave</p>
             </div>
           ) : (

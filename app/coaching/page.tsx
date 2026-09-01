@@ -81,13 +81,18 @@ export default function CoachingPage() {
       <style>{`
         .ch-body{font-family:'DM Sans',sans-serif;background:#0a0a0a;color:#fafaf8;overflow-x:hidden}
         .ch-body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.032) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:0}
-        :root{--accent:#00CBDB;--gold:#F0C040;--bg:#0a0a0a;--bg-1:#111;--bg-2:#161616;--bg-3:#1c1c1c;--cyan-card:#0d1a1e;--cyan-card-ft:#0d2028;--white:#fafaf8;--gray-3:#c8c8c4;--gray-4:#9a9a94;--gray-6:#5a5a55;--border:#252525;--border-2:#333}
-        .ch-hero{position:relative;width:100%;height:100vh;max-height:860px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+        :root{--accent:#00CBDB;--gold:#F0C040;--bg:#0a0a0a;--bg-1:#111;--bg-2:#161616;--bg-3:#1c1c1c;--bg-alt:#141414;--cyan-card:#0d1a1e;--cyan-card-ft:#0d2028;--white:#fafaf8;--gray-3:#c8c8c4;--gray-4:#9a9a94;--gray-6:#5a5a55;--border:#252525;--border-2:#333}
+        .ch-hero{position:relative;width:100%;height:82vh;max-height:660px;overflow:hidden;display:flex;align-items:center;justify-content:center}
         .ch-hero img.bg{position:absolute;inset:0;width:100%;height:115%;object-fit:cover;object-position:center top;display:block;transform:translateY(-3%)}
         .ch-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(10,10,10,0.78) 50%,rgba(10,10,10,0.15) 100%);pointer-events:none}
-        .ch-hero-content{position:relative;z-index:2;padding:0 40px;width:100%;max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr;align-items:center;animation:chFadeUp 0.7s ease 0.1s both}
-        .ch-hero-left{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
-        .ch-perchi-block{position:relative;z-index:1;background:#0d0d0d;border-bottom:1px solid var(--border);padding:64px 24px}
+        /* Il padding superiore sposta il testo più in basso dentro la hero:
+           lascia vedere la foto sopra e taglia lo spazio morto sotto la CTA. */
+        .ch-hero-content{position:relative;z-index:2;padding:110px 40px 0;width:100%;max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr;align-items:center;animation:chFadeUp 0.7s ease 0.1s both}
+        .ch-hero-left{display:flex;flex-direction:column;align-items:center;text-align:center}
+        /* Le sezioni si alternano tra il nero di base del body e questo grigio
+           appena più chiaro: dà il ritmo senza uscire dalla palette scura. */
+        .ch-alt{position:relative;z-index:1;background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+        .ch-perchi-block{position:relative;z-index:1;padding:56px 24px 64px}
         .ch-perchi-inner{max-width:720px;margin:0 auto}
         .ch-perchi-list{display:flex;flex-direction:column;gap:14px;margin-top:36px}
         .ch-perchi-item{display:flex;align-items:flex-start;gap:14px;background:var(--cyan-card);border:1px solid rgba(0,203,219,0.15);border-radius:16px;padding:22px 20px}
@@ -105,7 +110,6 @@ export default function CoachingPage() {
         .ch-btn-gold{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(to bottom,#F7E27A 0%,#F0C040 100%);color:#000;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;padding:18px 40px;border-radius:14px;border:none;cursor:pointer;text-decoration:none;transition:all 0.2s;letter-spacing:0.04em;text-transform:uppercase}
         .ch-btn-gold:hover{filter:brightness(1.06);transform:translateY(-1px)}
         .ch-section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:80px 24px}
-        .ch-divider{height:1px;background:var(--border);position:relative;z-index:1}
         .ch-section-title{font-family:var(--font-dm-serif,'DM Serif Display',serif);font-size:clamp(30px,4vw,50px);line-height:1.1;letter-spacing:-0.02em;margin-bottom:14px;text-align:center}
         .ch-section-title em{font-style:italic;color:var(--accent)}
         .ch-section-sub{font-size:16px;color:var(--gray-4);font-weight:300;line-height:1.7;max-width:580px;text-align:center;margin-left:auto;margin-right:auto}
@@ -151,9 +155,8 @@ export default function CoachingPage() {
         @keyframes chFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
         @keyframes chPulse{0%,100%{opacity:1}50%{opacity:0.4}}
         @media(max-width:768px){
-          .ch-hero{height:auto;min-height:100vh;max-height:none;padding:0 0 40px}
-          .ch-hero-content{grid-template-columns:1fr;gap:0;padding:26vh 16px 0}
-          .ch-hero-left{align-items:center;text-align:center}
+          .ch-hero{height:auto;min-height:92vh;max-height:none;padding:0 0 32px}
+          .ch-hero-content{grid-template-columns:1fr;gap:0;padding:22vh 16px 0}
         }
         @media(max-width:900px){.ch-invest-grid{grid-template-columns:1fr;max-width:400px}}
         @media(max-width:600px){.ch-section{padding:56px 20px}}
@@ -199,7 +202,7 @@ export default function CoachingPage() {
         </section>
 
         {/* IL COACHING È PER CHI */}
-        <div className="ch-perchi-block">
+        <div className="ch-alt ch-perchi-block">
           <div className="ch-perchi-inner reveal">
             <div style={{ textAlign: "center", marginBottom: 8 }}>
               <div className="ch-badge ch-badge-gold" style={{ display: "inline-flex" }}>
@@ -243,8 +246,6 @@ export default function CoachingPage() {
             ))}
           </div>
         </div>
-
-        <div className="ch-divider" />
 
         {/* TESTIMONIANZE — strip dinamica dalla home */}
         <Testimonials variant="dark" />
@@ -292,10 +293,8 @@ export default function CoachingPage() {
           </div>
         </div>
 
-        <div className="ch-divider" />
-
         {/* FAQ */}
-        <div style={{ position: "relative", zIndex: 1, background: "var(--bg-3)", borderTop: "1px solid var(--border-2)", borderBottom: "1px solid var(--border-2)" }}>
+        <div className="ch-alt">
           <div className="ch-section reveal">
             <div style={{ textAlign: "center", marginBottom: 8 }}>
               <div className="ch-badge ch-badge-gold" style={{ display: "inline-flex" }}>
