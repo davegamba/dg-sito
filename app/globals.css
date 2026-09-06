@@ -52,6 +52,23 @@ body {
   min-height: 100dvh;
 }
 
+/* ─── LARGHEZZA FISSA — VALE PER TUTTO IL SITO ──────────────────────────
+   Nessuna pagina deve poter scorrere di lato. Se un elemento sfora (una
+   tabella, una riga di pill, un'immagine larga) viene tagliato invece di
+   trascinare l'intera pagina: e' cosi' che il layout diventava "ballerino"
+   e, zoomando indietro, non tornava a combaciare con lo schermo.
+   "clip" e non "hidden": hidden crea un contenitore di scroll e romperebbe
+   eventuali elementi in position:sticky (oggi non ce ne sono, ma domani si').
+   Questo e' una rete di sicurezza, non una scusa per lasciare elementi che
+   sforano: quelli vanno comunque corretti alla fonte, o il contenuto tagliato
+   diventa irraggiungibile. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden; /* fallback per browser senza "clip" */
+  overflow-x: clip;
+}
+
 /* ─── TYPOGRAPHY UTILITIES ───────────────────────────────────────────── */
 
 .font-serif   { font-family: var(--font-serif), Georgia, serif; }
