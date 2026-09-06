@@ -150,20 +150,22 @@ h3.font-serif { font-weight: 500; letter-spacing: 0.025em; }
 /* H2 — ciano pieno */
 .mdx-content h2 {
   font-family: var(--font-serif, serif);
-  font-size: 1.7rem;
+  font-size: 1.85rem;
   font-weight: 800;
   line-height: 1.18;
   margin-top: 3rem;
   margin-bottom: 1.25rem;
   padding-top: 1rem;
-  border-top: 1px solid #e8e0d4;
+  /* Divisore di capitolo: era #e8e0d4, un beige che sul fondo panna non si
+     vedeva. Ciano di brand, cosi' lo stacco tra i capitoli si legge davvero. */
+  border-top: 1px solid #00CBDB;
   color: #14181a;
 }
 
 /* H3 — scuro */
 .mdx-content h3 {
   font-family: var(--font-serif, serif);
-  font-size: 1.28rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #14181a;
   margin-top: 2rem;

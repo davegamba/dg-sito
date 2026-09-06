@@ -30,12 +30,18 @@ export function ArticleCta({
         compact ? "min-h-[132px]" : "min-h-[220px]"
       }`}
     >
-      {/* Foto di sfondo, soggetto verso sinistra */}
+      {/* Foto di sfondo, soggetto verso sinistra.
+          ATTENZIONE: qui c'e' scaleX(-1), quindi l'immagine e' SPECCHIATA e
+          backgroundPosition funziona al contrario di come sembra. Una
+          percentuale PIU' ALTA sposta il soggetto verso SINISTRA sullo schermo.
+          Scrivere "left" lo manderebbe a destra: e' l'errore in cui si cade
+          naturalmente provando a spostarlo. 80% lo porta nella fascia
+          trasparente del gradiente, dove il corpo si vede. */}
       <div
         className="absolute inset-0 bg-cover"
         style={{
           backgroundImage: `url(${photo})`,
-          backgroundPosition: "center",
+          backgroundPosition: "80% center",
           transform: "scaleX(-1)",
         }}
       />

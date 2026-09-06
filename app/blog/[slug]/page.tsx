@@ -202,7 +202,7 @@ export default async function PostPage({
               )}
 
               {/* Titolo */}
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.1] mb-6">
+              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.1] mb-6">
                 {post.title}
               </h1>
 
