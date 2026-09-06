@@ -12,6 +12,8 @@ import { ArticleCta } from "@/components/ArticleCta";
 import { ClubCta } from "@/components/ClubCta";
 import { QuizCta } from "@/components/QuizCta";
 import { QuizCtaMid } from "@/components/QuizCtaMid";
+import { ClubCtaMid } from "@/components/ClubCtaMid";
+import { CalcCtaMid } from "@/components/CalcCtaMid";
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/site";
 
@@ -38,7 +40,7 @@ function ScrollableTable({ children }: { children: ReactNode }) {
   );
 }
 
-const mdxComponents = { h2: CustomH2, table: ScrollableTable, ArticleCta, ClubCta, QuizCta, QuizCtaMid };
+const mdxComponents = { h2: CustomH2, table: ScrollableTable, ArticleCta, ClubCta, QuizCta, QuizCtaMid, ClubCtaMid, CalcCtaMid };
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
