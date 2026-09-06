@@ -30,18 +30,25 @@ export function ArticleCta({
         compact ? "min-h-[132px]" : "min-h-[220px]"
       }`}
     >
-      {/* Foto di sfondo, soggetto verso sinistra.
-          ATTENZIONE: qui c'e' scaleX(-1), quindi l'immagine e' SPECCHIATA e
-          backgroundPosition funziona al contrario di come sembra. Una
-          percentuale PIU' ALTA sposta il soggetto verso SINISTRA sullo schermo.
-          Scrivere "left" lo manderebbe a destra: e' l'errore in cui si cade
-          naturalmente provando a spostarlo. 80% lo porta nella fascia
-          trasparente del gradiente, dove il corpo si vede. */}
+      {/* Foto di sfondo, soggetto nella fascia trasparente a sinistra.
+          PERCHE' backgroundSize E' 150% E NON "cover": la foto e' 16:9 (1.78)
+          mentre il banner e' molto piu' largo e basso (624x220 = 2.84). Con
+          "cover" l'immagine viene scalata sulla LARGHEZZA e sborda solo in
+          altezza: non resta nessun margine orizzontale, quindi backgroundPosition
+          sull'asse X e' del tutto inerte. E' il motivo per cui ogni tentativo di
+          "spostare la foto a sinistra" non produceva alcun effetto, qualunque
+          valore si mettesse.
+          Con 150% l'immagine diventa piu' larga del contenitore e si crea il
+          margine su cui spostarsi davvero. 20% inquadra busto e braccio nella
+          parte non coperta dal ciano.
+          Nota: c'e' anche scaleX(-1), l'immagine e' specchiata. */}
       <div
-        className="absolute inset-0 bg-cover"
+        className="absolute inset-0"
         style={{
           backgroundImage: `url(${photo})`,
-          backgroundPosition: "80% center",
+          backgroundSize: "150% auto",
+          backgroundPosition: "20% center",
+          backgroundRepeat: "no-repeat",
           transform: "scaleX(-1)",
         }}
       />
