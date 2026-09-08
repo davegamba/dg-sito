@@ -159,10 +159,10 @@ const PROFILES: Record<string, Profile> = {
     icon: "⏱️",
     name: "Zero Tempo, Massimo Risultato",
     tagline: "Il problema non è il tempo. È come lo stai usando.",
-    analysis: `Non hai tempo. O meglio — hai il tempo che hai, e non è molto. E senti che non basta per fare le cose per bene. <strong>Ma il problema non è quanto tempo hai. È come lo stai usando.</strong> La maggior parte del tempo in palestra viene sprecato: recuperi lunghi, esercizi accessori che non spostano niente, volume che stanca senza costruire. Con la sequenza giusta, 21 minuti producono più stimolo di un'ora fatta a caso.`,
+    analysis: `Non hai tempo. O meglio — hai il tempo che hai, e non è molto. E senti che non basta per fare le cose per bene. <strong>Ma il problema non è quanto tempo hai. È come lo stai usando.</strong> La maggior parte del tempo in palestra viene sprecato: recuperi lunghi, esercizi accessori che non spostano niente, volume che stanca senza costruire. Con la sequenza giusta, meno di mezz'ora produce più stimolo di un'ora fatta a caso.`,
     tips: [
-      "<strong>21 minuti sono sufficienti.</strong> Con gli esercizi giusti, nell'ordine giusto, con il recupero calibrato — è tutto quello che serve. L'efficacia non dipende dalla durata, dipende dalla densità del lavoro fatto.",
-      "<strong>Usa le superserie.</strong> Due esercizi in sequenza senza riposo tra loro. Si dimezza il tempo, si raddoppia la densità. È il principio che permette di fare in 21 minuti quello che altri fanno in un'ora.",
+      "<strong>Meno di mezz'ora al giorno è sufficiente.</strong> Con gli esercizi giusti, nell'ordine giusto, con il recupero calibrato — è tutto quello che serve. L'efficacia non dipende dalla durata, dipende dalla densità del lavoro fatto.",
+      "<strong>Usa le superserie.</strong> Due esercizi in sequenza senza riposo tra loro. Si dimezza il tempo, si raddoppia la densità. È il principio che permette di fare in meno di mezz'ora quello che altri fanno in un'ora.",
       "<strong>3 volte a settimana, non di più.</strong> Con i tuoi ritmi, il recupero è parte del processo. Chi si allena 5 volte con poco tempo ottiene meno di chi si allena 3 volte in modo mirato. Meno è più — se il meno è fatto bene.",
     ],
   },
