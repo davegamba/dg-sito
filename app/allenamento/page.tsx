@@ -108,7 +108,7 @@ export default function AllenamentoPage() {
               ⚡ Metodo Breve-Intenso-Mirato
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl text-white mb-4">
-              21 minuti. 3 volte a settimana.
+              Meno di mezz'ora. 3 volte a settimana.
             </h2>
             <p className="text-[#888] text-base mb-8 max-w-lg mx-auto">
               Scopri il tuo profilo fisico e ricevi il programma giusto per te — con la tecnica corretta per ogni zona muscolare.

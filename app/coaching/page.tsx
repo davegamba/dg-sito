@@ -41,7 +41,7 @@ const FAQ = [
   { q: "È tutto online?", a: "Sì. Piano, video di ogni esercizio, check e affiancamento su WhatsApp. Ti alleni dove vuoi, quando vuoi, ma non sei mai solo." },
   { q: "Devo andare in palestra?", a: "Come preferisci. Adatto il piano a casa o palestra. Lavoro con entrambi da 15 anni: i risultati non cambiano." },
   { q: "E l'alimentazione?", a: "La costruiamo con una biologa nutrizionista. Flessibile, reale, niente diete da fame. L'obiettivo è che tu mangi bene per sempre, non per un mese." },
-  { q: "Non ho tempo.", a: "È esattamente il motivo per cui esiste questo metodo. 21 minuti, 3 volte a settimana. Se non hai questo, non hai tempo per stare in salute — e dobbiamo parlarne." },
+  { q: "Non ho tempo.", a: "È esattamente il motivo per cui esiste questo metodo. Meno di mezz'ora, 3 volte a settimana. Se non hai questo, non hai tempo per stare in salute — e dobbiamo parlarne." },
   { q: "Quanto dura il percorso?", a: "L'affiancamento è di 6 mesi. Il tempo che serve per costruire qualcosa che poi resta tuo." },
 ];
 

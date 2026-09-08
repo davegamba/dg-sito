@@ -48,7 +48,7 @@ const homepageJsonLd = {
       ],
       founder: { "@type": "Person", name: "Dave Gamba" },
       foundingDate: "2009",
-      description: "Metodo Breve-Intenso-Mirato. Allenamento in 21 minuti, 3 volte a settimana.",
+      description: "Metodo Breve-Intenso-Mirato. Allenamento in meno di mezz'ora, 3 volte a settimana.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Milano",

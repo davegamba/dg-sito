@@ -182,7 +182,7 @@ export default function CheckoutClientSub({ offerta }: { offerta: Offerta }) {
               <li>Scheda nuova progressiva ogni mese</li>
               <li>Corsi focus (addominali, glutei, schiena…)</li>
               <li>Piani alimentari di Dave</li>
-              <li>21 minuti al giorno, 3 volte a settimana</li>
+              <li>Meno di mezz'ora al giorno, 3 volte a settimana</li>
               <li>Accesso immediato da qualsiasi dispositivo</li>
             </ul>
           </div>

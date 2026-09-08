@@ -161,7 +161,7 @@ export default function AutorePage() {
               In oltre 15 anni ha seguito più di 3.000 clienti, prevalentemente uomini professionisti tra i 35 e i 50 anni: manager, imprenditori, medici, avvocati.
             </p>
             <p className="text-[#444] leading-relaxed mt-4">
-              Ha sviluppato il <strong>Metodo Breve-Intenso-Mirato</strong>: allenamento in 21 minuti, 3 volte a settimana,
+              Ha sviluppato il <strong>Metodo Breve-Intenso-Mirato</strong>: allenamento in meno di mezz'ora, 3 volte a settimana,
               basato su evidenza scientifica e progettato per chi non può permettersi di sprecare tempo. Il mantra è semplice:
               semplicità + continuità = risultati.
             </p>
@@ -177,12 +177,12 @@ export default function AutorePage() {
             <h2 className="font-serif text-2xl font-bold mb-3">Il Metodo Breve-Intenso-Mirato</h2>
             <p className="text-white/70 leading-relaxed mb-6">
               Breve, Intenso, Mirato. Tre aggettivi che definiscono ogni sessione di allenamento:
-              21 minuti di lavoro ad alta intensità, 3 volte a settimana, con esercizi scelti per massimizzare
+              Meno di mezz'ora di lavoro ad alta intensità, 3 volte a settimana, con esercizi scelti per massimizzare
               il segnale muscolare in meno tempo possibile.
             </p>
             <div className="grid grid-cols-3 gap-4 text-center">
               {[
-                { letter: "B", word: "Breve", desc: "21 minuti per sessione" },
+                { letter: "B", word: "Breve", desc: "Meno di mezz'ora per sessione" },
                 { letter: "I", word: "Intenso", desc: "Stimolo massimale" },
                 { letter: "M", word: "Mirato", desc: "Zero dispersione" },
               ].map(({ letter, word, desc }) => (

@@ -50,7 +50,7 @@ const testimonials = [
     name: "Marco B.",
     age: 42,
     job: "Avvocato, Milano",
-    text: "In 3 mesi ho perso 11 kg e trovato un metodo che riesco a mantenere. Con il mio calendario da avvocato pensavo fosse impossibile. 21 minuti si trovano.",
+    text: "In 3 mesi ho perso 11 kg e trovato un metodo che riesco a mantenere. Con il mio calendario da avvocato pensavo fosse impossibile. Mezz'ora al giorno si trova.",
     result: "−11 kg in 3 mesi",
   },
   {
@@ -78,7 +78,7 @@ const testimonials = [
     name: "Roberto V.",
     age: 44,
     job: "Architetto, Bologna",
-    text: "3 volte a settimana, 21 minuti. All'inizio pensavo fosse troppo poco. Dopo 6 settimane mi sono dovuto ricredere. I risultati parlano.",
+    text: "3 volte a settimana, meno di mezz'ora. All'inizio pensavo fosse troppo poco. Dopo 6 settimane mi sono dovuto ricredere. I risultati parlano.",
     result: "−6 kg, addominali visibili",
   },
   {
