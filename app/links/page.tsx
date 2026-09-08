@@ -33,6 +33,13 @@ const CLUB_FEATURES = [
   "Per casa e palestra",
 ];
 
+const COACHING_FEATURES = [
+  "Call conoscitiva con Dave, senza impegno",
+  "Piano d'allenamento costruito su di te",
+  "Piano alimentare con biologa nutrizionista",
+  "Affiancamento WhatsApp fino all'obiettivo",
+];
+
 const YT_VIDEOS = [
   "hGA0z6hRihk",
   "Dv8NRpmSXE0",
@@ -151,6 +158,28 @@ export default function LinksPage() {
               ))}
             </div>
             <a href="https://club.davegamba.com/entra-nel-club" className="card-btn">Entra nel Club →</a>
+          </div>
+
+          {/* Coaching Personale 1-1 — stessa struttura della card Club */}
+          <div className="card">
+            <div className="card-top">
+              <div className="card-img">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg" alt="Coaching Personale 1-1" style={{ objectPosition: "center top" }} />
+              </div>
+              <div className="card-info">
+                <span style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Su candidatura</span>
+                <div className="card-title">Coaching Personale 1-1</div>
+                <div className="card-desc">Ti seguo io, personalmente, fino all&apos;obiettivo. Allenamento e alimentazione costruiti sulla tua vita reale.</div>
+                <div style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.9)", marginTop: 7, fontWeight: 500 }}><span style={{ color: "#F0C040", fontWeight: 700 }}>Da 140€/mese</span> · percorsi 3, 6 o 12 mesi</div>
+              </div>
+            </div>
+            <div className="card-features">
+              {COACHING_FEATURES.map((f) => (
+                <div key={f} className="card-feature"><span className="dot"><span className="dot-tri" /></span>{f}</div>
+              ))}
+            </div>
+            <a href="https://www.davegamba.com/coaching" className="card-btn">Scopri il Coaching →</a>
           </div>
 
           {/* YouTube */}
