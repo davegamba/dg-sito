@@ -146,7 +146,7 @@ export default function LinksPage() {
                 <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg" alt="DG Athletic Club" style={{ objectPosition: "center top" }} />
               </div>
               <div className="card-info">
-                <span style={{ alignSelf: "flex-start", background: "#00CBDB", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Prova il Club · 14 giorni gratis</span>
+                <span style={{ alignSelf: "flex-start", background: "#00CBDB", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Provalo ora a 30% di sconto</span>
                 <div className="card-title">DG Athletic Club</div>
                 <div className="card-desc">Tutto ciò che serve per un fisico atletico, asciutto e scolpito. Schede progressive, meno di mezz&apos;ora al giorno.</div>
               </div>
@@ -167,7 +167,7 @@ export default function LinksPage() {
                 <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg" alt="Coaching Personale 1-1" style={{ objectPosition: "center top" }} />
               </div>
               <div className="card-info">
-                <span style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Su candidatura</span>
+                <span style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Compila il questionario</span>
                 <div className="card-title">Coaching Personale 1-1</div>
                 <div className="card-desc">Ti seguo io, personalmente, fino all&apos;obiettivo. Allenamento e alimentazione costruiti sulla tua vita reale.</div>
               </div>
