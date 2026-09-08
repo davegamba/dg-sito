@@ -48,6 +48,7 @@ export async function POST(req: NextRequest) {
     };
     try {
       let contactId: number | null = null;
+      let contattoNuovo = false;   // true solo se l'abbiamo creato ORA
       const createRes = await fetch("https://api.systeme.io/api/contacts", {
         method: "POST",
         headers: sysHeaders,
@@ -55,7 +56,10 @@ export async function POST(req: NextRequest) {
       });
       const createText = await createRes.text();
       if (createRes.ok) {
-        try { contactId = JSON.parse(createText).id; } catch {}
+        try {
+          contactId = JSON.parse(createText).id;
+          contattoNuovo = true;
+        } catch {}
       } else {
         console.log(`Systeme.io create ${createRes.status} (probabile contatto esistente)`);
       }
@@ -72,11 +76,18 @@ export async function POST(req: NextRequest) {
       }
       if (!contactId) throw new Error("contactId non trovato");
 
-      await fetch(`https://api.systeme.io/api/contacts/${contactId}/tags`, {
-        method: "POST",
-        headers: sysHeaders,
-        body: JSON.stringify({ tagId: NURTURE_TAG_ID }),
-      });
+      // nurture-attivo SOLO ai contatti nuovi: su un iscritto storico farebbe
+      // ripartire il Funnel SOS e le 52 settimane di nurturing.
+      // Stessa logica di quiz-submit e di dgclub/netlify/functions/add-contact.js.
+      if (contattoNuovo) {
+        await fetch(`https://api.systeme.io/api/contacts/${contactId}/tags`, {
+          method: "POST",
+          headers: sysHeaders,
+          body: JSON.stringify({ tagId: NURTURE_TAG_ID }),
+        });
+      } else {
+        console.log("Contatto gia esistente: salto nurture-attivo per non far ripartire il funnel.");
+      }
     } catch (e) {
       errors.push("systeme");
       console.error("Systeme.io error:", e);
