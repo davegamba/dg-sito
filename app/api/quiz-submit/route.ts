@@ -43,8 +43,15 @@ export async function POST(req: NextRequest) {
   const errors: string[] = [];
 
   /* ── 1. SYSTEME.IO (API ufficiale: crea contatto + assegna tag) ── */
-  // Tag: profilo-fisico (lead quiz) + nurture-attivo (accende il funnel di benvenuto)
-  const SYSTEME_TAG_IDS = [2064441, 2064505];
+  // profilo-fisico: sempre (serve solo a segmentare e ad accendere la mail di
+  //   benvenuto del quiz).
+  // nurture-attivo: SOLO ai contatti nuovi. Su Systeme quel tag accende il
+  //   "Funnel SOS", che a fine corsa iscrive al "Funnel Nurturing 52 Settimane".
+  //   Darlo a un iscritto storico (la lista migrata da Podia non ce l'ha)
+  //   significherebbe rimandargli il benvenuto e infilarlo in un percorso di un
+  //   anno. Stessa logica di dgclub/netlify/functions/add-contact.js.
+  const TAG_PROFILO_FISICO = 2064441;
+  const TAG_NURTURE_ATTIVO = 2064505;
   const systemeKey = process.env.SYSTEME_API_KEY;
 
   if (systemeKey) {
@@ -56,6 +63,7 @@ export async function POST(req: NextRequest) {
     try {
       // 1a. Crea il contatto (409 = esiste già, va bene)
       let contactId: number | null = null;
+      let contattoNuovo = false;   // true solo se l'abbiamo creato ORA
       const createRes = await fetch("https://api.systeme.io/api/contacts", {
         method: "POST",
         headers: sysHeaders,
@@ -63,7 +71,10 @@ export async function POST(req: NextRequest) {
       });
       const createText = await createRes.text();
       if (createRes.ok) {
-        try { contactId = JSON.parse(createText).id; } catch {}
+        try {
+          contactId = JSON.parse(createText).id;
+          contattoNuovo = true;
+        } catch {}
       } else {
         // 422/409 = contatto già esistente: non è un errore, lo cerchiamo sotto.
         console.log(`Systeme.io create ${createRes.status} (probabile contatto esistente)`);
@@ -83,12 +94,18 @@ export async function POST(req: NextRequest) {
       if (!contactId) throw new Error("contactId non trovato");
 
       // 1c. Assegna i tag per ID
-      for (const tagId of SYSTEME_TAG_IDS) {
-        await fetch(`https://api.systeme.io/api/contacts/${contactId}/tags`, {
+      const assignTag = (tagId: number) =>
+        fetch(`https://api.systeme.io/api/contacts/${contactId}/tags`, {
           method: "POST",
           headers: sysHeaders,
           body: JSON.stringify({ tagId }),
         });
+
+      await assignTag(TAG_PROFILO_FISICO);
+      if (contattoNuovo) {
+        await assignTag(TAG_NURTURE_ATTIVO);
+      } else {
+        console.log("Contatto gia esistente: salto nurture-attivo per non far ripartire il funnel.");
       }
     } catch (e) {
       errors.push("systeme");
