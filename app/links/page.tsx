@@ -149,7 +149,6 @@ export default function LinksPage() {
                 <span style={{ alignSelf: "flex-start", background: "#00CBDB", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Prova il Club · 14 giorni gratis</span>
                 <div className="card-title">DG Athletic Club</div>
                 <div className="card-desc">Tutto ciò che serve per un fisico atletico, asciutto e scolpito. Schede progressive, meno di mezz&apos;ora al giorno.</div>
-                <div style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.9)", marginTop: 7, fontWeight: 500 }}><span style={{ color: "#00CBDB", fontWeight: 700 }}>€19/mese</span> · provalo gratis 14 giorni</div>
               </div>
             </div>
             <div className="card-features">
@@ -171,7 +170,6 @@ export default function LinksPage() {
                 <span style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Su candidatura</span>
                 <div className="card-title">Coaching Personale 1-1</div>
                 <div className="card-desc">Ti seguo io, personalmente, fino all&apos;obiettivo. Allenamento e alimentazione costruiti sulla tua vita reale.</div>
-                <div style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.9)", marginTop: 7, fontWeight: 500 }}><span style={{ color: "#F0C040", fontWeight: 700 }}>Da 140€/mese</span> · percorsi 3, 6 o 12 mesi</div>
               </div>
             </div>
             <div className="card-features">
