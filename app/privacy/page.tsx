@@ -31,6 +31,7 @@ const sections = [
             "Dati di navigazione — indirizzo IP, tipo di browser, pagine visitate, durata della sessione (raccolti automaticamente tramite Google Analytics)",
             "Dati di acquisto — gestiti direttamente da Stripe; non conserviamo dati di pagamento sui nostri server",
             "Log di sistema — file tecnici registrati durante la navigazione per finalità di manutenzione e sicurezza",
+            "Dati da interazioni su Instagram — se commenti un nostro post o ci scrivi un messaggio diretto, conserviamo il tuo nome utente Instagram, il nome del profilo, il testo dell'interazione e la data, per poterti rispondere",
           ].map((item, i) => (
             <li key={i} className="flex gap-2 text-sm text-[#888888]">
               <span className="text-[#00CBDB] mt-0.5 flex-shrink-0">▸</span>
@@ -52,6 +53,7 @@ const sections = [
           "Gestione di richieste di informazioni e candidature al coaching",
           "Analisi statistica anonima per migliorare l'esperienza del sito",
           "Adempimento di obblighi di legge e difesa in giudizio",
+          "Risposta automatica a commenti e messaggi ricevuti sui nostri profili social",
         ].map((item, i) => (
           <li key={i} className="flex gap-2 text-sm text-[#888888]">
             <span className="text-[#00CBDB] mt-0.5 flex-shrink-0">▸</span>
@@ -62,7 +64,17 @@ const sections = [
     ),
   },
   {
-    title: "4. Base giuridica",
+    title: "4. Interazioni sui social",
+    content: (
+      <>
+        <p>Se commenti un nostro post su Instagram o ci scrivi un messaggio diretto, riceverai una risposta automatica. Per fornirla conserviamo il tuo nome utente, il nome del profilo, il testo del messaggio e la data.</p>
+        <p className="mt-3">La base giuridica è il legittimo interesse a rispondere a chi ci contatta. Non usiamo questi dati per finalità diverse dalla risposta e non li cediamo a terzi. Non ti aggiungiamo a liste email: per quello serve la tua iscrizione esplicita.</p>
+        <p className="mt-3">Puoi chiedere la cancellazione di questi dati in qualsiasi momento scrivendo a <a href="mailto:info@davegamba.com" className="text-[#00CBDB] hover:underline">info@davegamba.com</a>. Il trattamento avviene esclusivamente sui nostri sistemi; Instagram tratta i tuoi dati secondo la propria informativa, su cui non abbiamo controllo.</p>
+      </>
+    ),
+  },
+  {
+    title: "5. Base giuridica",
     content: (
       <ul className="space-y-2">
         {[
@@ -80,7 +92,7 @@ const sections = [
     ),
   },
   {
-    title: "5. Terze parti e responsabili del trattamento",
+    title: "6. Terze parti e responsabili del trattamento",
     content: (
       <>
         <p>I tuoi dati possono essere condivisi con i seguenti servizi terzi:</p>
@@ -103,7 +115,7 @@ const sections = [
     ),
   },
   {
-    title: "6. Trasferimento dati extra-UE",
+    title: "7. Trasferimento dati extra-UE",
     content: (
       <>
         <p>Alcuni fornitori terzi (es. Stripe, Google, Meta) potrebbero trasferire dati verso Paesi extra-UE. In tali casi il trasferimento avviene in conformità agli artt. 44 e seguenti del GDPR, sulla base di decisioni di adeguatezza della Commissione Europea o clausole contrattuali standard approvate.</p>
@@ -112,7 +124,7 @@ const sections = [
     ),
   },
   {
-    title: "7. Conservazione dei dati",
+    title: "8. Conservazione dei dati",
     content: (
       <ul className="space-y-2">
         {[
@@ -129,7 +141,7 @@ const sections = [
     ),
   },
   {
-    title: "8. I tuoi diritti (GDPR)",
+    title: "9. I tuoi diritti (GDPR)",
     content: (
       <>
         <p>Puoi esercitare i seguenti diritti in qualsiasi momento scrivendo a <a href="mailto:info@davegamba.com" className="text-[#00CBDB] hover:underline">info@davegamba.com</a>. Risponderemo entro <strong className="text-[#F0F0F0]">30 giorni</strong>, gratuitamente:</p>
@@ -154,7 +166,7 @@ const sections = [
     ),
   },
   {
-    title: "9. Cookie e tecnologie di tracciamento",
+    title: "10. Cookie e tecnologie di tracciamento",
     content: (
       <>
         <ul className="space-y-2">
@@ -174,13 +186,13 @@ const sections = [
     ),
   },
   {
-    title: "10. Difesa in giudizio",
+    title: "11. Difesa in giudizio",
     content: (
       <p>I dati personali dell&apos;utente possono essere utilizzati dal Titolare in giudizio o nelle fasi preparatorie per la difesa da abusi nell&apos;utilizzo dei servizi. Il Titolare potrebbe essere obbligato a rivelare dati su ordine delle autorità pubbliche competenti.</p>
     ),
   },
   {
-    title: "11. Modifiche alla presente informativa",
+    title: "12. Modifiche alla presente informativa",
     content: (
       <p>Ci riserviamo il diritto di aggiornare questa informativa in qualsiasi momento. Le modifiche sostanziali saranno comunicate via email agli iscritti. La data di ultimo aggiornamento è sempre indicata in cima al documento.</p>
     ),
@@ -204,7 +216,7 @@ export default function PrivacyPage() {
             Ai sensi dell&apos;art. 13 Reg. UE n. 679/2016
           </p>
           <h1 className="font-serif text-4xl md:text-5xl text-[#F0F0F0] mb-3">Privacy Policy</h1>
-          <p className="text-[#444444] text-sm mb-16">Ultimo aggiornamento: maggio 2026</p>
+          <p className="text-[#444444] text-sm mb-16">Ultimo aggiornamento: 9 settembre 2026</p>
 
           {/* Warning sanitaria */}
           <div className="mb-8 p-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/5">
