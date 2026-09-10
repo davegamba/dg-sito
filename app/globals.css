@@ -178,7 +178,7 @@ h3.font-serif { font-weight: 500; letter-spacing: 0.025em; }
 /* Liste */
 .mdx-content ul         { list-style: none; margin-bottom: 1.4rem; padding: 0; }
 .mdx-content ul li      { position: relative; padding-left: 1.4rem; color: #222; font-size: 1.125rem; margin-bottom: 0.7rem; line-height: 1.65; }
-.mdx-content ul li::before { content: "▸"; color: #00C8DB; position: absolute; left: 0; top: 0.15em; font-size: 0.85rem; }
+.mdx-content ul li::before { content: "▸"; color: #00C8DB; position: absolute; left: 0; top: 0.05em; font-size: 1.3rem; line-height: 1; }
 .mdx-content ol         { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.4rem; color: #222; }
 .mdx-content ol li      { font-size: 1.125rem; margin-bottom: 0.6rem; line-height: 1.65; }
 

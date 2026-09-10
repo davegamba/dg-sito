@@ -19,15 +19,36 @@ import { BASE_URL } from "@/lib/site";
 
 // H2 tutti scuri e in grassetto (colore/peso da .mdx-content h2 in globals.css)
 // Eccezione: "Riferimenti Scientifici" → h3 scuro con emoji 🔬
+// Stessa regola di lib/posts.ts extractToc(): il testo del titolo diventa
+// l'id dell'ancora. Devono restare identici o il click dall'indice non trova
+// il bersaglio — è esattamente il bug che stiamo correggendo qui.
+function slugifyHeading(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-àèéìòùáíóú]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+}
+
 function CustomH2({ children }: { children: ReactNode }) {
-  if (typeof children === "string" && children.trim().toLowerCase().includes("riferimenti")) {
+  const raw = typeof children === "string" ? children : "";
+  if (raw.trim().toLowerCase().includes("riferimenti")) {
     return (
       <h3 style={{ fontSize: "1.1rem", color: "#14181a", fontWeight: 700, borderTop: "1px solid #e8e0d4", paddingTop: "1.5rem", marginTop: "2.5rem", marginBottom: "0.75rem" }}>
         🔬 {children}
       </h3>
     );
   }
-  return <h2 className="font-serif">{children}</h2>;
+  // extractToc() ripulisce ** e _ e ` prima di generare l'id: lo stesso testo
+  // qui arriva già come nodo React, quindi puliamo la stringa grezza allo
+  // stesso modo prima di fare lo slug, per restare identici al link del menu.
+  const cleaned = raw.replace(/\*\*/g, "").replace(/[_`]/g, "").trim();
+  const id = cleaned ? slugifyHeading(cleaned) : undefined;
+  return (
+    <h2 id={id} className="font-serif" style={{ scrollMarginTop: "5rem" }}>
+      {children}
+    </h2>
+  );
 }
 
 // Le tabelle comparative non si restringono sotto la larghezza minima del contenuto:
