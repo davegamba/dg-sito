@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { rateLimit, DIECI_MINUTI } from "@/lib/rate-limit";
 import { notificaDave } from "@/lib/notify";
+import { aggiungiASysteme, TAG_LEAD_COACHING } from "@/lib/systeme";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -118,6 +119,9 @@ export async function POST(req: NextRequest) {
       created_at: new Date().toISOString(),
     });
     await aggiungiALista(supabaseUrl, supabaseKey, nome, email);
+    // Lead caldo: va anche su Systeme, ma con `lead-coaching` e senza
+    // nurture-attivo — non va infilato nella SOS che vende il Club a €19.
+    await aggiungiASysteme(email, nome, TAG_LEAD_COACHING);
   } else {
     console.error("[coaching-apply] credenziali Supabase mancanti: candidatura non salvata");
   }

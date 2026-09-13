@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { rateLimit, DIECI_MINUTI } from "@/lib/rate-limit";
 import { notificaDave } from "@/lib/notify";
+import { aggiungiASysteme, TAG_COACHING_ACQUIRENTE } from "@/lib/systeme";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -136,6 +137,11 @@ export async function POST(req: NextRequest) {
       console.error("Errore salvataggio questionario:", e);
     }
   }
+
+  // Rete di sicurezza: se il coaching non e' stato venduto dal checkout Stripe
+  // (fattura, bonifico, accordo diretto) il webhook non scatta e il cliente
+  // resta fuori dalla lista. E' successo a due clienti a settembre 2026.
+  await aggiungiASysteme(email, nome, TAG_COACHING_ACQUIRENTE);
 
   await sendNotification(
     `📋 Nuovo questionario coaching — ${nome}`,
