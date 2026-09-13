@@ -265,7 +265,16 @@ const PROFILE_CTA: Record<string, [string, string]> = {
 };
 
 /* ── SCHERMO ── */
-type Screen = "hero" | "quiz" | "email" | "result";
+type Screen = "hero" | "quiz" | "analisi" | "email" | "result";
+
+/* Righe della schermata di analisi. Descrivono quello che il sistema fa
+   davvero (determineProfile incrocia livello, tempo e blocchi): niente frasi
+   inventate tipo "confronto con migliaia di percorsi". */
+const RIGHE_ANALISI = [
+  "Leggo le tue risposte",
+  "Incrocio tempo, livello e cosa ti blocca",
+  "Preparo il tuo profilo",
+];
 
 export default function QuizFisicoPage() {
   const [screen, setScreen] = useState<Screen>("hero");
@@ -323,11 +332,22 @@ export default function QuizFisicoPage() {
     } catch { /* non blocchiamo se fallisce */ }
     const pk = determineProfile(answers);
     setProfileKey(pk);
-    setScreen("result");
+    // Passaggio di analisi prima del risultato: il profilo è già calcolato,
+    // questa pausa serve a far arrivare il risultato come una conclusione e
+    // non come un salto di pagina.
+    setScreen("analisi");
     if (typeof window !== "undefined") window.fbq?.("track", "CompleteRegistration");
     if (typeof window !== "undefined") window.gtag?.("event", "quiz_complete", { profile: pk });
     setSubmitting(false);
   }
+
+  // Dall'analisi al risultato. Il timer vive qui, non dentro submitEmail, così
+  // se il componente viene smontato prima il setScreen non parte a vuoto.
+  useEffect(() => {
+    if (screen !== "analisi") return;
+    const t = setTimeout(() => setScreen("result"), 2600);
+    return () => clearTimeout(t);
+  }, [screen]);
 
   function restart() {
     setAnswers({});
@@ -638,6 +658,33 @@ export default function QuizFisicoPage() {
                   </div>
                 );
               })()}
+            </div>
+          </div>
+        )}
+
+        {/* ═══ ANALISI ═══ */}
+        {screen === "analisi" && (
+          <div style={{ minHeight: "100dvh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "24px", textAlign: "center" }}>
+            <style>{`
+              @keyframes giraCerchio { to { transform: rotate(360deg); } }
+              @keyframes comparso { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+              .riga-analisi { opacity: 0; animation: comparso 0.45s ease forwards; }
+            `}</style>
+
+            <div style={{ width: 54, height: 54, borderRadius: "50%", border: "3px solid rgba(0,203,219,0.18)", borderTopColor: "#00CBDB", animation: "giraCerchio 0.85s linear infinite", marginBottom: 30 }} />
+
+            <p style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(24px,6vw,32px)", lineHeight: 1.15, fontWeight: 800, marginBottom: 26 }}>
+              Sto analizzando<br />le tue risposte
+            </p>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "flex-start" }}>
+              {RIGHE_ANALISI.map((riga, i) => (
+                <div key={riga} className="riga-analisi"
+                  style={{ animationDelay: `${i * 0.7}s`, display: "flex", alignItems: "center", gap: 10, fontSize: 15, color: "#c8c8c4" }}>
+                  <span style={{ color: "#00CBDB", fontWeight: 700 }}>✓</span>
+                  {riga}
+                </div>
+              ))}
             </div>
           </div>
         )}
