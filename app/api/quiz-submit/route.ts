@@ -64,10 +64,16 @@ export async function POST(req: NextRequest) {
       // 1a. Crea il contatto (409 = esiste già, va bene)
       let contactId: number | null = null;
       let contattoNuovo = false;   // true solo se l'abbiamo creato ORA
+      // Il nome va dentro `fields`, slug `first_name`. La creazione contatto di
+      // Systeme accetta solo email, locale e fields: un `firstName` al primo
+      // livello viene ignorato in silenzio, senza errore.
+      const nome = String(name).trim();
       const createRes = await fetch("https://api.systeme.io/api/contacts", {
         method: "POST",
         headers: sysHeaders,
-        body: JSON.stringify({ email, firstName: name }),
+        body: JSON.stringify(
+          nome ? { email, fields: [{ slug: "first_name", value: nome }] } : { email },
+        ),
       });
       const createText = await createRes.text();
       if (createRes.ok) {
@@ -92,6 +98,19 @@ export async function POST(req: NextRequest) {
         }
       }
       if (!contactId) throw new Error("contactId non trovato");
+
+      // 1b-bis. Contatto già esistente: la POST non ha scritto niente, quindi il
+      // nome lo mettiamo con una PATCH. Non tocca il resto del contatto.
+      if (nome && !contattoNuovo) {
+        const patchRes = await fetch(`https://api.systeme.io/api/contacts/${contactId}`, {
+          method: "PATCH",
+          headers: { ...sysHeaders, "Content-Type": "application/merge-patch+json" },
+          body: JSON.stringify({ fields: [{ slug: "first_name", value: nome }] }),
+        });
+        if (!patchRes.ok) {
+          console.warn(`Systeme.io: nome non aggiornato (${patchRes.status})`);
+        }
+      }
 
       // 1c. Assegna i tag per ID
       const assignTag = (tagId: number) =>
