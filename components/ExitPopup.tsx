@@ -12,7 +12,17 @@ export default function ExitPopup() {
   useEffect(() => {
     // Non mostrare nella pagina club, links, coaching (funnel proprio) né nel questionario acquisto
     const path = window.location.pathname;
-    if (path.startsWith("/club") || path.startsWith("/links") || path.startsWith("/coaching") || path.startsWith("/piani-coaching") || path.startsWith("/questionario-acquisto") || path.startsWith("/start-coaching")) return;
+    // Pagine dove il pop-up non deve mai comparire.
+    // "/quiz" copre anche "/quiz-fisico": il pop-up invita a fare il quiz, quindi
+    // dentro al quiz interromperebbe per proporre quello che si sta gia' facendo,
+    // e il clic riporterebbe all'inizio cancellando le risposte.
+    // Checkout e grazie: mai interrompere chi sta pagando o ha appena pagato.
+    // Login e auth: sono passaggi tecnici, non pagine da cui "uscire".
+    const ESCLUSE = [
+      "/club", "/links", "/coaching", "/piani-coaching", "/questionario-acquisto",
+      "/start-coaching", "/quiz", "/checkout", "/grazie", "/login", "/auth",
+    ];
+    if (ESCLUSE.some((p) => path.startsWith(p))) return;
 
     // Forza popup se ?popup=1 nell'URL
     const force = new URLSearchParams(window.location.search).get("popup") === "1";
