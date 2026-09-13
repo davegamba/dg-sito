@@ -30,6 +30,9 @@ interface Profile {
   name: string;
   tagline: string;
   analysis: string;
+  /* Costo del non fare niente. Deve restare VERO e verificabile: non e'
+     urgenza costruita, e' la conseguenza reale di continuare cosi'. */
+  costo: string;
   tips: string[];
 }
 
@@ -127,6 +130,7 @@ const PROFILES: Record<string, Profile> = {
     name: "Da Zero a Fit",
     tagline: "Il tuo problema non è la motivazione. È la scelta.",
     analysis: `Il fitness là fuori è stato reso troppo complicato: c'è troppa confusione.<br /><br />Keto, digiuno intermittente, calisthenics, pesi, HIIT, funzionale: ognuno vende il suo metodo come quello giusto.<br /><br />Il risultato? Non parti mai con le idee chiare. O parti e molli dopo due settimane perché non sei sicuro/a di stare facendo la cosa giusta.<br /><br /><strong>La paralisi da scelta blocca più della pigrizia.</strong> Non ti serve trovare il metodo perfetto tra mille, ti servono i PRINCIPI base che funzionano in qualsiasi metodo e per tutti.`,
+    costo: "Ogni ripartenza da zero costa più della precedente. Non perdi solo i mesi: aggiungi la convinzione di non esserne capace.",
     tips: [
       "<strong>Inizia a padroneggiare gli esercizi fondamentali più semplici.</strong> Squat, stacco, panca, rematore, spinta sopra la testa. Ripetili finché non li padroneggi.",
       "<strong>Una sola regola a tavola per iniziare.</strong> Proteine ad ogni pasto. Quando diventa automatico, aggiungi le successive.",
@@ -138,6 +142,7 @@ const PROFILES: Record<string, Profile> = {
     name: "In Stallo",
     tagline: "Ti alleni. Ma resti sempre uguale.",
     analysis: `Ti alleni. Ci vai, non salti, non molli. Eppure il fisico non si muove più. Questo è il punto più frustrante dell'allenamento, perché la colpa non è la pigrizia, e lo sai. <strong>Il problema è che il corpo è in stallo.</strong><br /><br />Ogni stimolo che ripeti uguale, nel tempo, smette di produrre risposta. Ti sembra di allenarti a vuoto, senza progredire.`,
+    costo: "Ogni mese con lo stesso stimolo rende meno del mese prima. Non è che resti fermo: è il ritorno di quello che fai che continua a scendere.",
     tips: [
       "<strong>Ogni sessione deve avere un numero da battere.</strong> Se non c'è un obiettivo numerico, non c'è stimolo.",
       "<strong>Tieni traccia.</strong> Senza dati non sai cosa cambiare.",
@@ -149,6 +154,7 @@ const PROFILES: Record<string, Profile> = {
     name: "Salto di Livello",
     tagline: "Vai già bene. Ora si lavora sui dettagli.",
     analysis: `Sei già avanti rispetto al 90% delle persone. Ma senti che c'è un soffitto, e fai fatica a capire dove sia. <strong>A questo livello il problema NON è fare di più. È che i progressi si nascondono nei dettagli.</strong> Un centimetro di range di movimento in meno, un recupero troppo corto, un deficit proteico leggero che si accumula.`,
+    costo: "I dettagli che trascuri non restano piccoli: si sommano. Un altro anno così è un altro anno con il soffitto dove sta adesso.",
     tips: [
       "<strong>Controlla l'esecuzione, non solo il carico.</strong> Filma qualche serie e riguardati.",
       "<strong>Calcola i tuoi macro almeno una volta.</strong> Non stimati: reali.",
@@ -160,6 +166,7 @@ const PROFILES: Record<string, Profile> = {
     name: "Zero Tempo, Massimo Risultato",
     tagline: "Il problema non è il poco tempo. È come lo stai usando.",
     analysis: `Non hai tempo. O meglio, hai il tempo che hai, e non è molto. <strong>Ma il problema non è quanto tempo hai. È come lo stai usando.</strong><br /><br />Recuperi lunghi, esercizi superflui, volume a vuoto inutile che non ti fa progredire.<br /><br />Il tuo collo di bottiglia è: ottimizzare. Devi rendere il tuo allenamento più efficiente. Con la sequenza giusta, meno di mezz'ora produce più stimolo di un'ora fatta a caso.`,
+    costo: "Allenarti in modo poco efficiente non ti costa solo la palestra. Ti costa il tempo che togli a tutto il resto, senza il risultato che dovrebbe ripagarlo.",
     tips: [
       "<strong>Meno di mezz'ora al giorno è sufficiente.</strong> L'efficacia dipende dalla densità, non dalla durata.",
       "<strong>Usa sempre le superserie.</strong> Si dimezza il tempo, si raddoppia la densità.",
@@ -220,6 +227,10 @@ interface CtaCard {
   img: string;
   cta: string;
   accent: string; // colore bordo/bottone
+  /* Il ponte fra le 3 mosse regalate e l'offerta: senza, chi e' soddisfatto
+     chiude la pagina. Non dice che le mosse sono incomplete (sarebbe falso),
+     dice che applicarle da soli e' la parte difficile. */
+  ponte: string;
 }
 const CTA_CATALOG: Record<string, CtaCard> = {
   // Card "sfida" rimossa il 04/08/2026 — Sfida Estiva chiusa.
@@ -232,6 +243,7 @@ const CTA_CATALOG: Record<string, CtaCard> = {
     img: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
     cta: "Entra nel Club →",
     accent: "#00CBDB",
+    ponte: "Queste tre mosse sono tue: applicale da domani.<br /><br />La parte difficile non è saperle. È portarle avanti per mesi, nell'ordine giusto, anche nelle settimane in cui non hai voglia.<br /><br /><strong>Quella struttura è esattamente quello che trovi nel Club.</strong>",
   },
   coaching: {
     badge: "Servizio Premium",
@@ -241,6 +253,7 @@ const CTA_CATALOG: Record<string, CtaCard> = {
     img: "https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg",
     cta: "Prenota una call →",
     accent: "#f5c842",
+    ponte: "Queste tre mosse sono tue: applicale da domani.<br /><br />Ma al tuo livello la differenza non la fa un programma. <strong>La fa qualcuno che guarda i tuoi numeri e la tua esecuzione, e ti dice dove stai lasciando progressi sul tavolo.</strong>",
   },
 };
 // Coppia di offerte [primaria, secondaria] in base al profilo
@@ -650,6 +663,11 @@ export default function QuizFisicoPage() {
             <div style={{ background: "linear-gradient(135deg,rgba(245,200,66,0.08) 0%,rgba(245,200,66,0.02) 100%)", border: "1px solid rgba(245,200,66,0.25)", borderRadius: 16, padding: 28, marginBottom: 14 }}>
               <h4 style={{ fontSize: 15, fontWeight: 800, fontStyle: "italic", color: "#f5c842", marginBottom: 14, display: "block" }}>Cosa sta succedendo davvero</h4>
               <p style={{ fontSize: 15, color: "#e4e4e0", lineHeight: 1.75 }} dangerouslySetInnerHTML={{ __html: profile.analysis }} />
+              {/* Costo del continuare cosi'. Staccato dall'analisi da una riga,
+                  perche' e' una conseguenza, non una spiegazione. */}
+              <p style={{ fontSize: 14, color: "#f5c842", lineHeight: 1.65, marginTop: 18, paddingTop: 16, borderTop: "1px solid rgba(245,200,66,0.22)", fontWeight: 500 }}>
+                {profile.costo}
+              </p>
             </div>
 
             {/* Card tips */}
@@ -674,35 +692,33 @@ export default function QuizFisicoPage() {
                 In base alle tue risposte la strada più rapida per il fisico che vuoi sono i Protocolli:
               </p>
 
-              {/* CTA card DG Athletic Club */}
-              <p style={{ fontSize: 14, color: "#c8c8c4", lineHeight: 1.65, marginBottom: 14 }}>
-                Per avere un percorso progressivo, Corsi Focus e una community che ti segue ogni settimana, scopri il Club:
-              </p>
-              <a href="https://club.davegamba.com/entra-nel-club" target="_blank" rel="noopener noreferrer"
-                style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "2px solid rgba(0,203,219,0.5)", minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none", marginBottom: 32 }}>
-                <div style={{ position: "absolute", inset: 0, backgroundImage: `url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg')`, backgroundSize: "cover", backgroundPosition: "center top" }} />
+              {/* UNA SOLA CTA, scelta dal profilo (PROFILE_CTA[0]).
+                  Prima ce n'erano due di pari peso: ma il profilo "Da Zero a Fit"
+                  dice testualmente che "la paralisi da scelta blocca piu' della
+                  pigrizia", e chiudere con un bivio contraddiceva l'analisi
+                  appena letta. La seconda offerta resta, come riga di testo. */}
+              <div style={{ fontSize: 15, color: "#c8c8c4", lineHeight: 1.7, marginBottom: 22, textAlign: "center" }}
+                dangerouslySetInnerHTML={{ __html: ctaPair[0].ponte }} />
+
+              <a href={ctaPair[0].href} target="_blank" rel="noopener noreferrer"
+                style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: `2px solid ${ctaPair[0].accent}80`, minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none", marginBottom: 18 }}>
+                <div style={{ position: "absolute", inset: 0, backgroundImage: `url('${ctaPair[0].img}')`, backgroundSize: "cover", backgroundPosition: "center top" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.4) 50%,rgba(0,0,0,0.1) 100%)" }} />
                 <div style={{ position: "relative", zIndex: 1, padding: 20, display: "flex", flexDirection: "column", gap: 8 }}>
-                  <div style={{ display: "inline-block", background: "#00CBDB", color: "#0a0a0a", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "3px 8px", borderRadius: 100, alignSelf: "flex-start" }}>Membership</div>
-                  <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 22, fontWeight: 900, lineHeight: 1.2, color: "#fafaf8" }}>DG Athletic<br />Club</h3>
-                  <div style={{ display: "block", background: "#00CBDB", color: "#0a0a0a", fontSize: 14, fontWeight: 700, padding: 13, borderRadius: 8, textAlign: "center" }}>Entra nel Club →</div>
+                  <div style={{ display: "inline-block", background: ctaPair[0].accent, color: "#0a0a0a", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "3px 8px", borderRadius: 100, alignSelf: "flex-start" }}>{ctaPair[0].badge}</div>
+                  <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 22, fontWeight: 900, lineHeight: 1.2, color: "#fafaf8" }}
+                    dangerouslySetInnerHTML={{ __html: ctaPair[0].title }} />
+                  <div style={{ display: "block", background: ctaPair[0].accent, color: "#0a0a0a", fontSize: 14, fontWeight: 700, padding: 13, borderRadius: 8, textAlign: "center" }}>{ctaPair[0].cta}</div>
                 </div>
               </a>
 
-              {/* CTA card Coaching */}
-              <p style={{ fontSize: 14, color: "#c8c8c4", lineHeight: 1.65, marginBottom: 14 }}>
-                Se vuoi il massimo ed essere seguito personalmente da Dave nella tua trasformazione fisica, scopri il Coaching:
+              {/* Seconda offerta: presente ma subordinata, per chi si riconosce
+                  nell'altra strada. Riga di testo, non card gemella. */}
+              <p style={{ fontSize: 13, color: "#5a5a55", textAlign: "center", lineHeight: 1.6, marginBottom: 24 }}>
+                {ctaPair[1].href.includes("coaching")
+                  ? <>Vuoi che ti segua io, personalmente? <a href={ctaPair[1].href} target="_blank" rel="noopener noreferrer" style={{ color: "#9a9a94", textDecoration: "underline" }}>Guarda il Coaching 1:1</a></>
+                  : <>Preferisci partire da solo, con tutto già pronto? <a href={ctaPair[1].href} target="_blank" rel="noopener noreferrer" style={{ color: "#9a9a94", textDecoration: "underline" }}>Guarda il DG Athletic Club</a></>}
               </p>
-              <a href="https://davegamba.com/coaching#candidati" target="_blank" rel="noopener noreferrer"
-                style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "2px solid rgba(245,200,66,0.5)", minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none", marginBottom: 24 }}>
-                <div style={{ position: "absolute", inset: 0, backgroundImage: `url('https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg')`, backgroundSize: "cover", backgroundPosition: "center top" }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.4) 50%,rgba(0,0,0,0.1) 100%)" }} />
-                <div style={{ position: "relative", zIndex: 1, padding: 20, display: "flex", flexDirection: "column", gap: 8 }}>
-                  <div style={{ display: "inline-block", background: "#f5c842", color: "#0a0a0a", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "3px 8px", borderRadius: 100, alignSelf: "flex-start" }}>Servizio Premium</div>
-                  <h3 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 22, fontWeight: 900, lineHeight: 1.2, color: "#fafaf8" }}>Coaching<br />Personale 1:1</h3>
-                  <div style={{ display: "block", background: "#f5c842", color: "#0a0a0a", fontSize: 14, fontWeight: 700, padding: 13, borderRadius: 8, textAlign: "center" }}>Vai al Coaching →</div>
-                </div>
-              </a>
 
               <button onClick={restart}
                 style={{ display: "block", textAlign: "center", fontSize: 13, color: "#5a5a55", cursor: "pointer", marginTop: 8, background: "none", border: "none", fontFamily: "inherit", width: "100%", transition: "color 0.2s" }}>
