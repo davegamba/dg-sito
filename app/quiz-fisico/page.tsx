@@ -339,7 +339,14 @@ export default function QuizFisicoPage() {
         body{font-family:var(--font-dm-sans,'DM Sans',sans-serif);background:#0a0a0a;color:#fafaf8;min-height:100vh;overflow-x:hidden;}
         @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
         .step-anim{animation:fadeUp 0.3s ease;}
-        .quiz-wrap{max-width:680px;margin:0 auto;}
+        /* width:100% e min-width:0 sono obbligatori, non cosmetici: il body e'
+           display:flex flex-col, e il "margin:0 auto" disattiva lo stretch sul
+           lato corto. Senza width, questo blocco si dimensionava sul CONTENUTO
+           (680px) anche su uno schermo da 375, sforava e veniva tagliato dal
+           blocco anti-scroll-laterale. Su desktop non si notava perche' lo
+           schermo e' piu' largo di 680: e' per questo che il difetto si vedeva
+           solo su mobile. */
+        .quiz-wrap{max-width:680px;width:100%;min-width:0;margin:0 auto;}
       `}</style>
       <div ref={topRef} />
 
@@ -347,20 +354,22 @@ export default function QuizFisicoPage() {
 
         {/* ═══ HERO ═══ */}
         {screen === "hero" && (
-          <div style={{ minHeight: "100dvh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "48px 24px", textAlign: "center", position: "relative" }}>
+          // Ancorato in alto, non centrato: con la foto in fondo il blocco
+          // centrato spingeva la foto sotto la piega. Cosi' ci sta tutto.
+          <div style={{ minHeight: "100dvh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", padding: "16px 24px 20px", textAlign: "center", position: "relative" }}>
             <div style={{ position: "fixed", top: 0, left: "50%", transform: "translateX(-50%)", width: 800, height: 500, background: "radial-gradient(ellipse at center,rgba(0,203,219,0.08) 0%,transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
             <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 480 }}>
-              <p style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", color: "#9a9a94", marginBottom: 40 }}>DaveGamba.com</p>
-              <div style={{ display: "inline-block", background: "rgba(0,203,219,0.1)", color: "#00CBDB", fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", padding: "6px 16px", borderRadius: 100, border: "1px solid rgba(0,203,219,0.2)", marginBottom: 28 }}>
+              <p style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", color: "#9a9a94", marginBottom: 14 }}>DaveGamba.com</p>
+              <div style={{ display: "inline-block", background: "rgba(0,203,219,0.1)", color: "#00CBDB", fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", padding: "6px 16px", borderRadius: 100, border: "1px solid rgba(0,203,219,0.2)", marginBottom: 14 }}>
                 Quiz Gratuito · 2 Minuti
               </div>
-              <h1 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(38px,8vw,62px)", lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: 20, fontWeight: 800 }}>
+              <h1 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(38px,8vw,62px)", lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: 14, fontWeight: 800 }}>
                 Scopri il tuo<br /><em style={{ fontStyle: "italic", color: "#00CBDB" }}>Profilo Fisico</em>
               </h1>
-              <p style={{ fontSize: 16, color: "#9a9a94", fontWeight: 300, lineHeight: 1.65, marginBottom: 40 }}>
+              <p style={{ fontSize: 16, color: "#9a9a94", fontWeight: 300, lineHeight: 1.65, marginBottom: 18 }}>
                 6 domande per capire dove sei adesso<br />e qual è il piano giusto per il tuo fisico.
               </p>
-              <div style={{ display: "flex", gap: 32, justifyContent: "center", marginBottom: 40 }}>
+              <div style={{ display: "flex", gap: 14, justifyContent: "center", marginBottom: 18 }}>
                 {[{ v: "3.000+", l: "Clienti seguiti" }, { v: "15+", l: "Anni di esperienza" }, { v: "2 min", l: "Per il tuo profilo" }].map(s => (
                   <div key={s.l} style={{ textAlign: "center" }}>
                     <strong style={{ display: "block", fontSize: 22, fontWeight: 700, color: "#00CBDB", marginBottom: 4 }}>{s.v}</strong>
@@ -375,6 +384,21 @@ export default function QuizFisicoPage() {
               <p style={{ fontSize: 11, color: "#5a5a55", marginTop: 16, lineHeight: 1.5 }}>
                 Gratuito. Unisciti alle 15.000 persone che lo hanno già provato.
               </p>
+
+              {/* Foto sotto la CTA: da' un volto a chi sta chiedendo 2 minuti.
+                  Sta sotto la riga di rassicurazione apposta, cosi' il testo che
+                  toglie attrito resta attaccato al bottone. */}
+              <div style={{ marginTop: 18, maxWidth: 360, marginLeft: "auto", marginRight: "auto" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/atletico-sbarra-spiaggia.jpg"
+                  alt="Dave Gamba"
+                  style={{ width: "100%", aspectRatio: "16 / 9", objectFit: "cover", objectPosition: "center 30%", borderRadius: 16, display: "block" }}
+                />
+                <p style={{ fontSize: 11, color: "#5a5a55", marginTop: 10, lineHeight: 1.5 }}>
+                  Dave Gamba. 15 anni di metodo Breve-Intenso-Mirato, oltre 3.000 persone seguite.
+                </p>
+              </div>
             </div>
           </div>
         )}
@@ -404,8 +428,14 @@ export default function QuizFisicoPage() {
             </div>
 
             {/* Step content */}
-            <div key={step} className="step-anim" style={{ padding: "0 24px" }}>
-              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(22px,5vw,30px)", lineHeight: 1.2, marginBottom: 8, fontWeight: 800 }}>{currentStepData.question}</h2>
+            {/* 16px di lato come il resto del sito: con 24px il quiz era piu'
+                stretto delle altre pagine e sembrava rimpicciolito. */}
+            <div key={step} className="step-anim" style={{ padding: "0 16px" }}>
+              {/* Era clamp(22px,5vw,30px): su un telefono da 375px il 5vw vale
+                  18.75px, sotto il minimo, quindi restava fisso a 22px mentre il
+                  resto del sito titola a 36px. Alzato il minimo perche' su mobile
+                  e' quello che comanda. */}
+              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(27px,6.8vw,34px)", lineHeight: 1.2, marginBottom: 8, fontWeight: 800 }}>{currentStepData.question}</h2>
               <p style={{ fontSize: 14, color: "#9a9a94", fontWeight: 300, marginBottom: 28 }}>{currentStepData.hint}</p>
 
               {/* image-grid-2 */}
@@ -427,22 +457,27 @@ export default function QuizFisicoPage() {
 
               {/* image-grid-3 */}
               {currentStepData.type === "image-grid-3" && (
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, margin: "0 -8px" }}>
+                // Impilate in verticale, non affiancate: in riga da tre su telefono
+                // diventavano francobolli col testo spezzato su 5 righe, e sotto
+                // restava mezzo schermo vuoto.
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                   {currentStepData.options.map(opt => {
                     const sel = answers[currentStepData.key] === opt.value;
                     return (
                       <div key={opt.value} onClick={() => selectSingle(currentStepData.key, opt.value)}
-                        style={{ position: "relative", borderRadius: 16, overflow: "hidden", cursor: "pointer", border: `2px solid ${sel ? "#00CBDB" : "transparent"}`, transition: "all 0.2s", background: "#1a1a18", aspectRatio: "3/4" }}>
-                        {/* Background: foto reale o gradiente/emoji */}
+                        style={{ position: "relative", borderRadius: 16, overflow: "hidden", cursor: "pointer", border: `2px solid ${sel ? "#00CBDB" : "transparent"}`, transition: "all 0.2s", background: "#1a1a18", aspectRatio: "16/7" }}>
+                        {/* Background: foto reale o gradiente/emoji.
+                            "center 25%" e non "center top": il taglio largo su una
+                            foto verticale, ancorato in alto, tagliava le teste. */}
                         {opt.img ? (
-                          <div style={{ position: "absolute", inset: 0, backgroundImage: `url('${opt.img}')`, backgroundSize: "cover", backgroundPosition: "center top" }} />
+                          <div style={{ position: "absolute", inset: 0, backgroundImage: `url('${opt.img}')`, backgroundSize: "cover", backgroundPosition: "center 25%" }} />
                         ) : (
                           <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", background: opt.gradient }}>
                             <span style={{ fontSize: 42 }}>{opt.icon}</span>
                           </div>
                         )}
                         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.2) 55%,transparent 100%)" }} />
-                        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "24px 10px 12px", fontSize: 15, fontWeight: 600, color: sel ? "#00CBDB" : "#fafaf8", lineHeight: 1.3, textAlign: "center" }}>
+                        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "26px 18px 14px", fontSize: 17, fontWeight: 600, color: sel ? "#00CBDB" : "#fafaf8", lineHeight: 1.25, textAlign: "left" }}>
                           {opt.label}
                         </div>
                         {sel && (
@@ -503,7 +538,7 @@ export default function QuizFisicoPage() {
                     return (
                       <div key={opt.value} onClick={() => selectSingle(currentStepData.key, opt.value)}
                         style={{ display: "flex", alignItems: "center", gap: 20, background: sel ? "rgba(0,203,219,0.08)" : "rgba(255,255,255,0.03)", border: `1px solid ${sel ? "#00CBDB" : "#222220"}`, borderRadius: 12, padding: "20px 22px", cursor: "pointer", transition: "all 0.2s" }}>
-                        <div style={{ width: 44, height: 44, borderRadius: "50%", border: `2px solid ${sel ? "#00CBDB" : "#5a5a55"}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 700, color: sel ? "#00CBDB" : "#9a9a94", flexShrink: 0, transition: "all 0.2s" }}>
+                        <div style={{ width: 44, height: 44, borderRadius: "50%", border: `2px solid ${sel ? "#00CBDB" : "rgba(0,203,219,0.55)"}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 700, color: "#00CBDB", flexShrink: 0, transition: "all 0.2s" }}>
                           {opt.num}
                         </div>
                         <div>
@@ -531,9 +566,9 @@ export default function QuizFisicoPage() {
                 </div>
               </div>
             </div>
-            <div style={{ paddingTop: 40 }}>
+            <div style={{ paddingTop: 40, textAlign: "center" }}>
               <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#00CBDB", marginBottom: 14, display: "block" }}>Step Finale</span>
-              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(28px,6vw,40px)", lineHeight: 1.1, marginBottom: 10, fontWeight: 800 }}>
+              <h2 style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: "clamp(32px,8vw,46px)", lineHeight: 1.1, marginBottom: 10, fontWeight: 800 }}>
                 Il tuo profilo è pronto 🔥
               </h2>
               <p style={{ fontSize: 15, color: "#9a9a94", fontWeight: 300, lineHeight: 1.6, marginBottom: 36 }}>
@@ -543,9 +578,9 @@ export default function QuizFisicoPage() {
                 {/* Honeypot */}
                 <input type="text" name="website" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
                 <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Nome" autoComplete="given-name" required
-                  style={{ width: "100%", height: 52, padding: "0 18px", background: "rgba(255,255,255,0.05)", border: "1px solid #222220", borderRadius: 12, color: "#fafaf8", fontFamily: "inherit", fontSize: 16, outline: "none" }} />
+                  style={{ width: "100%", height: 52, padding: "0 18px", background: "rgba(255,255,255,0.05)", border: "1px solid #222220", borderRadius: 12, color: "#fafaf8", fontFamily: "inherit", fontSize: 16, outline: "none", textAlign: "left" }} />
                 <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" autoComplete="email" required
-                  style={{ width: "100%", height: 52, padding: "0 18px", background: "rgba(255,255,255,0.05)", border: "1px solid #222220", borderRadius: 12, color: "#fafaf8", fontFamily: "inherit", fontSize: 16, outline: "none" }} />
+                  style={{ width: "100%", height: 52, padding: "0 18px", background: "rgba(255,255,255,0.05)", border: "1px solid #222220", borderRadius: 12, color: "#fafaf8", fontFamily: "inherit", fontSize: 16, outline: "none", textAlign: "left" }} />
                 <button type="submit" disabled={submitting}
                   style={{ width: "100%", background: "#00CBDB", color: "#0a0a0a", fontFamily: "inherit", fontSize: 16, fontWeight: 700, padding: 18, borderRadius: 12, border: "none", cursor: "pointer", marginTop: 6, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, opacity: submitting ? 0.7 : 1 }}>
                   {submitting ? "Un momento..." : "Mostrami il mio profilo →"}
@@ -556,6 +591,40 @@ export default function QuizFisicoPage() {
                   <span key={t} style={{ fontSize: 12, color: "#5a5a55", display: "flex", alignItems: "center", gap: 5 }}>{t}</span>
                 ))}
               </div>
+
+              {/* ANTEPRIMA SFOCATA — e' il profilo VERO, gia' calcolato dalle
+                  risposte: determineProfile e' una funzione pura e a questo punto
+                  le risposte sono complete. Mostrarlo sfocato rende il premio
+                  concreto: si vede che c'e', non si legge. */}
+              {(() => {
+                const anteprima = PROFILES[determineProfile(answers)];
+                if (!anteprima) return null;
+                return (
+                  <div style={{ position: "relative", marginTop: 36, textAlign: "left" }}>
+                    <div aria-hidden style={{ filter: "blur(6px)", userSelect: "none", pointerEvents: "none", opacity: 0.75 }}>
+                      <div style={{ textAlign: "center", marginBottom: 18 }}>
+                        <span style={{ fontSize: 48, display: "block", marginBottom: 8 }}>{anteprima.icon}</span>
+                        <div style={{ fontFamily: "var(--font-dm-serif,'DM Serif Display',serif)", fontSize: 30, fontWeight: 900, lineHeight: 1.1 }}>{anteprima.name}</div>
+                        <div style={{ fontSize: 15, color: "#9a9a94", marginTop: 6 }}>{anteprima.tagline}</div>
+                      </div>
+                      <div style={{ background: "linear-gradient(135deg,rgba(245,200,66,0.08) 0%,rgba(245,200,66,0.02) 100%)", border: "1px solid rgba(245,200,66,0.25)", borderRadius: 16, padding: 24 }}>
+                        <h4 style={{ fontSize: 15, fontWeight: 800, fontStyle: "italic", color: "#f5c842", marginBottom: 12 }}>Cosa sta succedendo davvero</h4>
+                        <p style={{ fontSize: 15, color: "#e4e4e0", lineHeight: 1.75 }} dangerouslySetInnerHTML={{ __html: anteprima.analysis }} />
+                      </div>
+                    </div>
+
+                    {/* Sfuma verso il fondo pagina: il testo non finisce di netto,
+                        sembra che continui sotto. */}
+                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(10,10,10,0) 30%, rgba(10,10,10,0.85) 75%, #0a0a0a 100%)", pointerEvents: "none" }} />
+
+                    <div style={{ position: "absolute", left: 0, right: 0, bottom: 12, textAlign: "center", pointerEvents: "none" }}>
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(0,203,219,0.12)", border: "1px solid rgba(0,203,219,0.35)", color: "#00CBDB", fontSize: 13, fontWeight: 600, padding: "9px 18px", borderRadius: 100 }}>
+                        🔒 Inserisci la mail qui sopra per leggerlo
+                      </span>
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
           </div>
         )}
