@@ -12,6 +12,7 @@ import { ArticleCta } from "@/components/ArticleCta";
 import { ClubCta } from "@/components/ClubCta";
 import { QuizCta } from "@/components/QuizCta";
 import { QuizCtaMid } from "@/components/QuizCtaMid";
+import { QuizCtaTop } from "@/components/QuizCtaTop";
 import { ClubCtaMid } from "@/components/ClubCtaMid";
 import { CalcCtaMid } from "@/components/CalcCtaMid";
 import type { Metadata } from "next";
@@ -256,7 +257,17 @@ export default async function PostPage({
                 </div>
               )}
 
-              {/* 2. INDICE — dopo il succo, prima del corpo */}
+              {/* 2. BANNER QUIZ — subito dopo il Succo, prima dell'indice.
+                   Il Succo chiude lasciando al lettore la domanda "ok, ma io?":
+                   e' li' che il quiz e' una risposta e non un'interruzione.
+                   Prima del Succo no: il lettore non ha ancora ricevuto niente
+                   e quella posizione coincide con lo slot delle ads.
+                   Senza Succo il banner finirebbe incollato al titolo, cioe'
+                   proprio in quello slot: in quel caso scende sotto l'indice,
+                   che fa da blocco di valore al suo posto (vedi sotto). */}
+              {succo && <QuizCtaTop />}
+
+              {/* 3. INDICE — dopo il succo, prima del corpo */}
               {post.toc.length > 5 && (
                 <div className="bg-white border border-[#e8e0d4] rounded-[16px] p-5 mb-8">
                   <h3 className="text-base font-bold text-[#111] mb-3">In questo articolo</h3>
@@ -273,7 +284,13 @@ export default async function PostPage({
                 </div>
               )}
 
-              {/* 3. CORPO ARTICOLO */}
+              {/* Ripiego per i 5 articoli senza Succo della Guida
+                  (come-dormire-meglio, creatina-a-cosa-serve,
+                  esercizi-addominali, esercizi-pettorali, pancake-proteici):
+                  il banner va dopo l'indice, non prima. */}
+              {!succo && <QuizCtaTop />}
+
+              {/* 4. CORPO ARTICOLO */}
               <div className="mdx-content">
                 <MDXRemote source={body || post.content} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
               </div>

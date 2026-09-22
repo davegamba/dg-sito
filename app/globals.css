@@ -228,7 +228,7 @@ h3.font-serif { font-weight: 500; letter-spacing: 0.025em; }
 .mdx-content .succo-box {
   background: #00C8DB;
   border-radius: 18px;
-  padding: 1.5rem 1.5rem 1.25rem 1.5rem;
+  padding: 1.9rem 1.5rem 1.4rem 1.5rem;
   margin: 0 0 2.5rem;
   text-align: center;
 }
@@ -236,11 +236,13 @@ h3.font-serif { font-weight: 500; letter-spacing: 0.025em; }
 .mdx-content .succo-box h2 {
   border-top: none !important;
   padding-top: 0 !important;
-  margin-top: 0 !important;
-  font-size: 1.5rem;
+  /* Aria sopra e sotto il titolo: il box e' fitto di testo, il titolo ha
+     bisogno di respiro per staccarsi dai bullet. */
+  margin-top: 0.4rem !important;
+  font-size: 1.75rem;
   letter-spacing: normal;
   text-transform: none;
-  margin-bottom: 1rem;
+  margin-bottom: 1.6rem;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
   background: none !important;
