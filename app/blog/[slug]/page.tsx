@@ -268,9 +268,14 @@ export default async function PostPage({
               {succo && <QuizCtaTop />}
 
               {/* 3. INDICE — dopo il succo, prima del corpo */}
+              {/* Niente card bianca: l'indice e' navigazione, non contenuto.
+                  Con il riquadro pesava come il Succo e il banner, e il
+                  lettore si trovava tre blocchi colorati di fila. Sul fondo
+                  sabbia scende al suo posto nella scala di attenzione:
+                  Succo (ciano) > banner (scuro) > indice (testo). */}
               {post.toc.length > 5 && (
-                <div className="bg-white border border-[#e8e0d4] rounded-[16px] p-5 mb-8">
-                  <h3 className="text-base font-bold text-[#111] mb-3">In questo articolo</h3>
+                <div className="mb-8 pb-6 border-b border-[#e8e0d4]">
+                  <h3 className="text-xs font-bold text-[#8a8175] tracking-[0.18em] uppercase mb-3">Indice</h3>
                   <ol className="space-y-1.5">
                     {post.toc.map((item) => (
                       <li key={item.id}>
