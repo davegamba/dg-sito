@@ -272,9 +272,12 @@ export default async function PostPage({
                   Con il riquadro pesava come il Succo e il banner, e il
                   lettore si trovava tre blocchi colorati di fila. Sul fondo
                   sabbia scende al suo posto nella scala di attenzione:
-                  Succo (ciano) > banner (scuro) > indice (testo). */}
+                  Succo (ciano) > banner (scuro) > indice (testo).
+                  Nessun filetto sotto: il primo H2 del corpo porta gia' il
+                  suo divisorio ciano, e due righe ravvicinate facevano
+                  doppione. */}
               {post.toc.length > 5 && (
-                <div className="mb-8 pb-6 border-b border-[#e8e0d4]">
+                <div className="mb-8">
                   <h3 className="text-xs font-bold text-[#8a8175] tracking-[0.18em] uppercase mb-3">Indice</h3>
                   <ol className="space-y-1.5">
                     {post.toc.map((item) => (
