@@ -51,7 +51,7 @@ export function QuizCtaTop() {
             margin: 0,
           }}
         >
-          Questa è la regola generale. Ma qual è la tua?
+          Scopri il tuo Tipo Fisico: Fai il quiz in 2 min
         </p>
         <p
           style={{

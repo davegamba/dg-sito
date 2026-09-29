@@ -10,7 +10,7 @@ export function QuizCta() {
   return (
     <ArticleCta
       kicker="Quiz Gratuito · 2 Minuti"
-      title="Qual È la Cosa che Ti Sta Bloccando?"
+      title="Scopri il tuo Tipo Fisico: Fai il quiz in 2 min"
       description="Sette domande, due minuti. Alla fine sai qual è il tuo profilo, cosa ti sta fermando davvero e da dove conviene ripartire — con il percorso giusto per il tuo punto di partenza. Gratis."
       href="/quiz-fisico"
       cta="Fai il Quiz"

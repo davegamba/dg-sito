@@ -9,7 +9,7 @@ export function QuizCtaMid() {
   return (
     <ArticleCta
       kicker="Quiz Gratuito · 2 Minuti"
-      title="Da Dove Dovresti Ripartire Tu?"
+      title="Scopri il tuo Tipo Fisico: Fai il quiz in 2 min"
       description="Sette domande e scopri il tuo profilo: cosa ti sta bloccando davvero e il percorso adatto al tuo punto di partenza."
       href="/quiz-fisico"
       cta="Fai il Quiz"
