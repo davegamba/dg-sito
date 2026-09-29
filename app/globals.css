@@ -269,6 +269,16 @@ h3.font-serif { font-weight: 500; letter-spacing: 0.025em; }
   font-weight: 700;
 }
 
+/* Corsivo dentro il Succo (nomi di riviste, titoli di studi).
+   La regola generale .mdx-content em lo colora di ciano (#0099a8): sul
+   fondo bianco si legge, sul fondo ciano del Succo sparisce quasi del
+   tutto. Qui serve scuro. */
+.mdx-content .succo-box em {
+  color: #05363d !important;
+  font-style: normal;
+  font-weight: 700;
+}
+
 
 /* Stile per le tabelle usate come box "Il Succo della Guida" nei doc originali */
 .mdx-content h2 + table,
