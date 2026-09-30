@@ -98,9 +98,9 @@ export default function HomePage() {
       <main className="flex-1">
         <Hero />
         <PressStrip />
+        <ClubBlock />
         <ChiSono />
         <Testimonials variant="dark" />
-        <ClubBlock />
         <BlogSection />
         <YoutubeScroll />
         <OptinStrip />

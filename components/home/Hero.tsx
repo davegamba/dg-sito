@@ -39,7 +39,8 @@ export default function Hero() {
           src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/heroBg.jpeg"
           alt="Dave Gamba — Personal Trainer"
           fill
-          className="object-cover object-center"
+          className="object-cover"
+          style={{ objectPosition: "center 25%" }}
           priority
           sizes="100vw"
           unoptimized

@@ -24,7 +24,7 @@ export default function BlogSection() {
         <div className="flex items-end justify-between mb-8">
           <div>
             <span className="text-[#00CBDB] text-xs font-semibold tracking-widest uppercase mb-3 block">
-              Le Guide del Blog
+              Approfondisci
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-white">
               Tutto quello che devi sapere
