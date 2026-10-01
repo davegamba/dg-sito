@@ -28,6 +28,7 @@ const footerLinks = {
     { href: "https://www.youtube.com/@DaveGambaFitness", label: "Canale YouTube", external: true },
     { href: "/quiz-fisico", label: "Quiz Profilo Fisico" },
     { href: "https://club.davegamba.com/calcolatore-fabbisogno", label: "Calcolo Fabbisogno", external: true },
+    { href: "https://club.davegamba.com/optin-conta-calorie", label: "App Conta Calorie", external: true },
   ],
   Prodotti: [
     { href: "https://club.davegamba.com/entra-nel-club", label: "DG Athletic Club", external: true },
