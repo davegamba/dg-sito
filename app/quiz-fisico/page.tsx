@@ -646,12 +646,14 @@ export default function QuizFisicoPage() {
                       </div>
                     </div>
 
-                    {/* Sfuma verso il fondo pagina: il testo non finisce di netto,
-                        sembra che continui sotto. */}
-                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(10,10,10,0) 30%, rgba(10,10,10,0.85) 75%, #0a0a0a 100%)", pointerEvents: "none" }} />
+                    {/* Sfuma verso il fondo pagina: la maggior parte del testo resta
+                        visibile (anche se sfocata), solo l'ultimo tratto sparisce.
+                        Piu' contenuto si vede, piu' fa venire voglia di leggerlo. */}
+                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(10,10,10,0) 60%, rgba(10,10,10,0.85) 90%, #0a0a0a 100%)", pointerEvents: "none" }} />
 
-                    <div style={{ position: "absolute", left: 0, right: 0, bottom: 12, textAlign: "center", pointerEvents: "none" }}>
-                      <span style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(0,203,219,0.12)", border: "1px solid rgba(0,203,219,0.35)", color: "#00CBDB", fontSize: 13, fontWeight: 600, padding: "9px 18px", borderRadius: 100 }}>
+                    {/* Chip a meta' del blocco sfocato: si vede subito, senza scrollare. */}
+                    <div style={{ position: "absolute", left: 0, right: 0, top: "42%", textAlign: "center", pointerEvents: "none" }}>
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(0,203,219,0.12)", border: "1px solid rgba(0,203,219,0.35)", color: "#00CBDB", fontSize: 13, fontWeight: 600, padding: "9px 18px", borderRadius: 100, boxShadow: "0 4px 20px rgba(0,0,0,0.6)" }}>
                         🔒 Inserisci la mail qui sopra per leggerlo
                       </span>
                     </div>
