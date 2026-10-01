@@ -26,9 +26,11 @@ const footerLinks = {
   Contenuti: [
     { href: "/blog", label: "Blog & Guide" },
     { href: "https://www.youtube.com/@DaveGambaFitness", label: "Canale YouTube", external: true },
+    { href: "/quiz-fisico", label: "Quiz Profilo Fisico" },
+    { href: "https://club.davegamba.com/calcolatore-fabbisogno.html", label: "Calcolo Fabbisogno", external: true },
   ],
   Prodotti: [
-    { href: "/quiz-fisico", label: "Quiz Profilo Fisico" },
+    { href: "https://club.davegamba.com/entra-nel-club", label: "DG Athletic Club", external: true },
     { href: "/coaching", label: "Coaching" },
   ],
   Legale: [
@@ -39,7 +41,7 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#1e1e2e] bg-[#080810]">
+    <footer className="border-t border-[#1e1e2e] bg-[#0b0d1a]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
 
         {/* Top row */}
