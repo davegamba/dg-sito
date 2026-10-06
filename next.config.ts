@@ -26,6 +26,14 @@ const nextConfig: NextConfig = {
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
         ],
       },
+      // Pagine in spagnolo: il layout radice scrive <html lang="it"> lato
+      // server (strada leggera del test, vedi components/HtmlLang.tsx).
+      // Questa intestazione dichiara la lingua giusta già nella risposta HTTP,
+      // per i motori che la leggono (Bing); Google guarda il testo visibile.
+      {
+        source: "/es/:path*",
+        headers: [{ key: "Content-Language", value: "es" }],
+      },
     ];
   },
   async redirects() {
