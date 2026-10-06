@@ -218,9 +218,10 @@ export default async function EsPostPage({
             <a
               href={itUrl(itSlug)}
               hrefLang="it"
+              lang="it"
               className="text-xs text-white/70 hover:text-[#00CBDB] transition-colors"
             >
-              🇮🇹 Versión en italiano
+              🇮🇹 Versione in italiano
             </a>
           )}
         </div>

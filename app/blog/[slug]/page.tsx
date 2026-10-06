@@ -201,7 +201,24 @@ export default async function PostPage({
       )}
 
       <main className="flex-1 pt-16 bg-black">
-        <article>
+        <article className="relative">
+          {/* Versione tradotta: in alto a destra, stessa posizione del link
+              di ritorno sulla pagina spagnola. Link visibile oltre
+              all'hreflang: senza link interni Google trova la pagina solo
+              dalla sitemap. <a> e non <Link>: la pagina spagnola cambia lingua
+              al documento, meglio un caricamento completo. Scritto nella
+              lingua di arrivo, come su /es/. */}
+          {esSlug && (
+            <a
+              href={esUrl(esSlug)}
+              hrefLang="es"
+              lang="es"
+              className="absolute top-5 right-4 sm:right-6 z-20 text-xs text-white/70 hover:text-[#00CBDB] transition-colors"
+            >
+              🇪🇸 Versión en español
+            </a>
+          )}
+
           {/* Hero image */}
           {post.image && (
             <div className="relative w-full h-[40vh] sm:h-[55vh] bg-[#111]">
@@ -223,20 +240,6 @@ export default async function PostPage({
                 <span className="text-[#777] truncate max-w-[180px]">{post.title}</span>
               </nav>
 
-              {/* Versione tradotta: link visibile, oltre all'hreflang, perché
-                  senza link interni Google trova la pagina solo dalla sitemap.
-                  <a> e non <Link>: la pagina spagnola cambia lingua al
-                  documento, meglio un caricamento completo. */}
-              {esSlug && (
-                <a
-                  href={esUrl(esSlug)}
-                  hrefLang="es"
-                  lang="es"
-                  className="inline-block mb-4 ml-2 text-[11px] text-[#999] hover:text-[#00CBDB] transition-colors"
-                >
-                  🇪🇸 Leer en español
-                </a>
-              )}
 
               {/* Categoria */}
               {post.category && (
