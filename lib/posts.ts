@@ -4,6 +4,11 @@ import matter from "gray-matter";
 
 const POSTS_DIR = path.join(process.cwd(), "content/blog");
 
+// Articoli in spagnolo: cartella separata, così non entrano mai nell'elenco
+// del blog italiano, nei correlati né nella sua sitemap. Vedi
+// references/regole_sito_multilingua.md (regola 11).
+export const ES_POSTS_DIR = path.join(process.cwd(), "content/es");
+
 export type FaqItem = { question: string; answer: string };
 
 export type Post = {
@@ -22,9 +27,9 @@ export type Post = {
 
 export type PostMeta = Omit<Post, "content" | "toc" | "faq">;
 
-function getFiles(): string[] {
-  if (!fs.existsSync(POSTS_DIR)) return [];
-  return fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".mdx"));
+function getFiles(dir: string): string[] {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).filter((f) => f.endsWith(".mdx"));
 }
 
 function isPublished(data: Record<string, unknown>): boolean {
@@ -56,18 +61,18 @@ export function extractToc(content: string): { id: string; text: string }[] {
     const text = m[1].replace(/\*\*/g, "").replace(/[_`]/g, "").trim();
     const id = text
       .toLowerCase()
-      .replace(/[^a-z0-9\s-àèéìòùáíóú]/g, "")
+      .replace(/[^a-z0-9\s-àèéìòùáíóúñü]/g, "")
       .replace(/\s+/g, "-")
       .replace(/-+/g, "-");
     return { id, text };
   });
 }
 
-export function getAllPosts(): PostMeta[] {
-  return getFiles()
+export function getAllPosts(dir: string = POSTS_DIR): PostMeta[] {
+  return getFiles(dir)
     .map((file) => {
       const slug = file.replace(/\.mdx$/, "");
-      const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf-8");
+      const raw = fs.readFileSync(path.join(dir, file), "utf-8");
       const { data, content } = matter(raw);
       return {
         slug,
@@ -84,12 +89,12 @@ export function getAllPosts(): PostMeta[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-export function getAllSlugs(): string[] {
-  return getAllPosts().map((p) => p.slug);
+export function getAllSlugs(dir: string = POSTS_DIR): string[] {
+  return getAllPosts(dir).map((p) => p.slug);
 }
 
-export function getPostBySlug(slug: string): Post | null {
-  const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
+export function getPostBySlug(slug: string, dir: string = POSTS_DIR): Post | null {
+  const filePath = path.join(dir, `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
@@ -110,9 +115,10 @@ export function getPostBySlug(slug: string): Post | null {
 }
 
 /** Estrae coppie domanda/risposta dalla sezione FAQ dell'articolo.
- *  Cerca un H2 contenente "FAQ" o "Domande Frequenti", poi raccoglie ### titolo + paragrafo. */
+ *  Cerca un H2 contenente "FAQ", "Domande Frequenti" o (articoli spagnoli)
+ *  "Preguntas frecuentes", poi raccoglie ### titolo + paragrafo. */
 export function extractFaq(content: string): FaqItem[] {
-  const faqMatch = content.match(/^## .*(FAQ|Domande Frequenti).*/im);
+  const faqMatch = content.match(/^## .*(FAQ|Domande Frequenti|Preguntas frecuentes).*/im);
   if (!faqMatch || faqMatch.index === undefined) return [];
   const faqSection = content.slice(faqMatch.index);
   const items: FaqItem[] = [];

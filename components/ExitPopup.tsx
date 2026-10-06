@@ -21,6 +21,8 @@ export default function ExitPopup() {
     const ESCLUSE = [
       "/club", "/links", "/coaching", "/piani-coaching", "/questionario-acquisto",
       "/start-coaching", "/quiz", "/checkout", "/grazie", "/login", "/auth",
+      // Pagine in spagnolo: il popup è in italiano e propone il quiz italiano.
+      "/es/",
     ];
     if (ESCLUSE.some((p) => path.startsWith(p))) return;
 

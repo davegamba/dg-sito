@@ -51,6 +51,11 @@ function loadTracking() {
 
 const STANDALONE_PAGES = ["/links"];
 
+// Pagine in spagnolo: il banner e la privacy sono in italiano, e un visitatore
+// deve capire cosa accetta. Senza banner non c'è consenso, quindi lì non parte
+// nessun tracciamento (salvo chi aveva già accettato sul sito italiano).
+const NO_BANNER_PREFIXES = ["/es/"];
+
 // Il consenso vive in localStorage, che sul server non esiste. useSyncExternalStore
 // legge il valore reale al primo render client e "" durante l'SSR, senza il
 // setState-dentro-effect che causava un render a cascata (e il lampo del banner).
@@ -90,7 +95,11 @@ export default function CookieBanner() {
 
   // Il banner si vede solo se non c'è ancora una scelta e non siamo su una
   // pagina standalone (/links, che è un funnel a sé e non traccia).
-  const visible = !scelto && consent === "" && !STANDALONE_PAGES.includes(pathname);
+  const visible =
+    !scelto &&
+    consent === "" &&
+    !STANDALONE_PAGES.includes(pathname) &&
+    !NO_BANNER_PREFIXES.some((p) => pathname.startsWith(p));
 
   if (!visible) return null;
 

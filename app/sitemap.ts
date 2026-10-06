@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/lib/posts";
+import { ES_POSTS_DIR, getAllPosts } from "@/lib/posts";
 import { MetadataRoute } from "next";
 import { BASE_URL } from "@/lib/site";
 
@@ -22,5 +22,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...STATIC_PAGES, ...posts];
+  // Articoli spagnoli. L'hreflang sta nei <link> delle pagine, non qui:
+  // un solo metodo, per non rischiare due versioni in contraddizione.
+  const esPosts = getAllPosts(ES_POSTS_DIR).map((post) => ({
+    url: `${BASE_URL}/es/${post.slug}`,
+    lastModified: post.date ? new Date(post.date) : new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  return [...STATIC_PAGES, ...posts, ...esPosts];
 }

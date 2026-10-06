@@ -1,4 +1,18 @@
 import type { NextConfig } from "next";
+import fs from "fs";
+import path from "path";
+
+// Articoli spagnoli veri (content/es/*.mdx). Vanno esclusi dal redirect dei
+// vecchi URL Podia /es/... qui sotto: i redirect girano PRIMA delle pagine, e
+// senza questa esclusione /es/<slug> finirebbe sulla home.
+const ES_SLUGS = (() => {
+  const dir = path.join(process.cwd(), "content/es");
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).filter((f) => f.endsWith(".mdx")).map((f) => f.replace(/\.mdx$/, ""));
+})();
+const ES_REDIRECT_SOURCE = ES_SLUGS.length
+  ? `/es/:path((?!(?:${ES_SLUGS.join("|")})$).*)`
+  : "/es/:path*";
 
 const nextConfig: NextConfig = {
   async headers() {
@@ -129,11 +143,12 @@ const nextConfig: NextConfig = {
       // Endpoint di sistema Podia ancora indicizzati
       { source: "/posts/:id*", destination: "/blog", permanent: true },
       { source: "/registration/new", destination: "/", permanent: true },
-      // Locale EN/ES mai esistite nel nuovo sito → homepage
+      // Locale EN/ES di Podia, mai esistite nel nuovo sito → homepage.
+      // Eccezione: gli articoli spagnoli di content/es (test dal 06/10/2026).
       { source: "/en", destination: "/", permanent: true },
       { source: "/en/:path*", destination: "/", permanent: true },
       { source: "/es", destination: "/", permanent: true },
-      { source: "/es/:path*", destination: "/", permanent: true },
+      { source: ES_REDIRECT_SOURCE, destination: "/", permanent: true },
     ];
   },
   images: {

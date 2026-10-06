@@ -17,6 +17,7 @@ import { ClubCtaMid } from "@/components/ClubCtaMid";
 import { CalcCtaMid } from "@/components/CalcCtaMid";
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/site";
+import { esSlugFor, esUrl, languageAlternates } from "@/lib/translations";
 
 // H2 tutti scuri e in grassetto (colore/peso da .mdx-content h2 in globals.css)
 // Eccezione: "Riferimenti Scientifici" → h3 scuro con emoji 🔬
@@ -26,7 +27,7 @@ import { BASE_URL } from "@/lib/site";
 function slugifyHeading(text: string): string {
   return text
     .toLowerCase()
-    .replace(/[^a-z0-9\s-àèéìòùáíóú]/g, "")
+    .replace(/[^a-z0-9\s-àèéìòùáíóúñü]/g, "")
     .replace(/\s+/g, "-")
     .replace(/-+/g, "-");
 }
@@ -82,10 +83,15 @@ export async function generateMetadata({
       ? post.image
       : `${BASE_URL}${post.image}`
     : undefined;
+  // hreflang solo sugli articoli che hanno una versione tradotta
+  const esSlug = esSlugFor(slug);
   return {
     title: `${post.title} — Dave Gamba`,
     description: post.excerpt.slice(0, 155),
-    alternates: { canonical: pageUrl },
+    alternates: {
+      canonical: pageUrl,
+      ...(esSlug ? { languages: languageAlternates({ it: slug, es: esSlug }) } : {}),
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt.slice(0, 155),
@@ -108,6 +114,7 @@ export default async function PostPage({
   if (!post) notFound();
 
   const related = getRelatedPosts(slug, post.category);
+  const esSlug = esSlugFor(slug);
   const { succo, body } = splitContent(post.content);
   const pageUrl = `${BASE_URL}/blog/${slug}`;
   const titleEncoded = encodeURIComponent(post.title);
@@ -215,6 +222,21 @@ export default async function PostPage({
                 <span className="text-[#444]">›</span>
                 <span className="text-[#777] truncate max-w-[180px]">{post.title}</span>
               </nav>
+
+              {/* Versione tradotta: link visibile, oltre all'hreflang, perché
+                  senza link interni Google trova la pagina solo dalla sitemap.
+                  <a> e non <Link>: la pagina spagnola cambia lingua al
+                  documento, meglio un caricamento completo. */}
+              {esSlug && (
+                <a
+                  href={esUrl(esSlug)}
+                  hrefLang="es"
+                  lang="es"
+                  className="inline-block mb-4 ml-2 text-[11px] text-[#999] hover:text-[#00CBDB] transition-colors"
+                >
+                  🇪🇸 Leer en español
+                </a>
+              )}
 
               {/* Categoria */}
               {post.category && (
