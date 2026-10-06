@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     description:
       "Primo personal trainer online italiano. Fondatore del Metodo Breve-Intenso-Mirato. Oltre 3.000 clienti trasformati in 15+ anni.",
     url: "https://www.davegamba.com/autore/dave-gamba",
+    // Ripetuti: l'openGraph della pagina sostituisce quello del layout radice.
+    siteName: "Dave Gamba",
+    locale: "it_IT",
     type: "profile",
     images: [
       {

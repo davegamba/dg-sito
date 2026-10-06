@@ -96,6 +96,11 @@ export async function generateMetadata({
       title: post.title,
       description: post.excerpt.slice(0, 155),
       url: pageUrl,
+      // Un openGraph nella pagina sostituisce per intero quello del layout
+      // radice: senza ripeterli qui, locale e siteName sparivano.
+      siteName: "Dave Gamba",
+      locale: "it_IT",
+      ...(esSlug ? { alternateLocale: ["es_ES"] } : {}),
       type: "article",
       publishedTime: new Date(post.date).toISOString(),
       authors: ["Dave Gamba"],
