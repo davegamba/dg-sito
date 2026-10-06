@@ -35,8 +35,9 @@ function slugifyHeading(text: string): string {
 function CustomH2({ children }: { children: ReactNode }) {
   const raw = typeof children === "string" ? children : "";
   if (raw.trim().toLowerCase().includes("riferimenti")) {
+    // Resta un H2 per l'indice: senza id la voce "Riferimenti" del menu non portava da nessuna parte.
     return (
-      <h3 style={{ fontSize: "1.1rem", color: "#14181a", fontWeight: 700, borderTop: "1px solid #e8e0d4", paddingTop: "1.5rem", marginTop: "2.5rem", marginBottom: "0.75rem" }}>
+      <h3 id={slugifyHeading(raw.replace(/\*\*/g, "").replace(/[_`]/g, "").trim())} style={{ scrollMarginTop: "5rem", fontSize: "1.1rem", color: "#14181a", fontWeight: 700, borderTop: "1px solid #e8e0d4", paddingTop: "1.5rem", marginTop: "2.5rem", marginBottom: "0.75rem" }}>
         🔬 {children}
       </h3>
     );
@@ -63,7 +64,36 @@ function ScrollableTable({ children }: { children: ReactNode }) {
   );
 }
 
-const mdxComponents = { h2: CustomH2, table: ScrollableTable, ArticleCta, ClubCta, QuizCta, QuizCtaMid, ClubCtaMid, CalcCtaMid };
+// Gli H3 (le domande dentro le sezioni e nelle FAQ) ricevono un'ancora come gli H2,
+// così Google può portare chi cerca direttamente alla risposta. Non entrano
+// nell'indice: quello resta solo H2.
+// Gli id devono essere unici nella pagina: molte domande compaiono sia come
+// sotto-sezione sia nelle FAQ. La prima tiene l'id pulito, le successive
+// prendono -2, -3. Gli id degli H2 sono riservati in partenza, così i link
+// dell'indice non cambiano mai. Il registro vive dentro la singola pagina:
+// un Set a livello di modulo si porterebbe dietro gli id tra un articolo e l'altro.
+function makeMdxComponents(reservedIds: string[]) {
+  const used = new Set(reservedIds);
+
+  function CustomH3({ children }: { children: ReactNode }) {
+    const raw = typeof children === "string" ? children : "";
+    const cleaned = raw.replace(/\*\*/g, "").replace(/[_`]/g, "").trim();
+    let id = cleaned ? slugifyHeading(cleaned) : undefined;
+    if (id) {
+      const base = id;
+      let n = 2;
+      while (used.has(id)) id = `${base}-${n++}`;
+      used.add(id);
+    }
+    return (
+      <h3 id={id} style={{ scrollMarginTop: "5rem" }}>
+        {children}
+      </h3>
+    );
+  }
+
+  return { h2: CustomH2, h3: CustomH3, table: ScrollableTable, ArticleCta, ClubCta, QuizCta, QuizCtaMid, ClubCtaMid, CalcCtaMid };
+}
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -121,6 +151,7 @@ export default async function PostPage({
   const related = getRelatedPosts(slug, post.category);
   const esSlug = esSlugFor(slug);
   const { succo, body } = splitContent(post.content);
+  const mdxComponents = makeMdxComponents(post.toc.map((t) => t.id));
   const pageUrl = `${BASE_URL}/blog/${slug}`;
   const titleEncoded = encodeURIComponent(post.title);
   const absoluteImage = post.image
