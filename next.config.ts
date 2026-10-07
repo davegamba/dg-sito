@@ -148,13 +148,13 @@ const nextConfig: NextConfig = {
       { source: "/blog/segreto-longevita-forza", destination: "/blog/sarcopenia-perdita-massa-muscolare", permanent: true },
       { source: "/blog/stile-di-dieta-dimagrimento", destination: "/blog/deficit-calorico", permanent: true },
       // Senza equivalente nel nuovo blog → indice blog
-      { source: "/blog/dolore-articolazioni-cannabis", destination: "/blog", permanent: true },
+      { source: "/blog/dolore-articolazioni-cannabis", destination: "/blog/dolori-articolari", permanent: true },
       { source: "/blog/attacchi-fame-ciclo-preciclo", destination: "/blog", permanent: true },
       { source: "/blog/danni-benefici-cipolla", destination: "/blog", permanent: true },
       { source: "/blog/esercizi-kegel-benefici", destination: "/blog", permanent: true },
       { source: "/blog/allenamento-in-gravidanza", destination: "/blog", permanent: true },
       { source: "/blog/cibo-intelligenza-mirtilli", destination: "/blog", permanent: true },
-      { source: "/blog/maldischiena-gambe", destination: "/blog", permanent: true },
+      { source: "/blog/maldischiena-gambe", destination: "/blog/mal-di-schiena", permanent: true },
       { source: "/blog/olio-oliva-salute-longevita", destination: "/blog", permanent: true },
       { source: "/blog/calze-maniche-compressione-recupero", destination: "/blog", permanent: true },
       // Endpoint di sistema Podia ancora indicizzati
