@@ -89,6 +89,13 @@ const nextConfig: NextConfig = {
       { source: "/stare-seduti-fa-male", destination: "/blog/stare-seduti-fa-male", permanent: true },
       // Backlink reale da grey-panthers.it (maggio 2025) verso l'indirizzo dei tempi di WordPress: era un 404
       { source: "/esercizi-spalle-allenamento", destination: "/blog/esercizi-spalle", permanent: true },
+      // Altri backlink reali verso indirizzi del vecchio sito, trovati nell'export Link di Search Console (07/10/2026)
+      { source: "/allenamento-aerobico-dimagrire", destination: "/blog/cardio-o-pesi-per-dimagrire", permanent: true }, // dcomedieta.com
+      { source: "/ripetute-scatti-benefici", destination: "/blog/allenarsi-20-minuti", permanent: true }, // progettofelice.wordpress.com
+      { source: "/tag/lattosio", destination: "/blog/latte-fa-male", permanent: true }, // thetalentbay.com
+      { source: "/glutine", destination: "/blog", permanent: true }, // thetalentbay.com — nessun articolo equivalente
+      { source: "/malattie-autoimmuni", destination: "/blog", permanent: true }, // thetalentbay.com — nessun articolo equivalente
+      { source: "/solo-membri", destination: "https://club.davegamba.com/entra-nel-club", permanent: true }, // dcomedieta.com, area membri del vecchio sito
       { source: "/latte-fa-male", destination: "/blog/latte-fa-male", permanent: true },
       { source: "/allenamento-a-casa", destination: "/blog/allenamento-a-casa", permanent: true },
       { source: "/cardio-per-dimagrire", destination: "/blog/cardio-o-pesi-per-dimagrire", permanent: true },
