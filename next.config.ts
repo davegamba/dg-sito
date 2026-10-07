@@ -87,6 +87,8 @@ const nextConfig: NextConfig = {
       { source: "/blog/stretching-benefici-mobilita", destination: "/blog/stretching-benefici", permanent: true },
       // Redirect da vecchi URL flat Podia (senza prefisso /blog) → struttura attuale
       { source: "/stare-seduti-fa-male", destination: "/blog/stare-seduti-fa-male", permanent: true },
+      // Backlink reale da grey-panthers.it (maggio 2025) verso l'indirizzo dei tempi di WordPress: era un 404
+      { source: "/esercizi-spalle-allenamento", destination: "/blog/esercizi-spalle", permanent: true },
       { source: "/latte-fa-male", destination: "/blog/latte-fa-male", permanent: true },
       { source: "/allenamento-a-casa", destination: "/blog/allenamento-a-casa", permanent: true },
       { source: "/cardio-per-dimagrire", destination: "/blog/cardio-o-pesi-per-dimagrire", permanent: true },
