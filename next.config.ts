@@ -202,7 +202,7 @@ const nextConfig: NextConfig = {
       { source: "/sgarro-dieta-guida", destination: "/blog/deficit-calorico", permanent: true },
       { source: "/5-errori-sgarro", destination: "/blog/deficit-calorico", permanent: true },
       { source: "/3-trucchi-abbuffate-natale", destination: "/blog/deficit-calorico", permanent: true },
-      { source: "/blog/riposo-serie", destination: "/blog/quante-volte-allenarsi-a-settimana", permanent: true },
+      { source: "/blog/riposo-serie", destination: "/blog/recupero-tra-le-serie", permanent: true },
       { source: "/blog/a-che-ora-allenarsi", destination: "/blog/quante-volte-allenarsi-a-settimana", permanent: true },
       { source: "/blog/allenamento-antidepressivo", destination: "/blog/stato-di-flow", permanent: true },
       { source: "/blog/benefici-allenamento-cervello-neuroscienza", destination: "/blog/stato-di-flow", permanent: true },
