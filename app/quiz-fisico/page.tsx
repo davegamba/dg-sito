@@ -619,6 +619,10 @@ export default function QuizFisicoPage() {
                   {submitting ? "Un momento..." : "Mostrami il mio profilo →"}
                 </button>
               </form>
+              <p style={{ fontSize: 12, color: "#7a7a74", lineHeight: 1.6, marginTop: 14 }}>
+                Uso nome ed email per mostrarti il profilo e mandarti i miei contenuti via email. Ti disiscrivi quando vuoi. Dettagli nella{" "}
+                <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#9a9a94", textDecoration: "underline" }}>Privacy Policy</a>.
+              </p>
               <div style={{ display: "flex", justifyContent: "center", gap: 20, marginTop: 16, flexWrap: "wrap" }}>
                 {["🔒 100% Privato", "🚫 Zero Spam", "⚡ Accesso Immediato"].map(t => (
                   <span key={t} style={{ fontSize: 12, color: "#5a5a55", display: "flex", alignItems: "center", gap: 5 }}>{t}</span>
