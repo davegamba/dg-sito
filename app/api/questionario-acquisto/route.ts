@@ -49,6 +49,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "Nome e email obbligatori" }, { status: 400 });
   }
 
+  // Consenso esplicito ai dati sulla salute (art. 9 GDPR): la casella e' obbligatoria nel form.
+  if (formData.get("consenso_salute") !== "on") {
+    return NextResponse.json({ ok: false, error: "Serve il consenso al trattamento dei dati per procedere" }, { status: 400 });
+  }
+
   // `f` = valore grezzo, va nel DB. `fe` = valore escapato, va nell'HTML della
   // mail. Tenerli separati evita sia l'injection sia di salvare "&amp;" a DB.
   const f = (key: string) => (formData.get(key) as string | null) ?? "";

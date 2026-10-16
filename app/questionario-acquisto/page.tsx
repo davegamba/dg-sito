@@ -241,6 +241,11 @@ export default function QuestionarioAcquisto() {
                   </div>
                 </div>
 
+                <label style={{ display: "flex", gap: 10, alignItems: "flex-start", marginTop: 28, fontSize: 13, lineHeight: 1.5, color: "var(--gray-4)", cursor: "pointer" }}>
+                  <input type="checkbox" name="consenso_salute" required style={{ marginTop: 3, flexShrink: 0 }} />
+                  <span>Acconsento al trattamento dei dati sulla salute e della foto che inserisco, per costruire il mio piano. Ho letto la <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "underline" }}>Privacy Policy</a>.</span>
+                </label>
+
                 <p style={{ fontSize: 13, color: "var(--gray-6)", textAlign: "center", marginTop: 24 }}>
                   Dopo l&apos;invio riceverai una conferma via email. Dave preparerà il tuo piano entro <strong style={{ color: "var(--gray-4)" }}>2–3 giorni lavorativi</strong>.
                 </p>
