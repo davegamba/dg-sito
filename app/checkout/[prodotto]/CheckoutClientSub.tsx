@@ -14,8 +14,7 @@ import type { Offerta } from "@/lib/offerte";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 const STYLES = `
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&display=swap');
-  .sub-body { font-family: 'DM Sans', sans-serif; background: #F5EEE1; min-height: 100vh; color: #1B1A18; }
+  .sub-body { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; background: #F5EEE1; min-height: 100vh; color: #1B1A18; }
   .sub-wrap { max-width: 520px; margin: 0 auto; padding: 40px 20px 80px; }
   .sub-header { text-align: center; margin-bottom: 32px; }
   .sub-logo { font-size: 20px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1B1A18; }
@@ -39,7 +38,7 @@ const STYLES = `
   .sub-feat-list li::before { content: "✓"; color: #00C8DB; font-weight: 800; flex-shrink: 0; }
   .sub-email-card { background: #fff; border-radius: 16px; border: 1px solid #E6DCC9; padding: 20px; margin-bottom: 14px; }
   .sub-email-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9E9284; margin-bottom: 10px; }
-  .sub-email-input { width: 100%; box-sizing: border-box; padding: 14px 16px; border: 1.5px solid #E6DCC9; border-radius: 12px; font-size: 15px; font-family: 'DM Sans', sans-serif; color: #1B1A18; background: #FAFAF8; outline: none; transition: border-color 0.15s; }
+  .sub-email-input { width: 100%; box-sizing: border-box; padding: 14px 16px; border: 1.5px solid #E6DCC9; border-radius: 12px; font-size: 15px; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; color: #1B1A18; background: #FAFAF8; outline: none; transition: border-color 0.15s; }
   .sub-email-input:focus { border-color: #00C8DB; }
   .sub-payment-card { background: #fff; border-radius: 16px; border: 1px solid #E6DCC9; padding: 20px; margin-bottom: 14px; }
   .sub-payment-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9E9284; margin-bottom: 14px; }
@@ -182,7 +181,7 @@ export default function CheckoutClientSub({ offerta }: { offerta: Offerta }) {
               <li>Scheda nuova progressiva ogni mese</li>
               <li>Corsi focus (addominali, glutei, schiena…)</li>
               <li>Piani alimentari di Dave</li>
-              <li>Meno di mezz'ora al giorno, 3 volte a settimana</li>
+              <li>Meno di mezz&apos;ora al giorno, 3 volte a settimana</li>
               <li>Accesso immediato da qualsiasi dispositivo</li>
             </ul>
           </div>

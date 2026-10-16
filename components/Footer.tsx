@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
+import CookiePrefsLink from "@/components/CookiePrefsLink";
 
 const IconInstagram = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -147,6 +148,7 @@ export default function Footer() {
             <Link href="/termini" className="text-[#555555] text-xs hover:text-[#888888] transition-colors">
               Termini
             </Link>
+            <CookiePrefsLink className="text-[#555555] text-xs hover:text-[#888888] transition-colors cursor-pointer" />
             <Link href="/termini#immagini-ia" className="text-[#555555] text-xs hover:text-[#888888] transition-colors">
               Immagini generate con IA
             </Link>

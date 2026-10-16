@@ -3,7 +3,7 @@
 import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CONSENT_KEY, CONSENT_EVENT, GA_ID, PIXEL_ID } from "@/lib/consent";
+import { CONSENT_KEY, CONSENT_AT_KEY, CONSENT_EVENT, CONSENT_REOPEN_EVENT, GA_ID, PIXEL_ID, readConsent } from "@/lib/consent";
 
 let caricato = false;
 
@@ -71,10 +71,18 @@ function subscribe(cb: () => void) {
 export default function CookieBanner() {
   const pathname = usePathname();
   const [scelto, setScelto] = useState(false);
+  // Riaperto dal link "Preferenze cookie" nel footer
+  const [riaperto, setRiaperto] = useState(false);
+
+  useEffect(() => {
+    const open = () => setRiaperto(true);
+    window.addEventListener(CONSENT_REOPEN_EVENT, open);
+    return () => window.removeEventListener(CONSENT_REOPEN_EVENT, open);
+  }, []);
 
   const consent = useSyncExternalStore(
     subscribe,
-    () => localStorage.getItem(CONSENT_KEY) ?? "",
+    () => readConsent(),
     () => "" // snapshot server: nessun consenso noto
   );
 
@@ -84,22 +92,30 @@ export default function CookieBanner() {
 
   function accept() {
     localStorage.setItem(CONSENT_KEY, "accepted");
+    localStorage.setItem(CONSENT_AT_KEY, String(Date.now()));
     setScelto(true);
+    setRiaperto(false);
     loadTracking();
   }
 
   function reject() {
+    const eraAccettato = consent === "accepted";
     localStorage.setItem(CONSENT_KEY, "rejected");
+    localStorage.setItem(CONSENT_AT_KEY, String(Date.now()));
     setScelto(true);
+    setRiaperto(false);
+    // Gli script gia' caricati restano in memoria finche' la pagina non si ricarica
+    if (eraAccettato) window.location.reload();
   }
 
   // Il banner si vede solo se non c'è ancora una scelta e non siamo su una
   // pagina standalone (/links, che è un funnel a sé e non traccia).
   const visible =
-    !scelto &&
-    consent === "" &&
-    !STANDALONE_PAGES.includes(pathname) &&
-    !NO_BANNER_PREFIXES.some((p) => pathname.startsWith(p));
+    riaperto ||
+    (!scelto &&
+      consent === "" &&
+      !STANDALONE_PAGES.includes(pathname) &&
+      !NO_BANNER_PREFIXES.some((p) => pathname.startsWith(p)));
 
   if (!visible) return null;
 
@@ -132,11 +148,12 @@ export default function CookieBanner() {
         <button
           onClick={reject}
           style={{
-            background: "transparent",
-            border: "1px solid rgba(255,255,255,0.2)",
-            color: "#888",
+            background: "#00CBDB",
+            border: "none",
+            color: "#000",
+            fontWeight: 700,
             fontSize: "12px",
-            padding: "7px 16px",
+            padding: "7px 20px",
             borderRadius: "8px",
             cursor: "pointer",
           }}

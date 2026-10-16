@@ -202,7 +202,7 @@ const sections = [
             </li>
           ))}
         </ul>
-        <p className="mt-3">Se scegli &quot;Solo essenziali&quot;, o non scegli, Google Analytics e Meta Pixel non vengono caricati. Per cambiare la tua scelta puoi cancellare i dati del sito dal tuo browser: il banner si ripresenterà alla visita successiva.</p>
+        <p className="mt-3">Se scegli &quot;Solo essenziali&quot;, o non scegli, Google Analytics e Meta Pixel non vengono caricati. Puoi cambiare o revocare la scelta in qualsiasi momento dal link &quot;Preferenze cookie&quot; in fondo a ogni pagina. La scelta viene riproposta dopo circa 6 mesi.</p>
         <p className="mt-3">Puoi anche disabilitare i cookie analitici nelle impostazioni del tuo browser o tramite <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-[#00CBDB] hover:underline">Google Analytics Opt-out</a>.</p>
       </>
     ),

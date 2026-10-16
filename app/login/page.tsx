@@ -33,7 +33,6 @@ export default function LoginPage() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
         @font-face {
           font-family: 'Flatline';
           src: url('/fonts/Flatline-Regular.otf') format('opentype');
@@ -57,7 +56,7 @@ export default function LoginPage() {
           align-items: center;
           justify-content: center;
           padding: 24px;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           position: relative;
           overflow: hidden;
         }
@@ -113,7 +112,7 @@ export default function LoginPage() {
         }
 
         .lg-title {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           font-size: 20px;
           font-weight: 600;
           color: #0A1A20;
@@ -143,7 +142,7 @@ export default function LoginPage() {
           border-radius: 12px;
           color: #0A1A20;
           font-size: 16px;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           outline: none;
           margin-bottom: 20px;
           transition: border-color 0.2s;
@@ -160,7 +159,7 @@ export default function LoginPage() {
           color: #fff;
           font-size: 15px;
           font-weight: 700;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           letter-spacing: 0.04em;
           cursor: pointer;
           transition: all 0.2s;
