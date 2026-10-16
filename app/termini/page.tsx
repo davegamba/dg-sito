@@ -55,8 +55,8 @@ const sections = [
       <>
         <p>Se acquisti come consumatore hai <strong className="text-[#F0F0F0]">14 giorni di tempo per recedere</strong> dal contratto, senza dover spiegare il motivo (artt. 52 e seguenti del D.Lgs. 206/2005, Codice del Consumo). Per farlo scrivi a <a href="mailto:info@davegamba.com" className="text-[#00CBDB] hover:underline">info@davegamba.com</a>.</p>
         <p><strong className="text-[#F0F0F0]">Contenuti digitali.</strong> Il recesso non si applica ai contenuti digitali non forniti su supporto materiale se l&apos;esecuzione è iniziata con il tuo consenso espresso e la tua accettazione di perdere il diritto di recesso, dati prima dell&apos;acquisto (art. 59, lett. o, Codice del Consumo). In mancanza di questo consenso e di questa accettazione, il diritto di recesso resta valido.</p>
-        <p><strong className="text-[#F0F0F0]">Abbonamenti e servizi.</strong> Se chiedi di iniziare subito il servizio (per esempio il Club o il coaching) e poi recedi entro 14 giorni, ti rimborsiamo quanto hai pagato, meno la parte di servizio già ricevuta fino al momento del recesso, calcolata in proporzione (art. 57 Codice del Consumo).</p>
-        <p>Il rimborso avviene entro 14 giorni dal recesso, con lo stesso metodo di pagamento usato per l&apos;acquisto.</p>
+        <p><strong className="text-[#F0F0F0]">DG Athletic Club (abbonamento).</strong> Il Club ha un periodo di prova gratuita, pensato per farti valutare il servizio prima del primo pagamento: se disdici durante la prova non paghi nulla. Dopo il primo pagamento non rimborsiamo i periodi già pagati: puoi disdire in qualsiasi momento e mantieni l&apos;accesso fino alla fine del periodo in corso. Restano ferme le tutele che la legge ti riconosce come consumatore.</p>
+        <p><strong className="text-[#F0F0F0]">Altri servizi (coaching).</strong> Se chiedi di iniziare subito il servizio e poi recedi entro 14 giorni, ti rimborsiamo quanto hai pagato meno la parte già ricevuta, calcolata in proporzione (art. 57 Codice del Consumo). Il rimborso avviene entro 14 giorni dal recesso, con lo stesso metodo di pagamento usato per l&apos;acquisto.</p>
       </>
     ),
   },
