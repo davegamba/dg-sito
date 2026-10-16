@@ -26,7 +26,7 @@ const sections = [
         <ul className="space-y-2">
           {[
             "Programmi di allenamento digitali — contenuti video e PDF accessibili online dopo l'acquisto",
-            "Sfide a tempo determinato — programmi con durata definita (es. 21 giorni)",
+            "DG Athletic Club — abbonamento mensile o annuale all'app con allenamenti, video e strumenti",
             "Coaching personale — percorsi individuali concordati direttamente con il cliente",
             "Contenuti gratuiti — quiz, calcolatori e guide accessibili previa registrazione",
           ].map((item, i) => (
@@ -36,32 +36,36 @@ const sections = [
             </li>
           ))}
         </ul>
-        <p className="mt-3">Tutti i prodotti digitali sono erogati esclusivamente in formato online. Non sono previste consegne fisiche.</p>
+        <p className="mt-3">I programmi a durata definita valgono per il periodo indicato nella pagina di vendita. Tutti i prodotti digitali sono erogati esclusivamente in formato online. Non sono previste consegne fisiche.</p>
       </>
     ),
   },
   {
     title: "3. Prezzi e pagamenti",
     content: (
-      <p>I prezzi indicati sono in euro (€) e comprensivi di IVA ove applicabile. I pagamenti vengono elaborati in modo sicuro tramite <strong className="text-[#F0F0F0]">Stripe</strong>. Accettiamo carte di credito/debito e altri metodi disponibili su Stripe. L&apos;accesso al prodotto acquistato viene attivato immediatamente dopo la conferma del pagamento.</p>
+      <>
+        <p>I prezzi indicati sono in euro (€) e comprensivi di IVA ove applicabile. I pagamenti vengono elaborati in modo sicuro tramite <strong className="text-[#F0F0F0]">Stripe</strong>. Accettiamo carte di credito/debito e altri metodi disponibili su Stripe. L&apos;accesso al prodotto acquistato viene attivato immediatamente dopo la conferma del pagamento.</p>
+        <p><strong className="text-[#F0F0F0]">Abbonamenti.</strong> Il DG Athletic Club si rinnova automaticamente alla scadenza di ogni periodo (mensile o annuale), al prezzo indicato al momento dell&apos;acquisto, finché non lo disdici. Puoi disdire in qualsiasi momento scrivendo a <a href="mailto:info@davegamba.com" className="text-[#00CBDB] hover:underline">info@davegamba.com</a>. La disdetta ferma i rinnovi successivi e mantieni l&apos;accesso fino alla fine del periodo già pagato.</p>
+      </>
     ),
   },
   {
     title: "4. Diritto di recesso",
     content: (
       <>
-        <p>Ai sensi dell&apos;art. 59 del D.Lgs. 206/2005 (Codice del Consumo), <strong className="text-[#F0F0F0]">il diritto di recesso non si applica</strong> ai contenuti digitali la cui esecuzione è iniziata con il consenso espresso del consumatore prima della scadenza del periodo di recesso.</p>
-        <p>Accedendo al contenuto digitale acquistato, l&apos;utente acconsente espressamente all&apos;esecuzione immediata del contratto e riconosce la perdita del diritto di recesso.</p>
-        <p>Per i servizi di coaching personale non ancora avviati, è possibile richiedere il rimborso entro 14 giorni dall&apos;acquisto scrivendo a <a href="mailto:info@davegamba.com" className="text-[#00CBDB] hover:underline">info@davegamba.com</a>.</p>
+        <p>Se acquisti come consumatore hai <strong className="text-[#F0F0F0]">14 giorni di tempo per recedere</strong> dal contratto, senza dover spiegare il motivo (artt. 52 e seguenti del D.Lgs. 206/2005, Codice del Consumo). Per farlo scrivi a <a href="mailto:info@davegamba.com" className="text-[#00CBDB] hover:underline">info@davegamba.com</a>.</p>
+        <p><strong className="text-[#F0F0F0]">Contenuti digitali.</strong> Il recesso non si applica ai contenuti digitali non forniti su supporto materiale se l&apos;esecuzione è iniziata con il tuo consenso espresso e la tua accettazione di perdere il diritto di recesso, dati prima dell&apos;acquisto (art. 59, lett. o, Codice del Consumo). In mancanza di questo consenso e di questa accettazione, il diritto di recesso resta valido.</p>
+        <p><strong className="text-[#F0F0F0]">Abbonamenti e servizi.</strong> Se chiedi di iniziare subito il servizio (per esempio il Club o il coaching) e poi recedi entro 14 giorni, ti rimborsiamo quanto hai pagato, meno la parte di servizio già ricevuta fino al momento del recesso, calcolata in proporzione (art. 57 Codice del Consumo).</p>
+        <p>Il rimborso avviene entro 14 giorni dal recesso, con lo stesso metodo di pagamento usato per l&apos;acquisto.</p>
       </>
     ),
   },
   {
-    title: "5. Rimborsi",
+    title: "5. Rimborsi oltre il recesso",
     content: (
       <>
-        <p>Valutiamo ogni richiesta di rimborso caso per caso. Se ritieni che il prodotto non corrisponda a quanto descritto, scrivici entro <strong className="text-[#F0F0F0]">7 giorni dall&apos;acquisto</strong> a <a href="mailto:info@davegamba.com" className="text-[#00CBDB] hover:underline">info@davegamba.com</a> con la tua motivazione.</p>
-        <p>Non vengono effettuati rimborsi dopo l&apos;accesso ai contenuti o per motivazioni quali mancanza di tempo o cambio di intenzioni.</p>
+        <p>Oltre ai diritti di legge, valutiamo ogni richiesta di rimborso caso per caso. Se ritieni che il prodotto non corrisponda a quanto descritto, scrivici entro <strong className="text-[#F0F0F0]">7 giorni dall&apos;acquisto</strong> a <a href="mailto:info@davegamba.com" className="text-[#00CBDB] hover:underline">info@davegamba.com</a> con la tua motivazione.</p>
+        <p>Non vengono effettuati rimborsi volontari dopo l&apos;accesso ai contenuti per motivazioni come mancanza di tempo o cambio di intenzioni, fermi restando i tuoi diritti di legge.</p>
       </>
     ),
   },
@@ -79,7 +83,8 @@ const sections = [
     content: (
       <>
         <p>I programmi di allenamento e i consigli nutrizionali forniti sono di natura generale e non sostituiscono il parere di un medico o specialista. Prima di iniziare qualsiasi programma di allenamento è consigliabile consultare un medico, specialmente in presenza di condizioni di salute particolari.</p>
-        <p>Dave Gamba non è responsabile per danni fisici derivanti dall&apos;uso improprio dei programmi acquistati.</p>
+        <p>Dave Gamba non è responsabile per danni fisici derivanti dall&apos;uso improprio dei programmi acquistati. Nessuna clausola di questi Termini esclude o limita i diritti che la legge ti riconosce come consumatore.</p>
+        <p><strong className="text-[#F0F0F0]">Garanzia legale.</strong> Per i contenuti e i servizi digitali acquistati come consumatore vale la garanzia legale di conformità (artt. 135-octies e seguenti del Codice del Consumo). Se un contenuto non funziona o non corrisponde a quanto descritto, scrivi a <a href="mailto:info@davegamba.com" className="text-[#00CBDB] hover:underline">info@davegamba.com</a>.</p>
       </>
     ),
   },
@@ -137,7 +142,7 @@ export default function TerminiPage() {
             Documento legale
           </p>
           <h1 className="font-serif text-4xl md:text-5xl text-[#F0F0F0] mb-3">Termini e Condizioni</h1>
-          <p className="text-[#444444] text-sm mb-16">Ultimo aggiornamento: maggio 2026</p>
+          <p className="text-[#444444] text-sm mb-16">Ultimo aggiornamento: 16 ottobre 2026</p>
 
           {/* Sections */}
           <div className="space-y-6">
