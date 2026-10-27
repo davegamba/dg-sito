@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { isSpanishPath } from "@/lib/translations";
 
 const STANDALONE_PAGES = ["/links"];
-// "/es/": pagine in spagnolo, la barra porta a pagine italiane.
-const STANDALONE_PREFIXES = ["/club", "/login", "/auth", "/quiz", "/es/"];
+const STANDALONE_PREFIXES = ["/club", "/login", "/auth", "/quiz"];
 
 const WA_NUMBER = "393520433445";
 const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Ciao Dave, ho visto il tuo sito e volevo scriverti 👋")}`;
@@ -67,6 +67,8 @@ export default function MobileBottomBar() {
   const pathname = usePathname();
   if (STANDALONE_PAGES.includes(pathname)) return null;
   if (STANDALONE_PREFIXES.some((p) => pathname.startsWith(p))) return null;
+  // Pagine in spagnolo: la barra porta a pagine italiane.
+  if (isSpanishPath(pathname)) return null;
 
   const isActive = (href: string) => {
     if (href.startsWith("http")) return false;

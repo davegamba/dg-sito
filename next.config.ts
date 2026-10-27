@@ -296,7 +296,7 @@ const nextConfig: NextConfig = {
       // Eccezione: gli articoli spagnoli di content/es (test dal 06/10/2026).
       { source: "/en", destination: "/", permanent: true },
       { source: "/en/:path*", destination: "/", permanent: true },
-      { source: "/es", destination: "/", permanent: true },
+      // "/es" non va più alla home: dal 27/10/2026 è l'indice degli articoli spagnoli.
       { source: ES_REDIRECT_SOURCE, destination: "/", permanent: true },
     ];
   },

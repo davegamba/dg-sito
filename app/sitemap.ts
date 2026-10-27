@@ -31,5 +31,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...STATIC_PAGES, ...posts, ...esPosts];
+  const esIndex = esPosts.length
+    ? [{ url: `${BASE_URL}/es`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.7 }]
+    : [];
+
+  return [...STATIC_PAGES, ...posts, ...esIndex, ...esPosts];
 }

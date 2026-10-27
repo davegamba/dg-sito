@@ -3,6 +3,7 @@
 import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { isSpanishPath } from "@/lib/translations";
 import { CONSENT_KEY, CONSENT_AT_KEY, CONSENT_EVENT, CONSENT_REOPEN_EVENT, GA_ID, PIXEL_ID, readConsent } from "@/lib/consent";
 
 let caricato = false;
@@ -51,10 +52,6 @@ function loadTracking() {
 
 const STANDALONE_PAGES = ["/links"];
 
-// Pagine in spagnolo: il banner e la privacy sono in italiano, e un visitatore
-// deve capire cosa accetta. Senza banner non c'è consenso, quindi lì non parte
-// nessun tracciamento (salvo chi aveva già accettato sul sito italiano).
-const NO_BANNER_PREFIXES = ["/es/"];
 
 // Il consenso vive in localStorage, che sul server non esiste. useSyncExternalStore
 // legge il valore reale al primo render client e "" durante l'SSR, senza il
@@ -115,7 +112,11 @@ export default function CookieBanner() {
     (!scelto &&
       consent === "" &&
       !STANDALONE_PAGES.includes(pathname) &&
-      !NO_BANNER_PREFIXES.some((p) => pathname.startsWith(p)));
+      // Pagine in spagnolo: il banner e la privacy sono in italiano, e un
+      // visitatore deve capire cosa accetta. Senza banner non c'è consenso,
+      // quindi lì non parte nessun tracciamento (salvo chi aveva già
+      // accettato sul sito italiano).
+      !isSpanishPath(pathname));
 
   if (!visible) return null;
 

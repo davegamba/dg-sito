@@ -8,7 +8,13 @@ import { BASE_URL } from "@/lib/site";
 // Regole complete: references/regole_sito_multilingua.md (sezione C).
 const PAIRS: { it: string; es: string }[] = [
   { it: "yogurt-greco-proprieta-valori", es: "yogur-griego-beneficios-contraindicaciones" },
+  { it: "burro-chiarificato-proprieta", es: "ghee-mantequilla-clarificada" },
 ];
+
+/** true per /es e /es/<qualsiasi>: le pagine in spagnolo. Non usare
+ *  startsWith("/es"), che prenderebbe anche un futuro /esercizi. */
+export const isSpanishPath = (pathname: string) =>
+  pathname === "/es" || pathname.startsWith("/es/");
 
 export const itUrl = (slug: string) => `${BASE_URL}/blog/${slug}`;
 export const esUrl = (slug: string) => `${BASE_URL}/es/${slug}`;

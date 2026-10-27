@@ -6,7 +6,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import ReadingProgress from "@/components/ReadingProgress";
 import HtmlLang from "@/components/HtmlLang";
-import { ES_POSTS_DIR, getAllSlugs, getPostBySlug, splitContent } from "@/lib/posts";
+import { EsFooter, EsHeader, EsPostCard } from "@/components/es/EsChrome";
+import { ES_POSTS_DIR, getAllPosts, getAllSlugs, getPostBySlug, splitContent } from "@/lib/posts";
 import { BASE_URL } from "@/lib/site";
 import { esUrl, itSlugFor, itUrl, languageAlternates } from "@/lib/translations";
 
@@ -131,6 +132,8 @@ export default async function EsPostPage({
   const { succo, body } = splitContent(post.content);
   const pageUrl = esUrl(slug);
   const itSlug = itSlugFor(slug);
+  // Altri articoli in spagnolo: unici link interni ammessi (mai verso l'italiano)
+  const others = getAllPosts(ES_POSTS_DIR).filter((p) => p.slug !== slug).slice(0, 3);
   const titleEncoded = encodeURIComponent(post.title);
   const image = absoluteImageFor(post.image);
   const dateIso = new Date(post.date).toISOString();
@@ -201,31 +204,7 @@ export default async function EsPostPage({
         />
       )}
 
-      {/* Testata minima: il menu del sito porta tutto a pagine italiane */}
-      <header className="absolute top-0 inset-x-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <span
-            className="font-serif text-xl font-bold select-none"
-            style={{
-              background: "linear-gradient(90deg, #00E5F5 0%, #00CBDB 40%, #00AECF 68%, #0077CC 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Dave Gamba
-          </span>
-          {itSlug && (
-            <a
-              href={itUrl(itSlug)}
-              hrefLang="it"
-              lang="it"
-              className="text-xs text-white/70 hover:text-[#00CBDB] transition-colors"
-            >
-              🇮🇹 Versione in italiano
-            </a>
-          )}
-        </div>
-      </header>
+      <EsHeader itHref={itSlug ? itUrl(itSlug) : null} />
 
       <main className="flex-1 bg-black">
         <article>
@@ -319,19 +298,25 @@ export default async function EsPostPage({
                 </a>
               </div>
             </div>
+            {others.length > 0 && (
+              <div className="pb-16">
+                <div className="max-w-2xl mx-auto px-4 sm:px-6">
+                  <div className="bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] rounded-[24px] p-6 sm:p-8">
+                    <h2 className="text-xl font-bold text-white mb-6">Más artículos</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      {others.map((p) => (
+                        <EsPostCard key={p.slug} post={p} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </article>
       </main>
 
-      {/* Pie mínimo. La política de privacidad existe solo en italiano: se dice. */}
-      <footer className="border-t border-[#1e1e2e] bg-[#0b0d1a]">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 text-xs text-[#888] flex flex-wrap gap-x-4 gap-y-2 justify-between">
-          <span>© Dave Gamba · davegamba.com</span>
-          <a href="/privacy" lang="it" hrefLang="it" className="hover:text-[#00CBDB] transition-colors">
-            Privacidad (en italiano)
-          </a>
-        </div>
-      </footer>
+      <EsFooter />
     </>
   );
 }

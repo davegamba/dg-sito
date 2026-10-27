@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { X, ArrowRight } from "lucide-react";
+import { isSpanishPath } from "@/lib/translations";
 
 const STORAGE_KEY = "dg_exit_popup_seen";
 const COOLDOWN_DAYS = 7;
@@ -21,10 +22,10 @@ export default function ExitPopup() {
     const ESCLUSE = [
       "/club", "/links", "/coaching", "/piani-coaching", "/questionario-acquisto",
       "/start-coaching", "/quiz", "/checkout", "/grazie", "/login", "/auth",
-      // Pagine in spagnolo: il popup è in italiano e propone il quiz italiano.
-      "/es/",
     ];
     if (ESCLUSE.some((p) => path.startsWith(p))) return;
+    // Pagine in spagnolo: il popup è in italiano e propone il quiz italiano.
+    if (isSpanishPath(path)) return;
 
     // Forza popup se ?popup=1 nell'URL
     const force = new URLSearchParams(window.location.search).get("popup") === "1";
