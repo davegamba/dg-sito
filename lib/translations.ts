@@ -9,6 +9,7 @@ import { BASE_URL } from "@/lib/site";
 const PAIRS: { it: string; es: string }[] = [
   { it: "yogurt-greco-proprieta-valori", es: "yogur-griego-beneficios-contraindicaciones" },
   { it: "burro-chiarificato-proprieta", es: "ghee-mantequilla-clarificada" },
+  { it: "creatina-a-cosa-serve", es: "creatina-para-que-sirve" },
 ];
 
 /** true per /es e /es/<qualsiasi>: le pagine in spagnolo. Non usare
