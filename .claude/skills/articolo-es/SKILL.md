@@ -68,8 +68,15 @@ Per ogni studio:
 5. Se uno studio ha limiti dichiarati (qualità bassa, pochi partecipanti,
    studio sugli animali), **dillo nel testo**. È uno dei tratti di Dave.
 6. Valori nutrizionali: USDA FoodData Central
-   (`https://api.nal.usda.gov/fdc/v1/food/<fdcId>?api_key=DEMO_KEY`).
-7. Se trovi un errore anche nell'articolo **italiano**, correggilo pure lì
+   (`https://api.nal.usda.gov/fdc/v1/food/<fdcId>?api_key=${USDA_API_KEY:-DEMO_KEY}`).
+   La `DEMO_KEY` è condivisa e spesso risponde **429** (limite superato, visto
+   nella prova del 27/10/2026). Se succede: aspetta un minuto e riprova una
+   volta; se ancora 429, usa i valori dell'articolo italiano **solo** se sono
+   già citati come USDA lì, altrimenti scrivi valori arrotondati come
+   "aproximado, mira la etiqueta" e segnalalo nella mail.
+7. Google dal cloud non restituisce risultati (pagina che chiede JavaScript):
+   le domande vanno prese dalla coda, raccolte in anticipo dal Mac.
+8. Se trovi un errore anche nell'articolo **italiano**, correggilo pure lì
    (stessa verifica) e scrivilo nella mail.
 
 ## 3. Scrittura: adattamento, non traduzione
