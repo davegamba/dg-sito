@@ -104,7 +104,9 @@ for (const doi of dois) {
     const m = (await r.json()).message;
     console.log(`  ${doi}\n    → ${m.title?.[0]} | ${m.author?.[0]?.family ?? "?"} ${m.issued?.["date-parts"]?.[0]?.[0] ?? ""}`);
   } catch (e) {
-    warn(`DOI non verificabile ora (rete): ${doi}`);
+    // Senza verifica delle fonti non si pubblica: era un avviso, ma nel cloud
+    // la rete bloccata faceva passare l'articolo con zero DOI controllati.
+    fail(`DOI non verificabile (rete non raggiungibile): ${doi}`);
   }
   await new Promise((r) => setTimeout(r, 400));
 }
