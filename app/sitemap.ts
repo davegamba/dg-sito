@@ -1,4 +1,5 @@
-import { ES_POSTS_DIR, getAllPosts } from "@/lib/posts";
+import { getAllPosts, postsDirFor } from "@/lib/posts";
+import { LOCALES } from "@/lib/locales";
 import { MetadataRoute } from "next";
 import { BASE_URL } from "@/lib/site";
 
@@ -22,18 +23,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // Articoli spagnoli. L'hreflang sta nei <link> delle pagine, non qui:
+  // Articoli in lingua straniera (es, pt): indice + articoli, solo se la
+  // cartella ne ha. L'hreflang sta nei <link> delle pagine, non qui:
   // un solo metodo, per non rischiare due versioni in contraddizione.
-  const esPosts = getAllPosts(ES_POSTS_DIR).map((post) => ({
-    url: `${BASE_URL}/es/${post.slug}`,
-    lastModified: post.date ? new Date(post.date) : new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
+  const foreign = Object.values(LOCALES).flatMap((locale) => {
+    const items = getAllPosts(postsDirFor(locale)).map((post) => ({
+      url: `${BASE_URL}${locale.base}/${post.slug}`,
+      lastModified: post.date ? new Date(post.date) : new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }));
+    return items.length
+      ? [{ url: `${BASE_URL}${locale.base}`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.7 }, ...items]
+      : [];
+  });
 
-  const esIndex = esPosts.length
-    ? [{ url: `${BASE_URL}/es`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.7 }]
-    : [];
-
-  return [...STATIC_PAGES, ...posts, ...esIndex, ...esPosts];
+  return [...STATIC_PAGES, ...posts, ...foreign];
 }

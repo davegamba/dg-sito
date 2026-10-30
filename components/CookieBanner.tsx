@@ -3,7 +3,7 @@
 import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { isSpanishPath } from "@/lib/translations";
+import { isForeignPath } from "@/lib/translations";
 import { CONSENT_KEY, CONSENT_AT_KEY, CONSENT_EVENT, CONSENT_REOPEN_EVENT, GA_ID, PIXEL_ID, readConsent } from "@/lib/consent";
 
 let caricato = false;
@@ -116,7 +116,7 @@ export default function CookieBanner() {
       // visitatore deve capire cosa accetta. Senza banner non c'è consenso,
       // quindi lì non parte nessun tracciamento (salvo chi aveva già
       // accettato sul sito italiano).
-      !isSpanishPath(pathname));
+      !isForeignPath(pathname));
 
   if (!visible) return null;
 

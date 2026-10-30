@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { slugifyHeading } from "@/lib/locales";
 
 const POSTS_DIR = path.join(process.cwd(), "content/blog");
 
@@ -8,6 +9,13 @@ const POSTS_DIR = path.join(process.cwd(), "content/blog");
 // del blog italiano, nei correlati né nella sua sitemap. Vedi
 // references/regole_sito_multilingua.md (regola 11).
 export const ES_POSTS_DIR = path.join(process.cwd(), "content/es");
+export const PT_POSTS_DIR = path.join(process.cwd(), "content/pt");
+
+/** Cartella dei .mdx di una lingua straniera (vedi lib/locales.ts) */
+// Mappa fissa e non path.join(process.cwd(), variabile): un percorso dinamico
+// fa tracciare alla build l'intero progetto (avviso "NFT list").
+const FOREIGN_DIRS: Record<string, string> = { "content/es": ES_POSTS_DIR, "content/pt": PT_POSTS_DIR };
+export const postsDirFor = (locale: { contentDir: string }) => FOREIGN_DIRS[locale.contentDir];
 
 export type FaqItem = { question: string; answer: string };
 
@@ -23,6 +31,8 @@ export type Post = {
   readingTime: number;
   toc: { id: string; text: string }[];
   faq: FaqItem[];
+  /** Solo articoli in lingua straniera: il layout radice ha keywords in italiano */
+  keywords?: string[];
 };
 
 export type PostMeta = Omit<Post, "content" | "toc" | "faq">;
@@ -59,12 +69,7 @@ export function extractToc(content: string): { id: string; text: string }[] {
   const matches = stripped.matchAll(/^## (.+)$/gm);
   return Array.from(matches).map((m) => {
     const text = m[1].replace(/\*\*/g, "").replace(/[_`]/g, "").trim();
-    const id = text
-      .toLowerCase()
-      .replace(/[^a-z0-9\s-àèéìòùáíóúñü]/g, "")
-      .replace(/\s+/g, "-")
-      .replace(/-+/g, "-");
-    return { id, text };
+    return { id: slugifyHeading(text), text };
   });
 }
 
@@ -111,14 +116,15 @@ export function getPostBySlug(slug: string, dir: string = POSTS_DIR): Post | nul
     readingTime: calcReadingTime(content),
     toc: extractToc(content),
     faq: extractFaq(content),
+    ...(Array.isArray(data.keywords) ? { keywords: data.keywords.map(String) } : {}),
   };
 }
 
 /** Estrae coppie domanda/risposta dalla sezione FAQ dell'articolo.
  *  Cerca un H2 contenente "FAQ", "Domande Frequenti" o (articoli spagnoli)
- *  "Preguntas frecuentes", poi raccoglie ### titolo + paragrafo. */
+ *  "Preguntas frecuentes" / "Perguntas frequentes", poi raccoglie ### titolo + paragrafo. */
 export function extractFaq(content: string): FaqItem[] {
-  const faqMatch = content.match(/^## .*(FAQ|Domande Frequenti|Preguntas frecuentes).*/im);
+  const faqMatch = content.match(/^## .*(FAQ|Domande Frequenti|Preguntas frecuentes|Perguntas frequentes).*/im);
   if (!faqMatch || faqMatch.index === undefined) return [];
   const faqSection = content.slice(faqMatch.index);
   const items: FaqItem[] = [];

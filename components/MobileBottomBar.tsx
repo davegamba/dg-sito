@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { isSpanishPath } from "@/lib/translations";
+import { isForeignPath } from "@/lib/translations";
 
 const STANDALONE_PAGES = ["/links"];
 const STANDALONE_PREFIXES = ["/club", "/login", "/auth", "/quiz"];
@@ -68,7 +68,7 @@ export default function MobileBottomBar() {
   if (STANDALONE_PAGES.includes(pathname)) return null;
   if (STANDALONE_PREFIXES.some((p) => pathname.startsWith(p))) return null;
   // Pagine in spagnolo: la barra porta a pagine italiane.
-  if (isSpanishPath(pathname)) return null;
+  if (isForeignPath(pathname)) return null;
 
   const isActive = (href: string) => {
     if (href.startsWith("http")) return false;

@@ -17,20 +17,16 @@ import { ClubCtaMid } from "@/components/ClubCtaMid";
 import { CalcCtaMid } from "@/components/CalcCtaMid";
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/site";
-import { esSlugFor, esUrl, languageAlternates } from "@/lib/translations";
+import { groupFor, languageAlternates } from "@/lib/translations";
+import { LOCALES, slugifyHeading, type LangCode } from "@/lib/locales";
+import { LangSwitch, otherVersions } from "@/components/lang/LangChrome";
 
 // H2 tutti scuri e in grassetto (colore/peso da .mdx-content h2 in globals.css)
 // Eccezione: "Riferimenti Scientifici" → h3 scuro con emoji 🔬
 // Stessa regola di lib/posts.ts extractToc(): il testo del titolo diventa
 // l'id dell'ancora. Devono restare identici o il click dall'indice non trova
 // il bersaglio — è esattamente il bug che stiamo correggendo qui.
-function slugifyHeading(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-àèéìòùáíóúñü]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-");
-}
+// slugifyHeading sta in lib/locales.ts
 
 function CustomH2({ children }: { children: ReactNode }) {
   const raw = typeof children === "string" ? children : "";
@@ -114,13 +110,13 @@ export async function generateMetadata({
       : `${BASE_URL}${post.image}`
     : undefined;
   // hreflang solo sugli articoli che hanno una versione tradotta
-  const esSlug = esSlugFor(slug);
+  const group = groupFor("it", slug);
   return {
     title: `${post.title} — Dave Gamba`,
     description: post.excerpt.slice(0, 155),
     alternates: {
       canonical: pageUrl,
-      ...(esSlug ? { languages: languageAlternates({ it: slug, es: esSlug }) } : {}),
+      ...(group ? { languages: languageAlternates(group) } : {}),
     },
     openGraph: {
       title: post.title,
@@ -130,7 +126,7 @@ export async function generateMetadata({
       // radice: senza ripeterli qui, locale e siteName sparivano.
       siteName: "Dave Gamba",
       locale: "it_IT",
-      ...(esSlug ? { alternateLocale: ["es_ES"] } : {}),
+      ...(group ? { alternateLocale: (Object.keys(LOCALES) as LangCode[]).filter((l) => group[l]).map((l) => LOCALES[l].ogLocale) } : {}),
       type: "article",
       publishedTime: new Date(post.date).toISOString(),
       authors: ["Dave Gamba"],
@@ -149,7 +145,7 @@ export default async function PostPage({
   if (!post) notFound();
 
   const related = getRelatedPosts(slug, post.category);
-  const esSlug = esSlugFor(slug);
+  const group = groupFor("it", slug);
   const { succo, body } = splitContent(post.content);
   const mdxComponents = makeMdxComponents(post.toc.map((t) => t.id));
   const pageUrl = `${BASE_URL}/blog/${slug}`;
@@ -241,19 +237,12 @@ export default async function PostPage({
           {/* Versione tradotta: in alto a destra, stessa posizione del link
               di ritorno sulla pagina spagnola. Link visibile oltre
               all'hreflang: senza link interni Google trova la pagina solo
-              dalla sitemap. <a> e non <Link>: la pagina spagnola cambia lingua
-              al documento, meglio un caricamento completo. Scritto nella
-              lingua di arrivo, come su /es/. */}
-          {esSlug && (
-            <a
-              href={esUrl(esSlug)}
-              hrefLang="es"
-              lang="es"
-              className="absolute top-5 right-4 sm:right-6 z-20 text-xs text-white/70 hover:text-[#00CBDB] transition-colors"
-            >
-              🇪🇸 Versión en español
-            </a>
-          )}
+              dalla sitemap. Una voce per lingua, scritta nella lingua di
+              arrivo (components/lang/LangChrome.tsx). */}
+          <LangSwitch
+            links={otherVersions(group, "it")}
+            className="absolute top-5 right-4 sm:right-6 z-20"
+          />
 
           {/* Hero image */}
           {post.image && (

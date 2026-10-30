@@ -34,6 +34,10 @@ const nextConfig: NextConfig = {
         source: "/es/:path*",
         headers: [{ key: "Content-Language", value: "es" }],
       },
+      // Pagine in portoghese (Brasile). "/pt" e "/pt/..." esatti: il redirect
+      // /pt-virtuale → /coaching non deve ricevere questa intestazione.
+      { source: "/pt", headers: [{ key: "Content-Language", value: "pt-BR" }] },
+      { source: "/pt/:path*", headers: [{ key: "Content-Language", value: "pt-BR" }] },
     ];
   },
   async redirects() {
