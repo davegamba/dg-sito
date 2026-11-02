@@ -17,6 +17,7 @@ const PAIRS: TranslationGroup[] = [
   // La versione spagnola unisce colazione-proteica e pancake-proteici (ricetta 3):
   // un URL ha una sola gemella per lingua, l'hreflang va sulla colazione.
   { it: "colazione-proteica-cosa-mangiare", es: "desayuno-proteico-tortitas-avena" },
+  { it: "omega-3", es: "omega-3-beneficios-efectos-secundarios" },
 ];
 
 /** true per /es e /es/<qualsiasi>: le pagine in spagnolo. Non usare

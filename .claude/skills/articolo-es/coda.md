@@ -24,7 +24,8 @@ temi medici come Ozempic.
 ---
 
 ## 1. omega-3
-- **Stato:** da fare
+- **Stato:** fatto 2026-11-02
+- **URL:** https://www.davegamba.com/es/omega-3-beneficios-efectos-secundarios
 - **Italiano:** `content/blog/omega-3.mdx`
 - **Slug spagnolo proposto:** `omega-3-beneficios-efectos-secundarios`
 - **Titolo indicativo:** Omega 3: beneficios, efectos secundarios y cuánto tomar
