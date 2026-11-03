@@ -54,13 +54,27 @@ temi medici come Ozempic.
 - **Stato:** da fare
 - **Italiano:** `content/blog/latte-fa-male.mdx`
 - **Slug spagnolo proposto:** `la-leche-es-mala`
-- **Domande Google:** da raccogliere
+- **Titolo indicativo:** ¿La leche es mala? Entera, desnatada y lo que dicen los estudios
+- **Domande Google** (raccolte il 03/11/2026, 5 ricerche):
+  - la leche es mala: ¿Cuáles son los síntomas de tomar leche en mal estado? · ¿Cuál es la leche más sana para consumir? · ¿Qué pasa si consumo 1 litro de leche al día? · ¿Es bueno tomar leche si tengo reflujo?
+  - leche de vaca beneficios: ¿Cuáles son los beneficios de la leche natural de vaca? · ¿Qué tipo de leche puedo tomar si tengo el colesterol alto? · ¿Cuál es la leche más sana para consumir? · ¿Es mejor tomar leche por la mañana o por la noche?
+  - la leche engorda: ¿Tomar leche light engorda? · ¿Es mejor la leche desnatada o entera? · ¿Qué es mejor, tomar leche en la mañana o en la noche? · ¿Cuál es la diferencia entre la leche light y la semidescremada?
+  - leche entera o desnatada: ¿Qué diferencia hay entre la leche descremada? · ¿Es mejor tomar leche por la mañana o por la noche? · ¿Qué es semidesnatada? · ¿Cuál es la leche más sana para consumir?
+  - leche y cancer: ¿Pueden los pacientes con cáncer tomar leche?
+- **Note:** "leche en mal estado" è fuori tema (sicurezza alimentare). Le domande sul cancro al seno comparse sotto "leche y cancer" sono fuori tema e mediche: niente sezione, al massimo una riga con rimando al medico. Termini: "desnatada" (Spagna) = "descremada" (America Latina), "semidesnatada" = "semidescremada": spiegalo una volta. Colesterolo: link a `/es/ghee-mantequilla-clarificada` e `/es/cuantos-huevos-al-dia` solo se pubblicati e coerenti; lattosio: link a `/es/yogur-griego-beneficios-contraindicaciones`.
 
 ## 4. proteine-fanno-male-ai-reni
 - **Stato:** da fare
 - **Italiano:** `content/blog/proteine-fanno-male-ai-reni.mdx`
 - **Slug spagnolo proposto:** `proteinas-danan-rinones`
-- **Domande Google:** da raccogliere
+- **Titolo indicativo:** ¿Las proteínas dañan los riñones? Cuánta proteína al día es segura
+- **Domande Google** (raccolte il 03/11/2026, 5 ricerche):
+  - las proteinas dañan los riñones: ¿Cuáles son los síntomas del exceso de proteínas? · ¿Qué es lo que más perjudica a los riñones? · ¿Qué debe desayunar un paciente con insuficiencia renal? · ¿Cuál es la mejor proteína para un diabético?
+  - cuanta proteina al dia: ¿Cuántos gramos de proteína debo tomar si peso 70 kilos? · ¿Cuál es la fórmula para calcular el consumo de proteína? · ¿Qué pasa si como 100 gramos de proteína al día? · ¿Cuáles son los 7 alimentos con más proteínas?
+  - exceso de proteinas sintomas: ¿Cuánta proteína debo consumir si peso 60 kilos? · ¿Qué pasa si como 200 gramos de proteína al día? · ¿Cuáles son los síntomas de tener proteínas bajas en sangre?
+  - proteina en polvo riñones: ¿Quién no debe tomar proteína whey? · ¿Cuántos huevos hacen 30 g de proteína? · ¿Qué pasa cuando hay proteína en los riñones?
+  - dieta alta en proteinas riesgos: ¿Qué problemas de salud puede causar el exceso de proteínas? · ¿Para qué se utilizan los batidos de proteínas?
+- **Note:** "paciente con insuficiencia renal", "proteína para un diabético", "proteína en los riñones" (proteinuria) e "proteínas bajas en sangre" sono domande mediche: nessuna sezione, solo il rimando al medico/nefrologo dove serve. Le domande "si peso 60/70 kilos" vanno risolte con un esempio di calcolo generale (g per kg), MAI come prescrizione al lettore. Link: `/es/desayuno-proteico-tortitas-avena` (30 g a colazione), `/es/creatina-para-que-sirve` (creatina e riñones: è un tema diverso, link solo se coerente).
 
 ## 5. integratori-collagene
 - **Stato:** da fare
