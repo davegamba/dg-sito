@@ -6,8 +6,8 @@ description: Scrive e pubblica il prossimo articolo del blog spagnolo di davegam
 # Articolo spagnolo della settimana
 
 Pubblica **un** articolo in spagnolo su `www.davegamba.com/es/<slug>`, adattato
-da un articolo italiano di `content/blog/`. Gira in automatico ogni lunedì
-(routine cloud) e Dave non approva prima: **i controlli di questa skill sono
+da un articolo italiano di `content/blog/`. Gira in automatico ogni lunedì e giovedì
+(routine cloud, dal 03/11/2026) e Dave non approva prima: **i controlli di questa skill sono
 l'unica rete di sicurezza**. Nel dubbio, non pubblicare e scrivilo nella mail.
 
 Questa skill è autosufficiente: nel cloud c'è solo questo repository, non la
@@ -187,7 +187,7 @@ git pull --rebase && git push
 
 Aggiorna `coda.md` **nello stesso commit**: stato `fatto <data>`, URL. Se hai
 saltato una voce: stato `saltato <data>: motivo`, e passa alla successiva solo
-la settimana dopo (un articolo a settimana, mai due).
+all'uscita seguente (un articolo per esecuzione, mai due).
 
 Vercel pubblica da solo dopo il push. **Non aspettare il deploy, niente
 controlli ripetuti.**

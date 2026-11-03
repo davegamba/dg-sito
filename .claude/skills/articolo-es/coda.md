@@ -1,6 +1,6 @@
 # Coda degli articoli spagnoli
 
-Uno a settimana, dall'alto in basso. La skill `articolo-es` prende la prima
+Due a settimana (lunedì e giovedì, dal 03/11/2026), dall'alto in basso. La skill `articolo-es` prende la prima
 voce `da fare` e la aggiorna nello stesso commit dell'articolo.
 
 Stati: `da fare` · `fatto AAAA-MM-GG` · `saltato AAAA-MM-GG: motivo`.
@@ -80,25 +80,37 @@ temi medici come Ozempic.
 - **Stato:** da fare
 - **Italiano:** `content/blog/integratori-collagene.mdx`
 - **Slug spagnolo proposto:** `colageno-para-que-sirve`
-- **Domande Google:** da raccogliere
+- **Domande Google** (raccolte il 03/11/2026, 2 ricerche):
+  - colageno para que sirve: ¿Qué tipo de colágeno es bueno para la artritis reumatoide? · ¿Cuál es la mejor vitamina para producir colágeno? · ¿Qué tipo de colágeno es el mejor? · ¿Qué dolores quita el colágeno?
+  - colageno efectos secundarios: ¿Qué efectos puede tener el colágeno? · ¿Qué colágeno es bueno para las personas con diabetes? · ¿Cuánto colágeno tomar al día?
+- **Note:** artritis reumatoide e diabete: nessuna promessa, rimando al medico. "La vitamina per produrre collagene" = vitamina C, solo se la fonte regge.
 
 ## 6. vitamina-d
 - **Stato:** da fare
 - **Italiano:** `content/blog/vitamina-d.mdx`
 - **Slug spagnolo proposto:** `vitamina-d-sintomas-deficit`
-- **Domande Google:** da raccogliere
+- **Domande Google** (raccolte il 03/11/2026, 2 ricerche):
+  - vitamina d sintomas falta: ¿Qué se siente cuando hay falta de vitamina D? · ¿Cuál es la dosis diaria recomendada de vitamina D para adultos? · ¿Qué hacer para subir la vitamina D?
+  - vitamina d suplemento cuanto tomar: ¿Cuántas veces debo tomar vitamina D? · ¿Cuál es el tratamiento para la deficiencia de vitamina D? · ¿Cuáles son los valores normales de vitamina D en las mujeres?
+- **Note:** scartate "vitamina D inyectable cuánto cuesta" (prezzi locali non verificabili) e "dosis en el embarazo" (prescrizione: solo rimando al medico). Dosi: valori di riferimento ufficiali, mai una dose al singolo lettore.
 
 ## 7. digiuno-intermittente
 - **Stato:** da fare
 - **Italiano:** `content/blog/digiuno-intermittente.mdx`
 - **Slug spagnolo proposto:** `ayuno-intermitente`
-- **Domande Google:** da raccogliere
+- **Domande Google** (raccolte il 03/11/2026, 2 ricerche):
+  - ayuno intermitente: ¿Cuántas horas se considera un ayuno intermitente? · ¿Es bueno el ayuno para bajar el colesterol? · ¿Cuántos kilos se bajan en un mes con el ayuno intermitente?
+  - ayuno intermitente 16/8 resultados: ¿Cuándo se empiezan a notar los beneficios del ayuno intermitente? · ¿Qué pasa si haces ayuno de 16 horas todos los días? · ¿Qué puedo comer en un menú semanal de ayuno intermitente del 16/8?
+- **Note:** "¿Es efectivo el ayuno de 72 horas para desintoxicar el cuerpo?" esce in tutte e due: va smontato in poche righe (il corpo non si "disintossica" col digiuno). Kili al mese: niente promesse, solo cosa dicono gli studi.
 
 ## 8. fibre-solubili-insolubili
 - **Stato:** da fare
 - **Italiano:** `content/blog/fibre-solubili-insolubili.mdx`
 - **Slug spagnolo proposto:** `fibra-soluble-insoluble`
-- **Domande Google:** da raccogliere
+- **Domande Google** (raccolte il 03/11/2026, 2 ricerche):
+  - fibra soluble e insoluble: ¿Cuáles son 10 alimentos ricos en fibra insoluble? · ¿Cómo saber si a mi cuerpo le falta fibra? · ¿Cuál es la mejor fibra para tomar? · ¿Qué es la fibra alimentaria?
+  - cuanta fibra al dia: ¿Cuántos gramos de fibra son recomendables al día? · ¿Cuáles son los síntomas del exceso de fibra? · ¿Cuál es la fruta con más fibra?
+- **Note:** i grammi di fibra delle tabelle da USDA (o BEDCA per la Spagna), verificati.
 
 ## 9. cortisolo-alto
 - **Stato:** da fare
