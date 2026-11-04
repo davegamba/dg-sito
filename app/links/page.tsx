@@ -81,6 +81,10 @@ export default function LinksPage() {
         .dot-tri{width:0;height:0;border-style:solid;border-width:4px 0 4px 7px;border-color:transparent transparent transparent #000;margin-left:1px;}
         .card-btn{display:block;margin:14px 16px 16px;background:linear-gradient(180deg,#1AD8E8 0%,#00CBDB 32%,#0072CE 100%);color:#fff;font-weight:700;font-size:0.9rem;letter-spacing:0.04em;text-transform:uppercase;text-align:center;padding:14px;border-radius:12px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,0.45);transition:filter 0.2s,transform 0.2s;}
         .card-btn:hover{filter:brightness(1.08);transform:translateY(-1px);}
+        @keyframes btnWiggle{0%,72%,100%{transform:translateX(0) rotate(0);}76%{transform:translateX(-3px) rotate(-1deg);}80%{transform:translateX(3px) rotate(1deg);}84%{transform:translateX(-3px) rotate(-1deg);}88%{transform:translateX(3px) rotate(1deg);}92%{transform:translateX(-1px) rotate(0);}}
+        .btn-wiggle{animation:btnWiggle 3.4s ease-in-out 1.2s infinite;}
+        .btn-wiggle:hover{animation:none;}
+        @media (prefers-reduced-motion:reduce){.btn-wiggle{animation:none;}}
       `}</style>
 
       <div className="links-page" style={{ position: "relative", zIndex: 1, paddingBottom: 60, fontFamily: "var(--font-dm-sans, 'DM Sans', sans-serif)" }}>
@@ -124,20 +128,6 @@ export default function LinksPage() {
         {/* CARDS */}
         <div style={{ padding: "28px 20px 0", background: "#080C0F", marginTop: -20, position: "relative", zIndex: 3 }}>
 
-          {/* Quiz Profilo Fisico — primo: cattura email, l'asset che serve al webinar di settembre */}
-          <a href="/quiz-fisico"
-            style={{ display: "flex", alignItems: "center", gap: 16, background: "linear-gradient(180deg,#1AD8E8 0%,#00CBDB 40%,#0089C7 100%)", borderRadius: 20, padding: "18px 20px", textDecoration: "none", marginBottom: 13, boxShadow: "0 10px 30px rgba(0,203,219,0.35), inset 0 1px 0 rgba(255,255,255,0.5)" }}>
-            <div style={{ flexShrink: 0, width: 72, height: 72, borderRadius: 14, overflow: "hidden", boxShadow: "0 2px 8px rgba(0,0,0,0.25)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/card-quiz-metabolico.jpg" alt="Quiz Profilo Fisico" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-            </div>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 700, fontSize: "1.4rem", color: "#06303D", letterSpacing: "0.02em", lineHeight: 1.1 }}>Quiz Profilo Fisico</div>
-              <div style={{ fontSize: "0.82rem", color: "#06303D", opacity: 0.85, marginTop: 4 }}>Scopri il tuo Profilo in 2 minuti · <strong>Gratuito</strong></div>
-            </div>
-            <span style={{ color: "#06303D", fontSize: "1.9rem", fontWeight: 700 }}>›</span>
-          </a>
-
           {/* DG Athletic Club */}
           <div className="card">
             <div className="card-top">
@@ -146,7 +136,7 @@ export default function LinksPage() {
                 <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg" alt="DG Athletic Club" style={{ objectPosition: "center top" }} />
               </div>
               <div className="card-info">
-                <span style={{ alignSelf: "flex-start", background: "#00CBDB", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Provalo ora a 30% di sconto</span>
+                <span style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Provalo ora gratis</span>
                 <div className="card-title">DG Athletic Club</div>
                 <div className="card-desc">Tutto ciò che serve per un fisico atletico, asciutto e scolpito. Schede progressive, meno di mezz&apos;ora al giorno.</div>
               </div>
@@ -156,7 +146,7 @@ export default function LinksPage() {
                 <div key={f} className="card-feature"><span className="dot"><span className="dot-tri" /></span>{f}</div>
               ))}
             </div>
-            <a href="https://club.davegamba.com/entra-nel-club" className="card-btn">Entra nel Club →</a>
+            <a href="https://club.davegamba.com/prova-gratis" className="card-btn btn-wiggle">Provalo gratis per 7 giorni →</a>
           </div>
 
           {/* Coaching Personale 1-1 — stessa struttura della card Club */}
