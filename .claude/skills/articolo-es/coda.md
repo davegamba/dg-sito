@@ -38,7 +38,8 @@ temi medici come Ozempic.
 - **Note:** "¿Qué órganos desinflama…?" e "i 10 beneficios" sono domande da smontare, non da assecondare. "¿Qué no se debe mezclar…?" tocca gli anticoagulanti: rimando al medico. Per il pesce azzurro, esempi spagnoli e latinoamericani (sardinas, caballa, boquerones, atún, salmón).
 
 ## 2. quante-uova-al-giorno
-- **Stato:** da fare
+- **Stato:** fatto 2026-11-05
+- **URL:** https://www.davegamba.com/es/cuantos-huevos-al-dia
 - **Italiano:** `content/blog/quante-uova-al-giorno.mdx`
 - **Slug spagnolo proposto:** `cuantos-huevos-al-dia`
 - **Titolo indicativo:** ¿Cuántos huevos al día se pueden comer? Colesterol y salud

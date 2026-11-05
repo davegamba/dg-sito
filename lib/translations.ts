@@ -18,6 +18,7 @@ const PAIRS: TranslationGroup[] = [
   // un URL ha una sola gemella per lingua, l'hreflang va sulla colazione.
   { it: "colazione-proteica-cosa-mangiare", es: "desayuno-proteico-tortitas-avena" },
   { it: "omega-3", es: "omega-3-beneficios-efectos-secundarios" },
+  { it: "quante-uova-al-giorno", es: "cuantos-huevos-al-dia" },
 ];
 
 /** true per /es e /es/<qualsiasi>: le pagine in spagnolo. Non usare
