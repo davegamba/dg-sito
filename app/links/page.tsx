@@ -120,18 +120,18 @@ export default function LinksPage() {
             />
           </div>
           <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "75%", background: "linear-gradient(to top, rgba(8,12,15,1) 0%, rgba(8,12,15,0.9) 35%, rgba(8,12,15,0.5) 65%, transparent 100%)", pointerEvents: "none" }} />
-          <div className="hero-content" style={{ position: "absolute", bottom: 24, left: 0, right: 0, zIndex: 2, padding: "0 20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <div className="hero-content" style={{ position: "absolute", bottom: 14, left: 0, right: 0, zIndex: 2, padding: "0 20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "2.2rem", lineHeight: 1, color: "#fff", letterSpacing: "0.02em", marginBottom: 4 }}>
               DAVE<span style={{ color: "#00CBDB" }}>GAMBA</span>
             </div>
             <div style={{ fontSize: "0.72rem", fontWeight: 300, color: "#fff", letterSpacing: "0.18em", textTransform: "uppercase", textAlign: "center", marginBottom: 14 }}>
-              Sistema Breve. Intenso. Mirato.<br />Per un fisico atletico, asciutto e scolpito.
+              Sistema Breve Intenso Mirato<br />Per un fisico atletico, asciutto e scolpito.
             </div>
             <div style={{ display: "flex", gap: 16 }}>
               {SOCIAL.map(({ href, label, svg }) => (
                 <a key={label} href={href} aria-label={label} className="social-icon"
-                  style={{ width: 38, height: 38, borderRadius: "50%", border: "1.5px solid rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.07)", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(255,255,255,0.7)", textDecoration: "none", transition: "all 0.2s" }}>
-                  <svg viewBox="0 0 24 24" style={{ width: 20, height: 20, fill: "currentColor" }}>{svg}</svg>
+                  style={{ width: 32, height: 32, borderRadius: "50%", border: "1.5px solid rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.07)", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(255,255,255,0.7)", textDecoration: "none", transition: "all 0.2s" }}>
+                  <svg viewBox="0 0 24 24" style={{ width: 17, height: 17, fill: "currentColor" }}>{svg}</svg>
                 </a>
               ))}
             </div>
