@@ -48,10 +48,15 @@ const YT_VIDEOS = [
   "oAxIWT0hK5U",
 ];
 
+// Sezione "Ultimi articoli dal Blog" nascosta per ora: rimettere true per riattivarla
+const SHOW_BLOG = false;
+
 export default function LinksPage() {
-  const articles = getAllPosts()
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 6);
+  const articles = SHOW_BLOG
+    ? getAllPosts()
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .slice(0, 6)
+    : [];
 
   return (
     <>
@@ -64,8 +69,11 @@ export default function LinksPage() {
         @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
         .hero-content{animation:fadeUp 0.7s ease 0.15s both;}
         .social-icon:hover{background:rgba(255,255,255,0.15)!important;border-color:rgba(255,255,255,0.6)!important;color:#fff!important;}
-        .link-card:hover{border-color:rgba(255,255,255,0.5);}
+        .card,.card a{-webkit-tap-highlight-color:transparent;}
+        .card:active,.card:focus-within{outline:none;}
         .yt-card:hover .yt-play{background:rgba(0,0,0,0.15)!important;}
+        .card-club{border:2.5px solid #00CBDB!important;}
+        .card-coaching{border:2.5px solid #F0C040!important;}
         .card{background:rgba(0,18,22,0.55);border:2.5px solid rgba(0,203,219,0.7);border-radius:20px;overflow:hidden;backdrop-filter:blur(20px) saturate(1.8);-webkit-backdrop-filter:blur(20px) saturate(1.8);box-shadow:0 8px 32px rgba(0,0,0,0.5);margin-bottom:13px;}
         .card-top{display:flex;gap:14px;padding:16px 16px 12px;}
         .card-img{flex-shrink:0;width:80px;height:80px;border-radius:12px;overflow:hidden;}
@@ -99,10 +107,10 @@ export default function LinksPage() {
         {/* HERO */}
         <div style={{ position: "relative", width: "100%", height: "52vh", maxHeight: 420, overflow: "hidden" }}>
           <Image
-            src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/sfondo-links-1.jpeg"
+            src="/images/hero-links.jpg"
             alt="Dave Gamba"
             fill
-            style={{ objectFit: "cover", objectPosition: "center top", transform: "translateY(-3%)" }}
+            style={{ objectFit: "cover", objectPosition: "center top" }}
             priority
             unoptimized
           />
@@ -129,7 +137,7 @@ export default function LinksPage() {
         <div style={{ padding: "28px 20px 0", background: "#080C0F", marginTop: -20, position: "relative", zIndex: 3 }}>
 
           {/* DG Athletic Club */}
-          <div className="card">
+          <div className="card card-club">
             <div className="card-top">
               <div className="card-img">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -150,7 +158,7 @@ export default function LinksPage() {
           </div>
 
           {/* Coaching Personale 1-1 — stessa struttura della card Club */}
-          <div className="card">
+          <div className="card card-coaching">
             <div className="card-top">
               <div className="card-img">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -192,6 +200,7 @@ export default function LinksPage() {
           </div>
 
           {/* Blog */}
+          {SHOW_BLOG && (
           <div style={{ margin: "0 0 48px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
               <span style={{ color: "#00CBDB", fontSize: "1rem" }}>✎</span>
@@ -218,11 +227,17 @@ export default function LinksPage() {
               ))}
             </div>
           </div>
+          )}
 
         </div>
 
+        {/* LOGO FOOTER */}
+        <div style={{ textAlign: "center", marginTop: 8, fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "1.3rem", lineHeight: 1, color: "#fff", letterSpacing: "0.02em" }}>
+          DAVE<span style={{ color: "#00CBDB" }}>GAMBA</span>
+        </div>
+
         {/* FOOTER */}
-        <div style={{ textAlign: "center", padding: "32px 24px 0", fontSize: "0.65rem", color: "rgba(136,136,136,0.4)", letterSpacing: "0.1em" }}>
+        <div style={{ textAlign: "center", padding: "18px 24px 0", fontSize: "0.65rem", color: "rgba(136,136,136,0.4)", letterSpacing: "0.1em" }}>
           <a href="/privacy" style={{ color: "rgba(136,136,136,0.5)", textDecoration: "none", margin: "0 8px" }}>Privacy</a>·
           <a href="/termini" style={{ color: "rgba(136,136,136,0.5)", textDecoration: "none", margin: "0 8px" }}>Termini</a>
         </div>
