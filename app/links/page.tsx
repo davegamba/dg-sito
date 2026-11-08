@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
+import ClubCard from "./ClubCard";
 import CoachingToggle from "./CoachingToggle";
 
 export const metadata: Metadata = {
@@ -25,13 +26,6 @@ const SOCIAL = [
     label: "TikTok",
     svg: <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>,
   },
-];
-
-const CLUB_FEATURES = [
-  "Schede progressive mese per mese",
-  "Corsi Focus mirati per obiettivi",
-  "I pasti pronti di Dave regolabili su misura",
-  "Per casa e palestra",
 ];
 
 const YT_VIDEOS = [
@@ -86,6 +80,15 @@ export default function LinksPage() {
         .card-btn{display:block;margin:14px 16px 16px;background:linear-gradient(180deg,#1AD8E8 0%,#00CBDB 32%,#0072CE 100%);color:#fff;font-weight:700;font-size:0.9rem;letter-spacing:0.04em;text-transform:uppercase;text-align:center;padding:14px;border-radius:12px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,0.45);transition:filter 0.2s,transform 0.2s;}
         .card-btn:hover{filter:brightness(1.08);transform:translateY(-1px);}
         @keyframes btnWiggle{0%,72%,100%{transform:translateX(0) rotate(0);}76%{transform:translateX(-3px) rotate(-1deg);}80%{transform:translateX(3px) rotate(1deg);}84%{transform:translateX(-3px) rotate(-1deg);}88%{transform:translateX(3px) rotate(1deg);}92%{transform:translateX(-1px) rotate(0);}}
+        button.card-btn{border:0;cursor:pointer;font-family:inherit;width:calc(100% - 32px);box-sizing:border-box;}
+        .optin-form{margin:14px 16px 16px;display:flex;flex-direction:column;gap:10px;}
+        .optin-form input{width:100%;box-sizing:border-box;background:rgba(255,255,255,0.06);border:1.5px solid rgba(0,203,219,0.55);border-radius:12px;padding:14px;font-size:16px;color:#fff;font-family:inherit;outline:none;}
+        .optin-form input::placeholder{color:rgba(255,255,255,0.45);}
+        .optin-form input:focus{border-color:#00CBDB;}
+        .optin-form .card-btn{margin:2px 0 0;border:0;width:100%;cursor:pointer;font-family:inherit;}
+        .optin-err{margin:0;color:#ff8a8a;font-size:0.8rem;}
+        .optin-legal{margin:0;font-size:0.62rem;line-height:1.5;color:rgba(255,255,255,0.45);text-align:center;}
+        .optin-legal a{color:rgba(255,255,255,0.6);}
         .chip-shine{position:relative;overflow:hidden;}
         .chip-shine::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:45%;background:linear-gradient(100deg,transparent 0%,rgba(255,255,255,0.85) 50%,transparent 100%);transform:skewX(-20deg);animation:chipShine 3s ease-in-out infinite;}
         @keyframes chipShine{0%{left:-60%;}55%,100%{left:130%;}}
@@ -138,26 +141,8 @@ export default function LinksPage() {
         {/* CARDS */}
         <div style={{ padding: "40px 20px 0", background: "linear-gradient(to bottom, rgba(8,12,15,0) 0, #080C0F 40px)", marginTop: -40, position: "relative", zIndex: 3 }}>
 
-          {/* DG Athletic Club */}
-          <div className="card card-club">
-            <div className="card-top">
-              <div className="card-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg" alt="DG Athletic Club" style={{ objectPosition: "center top", transform: "scale(1.25)", transformOrigin: "52% 8%" }} />
-              </div>
-              <div className="card-info">
-                <span className="chip-shine" style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.54rem", fontWeight: 700, letterSpacing: "0.03em", whiteSpace: "nowrap", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Allenati con me - provalo gratis</span>
-                <div className="card-title" style={{ fontSize: "1.45rem" }}>DG Athletic Club</div>
-                <div className="card-desc">Tutto ciò che ti serve per un fisico atletico, asciutto e scolpito. In meno di mezz&apos;ora al giorno.</div>
-              </div>
-            </div>
-            <div className="card-features">
-              {CLUB_FEATURES.map((f) => (
-                <div key={f} className="card-feature"><span className="dot"><span className="dot-tri" /></span>{f}</div>
-              ))}
-            </div>
-            <a href="https://club.davegamba.com/prova-gratis" className="card-btn btn-wiggle">Ricevi il tuo piano gratuito →</a>
-          </div>
+          {/* DG Athletic Club: card cliccabile, il bottone apre il modulo nome + email */}
+          <ClubCard />
 
           {/* YouTube */}
           <div style={{ margin: "28px 0 28px" }}>
