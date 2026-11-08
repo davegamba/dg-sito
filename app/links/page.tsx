@@ -105,12 +105,12 @@ export default function LinksPage() {
         </div>
 
         {/* HERO */}
-        <div style={{ position: "relative", width: "100%", height: "52vh", maxHeight: 420, overflow: "hidden" }}>
+        <div style={{ position: "relative", width: "100%", height: "42vh", maxHeight: 340, overflow: "hidden" }}>
           <Image
             src="/images/hero-links.jpg"
             alt="Dave Gamba"
             fill
-            style={{ objectFit: "cover", objectPosition: "center top", transform: "translateY(-9%)" }}
+            style={{ objectFit: "cover", objectPosition: "center top", transform: "translateY(-14%)" }}
             priority
             unoptimized
           />
