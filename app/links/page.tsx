@@ -137,7 +137,7 @@ export default function LinksPage() {
             <div className="card-top">
               <div className="card-img">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg" alt="DG Athletic Club" style={{ objectPosition: "center top" }} />
+                <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg" alt="DG Athletic Club" style={{ objectPosition: "center top", transform: "scale(1.8)", transformOrigin: "52% 12%" }} />
               </div>
               <div className="card-info">
                 <span style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Provalo ora gratis</span>
