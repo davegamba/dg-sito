@@ -146,7 +146,7 @@ export default function LinksPage() {
               <div className="card-info">
                 <span style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Provalo ora gratis</span>
                 <div className="card-title">DG Athletic Club</div>
-                <div className="card-desc">Tutto ciò che serve per un fisico atletico, asciutto e scolpito. Schede progressive, meno di mezz&apos;ora al giorno.</div>
+                <div className="card-desc">Tutto ciò che ti serve per un fisico atletico, asciutto e scolpito. In meno di mezz&apos;ora al giorno.</div>
               </div>
             </div>
             <div className="card-features">
