@@ -28,9 +28,9 @@ const SOCIAL = [
 ];
 
 const CLUB_FEATURES = [
-  "Schede progressive nuove ogni mese",
-  "Corsi focus mirati",
-  "I pasti flessibili di Dave",
+  "Schede progressive mese per mese",
+  "Corsi Focus mirati per obiettivi",
+  "I pasti pronti di Dave regolabili su misura",
   "Per casa e palestra",
 ];
 
