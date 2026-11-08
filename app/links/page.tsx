@@ -72,6 +72,11 @@ export default function LinksPage() {
         .card,.card a{-webkit-tap-highlight-color:transparent;}
         .card:active,.card:focus-within{outline:none;}
         .yt-card:hover .yt-play{background:rgba(0,0,0,0.15)!important;}
+        .coaching-toggle:not([open]){background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;}
+        .coaching-toggle summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;}
+        .coaching-toggle summary::-webkit-details-marker{display:none;}
+        .coaching-toggle[open] summary{display:none;}
+        .coaching-plus{color:#F0C040;font-size:1.8rem;font-weight:300;line-height:1;}
         .card-club{border:2.5px solid #00CBDB!important;}
         .card-coaching{border:2.5px solid #F0C040!important;}
         .card{background:rgba(0,18,22,0.55);border:2.5px solid rgba(0,203,219,0.7);border-radius:20px;overflow:hidden;backdrop-filter:blur(20px) saturate(1.8);-webkit-backdrop-filter:blur(20px) saturate(1.8);box-shadow:0 8px 32px rgba(0,0,0,0.5);margin-bottom:13px;}
@@ -157,29 +162,8 @@ export default function LinksPage() {
             <a href="https://club.davegamba.com/prova-gratis" className="card-btn btn-wiggle">Provalo gratis per 7 giorni →</a>
           </div>
 
-          {/* Coaching Personale 1-1 — stessa struttura della card Club */}
-          <div className="card card-coaching">
-            <div className="card-top">
-              <div className="card-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg" alt="Coaching Personale 1-1" style={{ objectPosition: "center top" }} />
-              </div>
-              <div className="card-info">
-                <span style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Compila il questionario</span>
-                <div className="card-title">Coaching Personale 1-1</div>
-                <div className="card-desc">Ti seguo io, personalmente, fino all&apos;obiettivo. Allenamento e alimentazione costruiti sulla tua vita reale.</div>
-              </div>
-            </div>
-            <div className="card-features">
-              {COACHING_FEATURES.map((f) => (
-                <div key={f} className="card-feature"><span className="dot"><span className="dot-tri" /></span>{f}</div>
-              ))}
-            </div>
-            <a href="https://www.davegamba.com/coaching" className="card-btn">Scopri il Coaching →</a>
-          </div>
-
           {/* YouTube */}
-          <div style={{ margin: "28px 0 48px" }}>
+          <div style={{ margin: "28px 0 28px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
               <span style={{ color: "#ff0000", fontSize: "1rem" }}>▶</span>
               <a href="https://www.youtube.com/@DaveGambaFitness" style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "1.45rem", color: "#fff", flex: 1, letterSpacing: "0.04em", textDecoration: "none" }}>Mio Canale <span style={{ color: "#00CBDB" }}>Youtube</span></a>
@@ -197,6 +181,31 @@ export default function LinksPage() {
               ))}
             </div>
           </div>
+
+          {/* Coaching Personale 1-1: chiuso = tasto vuoto a bordo giallo, aperto = card intera */}
+          <details className="card card-coaching coaching-toggle" style={{ marginBottom: 48 }}>
+            <summary>
+              <span className="card-title" style={{ marginBottom: 0 }}>Coaching Personale 1-1</span>
+              <span className="coaching-plus">+</span>
+            </summary>
+            <div className="card-top">
+              <div className="card-img">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg" alt="Coaching Personale 1-1" style={{ objectPosition: "center top" }} />
+              </div>
+              <div className="card-info">
+                <span style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Compila il questionario</span>
+                <div className="card-title">Coaching Personale 1-1</div>
+                <div className="card-desc">Ti seguo io, personalmente, fino all&apos;obiettivo. Allenamento e alimentazione costruiti sulla tua vita reale.</div>
+              </div>
+            </div>
+            <div className="card-features">
+              {COACHING_FEATURES.map((f) => (
+                <div key={f} className="card-feature"><span className="dot"><span className="dot-tri" /></span>{f}</div>
+              ))}
+            </div>
+            <a href="https://www.davegamba.com/coaching" className="card-btn">Scopri il Coaching →</a>
+          </details>
 
           {/* Blog */}
           {SHOW_BLOG && (
