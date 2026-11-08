@@ -140,7 +140,7 @@ export default function LinksPage() {
                 <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg" alt="DG Athletic Club" style={{ objectPosition: "center top", transform: "scale(1.25)", transformOrigin: "52% 8%" }} />
               </div>
               <div className="card-info">
-                <span style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Provalo ora gratis</span>
+                <span style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.54rem", fontWeight: 700, letterSpacing: "0.03em", whiteSpace: "nowrap", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Allenati con me - provalo gratis</span>
                 <div className="card-title">DG Athletic Club</div>
                 <div className="card-desc">Tutto ciò che ti serve per un fisico atletico, asciutto e scolpito. In meno di mezz&apos;ora al giorno.</div>
               </div>
@@ -150,7 +150,7 @@ export default function LinksPage() {
                 <div key={f} className="card-feature"><span className="dot"><span className="dot-tri" /></span>{f}</div>
               ))}
             </div>
-            <a href="https://club.davegamba.com/prova-gratis" className="card-btn btn-wiggle">Provalo gratis per 7 giorni →</a>
+            <a href="https://club.davegamba.com/prova-gratis" className="card-btn btn-wiggle">Ricevi il tuo piano gratuito →</a>
           </div>
 
           {/* YouTube */}
