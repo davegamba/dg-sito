@@ -86,6 +86,10 @@ export default function LinksPage() {
         .card-btn{display:block;margin:14px 16px 16px;background:linear-gradient(180deg,#1AD8E8 0%,#00CBDB 32%,#0072CE 100%);color:#fff;font-weight:700;font-size:0.9rem;letter-spacing:0.04em;text-transform:uppercase;text-align:center;padding:14px;border-radius:12px;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,0.45);transition:filter 0.2s,transform 0.2s;}
         .card-btn:hover{filter:brightness(1.08);transform:translateY(-1px);}
         @keyframes btnWiggle{0%,72%,100%{transform:translateX(0) rotate(0);}76%{transform:translateX(-3px) rotate(-1deg);}80%{transform:translateX(3px) rotate(1deg);}84%{transform:translateX(-3px) rotate(-1deg);}88%{transform:translateX(3px) rotate(1deg);}92%{transform:translateX(-1px) rotate(0);}}
+        .chip-shine{position:relative;overflow:hidden;}
+        .chip-shine::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:45%;background:linear-gradient(100deg,transparent 0%,rgba(255,255,255,0.85) 50%,transparent 100%);transform:skewX(-20deg);animation:chipShine 3s ease-in-out infinite;}
+        @keyframes chipShine{0%{left:-60%;}55%,100%{left:130%;}}
+        @media (prefers-reduced-motion:reduce){.chip-shine::after{animation:none;display:none;}}
         .btn-wiggle{animation:btnWiggle 3.4s ease-in-out 1.2s infinite;}
         .btn-wiggle:hover{animation:none;}
         @media (prefers-reduced-motion:reduce){.btn-wiggle{animation:none;}}
@@ -94,23 +98,25 @@ export default function LinksPage() {
       <div className="links-page" style={{ position: "relative", zIndex: 1, paddingBottom: 60, fontFamily: "var(--font-dm-sans, 'DM Sans', sans-serif)" }}>
 
         {/* Barra "Come visto su" */}
-        <div style={{ background: "#fff", padding: "5px 20px 4px" }}>
+        <div style={{ background: "#fff", padding: "5px 12px 4px" }}>
           <div style={{ fontSize: "0.45rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "#bbb", textAlign: "center", marginBottom: 2 }}>Come visto su</div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/loghi-press.png" alt="Come visto su" style={{ width: "100%", height: "auto", display: "block", maxWidth: 260, margin: "0 auto" }} />
+          <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/loghi-press.png" alt="Come visto su" style={{ width: "100%", height: "auto", display: "block", margin: "0 auto" }} />
         </div>
 
         {/* HERO */}
         <div style={{ position: "relative", width: "100%", height: "42vh", maxHeight: 340, overflow: "hidden" }}>
-          <Image
-            src="/images/hero-links.jpg"
-            alt="Dave Gamba"
-            fill
-            style={{ objectFit: "cover", objectPosition: "center top", transform: "translateY(-14%)" }}
-            priority
-            unoptimized
-          />
-          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "75%", background: "linear-gradient(to top, rgba(8,12,15,0.97) 0%, rgba(8,12,15,0.88) 40%, rgba(8,12,15,0.5) 65%, transparent 100%)", pointerEvents: "none" }} />
+          <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: "117%", transform: "translateY(-14.5%)" }}>
+            <Image
+              src="/images/hero-links.jpg"
+              alt="Dave Gamba"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center top" }}
+              priority
+              unoptimized
+            />
+          </div>
+          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "75%", background: "linear-gradient(to top, rgba(8,12,15,1) 0%, rgba(8,12,15,0.9) 35%, rgba(8,12,15,0.5) 65%, transparent 100%)", pointerEvents: "none" }} />
           <div className="hero-content" style={{ position: "absolute", bottom: 24, left: 0, right: 0, zIndex: 2, padding: "0 20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "2.2rem", lineHeight: 1, color: "#fff", letterSpacing: "0.02em", marginBottom: 4 }}>
               DAVE<span style={{ color: "#00CBDB" }}>GAMBA</span>
@@ -130,7 +136,7 @@ export default function LinksPage() {
         </div>
 
         {/* CARDS */}
-        <div style={{ padding: "28px 20px 0", background: "#080C0F", marginTop: -20, position: "relative", zIndex: 3 }}>
+        <div style={{ padding: "40px 20px 0", background: "linear-gradient(to bottom, rgba(8,12,15,0) 0, #080C0F 40px)", marginTop: -40, position: "relative", zIndex: 3 }}>
 
           {/* DG Athletic Club */}
           <div className="card card-club">
@@ -140,8 +146,8 @@ export default function LinksPage() {
                 <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg" alt="DG Athletic Club" style={{ objectPosition: "center top", transform: "scale(1.25)", transformOrigin: "52% 8%" }} />
               </div>
               <div className="card-info">
-                <span style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.54rem", fontWeight: 700, letterSpacing: "0.03em", whiteSpace: "nowrap", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Allenati con me - provalo gratis</span>
-                <div className="card-title">DG Athletic Club</div>
+                <span className="chip-shine" style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.54rem", fontWeight: 700, letterSpacing: "0.03em", whiteSpace: "nowrap", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Allenati con me - provalo gratis</span>
+                <div className="card-title" style={{ fontSize: "1.45rem" }}>DG Athletic Club</div>
                 <div className="card-desc">Tutto ciò che ti serve per un fisico atletico, asciutto e scolpito. In meno di mezz&apos;ora al giorno.</div>
               </div>
             </div>
