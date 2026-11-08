@@ -157,7 +157,7 @@ export default function LinksPage() {
           <div style={{ margin: "28px 0 28px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
               <span style={{ color: "#ff0000", fontSize: "1rem" }}>▶</span>
-              <a href="https://www.youtube.com/@DaveGambaFitness" style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "1.45rem", color: "#fff", flex: 1, letterSpacing: "0.04em", textDecoration: "none" }}>Mio Canale <span style={{ color: "#00CBDB" }}>Youtube</span></a>
+              <a href="https://www.youtube.com/@DaveGambaFitness" style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "1.45rem", color: "#fff", flex: 1, letterSpacing: "0.04em", textDecoration: "none" }}>Canale <span style={{ color: "#00CBDB" }}>Youtube</span></a>
             </div>
             <div className="yt-scroll">
               {YT_VIDEOS.map((id) => (

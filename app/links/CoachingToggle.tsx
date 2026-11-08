@@ -39,7 +39,7 @@ export default function CoachingToggle() {
           <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg" alt="Coaching Personale 1-1" style={{ objectPosition: "center top" }} />
         </div>
         <div className="card-info">
-          <span style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Compila il questionario</span>
+          <span style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.58rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Servizio premium</span>
           <div className="card-title">Coaching Personale 1-1</div>
           <div className="card-desc">Ti seguo io, personalmente, fino all&apos;obiettivo. Allenamento e alimentazione costruiti sulla tua vita reale.</div>
         </div>
@@ -49,7 +49,7 @@ export default function CoachingToggle() {
           <div key={f} className="card-feature"><span className="dot"><span className="dot-tri" /></span>{f}</div>
         ))}
       </div>
-      <a href="https://www.davegamba.com/coaching" className="card-btn">Scopri il Coaching →</a>
+      <a href="https://www.davegamba.com/coaching" className="card-btn">Compila il questionario →</a>
     </div>
   );
 }
