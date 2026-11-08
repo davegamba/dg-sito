@@ -124,10 +124,10 @@ export default function LinksPage() {
             <div style={{ fontFamily: "var(--font-dm-serif, 'DM Serif Display', serif)", fontWeight: 600, fontSize: "2.2rem", lineHeight: 1, color: "#fff", letterSpacing: "0.02em", marginBottom: 4 }}>
               DAVE<span style={{ color: "#00CBDB" }}>GAMBA</span>
             </div>
-            <div style={{ fontSize: "0.72rem", fontWeight: 300, color: "#fff", letterSpacing: "0.18em", textTransform: "uppercase", textAlign: "center", marginBottom: 14 }}>
-              Sistema Breve Intenso Mirato<br />Per un fisico atletico, asciutto e scolpito.
+            <div style={{ fontSize: "0.64rem", fontWeight: 300, color: "#fff", letterSpacing: "0.13em", textTransform: "uppercase", textAlign: "center", marginBottom: 12 }}>
+              Sistema Breve-Intenso-Mirato<br />Per un fisico atletico, asciutto e scolpito.
             </div>
-            <div style={{ display: "flex", gap: 16 }}>
+            <div style={{ display: "flex", gap: 26 }}>
               {SOCIAL.map(({ href, label, svg }) => (
                 <a key={label} href={href} aria-label={label} className="social-icon"
                   style={{ width: 32, height: 32, borderRadius: "50%", border: "1.5px solid rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.07)", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(255,255,255,0.7)", textDecoration: "none", transition: "all 0.2s" }}>
