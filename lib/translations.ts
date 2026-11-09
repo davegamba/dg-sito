@@ -19,6 +19,7 @@ const PAIRS: TranslationGroup[] = [
   { it: "colazione-proteica-cosa-mangiare", es: "desayuno-proteico-tortitas-avena" },
   { it: "omega-3", es: "omega-3-beneficios-efectos-secundarios" },
   { it: "quante-uova-al-giorno", es: "cuantos-huevos-al-dia" },
+  { it: "latte-fa-male", es: "la-leche-es-mala" },
 ];
 
 /** true per /es e /es/<qualsiasi>: le pagine in spagnolo. Non usare

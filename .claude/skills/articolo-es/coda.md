@@ -52,7 +52,8 @@ temi medici come Ozempic.
 - **Note:** "la dieta del huevo de 3 días" va smontata in una riga. Per il colesterolo, il ghee spagnolo spiega già la differenza tra colesterolo mangiato e grassi saturi: link a `/es/ghee-mantequilla-clarificada` se coerente; per la colazione, link a `/es/desayuno-proteico-tortitas-avena`.
 
 ## 3. latte-fa-male
-- **Stato:** da fare
+- **Stato:** fatto 2026-11-09
+- **URL:** https://www.davegamba.com/es/la-leche-es-mala
 - **Italiano:** `content/blog/latte-fa-male.mdx`
 - **Slug spagnolo proposto:** `la-leche-es-mala`
 - **Titolo indicativo:** ¿La leche es mala? Entera, desnatada y lo que dicen los estudios
