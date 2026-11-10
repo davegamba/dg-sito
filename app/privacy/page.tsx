@@ -93,7 +93,7 @@ const sections = [
     content: (
       <ul className="space-y-2">
         {[
-          "Consenso (art. 6.1.a GDPR) — per l'invio di comunicazioni email di marketing e per i cookie di statistica e di marketing (Google Analytics, Meta Pixel)",
+          "Consenso (art. 6.1.a GDPR) — per l'invio di comunicazioni email di marketing, compresa la misurazione di aperture e clic, e per i cookie di statistica e di marketing (Google Analytics, Meta Pixel)",
           "Consenso esplicito (art. 9.2.a GDPR) — per i dati sulla salute forniti nel questionario di coaching",
           "Esecuzione del contratto (art. 6.1.b GDPR) — per l'erogazione dei servizi acquistati e per gestire la tua richiesta di coaching o il profilo del Quiz Fisico",
           "Obbligo legale (art. 6.1.c GDPR) — per adempimenti fiscali e normativi",
@@ -116,12 +116,13 @@ const sections = [
           {[
             { name: "Supabase", desc: "database per la gestione dei lead, delle candidature, dei questionari e degli acquisti, server UE", href: "https://supabase.com/privacy" },
             { name: "Vercel", desc: "hosting di questo sito", href: "https://vercel.com/legal/privacy-policy" },
-            { name: "Systeme.io", desc: "gestione dell'elenco contatti e invio delle email", href: "https://systeme.io/privacy-policy" },
+            { name: "Systeme.io", desc: "gestione dell'elenco contatti, invio delle email e misurazione di aperture e clic", href: "https://systeme.io/privacy-policy" },
             { name: "Resend", desc: "invio delle email di servizio, come la conferma di accesso dopo l'acquisto", href: "https://resend.com/legal/privacy-policy" },
+            { name: "Brevo", desc: "invio delle email di accesso all'area Club, come il benvenuto e il recupero della password", href: "https://www.brevo.com/legal/privacypolicy/" },
             { name: "Stripe", desc: "elaborazione dei pagamenti", href: "https://stripe.com/it/privacy" },
             { name: "Google Analytics", desc: "analisi del traffico web, solo con il tuo consenso ai cookie", href: "https://policies.google.com/privacy" },
             { name: "YouTube (Google)", desc: "le anteprime dei video mostrate in alcune pagine vengono caricate dai server di YouTube, che può così ricevere il tuo indirizzo IP", href: "https://policies.google.com/privacy" },
-            { name: "Meta (Facebook)", desc: "pixel di monitoraggio per campagne pubblicitarie, solo con il tuo consenso ai cookie; Instagram e ManyChat per le risposte automatiche a commenti e messaggi", href: "https://www.facebook.com/privacy/policy/" },
+            { name: "Meta (Facebook)", desc: "pixel di monitoraggio per campagne pubblicitarie, solo con il tuo consenso ai cookie; Instagram per le risposte automatiche a commenti e messaggi, gestite da un nostro sistema", href: "https://www.facebook.com/privacy/policy/" },
             { name: "Netlify", desc: "hosting dell'area Club (club.davegamba.com)", href: "https://www.netlify.com/privacy/" },
           ].map((item, i) => (
             <li key={i} className="flex gap-2 text-sm text-[#888888]">
@@ -202,6 +203,7 @@ const sections = [
             </li>
           ))}
         </ul>
+        <p className="mt-3"><strong className="text-[#F0F0F0]">Email.</strong> Le mie email possono contenere strumenti di tracciamento (come pixel e link tracciati) che misurano aperture e clic, per capire quali contenuti ti sono utili. Lo faccio solo con il tuo consenso, che dai quando ti iscrivi e puoi revocare in qualsiasi momento disiscrivendoti da una mail o scrivendo a <a href="mailto:info@davegamba.com" className="text-[#00CBDB] hover:underline">info@davegamba.com</a>. Le email di servizio (come l&apos;accesso all&apos;area riservata) possono usare solo gli strumenti tecnici necessari alla consegna.</p>
         <p className="mt-3">Se scegli &quot;Solo essenziali&quot;, o non scegli, Google Analytics e Meta Pixel non vengono caricati. Puoi cambiare o revocare la scelta in qualsiasi momento dal link &quot;Preferenze cookie&quot; in fondo a ogni pagina. La scelta viene riproposta dopo circa 6 mesi.</p>
         <p className="mt-3">Puoi anche disabilitare i cookie analitici nelle impostazioni del tuo browser o tramite <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-[#00CBDB] hover:underline">Google Analytics Opt-out</a>.</p>
       </>

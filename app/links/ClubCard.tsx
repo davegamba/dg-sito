@@ -73,7 +73,7 @@ export default function ClubCard() {
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" inputMode="email" placeholder="Email" aria-label="Email" />
           {errore && <p className="optin-err" role="alert">{errore}</p>}
           <button type="submit" className="card-btn" disabled={invio}>{invio ? "Un attimo..." : "Ricevi il tuo piano gratuito →"}</button>
-          <p className="optin-legal">Zero spam, solo strumenti. Iscrivendoti accetti la <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>. Cancellati gratis quando vuoi.</p>
+          <p className="optin-legal">Zero spam, solo strumenti. Iscrivendoti accetti la <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a> e di ricevere le mie email, che misurano aperture e clic per capire cosa ti è utile. Cancellati gratis quando vuoi.</p>
         </form>
       )}
     </div>
