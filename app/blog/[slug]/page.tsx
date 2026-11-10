@@ -15,6 +15,7 @@ import { QuizCtaMid } from "@/components/QuizCtaMid";
 import { QuizCtaTop } from "@/components/QuizCtaTop";
 import { ClubCtaMid } from "@/components/ClubCtaMid";
 import { CalcCtaMid } from "@/components/CalcCtaMid";
+import { VideoYoutube } from "@/components/VideoYoutube";
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/site";
 import { groupFor, languageAlternates } from "@/lib/translations";
@@ -88,7 +89,7 @@ function makeMdxComponents(reservedIds: string[]) {
     );
   }
 
-  return { h2: CustomH2, h3: CustomH3, table: ScrollableTable, ArticleCta, ClubCta, QuizCta, QuizCtaMid, ClubCtaMid, CalcCtaMid };
+  return { h2: CustomH2, h3: CustomH3, table: ScrollableTable, ArticleCta, ClubCta, QuizCta, QuizCtaMid, ClubCtaMid, CalcCtaMid, VideoYoutube };
 }
 
 export async function generateStaticParams() {
