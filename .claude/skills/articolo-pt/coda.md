@@ -24,7 +24,12 @@ alimento o integratore + "faz mal / engorda / serve?". Mai: esercizi, stagionali
 - **Spagnolo:** `content/es/cuantos-huevos-al-dia.mdx`
 - **Slug portoghese proposto:** `quantos-ovos-por-dia`
 - **Ricerche:** quantos ovos por dia; ovo faz mal; ovo aumenta colesterol; comer ovo todo dia; ovo cozido benefícios
-- **Domande Google:** (da raccogliere dal Mac)
+- **Domande Google** (10/11/2026, hl=pt-BR&gl=br):
+  - **quantos ovos por dia**: Pode comer 4 ovos por dia?; É saudável comer 3 ovos por dia?; É seguro comer 2 ovos por dia?; Faz bem comer 10 ovos por dia?
+  - **ovo faz mal**: Faz mal comer ovo todos os dias?; O ovo é um alimento inflamatório?; O ovo faz mal para o intestino?; Quando não devo comer ovo?
+  - **ovo aumenta colesterol**: Qual o maior inimigo do colesterol alto?; O que não se deve comer quando se está com colesterol alto?; Pode comer pão quem tem colesterol alto?; O feijão aumenta o colesterol?
+  - **comer ovo todo dia**: O que acontece no meu corpo se eu comer ovo todos os dias?; Qual o efeito do ovo no corpo?; Comer 4 ovos por dia é muito?; É seguro comer 3 ovos pela manhã?
+  - **ovo cozido benefícios**: É bom comer ovos cozidos todos os dias?; Quais são os 10 benefícios do ovo?; Qual é a melhor hora para comer ovo cozido?; Quantos ovos cozidos devo consumir por dia?
 
 ## 2. leite
 - **Stato:** da fare
