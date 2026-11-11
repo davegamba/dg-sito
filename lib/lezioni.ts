@@ -1,9 +1,9 @@
-// Le lezioni del corso gratuito "Riparti in 7 lezioni" (pagine /piano-start).
+// Le lezioni del corso gratuito "Riparti in 7 lezioni" (pagine /protocollo).
 // I nomeBreve sono provvisori: Dave ne dara' i nomi definitivi.
 // Per cambiare un titolo o una descrizione: modifica qui, in un solo punto.
 // Per mettere un video: incolla l'ID YouTube in `youtubeId` (la parte dopo
 // "watch?v="). Finche' e' null la pagina mostra "Video in arrivo".
-// La lezione 0 sta su /piano-start, le altre su /piano-start/<slug>.
+// La lezione 0 sta su /protocollo, le altre su /protocollo/<slug>.
 
 export interface Lezione {
   numero: number;
@@ -14,7 +14,7 @@ export interface Lezione {
   youtubeId: string | null;
 }
 
-export const BASE_CORSO = "/piano-start";
+export const BASE_CORSO = "/protocollo";
 export const DESTINAZIONE_FINALE = "https://club.davegamba.com/7-giorni";
 
 export const LEZIONI: Lezione[] = [

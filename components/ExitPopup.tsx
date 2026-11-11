@@ -21,7 +21,7 @@ export default function ExitPopup() {
     // Login e auth: sono passaggi tecnici, non pagine da cui "uscire".
     const ESCLUSE = [
       "/club", "/links", "/coaching", "/piani-coaching", "/questionario-acquisto",
-      "/start-coaching", "/piano-start", "/quiz", "/checkout", "/grazie", "/login", "/auth",
+      "/start-coaching", "/protocollo", "/quiz", "/checkout", "/grazie", "/login", "/auth",
     ];
     if (ESCLUSE.some((p) => path.startsWith(p))) return;
     // Pagine in spagnolo: il popup è in italiano e propone il quiz italiano.

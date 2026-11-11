@@ -74,7 +74,7 @@ export default function ClubCard({
             style={{ position: "relative", flexShrink: 0, width: 72, height: 152, borderRadius: 15, border: "3px solid #1d2125", background: "#000", overflow: "hidden", boxShadow: "0 0 0 1px rgba(255,255,255,0.28), 0 8px 18px rgba(0,0,0,0.55)" }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={telefono} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 18%", display: "block" }} />
+            <img src={telefono} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 0%", display: "block" }} />
             <span style={{ position: "absolute", top: 4, left: "50%", transform: "translateX(-50%)", width: 22, height: 5, borderRadius: 4, background: "#000" }} />
           </div>
         ) : (

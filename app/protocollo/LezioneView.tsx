@@ -64,7 +64,7 @@ export default function LezioneView({ lezione }: { lezione: Lezione }) {
             <aside className="order-2 lg:order-3 lg:sticky lg:top-24 flex flex-col gap-4">
               <div className="corso-club" style={{ background: "#080C0F", borderRadius: 20 }}><ClubCard
                   aperto
-                  telefono="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg"
+                  telefono="/images/freebie-home.jpg"
                   testoBottone="Ricevi la tua scheda gratuita →"
                   etichetta="Hai la mappa. Ora passa alla pratica"
                   descrizione="Nel Club mettiamo in pratica i passi visti nel protocollo. Prova il mio sistema Breve-Intenso-Mirato. Prova gli allenamenti guidati da meno di mezz'ora al giorno."
