@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lezione: 
   const lezione = lezioneDaSlug(slug);
   if (!lezione) return {};
   return {
-    title: `${lezione.titolo} | Riparti in 7 lezioni`,
+    title: `${lezione.titolo} | Protocollo Dimagrimento`,
     description: lezione.descrizione,
     robots: { index: false, follow: false },
   };

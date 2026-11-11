@@ -19,10 +19,10 @@ export default function LezioneView({ lezione }: { lezione: Lezione }) {
         <style>{`.corso-club .card{margin-bottom:0;}`}</style>
 
         {/* Testata scura */}
-        <div className="text-center px-4 sm:px-6" style={{ background: "#080C0F", paddingTop: 92, paddingBottom: 30 }}>
-          <span className="text-[#00CBDB] text-xs font-semibold tracking-[0.2em] uppercase block mb-3">Inizia qui</span>
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-white" style={{ lineHeight: 1.1 }}>Riparti in 7 lezioni</h1>
-          <p className="text-white/60 mt-3 text-base sm:text-lg">Il metodo Breve-Intenso-Mirato con Dave Gamba</p>
+        <div className="text-center px-4 sm:px-6 pb-[30px] lg:pb-[64px]" style={{ background: "#080C0F", paddingTop: 92 }}>
+          <span className="text-[#00CBDB] text-xs font-semibold tracking-[0.2em] uppercase block mb-3">#{lezione.numero} {lezione.nomeBreve}</span>
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white" style={{ lineHeight: 1.1 }}>Protocollo Dimagrimento con Dave Gamba</h1>
+          <p className="text-white/60 mt-3 text-base sm:text-lg">La mappa completa in 7 step per un fisico atletico, asciutto e scolpito</p>
         </div>
 
         <div className="mx-auto px-4 sm:px-6" style={{ maxWidth: 1180, paddingTop: 40, paddingBottom: 56 }}>
@@ -80,12 +80,12 @@ export default function LezioneView({ lezione }: { lezione: Lezione }) {
 
             {/* Destra: Club (principale) e coaching (secondario) */}
             <aside className="order-2 lg:order-3 lg:sticky lg:top-24 flex flex-col gap-4">
-              <div className="corso-club" style={{ background: "#080C0F", borderRadius: 20 }}><ClubCard /></div>
+              <div className="corso-club" style={{ background: "#080C0F", borderRadius: 20 }}><ClubCard aperto testoBottone="Ricevi la tua scheda gratuita →" /></div>
               <RichiestaCoaching />
             </aside>
 
             {/* Sinistra: elenco */}
-            <div className="order-3 lg:order-1 lg:sticky lg:top-24">
+            <div className="order-3 lg:order-1 lg:sticky lg:top-24 lg:-mt-[84px] relative z-10">
               <ElencoLezioni corrente={lezione.numero} />
             </div>
           </div>

@@ -21,8 +21,9 @@ function passaAlClub(nome: string, email: string) {
   window.location.href = OPTIN_DEST;
 }
 
-export default function ClubCard() {
-  const [open, setOpen] = useState(false);
+// Su /links parte chiusa (il bottone apre il modulo). Con `aperto` il modulo e' subito visibile.
+export default function ClubCard({ aperto = false, testoBottone = "Ricevi il tuo piano gratuito →" }: { aperto?: boolean; testoBottone?: string }) {
+  const [open, setOpen] = useState(aperto);
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [errore, setErrore] = useState("");
@@ -66,13 +67,13 @@ export default function ClubCard() {
       </div>
 
       {!open ? (
-        <button type="button" className="card-btn btn-wiggle" onClick={apri}>Ricevi il tuo piano gratuito →</button>
+        <button type="button" className="card-btn btn-wiggle" onClick={apri}>{testoBottone}</button>
       ) : (
         <form className="optin-form" onSubmit={invia} noValidate>
           <input ref={nomeRef} type="text" value={nome} onChange={(e) => setNome(e.target.value)} autoComplete="given-name" placeholder="Nome" aria-label="Nome" />
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" inputMode="email" placeholder="Email" aria-label="Email" />
           {errore && <p className="optin-err" role="alert">{errore}</p>}
-          <button type="submit" className="card-btn" disabled={invio}>{invio ? "Un attimo..." : "Ricevi il tuo piano gratuito →"}</button>
+          <button type="submit" className="card-btn" disabled={invio}>{invio ? "Un attimo..." : testoBottone}</button>
           <p className="optin-legal">Zero spam, solo strumenti. Iscrivendoti accetti la <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a> e di ricevere le mie email, che misurano aperture e clic per capire cosa ti è utile. Cancellati gratis quando vuoi.</p>
         </form>
       )}

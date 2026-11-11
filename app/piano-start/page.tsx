@@ -4,8 +4,8 @@ import { LEZIONI } from "@/lib/lezioni";
 
 // noindex finche' i video sono segnaposto: si toglie quando ci sono le prime lezioni.
 export const metadata: Metadata = {
-  title: "Riparti in 7 lezioni | Dave Gamba",
-  description: "Il metodo Breve-Intenso-Mirato con Dave Gamba, in 7 lezioni gratuite.",
+  title: "Protocollo Dimagrimento con Dave Gamba",
+  description: "Il metodo Breve-Intenso-Mirato con Dave Gamba, in 7 step gratuiti.",
   robots: { index: false, follow: false },
 };
 

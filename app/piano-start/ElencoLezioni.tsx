@@ -4,24 +4,28 @@ import { useState } from "react";
 import Link from "next/link";
 import { LEZIONI, hrefLezione } from "@/lib/lezioni";
 
-// Su desktop l'elenco e' sempre aperto; su telefono si apre e si chiude.
+// Contenitore bianco come l'elenco di Hormozi. Su desktop e' sempre aperto;
+// su telefono l'intestazione apre e chiude l'elenco.
 export default function ElencoLezioni({ corrente }: { corrente: number }) {
   const [aperto, setAperto] = useState(false);
 
   return (
-    <nav aria-label="Lezioni del corso">
+    <nav
+      aria-label="Lezioni del corso"
+      style={{ background: "#fff", borderRadius: 24, boxShadow: "0 10px 40px rgba(8,12,15,0.12)", border: "1px solid rgba(8,12,15,0.06)", padding: "20px 14px 14px" }}
+    >
       <button
         type="button"
         onClick={() => setAperto((v) => !v)}
         aria-expanded={aperto}
-        className="lg:hidden w-full flex items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-semibold text-white"
-        style={{ background: "#080C0F" }}
+        className="w-full flex items-center justify-between text-left lg:cursor-default"
+        style={{ padding: "0 8px", marginBottom: aperto ? 12 : 0 }}
       >
-        <span>Tutte le lezioni</span>
-        <span style={{ color: "#00CBDB", fontSize: 20, lineHeight: 1 }}>{aperto ? "−" : "+"}</span>
+        <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#0099a8" }}>Il Protocollo</span>
+        <span className="lg:hidden" style={{ color: "#0099a8", fontSize: 22, lineHeight: 1 }}>{aperto ? "−" : "+"}</span>
       </button>
 
-      <ol className={`${aperto ? "flex" : "hidden"} lg:flex flex-col gap-1 mt-2 lg:mt-0`} style={{ listStyle: "none", padding: 0, margin: 0 }}>
+      <ol className={`${aperto ? "flex" : "hidden"} lg:flex flex-col gap-1 lg:mt-3`} style={{ listStyle: "none", padding: 0, margin: 0 }}>
         {LEZIONI.map((l) => {
           const attiva = l.numero === corrente;
           return (
@@ -29,27 +33,21 @@ export default function ElencoLezioni({ corrente }: { corrente: number }) {
               <Link
                 href={hrefLezione(l)}
                 aria-current={attiva ? "page" : undefined}
-                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors"
+                className="flex items-center gap-3 px-2.5 py-2.5 transition-colors"
                 style={{
-                  background: attiva ? "#080C0F" : "transparent",
-                  border: "1px solid transparent",
+                  background: attiva ? "rgba(0,203,219,0.12)" : "transparent",
+                  borderLeft: `3px solid ${attiva ? "#00CBDB" : "transparent"}`,
+                  borderRadius: 12,
                   textDecoration: "none",
                 }}
               >
                 <span
                   className="shrink-0 flex items-center justify-center rounded-full text-xs font-bold"
-                  style={{
-                    width: 24,
-                    height: 24,
-                    marginTop: 1,
-                    background: attiva ? "#00CBDB" : "transparent",
-                    color: attiva ? "#000" : "#007f8c",
-                    border: attiva ? "none" : "1.5px solid #00a5b5",
-                  }}
+                  style={{ width: 32, height: 32, background: attiva ? "#00CBDB" : "#eef0f1", color: attiva ? "#000" : "#5f666b" }}
                 >
                   {l.numero}
                 </span>
-                <span className="text-sm leading-snug" style={{ color: attiva ? "#fff" : "#3a3a36", fontWeight: attiva ? 600 : 400 }}>
+                <span className="text-sm leading-snug" style={{ color: "#0a0a0a", fontWeight: attiva ? 700 : 500 }}>
                   {l.titolo}
                 </span>
               </Link>
