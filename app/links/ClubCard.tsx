@@ -32,12 +32,14 @@ export default function ClubCard({
   etichetta = ETICHETTA_DEFAULT,
   descrizione = DESCRIZIONE_DEFAULT,
   punti = CLUB_FEATURES,
+  telefono,
 }: {
   aperto?: boolean;
   testoBottone?: string;
   etichetta?: string;
   descrizione?: string;
   punti?: string[];
+  telefono?: string; // se presente, al posto della foto quadrata va un telefono verticale con questa immagine
 }) {
   const [open, setOpen] = useState(aperto);
   const [nome, setNome] = useState("");
@@ -66,10 +68,21 @@ export default function ClubCard({
   return (
     <div className="card card-club" style={open ? undefined : { cursor: "pointer" }} onClick={apri}>
       <div className="card-top">
-        <div className="card-img">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg" alt="DG Athletic Club" style={{ objectPosition: "center top", transform: "scale(1.25)", transformOrigin: "52% 8%" }} />
-        </div>
+        {telefono ? (
+          <div
+            aria-hidden
+            style={{ position: "relative", flexShrink: 0, width: 72, height: 152, borderRadius: 15, border: "3px solid #1d2125", background: "#000", overflow: "hidden", boxShadow: "0 0 0 1px rgba(255,255,255,0.28), 0 8px 18px rgba(0,0,0,0.55)" }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={telefono} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 18%", display: "block" }} />
+            <span style={{ position: "absolute", top: 4, left: "50%", transform: "translateX(-50%)", width: 22, height: 5, borderRadius: 4, background: "#000" }} />
+          </div>
+        ) : (
+          <div className="card-img">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg" alt="DG Athletic Club" style={{ objectPosition: "center top", transform: "scale(1.25)", transformOrigin: "52% 8%" }} />
+          </div>
+        )}
         <div className="card-info">
           <span className="chip-shine" style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.54rem", fontWeight: 700, letterSpacing: "0.03em", whiteSpace: etichetta === ETICHETTA_DEFAULT ? "nowrap" : "normal", lineHeight: etichetta === ETICHETTA_DEFAULT ? undefined : 1.3, textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>{etichetta}</span>
           <div className="card-title" style={{ fontSize: "1.45rem" }}>DG Athletic Club</div>

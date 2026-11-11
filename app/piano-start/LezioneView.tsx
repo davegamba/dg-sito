@@ -14,7 +14,7 @@ export default function LezioneView({ lezione }: { lezione: Lezione }) {
       <CardStyles />
       <Header />
       <main className="flex-1" style={{ background: "#F5F1EB" }}>
-        <style>{`.corso-club .card{margin-bottom:0;} .corso-club .card-desc{color:rgba(255,255,255,0.78);}`}</style>
+        <style>{`.corso-club .card{margin-bottom:0;} .corso-club .card-desc{color:rgba(255,255,255,0.78);} .corso-club .card-feature{font-size:0.84rem;} .corso-club .card-btn{font-size:0.97rem;letter-spacing:0.01em;white-space:nowrap;}`}</style>
 
         {/* Testata scura */}
         <div className="text-center px-4 sm:px-6 pb-[30px] lg:pb-[64px]" style={{ background: "#080C0F", paddingTop: 92 }}>
@@ -64,6 +64,7 @@ export default function LezioneView({ lezione }: { lezione: Lezione }) {
             <aside className="order-2 lg:order-3 lg:sticky lg:top-24 flex flex-col gap-4">
               <div className="corso-club" style={{ background: "#080C0F", borderRadius: 20 }}><ClubCard
                   aperto
+                  telefono="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg"
                   testoBottone="Ricevi la tua scheda gratuita →"
                   etichetta="Hai la mappa. Ora passa alla pratica"
                   descrizione="Nel Club mettiamo in pratica i passi visti nel protocollo. Prova il mio sistema Breve-Intenso-Mirato. Prova gli allenamenti guidati da meno di mezz'ora al giorno."
