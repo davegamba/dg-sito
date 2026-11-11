@@ -1,31 +1,19 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
 import { LEZIONI, hrefLezione } from "@/lib/lezioni";
 
-// Contenitore bianco come l'elenco di Hormozi. Su desktop e' sempre aperto;
-// su telefono l'intestazione apre e chiude l'elenco.
+// Contenitore bianco come l'elenco di Hormozi. Sempre aperto: su desktop sta nella
+// colonna a sinistra, su telefono compare dentro ProssimaConElenco.
 export default function ElencoLezioni({ corrente }: { corrente: number }) {
-  const [aperto, setAperto] = useState(false);
-
   return (
     <nav
       aria-label="Lezioni del corso"
       style={{ background: "#fff", borderRadius: 24, boxShadow: "0 10px 40px rgba(8,12,15,0.12)", border: "1px solid rgba(8,12,15,0.06)", padding: "20px 14px 14px" }}
     >
-      <button
-        type="button"
-        onClick={() => setAperto((v) => !v)}
-        aria-expanded={aperto}
-        className="w-full flex items-center justify-between text-left lg:cursor-default"
-        style={{ padding: "0 8px", marginBottom: aperto ? 12 : 0 }}
-      >
+      <div style={{ padding: "0 8px" }}>
         <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#0099a8" }}>Il Protocollo</span>
-        <span className="lg:hidden" style={{ color: "#0099a8", fontSize: 22, lineHeight: 1 }}>{aperto ? "−" : "+"}</span>
-      </button>
+      </div>
 
-      <ol className={`${aperto ? "flex" : "hidden"} lg:flex flex-col gap-1 lg:mt-3`} style={{ listStyle: "none", padding: 0, margin: 0 }}>
+      <ol className="flex flex-col gap-1 mt-3" style={{ listStyle: "none", padding: 0, margin: 0 }}>
         {LEZIONI.map((l) => {
           const attiva = l.numero === corrente;
           return (

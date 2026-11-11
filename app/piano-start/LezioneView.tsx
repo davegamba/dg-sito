@@ -1,16 +1,14 @@
-import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { VideoYoutube } from "@/components/VideoYoutube";
 import ClubCard from "@/app/links/ClubCard";
 import CardStyles from "@/app/links/CardStyles";
 import ElencoLezioni from "./ElencoLezioni";
+import ProssimaConElenco from "./ProssimaConElenco";
 import RichiestaCoaching from "./RichiestaCoaching";
-import { DESTINAZIONE_FINALE, hrefLezione, lezioneSuccessiva, type Lezione } from "@/lib/lezioni";
+import { DESTINAZIONE_FINALE, type Lezione } from "@/lib/lezioni";
 
 export default function LezioneView({ lezione }: { lezione: Lezione }) {
-  const prossima = lezioneSuccessiva(lezione);
-
   return (
     <>
       <CardStyles />
@@ -58,34 +56,24 @@ export default function LezioneView({ lezione }: { lezione: Lezione }) {
                 <h2 className="font-serif text-2xl sm:text-3xl" style={{ lineHeight: 1.2, color: "#0a0a0a" }}>{lezione.titolo}</h2>
                 <p className="mt-2 text-base leading-relaxed" style={{ color: "#4a4a45" }}>{lezione.descrizione}</p>
 
-                {prossima ? (
-                  <Link
-                    href={hrefLezione(prossima)}
-                    className="inline-flex items-center gap-2 mt-5 rounded-xl text-sm font-bold"
-                    style={{ background: "#080C0F", color: "#00CBDB", padding: "12px 18px", textDecoration: "none" }}
-                  >
-                    Prossima: {prossima.titolo} →
-                  </Link>
-                ) : (
-                  <a
-                    href={DESTINAZIONE_FINALE}
-                    className="inline-flex items-center gap-2 mt-5 rounded-xl text-sm font-bold"
-                    style={{ background: "#00CBDB", color: "#000", padding: "12px 18px", textDecoration: "none" }}
-                  >
-                    Prova la settimana gratis →
-                  </a>
-                )}
+                <ProssimaConElenco corrente={lezione.numero} />
               </div>
             </section>
 
             {/* Destra: Club (principale) e coaching (secondario) */}
             <aside className="order-2 lg:order-3 lg:sticky lg:top-24 flex flex-col gap-4">
-              <div className="corso-club" style={{ background: "#080C0F", borderRadius: 20 }}><ClubCard aperto testoBottone="Ricevi la tua scheda gratuita →" /></div>
+              <div className="corso-club" style={{ background: "#080C0F", borderRadius: 20 }}><ClubCard
+                  aperto
+                  testoBottone="Ricevi la tua scheda gratuita →"
+                  etichetta="Hai la mappa. Ora passa alla pratica"
+                  descrizione="Il protocollo ti ha dato i passi da fare. Nel Club li mettiamo in pratica insieme: ricevi la prima settimana del mio sistema Breve-Intenso-Mirato. Con gli allenamenti guidati da meno di mezz'ora al giorno."
+                  punti={["Prova una scheda del club gratis", "Allenamenti guidati da seguire con me", "A casa o in palestra"]}
+                /></div>
               <RichiestaCoaching />
             </aside>
 
             {/* Sinistra: elenco */}
-            <div className="order-3 lg:order-1 lg:sticky lg:top-24 lg:-mt-[84px] relative z-10">
+            <div className="hidden lg:block lg:order-1 lg:sticky lg:top-24 lg:-mt-[84px] relative z-10">
               <ElencoLezioni corrente={lezione.numero} />
             </div>
           </div>

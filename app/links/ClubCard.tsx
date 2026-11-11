@@ -9,6 +9,9 @@ const CLUB_FEATURES = [
   "Per casa e palestra",
 ];
 
+const ETICHETTA_DEFAULT = "Allenati con me - provalo gratis";
+const DESCRIZIONE_DEFAULT = "Tutto ciò che ti serve per un fisico atletico, asciutto e scolpito. In meno di mezz'ora al giorno.";
+
 const OPTIN_DEST = "https://club.davegamba.com/7-giorni";
 
 // Nome ed email viaggiano verso la pagina del Club in un cookie di 5 minuti sul dominio
@@ -21,8 +24,21 @@ function passaAlClub(nome: string, email: string) {
   window.location.href = OPTIN_DEST;
 }
 
-// Su /links parte chiusa (il bottone apre il modulo). Con `aperto` il modulo e' subito visibile.
-export default function ClubCard({ aperto = false, testoBottone = "Ricevi il tuo piano gratuito →" }: { aperto?: boolean; testoBottone?: string }) {
+// Su /links parte chiusa e con i testi qui sopra. Le altre pagine possono passare `aperto`
+// (modulo subito visibile) e cambiare etichetta, descrizione, punti e bottone.
+export default function ClubCard({
+  aperto = false,
+  testoBottone = "Ricevi il tuo piano gratuito →",
+  etichetta = ETICHETTA_DEFAULT,
+  descrizione = DESCRIZIONE_DEFAULT,
+  punti = CLUB_FEATURES,
+}: {
+  aperto?: boolean;
+  testoBottone?: string;
+  etichetta?: string;
+  descrizione?: string;
+  punti?: string[];
+}) {
   const [open, setOpen] = useState(aperto);
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -55,13 +71,13 @@ export default function ClubCard({ aperto = false, testoBottone = "Ricevi il tuo
           <img src="https://pub-7d3698aed8524dc8aa7cc9808575f501.r2.dev/affondo-dave-intera.jpg" alt="DG Athletic Club" style={{ objectPosition: "center top", transform: "scale(1.25)", transformOrigin: "52% 8%" }} />
         </div>
         <div className="card-info">
-          <span className="chip-shine" style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.54rem", fontWeight: 700, letterSpacing: "0.03em", whiteSpace: "nowrap", textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>Allenati con me - provalo gratis</span>
+          <span className="chip-shine" style={{ alignSelf: "flex-start", background: "#F0C040", color: "#000", fontSize: "0.54rem", fontWeight: 700, letterSpacing: "0.03em", whiteSpace: etichetta === ETICHETTA_DEFAULT ? "nowrap" : "normal", lineHeight: etichetta === ETICHETTA_DEFAULT ? undefined : 1.3, textTransform: "uppercase", padding: "3px 9px", borderRadius: 20, marginBottom: 7 }}>{etichetta}</span>
           <div className="card-title" style={{ fontSize: "1.45rem" }}>DG Athletic Club</div>
-          <div className="card-desc">Tutto ciò che ti serve per un fisico atletico, asciutto e scolpito. In meno di mezz&apos;ora al giorno.</div>
+          <div className="card-desc">{descrizione}</div>
         </div>
       </div>
       <div className="card-features">
-        {CLUB_FEATURES.map((f) => (
+        {punti.map((f) => (
           <div key={f} className="card-feature"><span className="dot"><span className="dot-tri" /></span>{f}</div>
         ))}
       </div>
