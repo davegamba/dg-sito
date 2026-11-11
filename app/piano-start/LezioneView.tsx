@@ -19,7 +19,7 @@ export default function LezioneView({ lezione }: { lezione: Lezione }) {
         <style>{`.corso-club .card{margin-bottom:0;}`}</style>
 
         {/* Testata scura */}
-        <div className="text-center px-4 sm:px-6" style={{ background: "#080C0F", paddingTop: 112, paddingBottom: 52 }}>
+        <div className="text-center px-4 sm:px-6" style={{ background: "#080C0F", paddingTop: 92, paddingBottom: 30 }}>
           <span className="text-[#00CBDB] text-xs font-semibold tracking-[0.2em] uppercase block mb-3">Inizia qui</span>
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-white" style={{ lineHeight: 1.1 }}>Riparti in 7 lezioni</h1>
           <p className="text-white/60 mt-3 text-base sm:text-lg">Il metodo Breve-Intenso-Mirato con Dave Gamba</p>
