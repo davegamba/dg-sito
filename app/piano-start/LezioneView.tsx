@@ -14,7 +14,7 @@ export default function LezioneView({ lezione }: { lezione: Lezione }) {
       <CardStyles />
       <Header />
       <main className="flex-1" style={{ background: "#F5F1EB" }}>
-        <style>{`.corso-club .card{margin-bottom:0;}`}</style>
+        <style>{`.corso-club .card{margin-bottom:0;} .corso-club .card-desc{color:rgba(255,255,255,0.78);}`}</style>
 
         {/* Testata scura */}
         <div className="text-center px-4 sm:px-6 pb-[30px] lg:pb-[64px]" style={{ background: "#080C0F", paddingTop: 92 }}>
@@ -66,7 +66,7 @@ export default function LezioneView({ lezione }: { lezione: Lezione }) {
                   aperto
                   testoBottone="Ricevi la tua scheda gratuita →"
                   etichetta="Hai la mappa. Ora passa alla pratica"
-                  descrizione="Il protocollo ti ha dato i passi da fare. Nel Club li mettiamo in pratica insieme: ricevi la prima settimana del mio sistema Breve-Intenso-Mirato. Con gli allenamenti guidati da meno di mezz'ora al giorno."
+                  descrizione="Nel Club mettiamo in pratica i passi visti nel protocollo. Prova il mio sistema Breve-Intenso-Mirato. Prova gli allenamenti guidati da meno di mezz'ora al giorno."
                   punti={["Prova una scheda del club gratis", "Allenamenti guidati da seguire con me", "A casa o in palestra"]}
                 /></div>
               <RichiestaCoaching />
