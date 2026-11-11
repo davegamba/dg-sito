@@ -23,7 +23,7 @@ Modello di tono e struttura: `content/pt/iogurte-grego-beneficios-faz-mal-engord
 ## 0. Prima di tutto
 
 1. `git pull --rebase` (sul repository lavorano anche altre sessioni).
-2. Leggi `coda.md` in questa cartella. Prendi la **prima voce con stato `da fare`**.
+2. Leggi `docs/coda-pt.md`. Prendi la **prima voce con stato `da fare`**.
    - Coda vuota → non scrivere niente, manda la mail "coda finita" (sezione 7) e fermati.
 3. Leggi l'articolo italiano di partenza in `content/blog/<slug-it>.mdx`, la sua
    versione spagnola in `content/es/<slug-es>.mdx` (indicata nella coda) e gli
@@ -183,12 +183,12 @@ node scripts/check-pt.mjs <slug-pt>
 ## 6. Pubblicazione
 
 ```bash
-git add content/pt/<slug-pt>.mdx lib/translations.ts .claude/skills/articolo-pt/coda.md
+git add content/pt/<slug-pt>.mdx lib/translations.ts docs/coda-pt.md
 git commit -m "Articolo portoghese: <slug-pt>"
 git pull --rebase && git push
 ```
 
-Aggiorna `coda.md` **nello stesso commit**: stato `fatto <data>`, URL. Se hai
+Aggiorna `docs/coda-pt.md` **nello stesso commit**: stato `fatto <data>`, URL. Se hai
 saltato una voce: stato `saltato <data>: motivo`, e passa alla successiva solo
 all'uscita seguente (un articolo per esecuzione, mai due).
 
