@@ -19,7 +19,7 @@ alimento o integratore + "faz mal / engorda / serve?". Mai: esercizi, stagionali
 ---
 
 ## 1. ovos
-- **Stato:** da fare
+- **Stato:** fatto 2026-11-11 · https://www.davegamba.com/pt/quantos-ovos-por-dia
 - **Italiano:** `content/blog/quante-uova-al-giorno.mdx`
 - **Spagnolo:** `content/es/cuantos-huevos-al-dia.mdx`
 - **Slug portoghese proposto:** `quantos-ovos-por-dia`
