@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+// Nascosti per ora (da rimettere piu' avanti): "/quiz-fisico" Quiz Fisico Gratuito, "/allenamento" Allenamento.
 const navLinks = [
-  { href: "/quiz-fisico", label: "Quiz Fisico Gratuito" },
-  { href: "/allenamento", label: "Allenamento" },
+  { href: "/protocollo", label: "Protocollo Dimagrimento" },
   { href: "/blog", label: "Blog" },
   { href: "https://www.youtube.com/@DaveGambaFitness", label: "YouTube" },
   { href: "/coaching", label: "Coaching" },
