@@ -66,7 +66,8 @@ temi medici come Ozempic.
 - **Note:** "leche en mal estado" è fuori tema (sicurezza alimentare). Le domande sul cancro al seno comparse sotto "leche y cancer" sono fuori tema e mediche: niente sezione, al massimo una riga con rimando al medico. Termini: "desnatada" (Spagna) = "descremada" (America Latina), "semidesnatada" = "semidescremada": spiegalo una volta. Colesterolo: link a `/es/ghee-mantequilla-clarificada` e `/es/cuantos-huevos-al-dia` solo se pubblicati e coerenti; lattosio: link a `/es/yogur-griego-beneficios-contraindicaciones`.
 
 ## 4. proteine-fanno-male-ai-reni
-- **Stato:** da fare
+- **Stato:** fatto 2026-11-12
+- **URL:** https://www.davegamba.com/es/proteinas-danan-rinones
 - **Italiano:** `content/blog/proteine-fanno-male-ai-reni.mdx`
 - **Slug spagnolo proposto:** `proteinas-danan-rinones`
 - **Titolo indicativo:** ¿Las proteínas dañan los riñones? Cuánta proteína al día es segura

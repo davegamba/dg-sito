@@ -20,6 +20,7 @@ const PAIRS: TranslationGroup[] = [
   { it: "omega-3", es: "omega-3-beneficios-efectos-secundarios" },
   { it: "quante-uova-al-giorno", es: "cuantos-huevos-al-dia", pt: "quantos-ovos-por-dia" },
   { it: "latte-fa-male", es: "la-leche-es-mala" },
+  { it: "proteine-fanno-male-ai-reni", es: "proteinas-danan-rinones" },
 ];
 
 /** true per /es e /es/<qualsiasi>: le pagine in spagnolo. Non usare
