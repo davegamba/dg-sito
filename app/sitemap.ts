@@ -1,4 +1,5 @@
 import { getAllPosts, postsDirFor } from "@/lib/posts";
+import { LEZIONI } from "@/lib/lezioni";
 import { LOCALES } from "@/lib/locales";
 import { MetadataRoute } from "next";
 import { BASE_URL } from "@/lib/site";
@@ -6,6 +7,7 @@ import { BASE_URL } from "@/lib/site";
 const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
   { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+  { url: `${BASE_URL}/protocollo`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
   { url: `${BASE_URL}/coaching`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
   { url: `${BASE_URL}/quiz-fisico`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/piani-coaching`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
@@ -16,6 +18,14 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Le lezioni entrano in sitemap solo quando hanno il video (senza, sono noindex).
+  const lezioni = LEZIONI.filter((l) => l.numero > 0 && l.youtubeId).map((l) => ({
+    url: `${BASE_URL}/protocollo/${l.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   const posts = getAllPosts().map((post) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
     lastModified: post.date ? new Date(post.date) : new Date(),
@@ -38,5 +48,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       : [];
   });
 
-  return [...STATIC_PAGES, ...posts, ...foreign];
+  return [...STATIC_PAGES, ...lezioni, ...posts, ...foreign];
 }

@@ -16,7 +16,9 @@ export async function generateMetadata({ params }: { params: Promise<{ lezione: 
   return {
     title: `${lezione.titolo} | Protocollo Dimagrimento`,
     description: lezione.descrizione,
-    robots: { index: false, follow: false },
+    alternates: { canonical: `/protocollo/${lezione.slug}` },
+    // Una lezione senza video e' una pagina quasi vuota: resta noindex finche' non c'e' l'ID YouTube.
+    robots: lezione.youtubeId ? { index: true, follow: true } : { index: false, follow: false },
   };
 }
 
