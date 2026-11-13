@@ -37,7 +37,12 @@ alimento o integratore + "faz mal / engorda / serve?". Mai: esercizi, stagionali
 - **Spagnolo:** `content/es/la-leche-es-mala.mdx`
 - **Slug portoghese proposto:** `leite-faz-mal`
 - **Ricerche:** leite faz mal; leite faz mal para adulto; leite inflama; intolerância à lactose; leite desnatado ou integral
-- **Domande Google:** (da raccogliere dal Mac)
+- **Domande Google** (13/11/2026, hl=pt-BR&gl=br):
+  - **leite faz mal**: Faz mal beber leite todos os dias?; O leite faz mal para o intestino?; Faz mal tomar 1 litro de leite por dia?; O que o leite faz com o corpo?
+  - **leite faz mal para adulto**: É verdade que tomar leite faz mal para a saúde?; Qual o leite que não faz mal para o ser humano?; Como saber se o leite está me fazendo mal?; Pode tomar 2 litros de leite por dia?
+  - **leite inflama**: Quais são os 7 alimentos que inflamam o corpo?; Qual tipo de leite não é inflamatório?; Quem está com inflamação pode tomar leite?; Como desinflamar o corpo da intolerância à lactose?
+  - **intolerância à lactose**: Quais são os sintomas que têm intolerância à lactose?; O que acontece se não tratar intolerância à lactose?; O que um intolerante à lactose não pode comer?; Quais são os 3 tipos de intolerância à lactose?
+  - **leite desnatado ou integral**: Qual a desvantagem do leite desnatado?; Para quem é indicado o leite desnatado?; Qual marca de leite desnatado é melhor?; Qual o melhor leite para perder barriga?
 
 ## 3. creatina
 - **Stato:** da fare
@@ -45,7 +50,12 @@ alimento o integratore + "faz mal / engorda / serve?". Mai: esercizi, stagionali
 - **Spagnolo:** `content/es/creatina-para-que-sirve.mdx`
 - **Slug portoghese proposto:** `creatina-para-que-serve`
 - **Ricerche:** creatina para que serve; creatina faz mal; creatina engorda; como tomar creatina; creatina efeitos colaterais
-- **Domande Google:** (da raccogliere dal Mac)
+- **Domande Google** (13/11/2026, hl=pt-BR&gl=br):
+  - **creatina para que serve**: O que acontece se eu tomar creatina e não malhar?; Quais são os efeitos colaterais da creatina?; Quem não pode usar creatina?; O que acontece com o meu corpo se eu tomar creatina?
+  - **creatina faz mal**: O que os médicos dizem sobre a creatina?; É verdade que creatina sobrecarrega os rins?; Quais marcas de creatina não são boas?; O que a creatina faz no rosto?
+  - **creatina engorda**: Quem toma creatina ganha peso?; O que a creatina faz com a barriga?; Quem quer perder peso pode usar creatina?; Como fica o corpo quem toma creatina?
+  - **como tomar creatina**: Qual a maneira correta de tomar creatina em pó?; Qual o modo correto de se tomar creatina?; O que acontece se eu tomar creatina e não malhar?; Qual a quantidade de creatina tomar por dia?
+  - **creatina efeitos colaterais**: Quem deve evitar tomar creatina?; Quais são os primeiros sintomas da creatina?; O que a creatina faz no coração?; Qual o efeito que a creatina faz no corpo?
 
 ## 4. manteiga ghee
 - **Stato:** da fare
