@@ -63,7 +63,12 @@ alimento o integratore + "faz mal / engorda / serve?". Mai: esercizi, stagionali
 - **Spagnolo:** `content/es/ghee-mantequilla-clarificada.mdx`
 - **Slug portoghese proposto:** `manteiga-ghee-beneficios-faz-mal`
 - **Ricerche:** manteiga ghee; manteiga ghee faz mal; manteiga ghee benefícios; ghee ou manteiga comum; manteiga clarificada
-- **Domande Google:** (da raccogliere dal Mac)
+- **Domande Google** (14/11/2026, hl=pt-BR&gl=br):
+  - **manteiga ghee**: O que é manteiga ghee e para que serve?; Qual a diferença entre manteiga e ghee e a normal?; Qual a diferença entre manteiga ghee e manteiga clarificada?; Pode comer manteiga ghee todo dia?
+  - **manteiga ghee faz mal**: A manteiga ghee é inflamatória?; O que é melhor, manteiga ghee ou azeite?; Devo guardar manteiga ghee na geladeira?; Qual é a manteiga mais saudável, ghee ou manteiga normal?
+  - **manteiga ghee benefícios**: Porque a manteiga ghee é mais saudável?; Qual é a verdadeira manteiga ghee?; Pode comer manteiga ghee todo dia?; Quais são as contraindicações da manteiga ghee?
+  - **ghee ou manteiga comum**: O ghee é melhor que a manteiga?; É saudável cozinhar com ghee?; A manteiga ghee é inflamatória?; Devo guardar manteiga ghee na geladeira?
+  - **manteiga clarificada**: O que é uma manteiga clarificada?; A manteiga clarificada é saudável?; Como fazer manteiga clarificada?; Qual a diferença entre manteiga clarificada e ghee?
 
 ## 5. ômega 3
 - **Stato:** da fare
@@ -71,7 +76,12 @@ alimento o integratore + "faz mal / engorda / serve?". Mai: esercizi, stagionali
 - **Spagnolo:** `content/es/omega-3-beneficios-efectos-secundarios.mdx`
 - **Slug portoghese proposto:** `omega-3-para-que-serve`
 - **Ricerche:** ômega 3 para que serve; ômega 3 faz mal; ômega 3 benefícios; melhor horário para tomar ômega 3; ômega 3 efeitos colaterais
-- **Domande Google:** (da raccogliere dal Mac)
+- **Domande Google** (14/11/2026, hl=pt-BR&gl=br):
+  - **ômega 3 para que serve**: Tem problema tomar ômega 3 todos os dias?; Quantas cápsulas de ômega 3 devo tomar por dia?; Quando é indicado tomar ômega 3?; Quais as doenças que o ômega 3 previne?
+  - **ômega 3 faz mal**: Faz mal tomar ômega 3 todos os dias?; O ômega 3 aumenta o risco de AVC?; Qual é a marca de ômega 3 mais confiável?; Quais são os riscos do ômega 3?
+  - **ômega 3 benefícios**: O que acontece quando tomo ômega 3 todos os dias?; Qual a doença que o ômega 3 previne?; Como saber se o ômega 3 está fazendo efeito?; O que não pode tomar junto com ômega 3?
+  - **melhor horário para tomar ômega 3**: O que não pode tomar junto com ômega 3?; Quantas cápsulas de ômega 3 devo tomar por dia?; O que muda no corpo tomando ômega 3?; Qual a forma correta de tomar o ômega 3?
+  - **ômega 3 efeitos colaterais**: O que acontece quando tomamos ômega 3 todos os dias?; O ômega 3 aumenta o risco de AVC?; O ômega 3 é bom para dor nas pernas?; Quantos comprimidos de ômega 3 devo tomar por dia?
 
 ## 6. café da manhã proteico
 - **Stato:** da fare
