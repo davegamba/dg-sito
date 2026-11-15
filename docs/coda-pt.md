@@ -89,4 +89,9 @@ alimento o integratore + "faz mal / engorda / serve?". Mai: esercizi, stagionali
 - **Spagnolo:** `content/es/desayuno-proteico-tortitas-avena.mdx`
 - **Slug portoghese proposto:** `cafe-da-manha-proteico`
 - **Ricerche:** café da manhã proteico; café da manhã rico em proteína; panqueca de aveia e clara; café da manhã para ganhar massa; café da manhã para emagrecer
-- **Domande Google:** (da raccogliere dal Mac)
+- **Domande Google** (15/11/2026, hl=pt-BR&gl=br):
+  - **café da manhã proteico**: Qual o melhor café da manhã proteico?; Como bater 30g de proteína no café da manhã?; Quais são 55 opções de café da manhã proteico?; Como comer 25g de proteína no café da manhã?
+  - **café da manhã rico em proteína**: O que comer no café da manhã com proteína?; Qual o melhor café da manhã com proteína?; Como substituir 2 ovos no café da manhã?; Como ingerir 30 g de proteína no café da manhã?
+  - **panqueca de aveia e clara**: Como fazer panqueca saudável de aveia?; Posso fazer panqueca com aveia em flocos?; A panqueca com farinha de aveia é saudável?; Como fazer panquecas de aveia integral?
+  - **café da manhã para ganhar massa**: Qual o melhor café da manhã para ganho de massa?; Qual a fruta que aumenta a massa muscular?; Qual horário o músculo cresce?; O que faz ganhar massa rápido?
+  - **café da manhã para emagrecer**: Qual é o melhor café da manhã para quem quer perder peso?; O que devo comer para perder 10 kg?; Tem como perder 5 kg em 1 semana?; O que acelera a perda de peso?
