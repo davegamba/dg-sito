@@ -80,7 +80,8 @@ temi medici come Ozempic.
 - **Note:** "paciente con insuficiencia renal", "proteína para un diabético", "proteína en los riñones" (proteinuria) e "proteínas bajas en sangre" sono domande mediche: nessuna sezione, solo il rimando al medico/nefrologo dove serve. Le domande "si peso 60/70 kilos" vanno risolte con un esempio di calcolo generale (g per kg), MAI come prescrizione al lettore. Link: `/es/desayuno-proteico-tortitas-avena` (30 g a colazione), `/es/creatina-para-que-sirve` (creatina e riñones: è un tema diverso, link solo se coerente).
 
 ## 5. integratori-collagene
-- **Stato:** da fare
+- **Stato:** fatto 2026-11-16
+- **URL:** https://www.davegamba.com/es/colageno-para-que-sirve
 - **Italiano:** `content/blog/integratori-collagene.mdx`
 - **Slug spagnolo proposto:** `colageno-para-que-sirve`
 - **Domande Google** (raccolte il 03/11/2026, 2 ricerche):
