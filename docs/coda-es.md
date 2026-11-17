@@ -120,22 +120,26 @@ temi medici come Ozempic.
 - **Stato:** da fare
 - **Italiano:** `content/blog/cortisolo-alto.mdx`
 - **Slug spagnolo proposto:** `cortisol-alto-sintomas`
-- **Domande Google:** da raccogliere
+- **Ricerche:** cortisol alto; cortisol alto síntomas; cómo bajar el cortisol; cortisol y grasa abdominal; cortisol alto causas
+- **Domande Google:** da raccogliere (dal Mac, hl=es&gl=es)
 
 ## 10. dieta-detox
 - **Stato:** da fare
 - **Italiano:** `content/blog/dieta-detox.mdx`
 - **Slug spagnolo proposto:** `dieta-detox`
-- **Domande Google:** da raccogliere
+- **Ricerche:** dieta detox; dieta detox funciona; cómo desintoxicar el cuerpo; jugos detox; desinflamar el cuerpo
+- **Domande Google:** da raccogliere (dal Mac, hl=es&gl=es)
 
 ## 11. quali-integratori-prendere
 - **Stato:** da fare
 - **Italiano:** `content/blog/quali-integratori-prendere.mdx`
 - **Slug spagnolo proposto:** `que-suplementos-tomar`
-- **Domande Google:** da raccogliere
+- **Ricerche:** qué suplementos tomar; suplementos necesarios; magnesio para qué sirve; suplementos inútiles; multivitamínico sirve
+- **Domande Google:** da raccogliere (dal Mac, hl=es&gl=es)
 
 ## 12. deficit-calorico
 - **Stato:** da fare
 - **Italiano:** `content/blog/deficit-calorico.mdx`
 - **Slug spagnolo proposto:** `deficit-calorico`
-- **Domande Google:** da raccogliere
+- **Ricerche:** déficit calórico; cómo calcular el déficit calórico; cuántas calorías para bajar de peso; déficit calórico qué comer; déficit calórico y músculo
+- **Domande Google:** da raccogliere (dal Mac, hl=es&gl=es)

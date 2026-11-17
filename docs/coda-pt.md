@@ -95,3 +95,35 @@ alimento o integratore + "faz mal / engorda / serve?". Mai: esercizi, stagionali
   - **panqueca de aveia e clara**: Como fazer panqueca saudável de aveia?; Posso fazer panqueca com aveia em flocos?; A panqueca com farinha de aveia é saudável?; Como fazer panquecas de aveia integral?
   - **café da manhã para ganhar massa**: Qual o melhor café da manhã para ganho de massa?; Qual a fruta que aumenta a massa muscular?; Qual horário o músculo cresce?; O que faz ganhar massa rápido?
   - **café da manhã para emagrecer**: Qual é o melhor café da manhã para quem quer perder peso?; O que devo comer para perder 10 kg?; Tem como perder 5 kg em 1 semana?; O que acelera a perda de peso?
+
+## 7. proteínas e rins
+- **Stato:** da fare
+- **Italiano:** `content/blog/proteine-fanno-male-ai-reni.mdx`
+- **Spagnolo:** `content/es/proteinas-danan-rinones.mdx`
+- **Slug portoghese proposto:** `proteina-faz-mal-para-os-rins`
+- **Ricerche:** proteína faz mal para os rins; whey faz mal para os rins; excesso de proteína; quanta proteína por dia; proteína e creatinina
+- **Domande Google:** (da raccogliere dal Mac)
+
+## 8. colágeno
+- **Stato:** da fare
+- **Italiano:** `content/blog/integratori-collagene.mdx`
+- **Spagnolo:** `content/es/colageno-para-que-sirve.mdx`
+- **Slug portoghese proposto:** `colageno-para-que-serve`
+- **Ricerche:** colágeno para que serve; colágeno funciona; colágeno faz mal; qual melhor colágeno; colágeno para articulações
+- **Domande Google:** (da raccogliere dal Mac)
+
+## 9. vitamina D
+- **Stato:** da fare
+- **Italiano:** `content/blog/vitamina-d.mdx`
+- **Spagnolo:** quando sarà pubblicato (`content/es/vitamina-d-sintomas-deficit.mdx`); se non esiste ancora, parti solo dall'italiano
+- **Slug portoghese proposto:** `vitamina-d-sintomas-falta`
+- **Ricerche:** falta de vitamina D sintomas; vitamina D para que serve; como aumentar vitamina D; vitamina D baixa; tomar sol vitamina D
+- **Domande Google:** (da raccogliere dal Mac)
+
+## 10. jejum intermitente
+- **Stato:** da fare
+- **Italiano:** `content/blog/digiuno-intermittente.mdx`
+- **Spagnolo:** quando sarà pubblicato; se non esiste ancora, parti solo dall'italiano
+- **Slug portoghese proposto:** `jejum-intermitente`
+- **Ricerche:** jejum intermitente; jejum intermitente funciona; jejum intermitente 16 8; jejum intermitente faz mal; o que comer no jejum intermitente
+- **Domande Google:** (da raccogliere dal Mac)
