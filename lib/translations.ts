@@ -19,7 +19,7 @@ const PAIRS: TranslationGroup[] = [
   { it: "colazione-proteica-cosa-mangiare", es: "desayuno-proteico-tortitas-avena" },
   { it: "omega-3", es: "omega-3-beneficios-efectos-secundarios" },
   { it: "quante-uova-al-giorno", es: "cuantos-huevos-al-dia", pt: "quantos-ovos-por-dia" },
-  { it: "latte-fa-male", es: "la-leche-es-mala" },
+  { it: "latte-fa-male", es: "la-leche-es-mala", pt: "leite-faz-mal" },
   { it: "proteine-fanno-male-ai-reni", es: "proteinas-danan-rinones" },
   { it: "integratori-collagene", es: "colageno-para-que-sirve" },
 ];

@@ -32,7 +32,7 @@ alimento o integratore + "faz mal / engorda / serve?". Mai: esercizi, stagionali
   - **ovo cozido benefícios**: É bom comer ovos cozidos todos os dias?; Quais são os 10 benefícios do ovo?; Qual é a melhor hora para comer ovo cozido?; Quantos ovos cozidos devo consumir por dia?
 
 ## 2. leite
-- **Stato:** da fare
+- **Stato:** fatto 2026-11-18 · https://www.davegamba.com/pt/leite-faz-mal
 - **Italiano:** `content/blog/latte-fa-male.mdx`
 - **Spagnolo:** `content/es/la-leche-es-mala.mdx`
 - **Slug portoghese proposto:** `leite-faz-mal`
