@@ -90,7 +90,8 @@ temi medici come Ozempic.
 - **Note:** artritis reumatoide e diabete: nessuna promessa, rimando al medico. "La vitamina per produrre collagene" = vitamina C, solo se la fonte regge.
 
 ## 6. vitamina-d
-- **Stato:** da fare
+- **Stato:** fatto 2026-11-19
+- **URL:** https://www.davegamba.com/es/vitamina-d-sintomas-deficit
 - **Italiano:** `content/blog/vitamina-d.mdx`
 - **Slug spagnolo proposto:** `vitamina-d-sintomas-deficit`
 - **Domande Google** (raccolte il 03/11/2026, 2 ricerche):
