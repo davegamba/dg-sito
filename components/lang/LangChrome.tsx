@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { PostMeta } from "@/lib/posts";
-import { LOCALES, type LocaleConfig } from "@/lib/locales";
+import LangNav, { type LangNavItem } from "@/components/lang/LangNav";
+import { getAllPosts, postsDirFor, type PostMeta } from "@/lib/posts";
+import { LOCALES, categoryAnchor, type LocaleConfig } from "@/lib/locales";
 import { itUrl, langUrl, translationsOf, type TranslationGroup } from "@/lib/translations";
 
 // Testata e piè di pagina delle pagine in lingua straniera (/es, /pt e i loro
@@ -55,26 +56,35 @@ export function LangSwitch({ links, className = "" }: { links: LangLink[]; class
   );
 }
 
-/** Testata minima. Il nome porta all'indice della lingua; a destra i link
- *  alle altre versioni dell'articolo, se esistono. */
+// Il canale ha anche l'audio in spagnolo e portoghese: Dave, 19/11/2026.
+const YOUTUBE = "https://www.youtube.com/@DaveGambaFitness";
+
+/** Categorie degli articoli, dalla più usata: voci del menu e sezioni dell'indice */
+export function categoriesOf(posts: PostMeta[]): string[] {
+  const count = new Map<string, number>();
+  for (const p of posts) if (p.category) count.set(p.category, (count.get(p.category) ?? 0) + 1);
+  return [...count.keys()].sort((a, b) => count.get(b)! - count.get(a)! || a.localeCompare(b));
+}
+
+/** Testata: freebie (solo se esiste la landing nella lingua), articoli, categorie
+ *  (se più di una), YouTube; a destra i link alle altre versioni dell'articolo. */
 export function LangHeader({ locale, links = [] }: { locale: LocaleConfig; links?: LangLink[] }) {
+  const categories = categoriesOf(getAllPosts(postsDirFor(locale)));
+  const items: LangNavItem[] = [
+    ...(locale.freebieUrl ? [{ href: locale.freebieUrl, label: locale.t.nav.freebie, highlight: true }] : []),
+    { href: locale.base, label: locale.t.nav.articles },
+    ...(categories.length > 1
+      ? categories.map((c) => ({ href: `${locale.base}#${categoryAnchor(c)}`, label: c }))
+      : []),
+    { href: YOUTUBE, label: "YouTube", external: true },
+  ];
   return (
-    <header className="absolute top-0 inset-x-0 z-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <Link
-          href={locale.base}
-          className="font-serif text-xl font-bold select-none"
-          style={{
-            background: "linear-gradient(90deg, #00E5F5 0%, #00CBDB 40%, #00AECF 68%, #0077CC 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
-          Dave Gamba
-        </Link>
-        <LangSwitch links={links} />
-      </div>
-    </header>
+    <LangNav
+      home={locale.base}
+      items={items}
+      menuLabel={locale.t.nav.menu}
+      langSwitch={links.length > 0 ? <LangSwitch links={links} /> : null}
+    />
   );
 }
 

@@ -25,7 +25,12 @@ export type LocaleConfig = {
   references: string;
   /** keywords degli articoli senza "keywords" nel frontmatter */
   defaultKeywords: string[];
+  /** Landing del freebie in questa lingua. Vuoto = la voce del menu non compare:
+   *  mai mandare il lettore sulla landing italiana (regola 26). */
+  freebieUrl: string;
   t: {
+    /** Testata (components/lang/LangNav.tsx) */
+    nav: { freebie: string; articles: string; menu: string };
     toc: string;
     readingTime: string;
     share: string;
@@ -53,7 +58,9 @@ export const LOCALES: Record<LangCode, LocaleConfig> = {
     // Storico: fisse sullo yogurt per tutti gli articoli spagnoli (Google ignora
     // questo meta). Lasciate così per non cambiare le pagine già pubblicate.
     defaultKeywords: ["yogur griego", "yogur griego beneficios y contraindicaciones", "yogur griego engorda", "yogur griego estreñimiento"],
+    freebieUrl: "",
     t: {
+      nav: { freebie: "Rutina gratis", articles: "Artículos", menu: "Menú" },
       toc: "Índice",
       readingTime: "min de lectura",
       share: "Comparte el artículo",
@@ -86,7 +93,9 @@ export const LOCALES: Record<LangCode, LocaleConfig> = {
     versionLabel: "Versão em português",
     references: "referências",
     defaultKeywords: [],
+    freebieUrl: "",
     t: {
+      nav: { freebie: "Treino grátis", articles: "Artigos", menu: "Menu" },
       toc: "Índice",
       readingTime: "min de leitura",
       share: "Compartilhe o artigo",
@@ -114,6 +123,11 @@ export const LOCALES: Record<LangCode, LocaleConfig> = {
  *  redirect /pt-virtuale, startsWith("/es") gli /esercizi-*. */
 export const isForeignPath = (pathname: string) =>
   Object.values(LOCALES).some((l) => pathname === l.base || pathname.startsWith(`${l.base}/`));
+
+/** Ancora di una categoria nell'indice (/es#nutricion): senza accenti, come
+ *  la scrive chi copia il link. */
+export const categoryAnchor = (category: string) =>
+  category.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 /** Ancora di un titolo: stessa regola in extractToc (lib/posts.ts) e nelle
  *  pagine, o i link dell'indice non trovano il titolo. */
