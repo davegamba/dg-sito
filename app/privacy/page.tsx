@@ -139,7 +139,7 @@ const sections = [
     title: "8. Trasferimento dati extra-UE",
     content: (
       <>
-        <p>Alcuni fornitori terzi (es. Stripe, Google, Meta) potrebbero trasferire dati verso Paesi extra-UE. In tali casi il trasferimento avviene in conformità agli artt. 44 e seguenti del GDPR, sulla base di decisioni di adeguatezza della Commissione Europea o clausole contrattuali standard approvate.</p>
+        <p>Alcuni fornitori terzi (es. Systeme.io, Stripe, Google, Meta, Vercel, Netlify, Resend) potrebbero trasferire dati verso Paesi extra-UE. In tali casi il trasferimento avviene in conformità agli artt. 44 e seguenti del GDPR, sulla base di decisioni di adeguatezza della Commissione Europea o clausole contrattuali standard approvate.</p>
         <p>Puoi richiedere informazioni sulle garanzie adottate contattando il Titolare.</p>
       </>
     ),
@@ -203,7 +203,7 @@ const sections = [
             </li>
           ))}
         </ul>
-        <p className="mt-3"><strong className="text-[#F0F0F0]">Email.</strong> Le mie email possono contenere strumenti di tracciamento (come pixel e link tracciati) che misurano aperture e clic, per capire quali contenuti ti sono utili. Lo faccio solo con il tuo consenso, che dai quando ti iscrivi e puoi revocare in qualsiasi momento disiscrivendoti da una mail o scrivendo a <a href="mailto:info@davegamba.com" className="text-[#00CBDB] hover:underline">info@davegamba.com</a>. Le email di servizio (come l&apos;accesso all&apos;area riservata) possono usare solo gli strumenti tecnici necessari alla consegna e conteggi aggregati e anonimi di aperture e clic, non associati a singole persone.</p>
+        <p className="mt-3"><strong className="text-[#F0F0F0]">Email.</strong> Le mie email possono contenere strumenti di tracciamento (come pixel e link tracciati) che misurano aperture e clic, per capire quali contenuti ti sono utili. Lo faccio solo con il tuo consenso, che dai quando ti iscrivi (per chi era già iscritto, ti ho informato con una comunicazione del 10 novembre 2026) e puoi revocare in qualsiasi momento disiscrivendoti da una mail o scrivendo a <a href="mailto:info@davegamba.com" className="text-[#00CBDB] hover:underline">info@davegamba.com</a>. Le email di servizio (come l&apos;accesso all&apos;area riservata) possono usare solo gli strumenti tecnici necessari alla consegna e conteggi aggregati e anonimi di aperture e clic, non associati a singole persone.</p>
         <p className="mt-3">Se scegli &quot;Solo essenziali&quot;, o non scegli, Google Analytics e Meta Pixel non vengono caricati. Puoi cambiare o revocare la scelta in qualsiasi momento dal link &quot;Preferenze cookie&quot; in fondo a ogni pagina. La scelta viene riproposta dopo circa 6 mesi.</p>
         <p className="mt-3">Puoi anche disabilitare i cookie analitici nelle impostazioni del tuo browser o tramite <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-[#00CBDB] hover:underline">Google Analytics Opt-out</a>.</p>
       </>
@@ -240,7 +240,7 @@ export default function PrivacyPage() {
             Ai sensi dell&apos;art. 13 Reg. UE n. 679/2016
           </p>
           <h1 className="font-serif text-4xl md:text-5xl text-[#F0F0F0] mb-3">Privacy Policy</h1>
-          <p className="text-[#444444] text-sm mb-16">Ultimo aggiornamento: 10 novembre 2026</p>
+          <p className="text-[#444444] text-sm mb-16">Ultimo aggiornamento: 20 novembre 2026</p>
 
           {/* Warning sanitaria */}
           <div className="mb-8 p-6 rounded-2xl border border-yellow-500/20 bg-yellow-500/5">
