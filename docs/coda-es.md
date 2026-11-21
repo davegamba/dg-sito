@@ -122,14 +122,24 @@ temi medici come Ozempic.
 - **Italiano:** `content/blog/cortisolo-alto.mdx`
 - **Slug spagnolo proposto:** `cortisol-alto-sintomas`
 - **Ricerche:** cortisol alto; cortisol alto síntomas; cómo bajar el cortisol; cortisol y grasa abdominal; cortisol alto causas
-- **Domande Google:** da raccogliere (dal Mac, hl=es&gl=es)
+- **Domande Google** (21/11/2026, hl=es):
+  - **cortisol alto**: ¿Cómo se elimina el cortisol alto?; ¿Qué tomar para bajar el cortisol?; ¿Qué debo comer para bajar el cortisol?; ¿Qué vitaminas tomar para bajar el cortisol?
+  - **cortisol alto síntomas**: ¿Cómo se siente una persona con cortisol alto?; ¿Cómo se elimina el exceso de cortisol del cuerpo?; ¿Qué tomar si el cortisol está alto?; ¿Qué enfermedades puede causar el exceso de cortisol?
+  - **cómo bajar el cortisol**: ¿Qué bebida reduce el cortisol?; ¿Qué puedo tomar para bajar el cortisol?; ¿Qué síntomas da el cortisol alto?; ¿Qué vitamina te ayuda a bajar el cortisol?
+  - **cortisol y grasa abdominal**: ¿Cómo eliminar la grasa abdominal por cortisol?; ¿Cómo desinflamar el abdomen por cortisol?; ¿Cómo se baja el cortisol para adelgazar?; ¿Qué es una barriga de cortisol?
+  - **cortisol alto causas**: ¿Qué puede producir el cortisol alto?; ¿Cómo se corrige el cortisol alto?; ¿Qué tomar para bajar el cortisol?; ¿A qué hora sube más el cortisol?
 
 ## 10. dieta-detox
 - **Stato:** da fare
 - **Italiano:** `content/blog/dieta-detox.mdx`
 - **Slug spagnolo proposto:** `dieta-detox`
 - **Ricerche:** dieta detox; dieta detox funciona; cómo desintoxicar el cuerpo; jugos detox; desinflamar el cuerpo
-- **Domande Google:** da raccogliere (dal Mac, hl=es&gl=es)
+- **Domande Google** (21/11/2026, hl=es):
+  - **dieta detox**: ¿Qué desayunar en una dieta detox?; ¿Es posible perder 5 kilos en una semana?; ¿Qué puedo comer en un menú de dieta detox de 3 días?; ¿Qué dieta debo hacer para bajar 10 kilos?
+  - **dieta detox funciona**: ¿El detox sirve para bajar de peso?; ¿Qué puedo comer en la dieta detox?; ¿Qué no se puede comer en la dieta detox?
+  - **cómo desintoxicar el cuerpo**: ¿Cómo desintoxicar más rápido el cuerpo?; ¿Qué bebida natural puedo tomar para desintoxicar mi cuerpo?; ¿Cómo saber si mi cuerpo está lleno de toxinas?; ¿Cuántos días se tarda el cuerpo en desintoxicarse?
+  - **jugos detox**: ¿Cuál es el mejor jugo detox?; ¿Qué es un jugo detox?; ¿Qué bebidas detox puedo tomar para desinflamar el cuerpo?; ¿Qué jugo detox es bueno para bajar de peso?
+  - **desinflamar el cuerpo**: ¿Cómo puedo desinflamar mi cuerpo rápidamente?; ¿Qué es bueno tomar para desinflamar todo el cuerpo?; ¿Qué tomar para deshincharse rápido?; ¿Qué hacer cuando se inflama el cuerpo?
 
 ## 11. quali-integratori-prendere
 - **Stato:** da fare
