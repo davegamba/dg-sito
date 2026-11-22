@@ -147,7 +147,11 @@ temi medici come Ozempic.
 - **Italiano:** `content/blog/quali-integratori-prendere.mdx`
 - **Slug spagnolo proposto:** `que-suplementos-tomar`
 - **Ricerche:** qué suplementos tomar; suplementos necesarios; magnesio para qué sirve; suplementos inútiles; multivitamínico sirve
-- **Domande Google:** da raccogliere (dal Mac, hl=es&gl=es)
+- **Domande Google** (22/11/2026, hl=es, 4 ricerche su 5; "multivitamínico sirve" non raccolta):
+  - **qué suplementos tomar**: ¿Qué suplementos merece la pena tomar?; ¿Cuáles son los 5 mejores suplementos?; ¿Cuáles son los suplementos más efectivos?; ¿Qué suplementos debemos tomar todos los días?
+  - **suplementos necesarios**: ¿Qué suplementos son necesarios?; ¿Cuáles son los 5 mejores suplementos?; ¿Cómo saber qué suplementos necesito?; ¿Cuáles son los suplementos más efectivos?
+  - **magnesio para qué sirve**: ¿Qué beneficios hay en tomar magnesio?; ¿Cuándo se recomienda tomar magnesio?; ¿Qué dolores te quita el magnesio?; ¿Cuáles son los síntomas por falta de magnesio?
+  - **suplementos inútiles**: ¿Es realmente necesario tomar suplementos?; ¿Cuáles son los 5 mejores suplementos?; ¿Qué suplementos no se pueden tomar a la vez?; ¿Qué suplementos pueden dañar el hígado?
 
 ## 12. deficit-calorico
 - **Stato:** da fare
