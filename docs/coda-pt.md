@@ -102,7 +102,12 @@ alimento o integratore + "faz mal / engorda / serve?". Mai: esercizi, stagionali
 - **Spagnolo:** `content/es/proteinas-danan-rinones.mdx`
 - **Slug portoghese proposto:** `proteina-faz-mal-para-os-rins`
 - **Ricerche:** proteína faz mal para os rins; whey faz mal para os rins; excesso de proteína; quanta proteína por dia; proteína e creatinina
-- **Domande Google:** (da raccogliere dal Mac)
+- **Domande Google** (23/11/2026, hl=pt-BR&gl=br):
+  - **proteína faz mal para os rins**: Qual a melhor proteína para quem tem problema renal?; Qual é o maior inimigo do rim?; Qual alimento fortalece os rins?; O que é bom para os rins voltar ao normal?
+  - **whey faz mal para os rins**: Quais os riscos de tomar whey protein?; Qual é o maior inimigo do rim?; O que é bom para o rim voltar ao normal?; Qual suplemento sobrecarrega o rim?
+  - **excesso de proteína**: Quais os sintomas de excesso de proteína?; Quanta proteína há em 2 ovos?; O que é bom para baixar proteína?; Qual a melhor proteína pela manhã?
+  - **quanta proteína por dia**: Quem tem 70 kg tem que comer quanto de proteína por dia?; Quanta proteína há em 2 ovos?; Como comer 100 g de proteína por dia?; Como atingir 200 g de proteína por dia?
+  - **proteína e creatinina**: Qual o valor normal da proteína e creatina?; Qual o valor normal da relação proteína-creatinina?; Qual o valor da creatinina é preocupante?; Qual é o nível normal de proteína na urina e creatinina?
 
 ## 8. colágeno
 - **Stato:** da fare

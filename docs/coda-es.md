@@ -158,4 +158,9 @@ temi medici come Ozempic.
 - **Italiano:** `content/blog/deficit-calorico.mdx`
 - **Slug spagnolo proposto:** `deficit-calorico`
 - **Ricerche:** déficit calórico; cómo calcular el déficit calórico; cuántas calorías para bajar de peso; déficit calórico qué comer; déficit calórico y músculo
-- **Domande Google:** da raccogliere (dal Mac, hl=es&gl=es)
+- **Domande Google** (23/11/2026, hl=es):
+  - **déficit calórico**: ¿Cómo hacer correctamente un déficit calórico?; ¿Qué comer para lograr un déficit calórico?; ¿Qué no comer en déficit calórico?; ¿Cuánto son 2 huevos en calorías?
+  - **cómo calcular el déficit calórico**: ¿Cómo saber cuánto debo comer en déficit calórico?; ¿Cómo puedo calcular mi déficit calórico gratis?; ¿Cómo hacer déficit calórico de manera correcta?; ¿Cómo me doy cuenta de que estoy en déficit calórico?
+  - **cuántas calorías para bajar de peso**: ¿Cuántas calorías debo comer diario si quiero bajar de peso?; ¿Qué pasa si como 1500 calorías al día?; ¿Cuántas calorías hay que quemar para bajar 1 kilo?; ¿Cuánto adelgazo quemando 400 calorías diarias?
+  - **déficit calórico qué comer**: ¿Cuáles son 10 alimentos que ayudan a perder peso?; ¿Cómo hacer un menú para déficit calórico?; ¿Cómo hacer déficit calórico para bajar de peso?; ¿Qué alimentos dejar de consumir para el déficit calórico?
+  - **déficit calórico y músculo**: ¿Cuando se hace déficit calórico se pierde masa muscular.?; ¿Qué pasa si estoy en déficit calórico y hago pesas?; ¿Es posible ganar músculo estando en déficit calórico?; ¿Cómo hacer un déficit calórico para ganar masa muscular?
