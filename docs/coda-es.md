@@ -100,7 +100,8 @@ temi medici come Ozempic.
 - **Note:** scartate "vitamina D inyectable cuánto cuesta" (prezzi locali non verificabili) e "dosis en el embarazo" (prescrizione: solo rimando al medico). Dosi: valori di riferimento ufficiali, mai una dose al singolo lettore.
 
 ## 7. digiuno-intermittente
-- **Stato:** da fare
+- **Stato:** fatto 2026-11-23
+- **URL:** https://www.davegamba.com/es/ayuno-intermitente
 - **Italiano:** `content/blog/digiuno-intermittente.mdx`
 - **Slug spagnolo proposto:** `ayuno-intermitente`
 - **Domande Google** (raccolte il 03/11/2026, 2 ricerche):

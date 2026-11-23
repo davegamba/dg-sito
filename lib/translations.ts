@@ -23,6 +23,7 @@ const PAIRS: TranslationGroup[] = [
   { it: "proteine-fanno-male-ai-reni", es: "proteinas-danan-rinones" },
   { it: "integratori-collagene", es: "colageno-para-que-sirve" },
   { it: "vitamina-d", es: "vitamina-d-sintomas-deficit" },
+  { it: "digiuno-intermittente", es: "ayuno-intermitente" },
 ];
 
 /** true per /es e /es/<qualsiasi>: le pagine in spagnolo. Non usare
