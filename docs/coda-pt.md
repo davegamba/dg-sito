@@ -115,7 +115,12 @@ alimento o integratore + "faz mal / engorda / serve?". Mai: esercizi, stagionali
 - **Spagnolo:** `content/es/colageno-para-que-sirve.mdx`
 - **Slug portoghese proposto:** `colageno-para-que-serve`
 - **Ricerche:** colágeno para que serve; colágeno funciona; colágeno faz mal; qual melhor colágeno; colágeno para articulações
-- **Domande Google:** (da raccogliere dal Mac)
+- **Domande Google** (24/11/2026, hl=pt-BR&gl=br):
+  - **colágeno para que serve**: Qual é o melhor colágeno?; Quando é preciso tomar colágeno?; É melhor tomar creatina ou colágeno?; Quanto tempo o colágeno começa a fazer efeito no corpo?
+  - **colágeno funciona**: É verdade que o colágeno não funciona?; É realmente necessário tomar colágeno?; É melhor tomar creatina ou colágeno?; Qual colágeno funciona de verdade?
+  - **colágeno faz mal**: Faz mal tomar colágeno todos os dias?; Qual o colágeno mais saudável?; É melhor tomar creatina ou colágeno?; Qual é a melhor idade para tomar colágeno?
+  - **qual melhor colágeno**: Qual marca de colágeno é confiável?; O que beber para aumentar o colágeno da pele?; Qual é o colágeno mais puro disponível?; Qual o colágeno mais vendido hoje?
+  - **colágeno para articulações**: Qual é o melhor colágeno para tomar para articulações?; É bom tomar colágeno para o joelho?; Quais são os 3 tipos de colágeno?; Quanto tempo o colágeno começa a fazer efeito nas articulações?
 
 ## 9. vitamina D
 - **Stato:** da fare
@@ -123,7 +128,12 @@ alimento o integratore + "faz mal / engorda / serve?". Mai: esercizi, stagionali
 - **Spagnolo:** quando sarà pubblicato (`content/es/vitamina-d-sintomas-deficit.mdx`); se non esiste ancora, parti solo dall'italiano
 - **Slug portoghese proposto:** `vitamina-d-sintomas-falta`
 - **Ricerche:** falta de vitamina D sintomas; vitamina D para que serve; como aumentar vitamina D; vitamina D baixa; tomar sol vitamina D
-- **Domande Google:** (da raccogliere dal Mac)
+- **Domande Google** (24/11/2026, hl=pt-BR&gl=br):
+  - **falta de vitamina D sintomas**: O que acontece quando a vitamina D está baixa?; Qual a melhor forma de repor a vitamina D?; O que impede a vitamina D de subir?; Qual nível de vitamina D é preocupante?
+  - **vitamina D para que serve**: Quais são os benefícios de tomar vitamina D?; Quais são os sintomas de falta de vitamina D no corpo?; O que a vitamina D faz no cabelo?; Quais são os benefícios de tomar vitamina?
+  - **como aumentar vitamina D**: Quanto tempo demora para subir a vitamina D?; O que o corpo sente quando está com falta de vitamina D?; O que derruba a vitamina D?; Posso tomar 10.000 UI de vitamina D por dia?
+  - **vitamina D baixa**: Como fazer a vitamina D subir rápido?; Quando o nível de vitamina D é considerado baixo?; Quando a vitamina D é preocupante?; Qual o motivo da falta da vitamina D?
+  - **tomar sol vitamina D**: É melhor tomar sol ou vitamina D?; Quanto tempo tem que ficar no sol para tomar vitamina D?; Pode tomar 2 horas de sol por dia?; 10 minutos de sol faz bem para a saúde?
 
 ## 10. jejum intermitente
 - **Stato:** da fare
