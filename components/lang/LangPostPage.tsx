@@ -227,6 +227,9 @@ export function LangPostPage({ lang, slug }: { lang: LangCode; slug: string }) {
                   </div>
                 </div>
               </div>
+              {post.image && post.imageAi && (
+                <p className="-mt-3 mb-6 text-[11px] text-[#888]">{locale.t.aiCover}</p>
+              )}
             </div>
           </div>
 

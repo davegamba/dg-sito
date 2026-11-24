@@ -293,6 +293,9 @@ export default async function PostPage({
                   </div>
                 </div>
               </div>
+              {post.image && post.imageAi && (
+                <p className="-mt-3 mb-6 text-[11px] text-[#888]">Immagine di copertina generata con intelligenza artificiale</p>
+              )}
 
             </div>
           </div>

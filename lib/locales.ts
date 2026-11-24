@@ -33,6 +33,7 @@ export type LocaleConfig = {
     nav: { freebie: string; articles: string; menu: string };
     toc: string;
     readingTime: string;
+    aiCover: string;
     share: string;
     moreArticles: string;
     footerArticles: string;
@@ -63,6 +64,7 @@ export const LOCALES: Record<LangCode, LocaleConfig> = {
       nav: { freebie: "Rutina gratis", articles: "Artículos", menu: "Menú" },
       toc: "Índice",
       readingTime: "min de lectura",
+      aiCover: "Imagen de portada generada con inteligencia artificial",
       share: "Comparte el artículo",
       moreArticles: "Más artículos",
       footerArticles: "Artículos en español",
@@ -98,6 +100,7 @@ export const LOCALES: Record<LangCode, LocaleConfig> = {
       nav: { freebie: "Treino grátis", articles: "Artigos", menu: "Menu" },
       toc: "Índice",
       readingTime: "min de leitura",
+      aiCover: "Imagem de capa gerada com inteligência artificial",
       share: "Compartilhe o artigo",
       moreArticles: "Mais artigos",
       footerArticles: "Artigos em português",

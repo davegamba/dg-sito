@@ -26,6 +26,8 @@ export type Post = {
   category: string;
   excerpt: string;
   image: string | null;
+  /** true se la copertina è generata con AI: sotto l'autore compare la dicitura (AI Act art. 50) */
+  imageAi?: boolean;
   published: boolean;
   content: string;
   readingTime: number;
@@ -86,6 +88,7 @@ export function getAllPosts(dir: string = POSTS_DIR): PostMeta[] {
         category: data.category ?? "",
         excerpt: data.excerpt ?? "",
         image: data.image ?? null,
+        imageAi: data.imageAi === true,
         published: isPublished(data),
         readingTime: calcReadingTime(content),
       };
@@ -111,6 +114,7 @@ export function getPostBySlug(slug: string, dir: string = POSTS_DIR): Post | nul
     category: data.category ?? "",
     excerpt: data.excerpt ?? "",
     image: data.image ?? null,
+    imageAi: data.imageAi === true,
     published: true,
     content,
     readingTime: calcReadingTime(content),
