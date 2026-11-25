@@ -13,7 +13,7 @@ export type TranslationGroup = { it: string } & Partial<Record<LangCode, string>
 const PAIRS: TranslationGroup[] = [
   { it: "yogurt-greco-proprieta-valori", es: "yogur-griego-beneficios-contraindicaciones", pt: "iogurte-grego-beneficios-faz-mal-engorda" },
   { it: "burro-chiarificato-proprieta", es: "ghee-mantequilla-clarificada" },
-  { it: "creatina-a-cosa-serve", es: "creatina-para-que-sirve" },
+  { it: "creatina-a-cosa-serve", es: "creatina-para-que-sirve", pt: "creatina-para-que-serve" },
   // La versione spagnola unisce colazione-proteica e pancake-proteici (ricetta 3):
   // un URL ha una sola gemella per lingua, l'hreflang va sulla colazione.
   { it: "colazione-proteica-cosa-mangiare", es: "desayuno-proteico-tortitas-avena" },

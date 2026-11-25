@@ -45,7 +45,7 @@ alimento o integratore + "faz mal / engorda / serve?". Mai: esercizi, stagionali
   - **leite desnatado ou integral**: Qual a desvantagem do leite desnatado?; Para quem é indicado o leite desnatado?; Qual marca de leite desnatado é melhor?; Qual o melhor leite para perder barriga?
 
 ## 3. creatina
-- **Stato:** da fare
+- **Stato:** fatto 2026-11-25 · https://www.davegamba.com/pt/creatina-para-que-serve
 - **Italiano:** `content/blog/creatina-a-cosa-serve.mdx`
 - **Spagnolo:** `content/es/creatina-para-que-sirve.mdx`
 - **Slug portoghese proposto:** `creatina-para-que-serve`
