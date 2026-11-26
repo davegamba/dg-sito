@@ -24,6 +24,7 @@ const PAIRS: TranslationGroup[] = [
   { it: "integratori-collagene", es: "colageno-para-que-sirve" },
   { it: "vitamina-d", es: "vitamina-d-sintomas-deficit" },
   { it: "digiuno-intermittente", es: "ayuno-intermitente" },
+  { it: "fibre-solubili-insolubili", es: "fibra-soluble-insoluble" },
 ];
 
 /** true per /es e /es/<qualsiasi>: le pagine in spagnolo. Non usare

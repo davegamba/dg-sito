@@ -110,7 +110,8 @@ temi medici come Ozempic.
 - **Note:** "¿Es efectivo el ayuno de 72 horas para desintoxicar el cuerpo?" esce in tutte e due: va smontato in poche righe (il corpo non si "disintossica" col digiuno). Kili al mese: niente promesse, solo cosa dicono gli studi.
 
 ## 8. fibre-solubili-insolubili
-- **Stato:** da fare
+- **Stato:** fatto 2026-11-26
+- **URL:** https://www.davegamba.com/es/fibra-soluble-insoluble
 - **Italiano:** `content/blog/fibre-solubili-insolubili.mdx`
 - **Slug spagnolo proposto:** `fibra-soluble-insoluble`
 - **Domande Google** (raccolte il 03/11/2026, 2 ricerche):
